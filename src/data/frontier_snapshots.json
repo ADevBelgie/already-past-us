@@ -1,0 +1,2672 @@
+{
+ "generated_by": "scripts/data/build_frontier_snapshots.py",
+ "inputs": [
+  "research/data/frontier_snapshots.csv",
+  "research/data/raw/eci_scores.csv"
+ ],
+ "eci_vintage": "2026-11-07",
+ "blend": "(3 x input + output) / 4, USD per million tokens",
+ "snapshots": [
+  {
+   "date": "2025-11-07",
+   "key": "snap1",
+   "label": "A year ago",
+   "long": "7 Nov 2025"
+  },
+  {
+   "date": "2026-05-07",
+   "key": "snap2",
+   "label": "Six months ago",
+   "long": "7 May 2026"
+  },
+  {
+   "date": "2026-11-07",
+   "key": "snap3",
+   "label": "Today",
+   "long": "7 Nov 2026"
+  }
+ ],
+ "headlines": {
+  "cheaper": [
+   {
+    "snapshot": "2025-11-07",
+    "price": 3.4375,
+    "models": [
+     "GPT-5"
+    ],
+    "footnote": "s2-cheaper"
+   },
+   {
+    "snapshot": "2026-05-07",
+    "price": 1.125,
+    "models": [
+     "Gemini 3 Flash"
+    ],
+    "footnote": "s2-cheaper"
+   },
+   {
+    "snapshot": "2026-11-07",
+    "price": 0.2,
+    "models": [
+     "Claude Haiku 5.5",
+     "GPT-6 Luna"
+    ],
+    "footnote": "s2-cheaper"
+   }
+  ],
+  "cheaper_ratio": 17.2,
+  "better": [
+   {
+    "snapshot": "2025-11-07",
+    "eci": 150.0,
+    "model": "GPT-5",
+    "price": 3.4375,
+    "footnote": "s2-better"
+   },
+   {
+    "snapshot": "2026-05-07",
+    "eci": 152.27,
+    "model": "Grok 4.20",
+    "price": 3.0,
+    "footnote": "s2-better"
+   },
+   {
+    "snapshot": "2026-11-07",
+    "eci": 168.94,
+    "model": "GPT-6.1 Sol",
+    "price": 4.0,
+    "footnote": "s2-better"
+   }
+  ],
+  "eci_test": 150.0,
+  "price_test": 4.0
+ },
+ "models_without_interval": [
+  "GPT-5"
+ ],
+ "models": [
+  {
+   "snapshot": "2025-11-07",
+   "model": "GPT-5",
+   "developer": "OpenAI",
+   "release_date": "2025-08-07",
+   "eci": 150.0,
+   "eci_lo": null,
+   "eci_hi": null,
+   "price_in": 1.25,
+   "price_out": 10.0,
+   "blended": 3.4375,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "GPT-5 mini",
+   "developer": "OpenAI",
+   "release_date": "2025-08-07",
+   "eci": 146.08,
+   "eci_lo": 144.56,
+   "eci_hi": 147.61,
+   "price_in": 0.25,
+   "price_out": 2.0,
+   "blended": 0.6875,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "GPT-5 nano",
+   "developer": "OpenAI",
+   "release_date": "2025-08-07",
+   "eci": 139.17,
+   "eci_lo": 137.15,
+   "eci_hi": 140.98,
+   "price_in": 0.05,
+   "price_out": 0.4,
+   "blended": 0.1375,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "GPT-5 Pro",
+   "developer": "OpenAI",
+   "release_date": "2025-10-07",
+   "eci": 151.15,
+   "eci_lo": 149.3,
+   "eci_hi": 153.11,
+   "price_in": 15.0,
+   "price_out": 120.0,
+   "blended": 41.25,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "o3",
+   "developer": "OpenAI",
+   "release_date": "2025-04-16",
+   "eci": 146.99,
+   "eci_lo": 145.55,
+   "eci_hi": 148.5,
+   "price_in": 2.0,
+   "price_out": 8.0,
+   "blended": 3.5,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "o4-mini",
+   "developer": "OpenAI",
+   "release_date": "2025-04-16",
+   "eci": 145.24,
+   "eci_lo": 143.68,
+   "eci_hi": 146.73,
+   "price_in": 1.1,
+   "price_out": 4.4,
+   "blended": 1.925,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "GPT-4.1",
+   "developer": "OpenAI",
+   "release_date": "2025-04-14",
+   "eci": 135.9,
+   "eci_lo": 133.87,
+   "eci_hi": 137.83,
+   "price_in": 2.0,
+   "price_out": 8.0,
+   "blended": 3.5,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "gpt-oss-120b",
+   "developer": "OpenAI",
+   "release_date": "2025-08-05",
+   "eci": 140.22,
+   "eci_lo": 138.35,
+   "eci_hi": 142.04,
+   "price_in": 0.1,
+   "price_out": 0.55,
+   "blended": 0.2125,
+   "open_weights": true,
+   "price_basis": "third-party host price (not confirmed in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "Claude Sonnet 4.5",
+   "developer": "Anthropic",
+   "release_date": "2025-09-29",
+   "eci": 147.56,
+   "eci_lo": 146.17,
+   "eci_hi": 149.03,
+   "price_in": 3.0,
+   "price_out": 15.0,
+   "blended": 6.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "Claude Haiku 4.5",
+   "developer": "Anthropic",
+   "release_date": "2025-10-15",
+   "eci": 142.82,
+   "eci_lo": 141.09,
+   "eci_hi": 144.42,
+   "price_in": 1.0,
+   "price_out": 5.0,
+   "blended": 2.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "Claude Opus 4.1",
+   "developer": "Anthropic",
+   "release_date": "2025-08-05",
+   "eci": 144.74,
+   "eci_lo": 142.89,
+   "eci_hi": 146.51,
+   "price_in": 15.0,
+   "price_out": 75.0,
+   "blended": 30.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "Gemini 2.5 Pro (Jun 2025)",
+   "developer": "Google DeepMind",
+   "release_date": "2025-06-05",
+   "eci": 144.79,
+   "eci_lo": 143.34,
+   "eci_hi": 146.23,
+   "price_in": 1.25,
+   "price_out": 10.0,
+   "blended": 3.4375,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "Gemini 2.5 Flash (Sep 2025)",
+   "developer": "Google DeepMind",
+   "release_date": "2025-09-25",
+   "eci": 141.87,
+   "eci_lo": 139.01,
+   "eci_hi": 144.48,
+   "price_in": 0.3,
+   "price_out": 2.5,
+   "blended": 0.85,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "Gemini 2.5 Flash-Lite (Jun 2025)",
+   "developer": "Google DeepMind",
+   "release_date": "2025-06-17",
+   "eci": 133.07,
+   "eci_lo": 129.23,
+   "eci_hi": 136.67,
+   "price_in": 0.1,
+   "price_out": 0.4,
+   "blended": 0.175,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "Grok 4",
+   "developer": "xAI",
+   "release_date": "2025-07-09",
+   "eci": 146.86,
+   "eci_lo": 145.33,
+   "eci_hi": 148.36,
+   "price_in": 3.0,
+   "price_out": 15.0,
+   "blended": 6.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2025-11-07",
+   "model": "Grok 4 Fast",
+   "developer": "xAI",
+   "release_date": "2025-09-19",
+   "eci": 144.33,
+   "eci_lo": 142.24,
+   "eci_hi": 146.33,
+   "price_in": 0.2,
+   "price_out": 0.5,
+   "blended": 0.275,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GPT-5",
+   "developer": "OpenAI",
+   "release_date": "2025-08-07",
+   "eci": 150.0,
+   "eci_lo": null,
+   "eci_hi": null,
+   "price_in": 1.25,
+   "price_out": 10.0,
+   "blended": 3.4375,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GPT-5 mini",
+   "developer": "OpenAI",
+   "release_date": "2025-08-07",
+   "eci": 146.08,
+   "eci_lo": 144.56,
+   "eci_hi": 147.61,
+   "price_in": 0.25,
+   "price_out": 2.0,
+   "blended": 0.6875,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GPT-5 nano",
+   "developer": "OpenAI",
+   "release_date": "2025-08-07",
+   "eci": 139.17,
+   "eci_lo": 137.15,
+   "eci_hi": 140.98,
+   "price_in": 0.05,
+   "price_out": 0.4,
+   "blended": 0.1375,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GPT-5 Pro",
+   "developer": "OpenAI",
+   "release_date": "2025-10-07",
+   "eci": 151.15,
+   "eci_lo": 149.3,
+   "eci_hi": 153.11,
+   "price_in": 15.0,
+   "price_out": 120.0,
+   "blended": 41.25,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "o3",
+   "developer": "OpenAI",
+   "release_date": "2025-04-16",
+   "eci": 146.99,
+   "eci_lo": 145.55,
+   "eci_hi": 148.5,
+   "price_in": 2.0,
+   "price_out": 8.0,
+   "blended": 3.5,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "o4-mini",
+   "developer": "OpenAI",
+   "release_date": "2025-04-16",
+   "eci": 145.24,
+   "eci_lo": 143.68,
+   "eci_hi": 146.73,
+   "price_in": 1.1,
+   "price_out": 4.4,
+   "blended": 1.925,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GPT-4.1",
+   "developer": "OpenAI",
+   "release_date": "2025-04-14",
+   "eci": 135.9,
+   "eci_lo": 133.87,
+   "eci_hi": 137.83,
+   "price_in": 2.0,
+   "price_out": 8.0,
+   "blended": 3.5,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "gpt-oss-120b",
+   "developer": "OpenAI",
+   "release_date": "2025-08-05",
+   "eci": 140.22,
+   "eci_lo": 138.35,
+   "eci_hi": 142.04,
+   "price_in": 0.1,
+   "price_out": 0.55,
+   "blended": 0.2125,
+   "open_weights": true,
+   "price_basis": "third-party host price (not confirmed in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Claude Sonnet 4.5",
+   "developer": "Anthropic",
+   "release_date": "2025-09-29",
+   "eci": 147.56,
+   "eci_lo": 146.17,
+   "eci_hi": 149.03,
+   "price_in": 3.0,
+   "price_out": 15.0,
+   "blended": 6.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Claude Haiku 4.5",
+   "developer": "Anthropic",
+   "release_date": "2025-10-15",
+   "eci": 142.82,
+   "eci_lo": 141.09,
+   "eci_hi": 144.42,
+   "price_in": 1.0,
+   "price_out": 5.0,
+   "blended": 2.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Claude Opus 4.1",
+   "developer": "Anthropic",
+   "release_date": "2025-08-05",
+   "eci": 144.74,
+   "eci_lo": 142.89,
+   "eci_hi": 146.51,
+   "price_in": 15.0,
+   "price_out": 75.0,
+   "blended": 30.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Gemini 2.5 Pro (Jun 2025)",
+   "developer": "Google DeepMind",
+   "release_date": "2025-06-05",
+   "eci": 144.79,
+   "eci_lo": 143.34,
+   "eci_hi": 146.23,
+   "price_in": 1.25,
+   "price_out": 10.0,
+   "blended": 3.4375,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Gemini 2.5 Flash (Sep 2025)",
+   "developer": "Google DeepMind",
+   "release_date": "2025-09-25",
+   "eci": 141.87,
+   "eci_lo": 139.01,
+   "eci_hi": 144.48,
+   "price_in": 0.3,
+   "price_out": 2.5,
+   "blended": 0.85,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Gemini 2.5 Flash-Lite (Jun 2025)",
+   "developer": "Google DeepMind",
+   "release_date": "2025-06-17",
+   "eci": 133.07,
+   "eci_lo": 129.23,
+   "eci_hi": 136.67,
+   "price_in": 0.1,
+   "price_out": 0.4,
+   "blended": 0.175,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Grok 4",
+   "developer": "xAI",
+   "release_date": "2025-07-09",
+   "eci": 146.86,
+   "eci_lo": 145.33,
+   "eci_hi": 148.36,
+   "price_in": 3.0,
+   "price_out": 15.0,
+   "blended": 6.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Grok 4 Fast",
+   "developer": "xAI",
+   "release_date": "2025-09-19",
+   "eci": 144.33,
+   "eci_lo": 142.24,
+   "eci_hi": 146.33,
+   "price_in": 0.2,
+   "price_out": 0.5,
+   "blended": 0.275,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GPT-5.1",
+   "developer": "OpenAI",
+   "release_date": "2025-11-13",
+   "eci": 150.87,
+   "eci_lo": 149.36,
+   "eci_hi": 152.5,
+   "price_in": 1.25,
+   "price_out": 10.0,
+   "blended": 3.4375,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Claude Opus 4.5",
+   "developer": "Anthropic",
+   "release_date": "2025-11-24",
+   "eci": 151.82,
+   "eci_lo": 150.21,
+   "eci_hi": 153.41,
+   "price_in": 5.0,
+   "price_out": 25.0,
+   "blended": 10.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GPT-5.2",
+   "developer": "OpenAI",
+   "release_date": "2025-12-11",
+   "eci": 154.42,
+   "eci_lo": 152.84,
+   "eci_hi": 156.15,
+   "price_in": 1.75,
+   "price_out": 14.0,
+   "blended": 4.8125,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GPT-5.2 Pro",
+   "developer": "OpenAI",
+   "release_date": "2025-12-11",
+   "eci": 157.22,
+   "eci_lo": 155.02,
+   "eci_hi": 159.68,
+   "price_in": 21.0,
+   "price_out": 168.0,
+   "blended": 57.75,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Gemini 3 Flash",
+   "developer": "Google DeepMind",
+   "release_date": "2025-12-17",
+   "eci": 152.25,
+   "eci_lo": 150.67,
+   "eci_hi": 153.98,
+   "price_in": 0.5,
+   "price_out": 3.0,
+   "blended": 1.125,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "DeepSeek-V3.2",
+   "developer": "DeepSeek",
+   "release_date": "2025-12-01",
+   "eci": 146.22,
+   "eci_lo": 144.73,
+   "eci_hi": 147.75,
+   "price_in": 0.289,
+   "price_out": 1.029,
+   "blended": 0.474,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GLM-4.7",
+   "developer": "Z.ai (Zhipu AI)",
+   "release_date": "2025-12-22",
+   "eci": 143.24,
+   "eci_lo": 141.28,
+   "eci_hi": 145.15,
+   "price_in": 0.6,
+   "price_out": 2.2,
+   "blended": 1.0,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Kimi K2.5",
+   "developer": "Moonshot",
+   "release_date": "2026-01-27",
+   "eci": 148.72,
+   "eci_lo": 147.15,
+   "eci_hi": 150.34,
+   "price_in": 0.6,
+   "price_out": 3.0,
+   "blended": 1.2,
+   "open_weights": true,
+   "price_basis": "price_history override",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Claude Opus 4.6",
+   "developer": "Anthropic",
+   "release_date": "2026-02-05",
+   "eci": 156.3,
+   "eci_lo": 154.58,
+   "eci_hi": 158.15,
+   "price_in": 5.0,
+   "price_out": 25.0,
+   "blended": 10.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Claude Sonnet 4.6",
+   "developer": "Anthropic",
+   "release_date": "2026-02-17",
+   "eci": 152.86,
+   "eci_lo": 151.21,
+   "eci_hi": 154.68,
+   "price_in": 3.0,
+   "price_out": 15.0,
+   "blended": 6.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Gemini 3.1 Pro",
+   "developer": "Google DeepMind",
+   "release_date": "2026-02-19",
+   "eci": 156.24,
+   "eci_lo": 154.57,
+   "eci_hi": 158.09,
+   "price_in": 2.0,
+   "price_out": 12.0,
+   "blended": 4.5,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GLM-5",
+   "developer": "Z.ai (Zhipu AI)",
+   "release_date": "2026-02-11",
+   "eci": 146.43,
+   "eci_lo": 144.87,
+   "eci_hi": 148.04,
+   "price_in": 1.0,
+   "price_out": 3.2,
+   "blended": 1.55,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Qwen3.5 397B-A17B",
+   "developer": "Alibaba",
+   "release_date": "2026-02-13",
+   "eci": 147.87,
+   "eci_lo": 145.74,
+   "eci_hi": 150.04,
+   "price_in": 0.6,
+   "price_out": 3.6,
+   "blended": 1.35,
+   "open_weights": true,
+   "price_basis": "price_history override",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Grok 4.20",
+   "developer": "xAI",
+   "release_date": "2026-02-17",
+   "eci": 152.27,
+   "eci_lo": 150.62,
+   "eci_hi": 154.08,
+   "price_in": 2.0,
+   "price_out": 6.0,
+   "blended": 3.0,
+   "open_weights": false,
+   "price_basis": "price_history override",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Gemini 3.1 Flash-Lite",
+   "developer": "Google",
+   "release_date": "2026-03-03",
+   "eci": 144.91,
+   "eci_lo": 142.66,
+   "eci_hi": 147.19,
+   "price_in": 0.25,
+   "price_out": 1.5,
+   "blended": 0.5625,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GPT-5.4",
+   "developer": "OpenAI",
+   "release_date": "2026-03-05",
+   "eci": 157.82,
+   "eci_lo": 155.98,
+   "eci_hi": 159.87,
+   "price_in": 2.5,
+   "price_out": 15.0,
+   "blended": 5.625,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GPT-5.4 Mini",
+   "developer": "OpenAI",
+   "release_date": "2026-03-17",
+   "eci": 149.34,
+   "eci_lo": 147.69,
+   "eci_hi": 151.08,
+   "price_in": 0.75,
+   "price_out": 4.5,
+   "blended": 1.6875,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GPT-5.4 Nano",
+   "developer": "OpenAI",
+   "release_date": "2026-03-17",
+   "eci": 146.4,
+   "eci_lo": 144.68,
+   "eci_hi": 148.09,
+   "price_in": 0.2,
+   "price_out": 1.25,
+   "blended": 0.4625,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GLM-5.1",
+   "developer": "Z.ai (Zhipu AI)",
+   "release_date": "2026-04-07",
+   "eci": 150.67,
+   "eci_lo": 148.71,
+   "eci_hi": 152.73,
+   "price_in": 1.4,
+   "price_out": 4.4,
+   "blended": 2.15,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Claude Opus 4.7",
+   "developer": "Anthropic",
+   "release_date": "2026-04-16",
+   "eci": 157.55,
+   "eci_lo": 155.71,
+   "eci_hi": 159.54,
+   "price_in": 5.0,
+   "price_out": 25.0,
+   "blended": 10.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "Kimi K2.6",
+   "developer": "Moonshot",
+   "release_date": "2026-04-20",
+   "eci": 151.56,
+   "eci_lo": 149.79,
+   "eci_hi": 153.4,
+   "price_in": 0.95,
+   "price_out": 4.0,
+   "blended": 1.7125,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GPT-5.5",
+   "developer": "OpenAI",
+   "release_date": "2026-04-23",
+   "eci": 160.04,
+   "eci_lo": 158.05,
+   "eci_hi": 162.19,
+   "price_in": 5.0,
+   "price_out": 30.0,
+   "blended": 11.25,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "GPT-5.5 Pro",
+   "developer": "OpenAI",
+   "release_date": "2026-04-23",
+   "eci": 162.67,
+   "eci_lo": 160.02,
+   "eci_hi": 165.56,
+   "price_in": 30.0,
+   "price_out": 180.0,
+   "blended": 67.5,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "DeepSeek-V4-Pro",
+   "developer": "DeepSeek",
+   "release_date": "2026-04-24",
+   "eci": 150.13,
+   "eci_lo": 148.43,
+   "eci_hi": 151.94,
+   "price_in": 1.15,
+   "price_out": 2.6,
+   "blended": 1.5125,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-05-07",
+   "model": "DeepSeek-V4-Flash",
+   "developer": "DeepSeek",
+   "release_date": "2026-04-24",
+   "eci": 146.86,
+   "eci_lo": 143.56,
+   "eci_hi": 150.15,
+   "price_in": 0.14,
+   "price_out": 0.28,
+   "blended": 0.175,
+   "open_weights": true,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5",
+   "developer": "OpenAI",
+   "release_date": "2025-08-07",
+   "eci": 150.0,
+   "eci_lo": null,
+   "eci_hi": null,
+   "price_in": 1.25,
+   "price_out": 10.0,
+   "blended": 3.4375,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5 mini",
+   "developer": "OpenAI",
+   "release_date": "2025-08-07",
+   "eci": 146.08,
+   "eci_lo": 144.56,
+   "eci_hi": 147.61,
+   "price_in": 0.25,
+   "price_out": 2.0,
+   "blended": 0.6875,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5 nano",
+   "developer": "OpenAI",
+   "release_date": "2025-08-07",
+   "eci": 139.17,
+   "eci_lo": 137.15,
+   "eci_hi": 140.98,
+   "price_in": 0.05,
+   "price_out": 0.4,
+   "blended": 0.1375,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5 Pro",
+   "developer": "OpenAI",
+   "release_date": "2025-10-07",
+   "eci": 151.15,
+   "eci_lo": 149.3,
+   "eci_hi": 153.11,
+   "price_in": 15.0,
+   "price_out": 120.0,
+   "blended": 41.25,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "o3",
+   "developer": "OpenAI",
+   "release_date": "2025-04-16",
+   "eci": 146.99,
+   "eci_lo": 145.55,
+   "eci_hi": 148.5,
+   "price_in": 2.0,
+   "price_out": 8.0,
+   "blended": 3.5,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-4.1",
+   "developer": "OpenAI",
+   "release_date": "2025-04-14",
+   "eci": 135.9,
+   "eci_lo": 133.87,
+   "eci_hi": 137.83,
+   "price_in": 2.0,
+   "price_out": 8.0,
+   "blended": 3.5,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "gpt-oss-120b",
+   "developer": "OpenAI",
+   "release_date": "2025-08-05",
+   "eci": 140.22,
+   "eci_lo": 138.35,
+   "eci_hi": 142.04,
+   "price_in": 0.037,
+   "price_out": 0.17,
+   "blended": 0.0703,
+   "open_weights": true,
+   "price_basis": "price_history override",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Claude Sonnet 4.5",
+   "developer": "Anthropic",
+   "release_date": "2025-09-29",
+   "eci": 147.56,
+   "eci_lo": 146.17,
+   "eci_hi": 149.03,
+   "price_in": 3.0,
+   "price_out": 15.0,
+   "blended": 6.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Claude Haiku 4.5",
+   "developer": "Anthropic",
+   "release_date": "2025-10-15",
+   "eci": 142.82,
+   "eci_lo": 141.09,
+   "eci_hi": 144.42,
+   "price_in": 1.0,
+   "price_out": 5.0,
+   "blended": 2.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Gemini 2.5 Flash-Lite (Jun 2025)",
+   "developer": "Google DeepMind",
+   "release_date": "2025-06-17",
+   "eci": 133.07,
+   "eci_lo": 129.23,
+   "eci_hi": 136.67,
+   "price_in": 0.1,
+   "price_out": 0.4,
+   "blended": 0.175,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5.1",
+   "developer": "OpenAI",
+   "release_date": "2025-11-13",
+   "eci": 150.87,
+   "eci_lo": 149.36,
+   "eci_hi": 152.5,
+   "price_in": 1.25,
+   "price_out": 10.0,
+   "blended": 3.4375,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Claude Opus 4.5",
+   "developer": "Anthropic",
+   "release_date": "2025-11-24",
+   "eci": 151.82,
+   "eci_lo": 150.21,
+   "eci_hi": 153.41,
+   "price_in": 5.0,
+   "price_out": 25.0,
+   "blended": 10.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5.2",
+   "developer": "OpenAI",
+   "release_date": "2025-12-11",
+   "eci": 154.42,
+   "eci_lo": 152.84,
+   "eci_hi": 156.15,
+   "price_in": 1.75,
+   "price_out": 14.0,
+   "blended": 4.8125,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5.2 Pro",
+   "developer": "OpenAI",
+   "release_date": "2025-12-11",
+   "eci": 157.22,
+   "eci_lo": 155.02,
+   "eci_hi": 159.68,
+   "price_in": 21.0,
+   "price_out": 168.0,
+   "blended": 57.75,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Gemini 3 Flash",
+   "developer": "Google DeepMind",
+   "release_date": "2025-12-17",
+   "eci": 152.25,
+   "eci_lo": 150.67,
+   "eci_hi": 153.98,
+   "price_in": 0.5,
+   "price_out": 3.0,
+   "blended": 1.125,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GLM-4.7",
+   "developer": "Z.ai (Zhipu AI)",
+   "release_date": "2025-12-22",
+   "eci": 143.24,
+   "eci_lo": 141.28,
+   "eci_hi": 145.15,
+   "price_in": 0.6,
+   "price_out": 2.2,
+   "blended": 1.0,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Kimi K2.5",
+   "developer": "Moonshot",
+   "release_date": "2026-01-27",
+   "eci": 148.72,
+   "eci_lo": 147.15,
+   "eci_hi": 150.34,
+   "price_in": 0.6,
+   "price_out": 3.0,
+   "blended": 1.2,
+   "open_weights": true,
+   "price_basis": "price_history override",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Claude Opus 4.6",
+   "developer": "Anthropic",
+   "release_date": "2026-02-05",
+   "eci": 156.3,
+   "eci_lo": 154.58,
+   "eci_hi": 158.15,
+   "price_in": 5.0,
+   "price_out": 25.0,
+   "blended": 10.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Claude Sonnet 4.6",
+   "developer": "Anthropic",
+   "release_date": "2026-02-17",
+   "eci": 152.86,
+   "eci_lo": 151.21,
+   "eci_hi": 154.68,
+   "price_in": 3.0,
+   "price_out": 15.0,
+   "blended": 6.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Gemini 3.1 Pro",
+   "developer": "Google DeepMind",
+   "release_date": "2026-02-19",
+   "eci": 156.24,
+   "eci_lo": 154.57,
+   "eci_hi": 158.09,
+   "price_in": 2.0,
+   "price_out": 12.0,
+   "blended": 4.5,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GLM-5",
+   "developer": "Z.ai (Zhipu AI)",
+   "release_date": "2026-02-11",
+   "eci": 146.43,
+   "eci_lo": 144.87,
+   "eci_hi": 148.04,
+   "price_in": 1.0,
+   "price_out": 3.2,
+   "blended": 1.55,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Qwen3.5 397B-A17B",
+   "developer": "Alibaba",
+   "release_date": "2026-02-13",
+   "eci": 147.87,
+   "eci_lo": 145.74,
+   "eci_hi": 150.04,
+   "price_in": 0.6,
+   "price_out": 3.6,
+   "blended": 1.35,
+   "open_weights": true,
+   "price_basis": "price_history override",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Grok 4.20",
+   "developer": "xAI",
+   "release_date": "2026-02-17",
+   "eci": 152.27,
+   "eci_lo": 150.62,
+   "eci_hi": 154.08,
+   "price_in": 1.25,
+   "price_out": 2.5,
+   "blended": 1.5625,
+   "open_weights": false,
+   "price_basis": "list price after a price change (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Gemini 3.1 Flash-Lite",
+   "developer": "Google",
+   "release_date": "2026-03-03",
+   "eci": 144.91,
+   "eci_lo": 142.66,
+   "eci_hi": 147.19,
+   "price_in": 0.25,
+   "price_out": 1.5,
+   "blended": 0.5625,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5.4",
+   "developer": "OpenAI",
+   "release_date": "2026-03-05",
+   "eci": 157.82,
+   "eci_lo": 155.98,
+   "eci_hi": 159.87,
+   "price_in": 2.5,
+   "price_out": 15.0,
+   "blended": 5.625,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5.4 Mini",
+   "developer": "OpenAI",
+   "release_date": "2026-03-17",
+   "eci": 149.34,
+   "eci_lo": 147.69,
+   "eci_hi": 151.08,
+   "price_in": 0.75,
+   "price_out": 4.5,
+   "blended": 1.6875,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5.4 Nano",
+   "developer": "OpenAI",
+   "release_date": "2026-03-17",
+   "eci": 146.4,
+   "eci_lo": 144.68,
+   "eci_hi": 148.09,
+   "price_in": 0.2,
+   "price_out": 1.25,
+   "blended": 0.4625,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GLM-5.1",
+   "developer": "Z.ai (Zhipu AI)",
+   "release_date": "2026-04-07",
+   "eci": 150.67,
+   "eci_lo": 148.71,
+   "eci_hi": 152.73,
+   "price_in": 1.4,
+   "price_out": 4.4,
+   "blended": 2.15,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Claude Opus 4.7",
+   "developer": "Anthropic",
+   "release_date": "2026-04-16",
+   "eci": 157.55,
+   "eci_lo": 155.71,
+   "eci_hi": 159.54,
+   "price_in": 5.0,
+   "price_out": 25.0,
+   "blended": 10.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Kimi K2.6",
+   "developer": "Moonshot",
+   "release_date": "2026-04-20",
+   "eci": 151.56,
+   "eci_lo": 149.79,
+   "eci_hi": 153.4,
+   "price_in": 0.95,
+   "price_out": 4.0,
+   "blended": 1.7125,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5.5",
+   "developer": "OpenAI",
+   "release_date": "2026-04-23",
+   "eci": 160.04,
+   "eci_lo": 158.05,
+   "eci_hi": 162.19,
+   "price_in": 5.0,
+   "price_out": 30.0,
+   "blended": 11.25,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5.5 Pro",
+   "developer": "OpenAI",
+   "release_date": "2026-04-23",
+   "eci": 162.67,
+   "eci_lo": 160.02,
+   "eci_hi": 165.56,
+   "price_in": 30.0,
+   "price_out": 180.0,
+   "blended": 67.5,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "DeepSeek-V4-Pro",
+   "developer": "DeepSeek",
+   "release_date": "2026-04-24",
+   "eci": 150.13,
+   "eci_lo": 148.43,
+   "eci_hi": 151.94,
+   "price_in": 1.15,
+   "price_out": 2.6,
+   "blended": 1.5125,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Qwen3.7-Max",
+   "developer": "Alibaba",
+   "release_date": "2026-05-19",
+   "eci": 154.5,
+   "eci_lo": 152.53,
+   "eci_hi": 156.63,
+   "price_in": 1.475,
+   "price_out": 4.425,
+   "blended": 2.2125,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Claude Opus 4.8",
+   "developer": "Anthropic",
+   "release_date": "2026-05-28",
+   "eci": 159.89,
+   "eci_lo": 157.9,
+   "eci_hi": 162.19,
+   "price_in": 5.0,
+   "price_out": 25.0,
+   "blended": 10.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "MiniMax-M3",
+   "developer": "MiniMax",
+   "release_date": "2026-06-01",
+   "eci": 147.6,
+   "eci_lo": 145.44,
+   "eci_hi": 149.76,
+   "price_in": 0.3,
+   "price_out": 1.2,
+   "blended": 0.525,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Claude Fable 5",
+   "developer": "Anthropic",
+   "release_date": "2026-06-09",
+   "eci": 164.19,
+   "eci_lo": 161.77,
+   "eci_hi": 166.87,
+   "price_in": 10.0,
+   "price_out": 50.0,
+   "blended": 20.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GLM-5.2",
+   "developer": "Z.ai (Zhipu AI)",
+   "release_date": "2026-06-16",
+   "eci": 152.99,
+   "eci_lo": 151.27,
+   "eci_hi": 154.77,
+   "price_in": 1.4,
+   "price_out": 4.4,
+   "blended": 2.15,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Claude Sonnet 5",
+   "developer": "Anthropic",
+   "release_date": "2026-06-30",
+   "eci": 156.71,
+   "eci_lo": 154.7,
+   "eci_hi": 158.8,
+   "price_in": 2.0,
+   "price_out": 10.0,
+   "blended": 4.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5.6 Sol",
+   "developer": "OpenAI",
+   "release_date": "2026-07-09",
+   "eci": 162.99,
+   "eci_lo": 160.72,
+   "eci_hi": 165.46,
+   "price_in": 4.0,
+   "price_out": 20.0,
+   "blended": 8.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5.6 Terra",
+   "developer": "OpenAI",
+   "release_date": "2026-07-09",
+   "eci": 160.89,
+   "eci_lo": 158.67,
+   "eci_hi": 163.42,
+   "price_in": 2.0,
+   "price_out": 12.0,
+   "blended": 4.5,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-5.6 Luna",
+   "developer": "OpenAI",
+   "release_date": "2026-07-09",
+   "eci": 156.79,
+   "eci_lo": 154.91,
+   "eci_hi": 158.82,
+   "price_in": 0.2,
+   "price_out": 1.2,
+   "blended": 0.45,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Grok 4.5",
+   "developer": "xAI",
+   "release_date": "2026-07-08",
+   "eci": 155.08,
+   "eci_lo": 153.29,
+   "eci_hi": 157.04,
+   "price_in": 2.0,
+   "price_out": 6.0,
+   "blended": 3.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Kimi K3",
+   "developer": "Moonshot",
+   "release_date": "2026-07-16",
+   "eci": 158.51,
+   "eci_lo": 156.53,
+   "eci_hi": 160.59,
+   "price_in": 3.0,
+   "price_out": 15.0,
+   "blended": 6.0,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Claude Opus 5",
+   "developer": "Anthropic",
+   "release_date": "2026-07-24",
+   "eci": 164.45,
+   "eci_lo": 162.0,
+   "eci_hi": 167.17,
+   "price_in": 5.0,
+   "price_out": 25.0,
+   "blended": 10.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Qwen 3.8 Max",
+   "developer": "Alibaba",
+   "release_date": "2026-08-02",
+   "eci": 157.43,
+   "eci_lo": 155.3,
+   "eci_hi": 159.72,
+   "price_in": 2.0,
+   "price_out": 6.0,
+   "blended": 3.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Grok 4.6",
+   "developer": "xAI",
+   "release_date": "2026-08-12",
+   "eci": 157.92,
+   "eci_lo": 155.99,
+   "eci_hi": 160.09,
+   "price_in": 2.0,
+   "price_out": 6.0,
+   "blended": 3.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Gemini 3.7 Flash",
+   "developer": "Google DeepMind",
+   "release_date": "2026-08-13",
+   "eci": 158.4,
+   "eci_lo": 156.44,
+   "eci_hi": 160.56,
+   "price_in": 0.75,
+   "price_out": 3.75,
+   "blended": 1.5,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GLM-5.3",
+   "developer": "Z.ai (Zhipu AI)",
+   "release_date": "2026-08-14",
+   "eci": 156.91,
+   "eci_lo": 154.8,
+   "eci_hi": 159.23,
+   "price_in": 1.4,
+   "price_out": 4.4,
+   "blended": 2.15,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GLM-5.3-Flash",
+   "developer": "Z.ai (Zhipu AI)",
+   "release_date": "2026-08-20",
+   "eci": 153.64,
+   "eci_lo": 151.85,
+   "eci_hi": 155.52,
+   "price_in": 0.15,
+   "price_out": 0.5,
+   "blended": 0.2375,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Claude Fable 5.1",
+   "developer": "Anthropic",
+   "release_date": "2026-09-01",
+   "eci": 166.9,
+   "eci_lo": 164.27,
+   "eci_hi": 169.85,
+   "price_in": 10.0,
+   "price_out": 50.0,
+   "blended": 20.0,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Gemini 3.8 Flash",
+   "developer": "Google DeepMind",
+   "release_date": "2026-09-02",
+   "eci": 158.63,
+   "eci_lo": 156.65,
+   "eci_hi": 160.79,
+   "price_in": 0.75,
+   "price_out": 3.75,
+   "blended": 1.5,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-6 Astra",
+   "developer": "OpenAI",
+   "release_date": "2026-09-03",
+   "eci": 169.07,
+   "eci_lo": 166.16,
+   "eci_hi": 172.28,
+   "price_in": 10.0,
+   "price_out": 50.0,
+   "blended": 20.0,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "DeepSeek V4.1 Flash",
+   "developer": "DeepSeek",
+   "release_date": "2026-09-09",
+   "eci": 156.49,
+   "eci_lo": 154.62,
+   "eci_hi": 158.55,
+   "price_in": 0.15,
+   "price_out": 0.6,
+   "blended": 0.2625,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Grok 4.7",
+   "developer": "xAI",
+   "release_date": "2026-09-21",
+   "eci": 156.07,
+   "eci_lo": 154.2,
+   "eci_hi": 158.03,
+   "price_in": 2.0,
+   "price_out": 6.0,
+   "blended": 3.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Claude Opus 5.5",
+   "developer": "Anthropic",
+   "release_date": "2026-09-22",
+   "eci": 168.36,
+   "eci_lo": 165.54,
+   "eci_hi": 171.51,
+   "price_in": 4.0,
+   "price_out": 20.0,
+   "blended": 8.0,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-6 Sol",
+   "developer": "OpenAI",
+   "release_date": "2026-09-22",
+   "eci": 164.06,
+   "eci_lo": 161.58,
+   "eci_hi": 166.8,
+   "price_in": 2.0,
+   "price_out": 10.0,
+   "blended": 4.0,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-6 Luna",
+   "developer": "OpenAI",
+   "release_date": "2026-09-22",
+   "eci": 156.68,
+   "eci_lo": 154.78,
+   "eci_hi": 158.74,
+   "price_in": 0.1,
+   "price_out": 0.5,
+   "blended": 0.2,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Claude Sonnet 5.5",
+   "developer": "Anthropic",
+   "release_date": "2026-09-28",
+   "eci": 166.24,
+   "eci_lo": 163.52,
+   "eci_hi": 169.23,
+   "price_in": 2.0,
+   "price_out": 10.0,
+   "blended": 4.0,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-6.1 Sol",
+   "developer": "OpenAI",
+   "release_date": "2026-09-29",
+   "eci": 168.94,
+   "eci_lo": 165.97,
+   "eci_hi": 172.19,
+   "price_in": 2.0,
+   "price_out": 10.0,
+   "blended": 4.0,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Gemini 4 Argon",
+   "developer": "Google DeepMind",
+   "release_date": "2026-09-30",
+   "eci": 166.45,
+   "eci_lo": 163.83,
+   "eci_hi": 169.38,
+   "price_in": 2.0,
+   "price_out": 10.0,
+   "blended": 4.0,
+   "open_weights": false,
+   "price_basis": "introductory list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Claude Haiku 5.5",
+   "developer": "Anthropic",
+   "release_date": "2026-10-07",
+   "eci": 160.22,
+   "eci_lo": 158.04,
+   "eci_hi": 162.57,
+   "price_in": 0.1,
+   "price_out": 0.5,
+   "blended": 0.2,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "DeepSeek V4.1 Flash 1017",
+   "developer": "DeepSeek",
+   "release_date": "2026-10-17",
+   "eci": 159.31,
+   "eci_lo": 157.04,
+   "eci_hi": 161.78,
+   "price_in": 0.3,
+   "price_out": 1.2,
+   "blended": 0.525,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "DeepSeek V4 Pro 0813",
+   "developer": "DeepSeek",
+   "release_date": "2026-08-13",
+   "eci": 155.87,
+   "eci_lo": 154.01,
+   "eci_hi": 157.89,
+   "price_in": 1.32,
+   "price_out": 3.96,
+   "blended": 1.98,
+   "open_weights": true,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "GPT-6.1 Terra",
+   "developer": "OpenAI",
+   "release_date": "2026-10-26",
+   "eci": 167.82,
+   "eci_lo": 164.88,
+   "eci_hi": 171.17,
+   "price_in": 1.0,
+   "price_out": 5.0,
+   "blended": 2.0,
+   "open_weights": false,
+   "price_basis": "list price, unchanged since launch (checked in price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "Gemini 3.5 Flash-Lite",
+   "developer": "Google DeepMind",
+   "release_date": "2026-07-21",
+   "eci": 145.59,
+   "eci_lo": 143.92,
+   "eci_hi": 147.23,
+   "price_in": 0.3,
+   "price_out": 2.5,
+   "blended": 0.85,
+   "open_weights": false,
+   "price_basis": "list price (not checked against price history)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  }
+ ]
+}

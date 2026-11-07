@@ -1,0 +1,99 @@
+/* s7 weights matrix. Every class is prefixed wm-. Colours only from the design tokens. */
+.wm { font-family: var(--font-sans); color: var(--ink-2); }
+.wm p { margin: 0; }
+.wm ul { list-style: none; margin: 0; padding: 0; }
+
+/* Grid layouts (mid and wide) */
+.wm-grid {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr) minmax(0, 1fr);
+  border-top: 1px solid var(--rule);
+}
+.wm--mid .wm-grid { grid-template-columns: 6.5rem minmax(0, 1fr) minmax(0, 1fr); }
+.wm--wide { display: flex; gap: 1.25rem; align-items: flex-start; }
+.wm--wide .wm-grid { flex: 1 1 auto; min-width: 0; }
+.wm--wide .wm-strip { flex: 0 0 12.5rem; margin-top: 0; }
+
+.wm-corner {
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 0.15rem;
+  padding: 0.55rem 0.6rem 0.5rem 0;
+  font-size: 0.7rem; line-height: 1.3; color: var(--ink-3);
+  border-bottom: 1px solid var(--ink);
+}
+.wm-colhead {
+  padding: 0.55rem 0.75rem 0.5rem;
+  font-size: 0.74rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink);
+  border-bottom: 1px solid var(--ink); border-left: 1px solid var(--rule);
+  display: flex; align-items: flex-end;
+}
+.wm-rowhead {
+  display: flex; flex-direction: column; gap: 0.3rem;
+  padding: 0.8rem 0.6rem 0.8rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.wm-rowhead__label { font-size: 0.74rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); line-height: 1.3; }
+.wm-rowhead__sub { font-size: 0.74rem; line-height: 1.4; color: var(--ink-3); }
+
+/* Cells */
+.wm-cell {
+  min-width: 0;
+  padding: 0.8rem 0.75rem 0.9rem;
+  border-bottom: 1px solid var(--rule); border-left: 1px solid var(--rule);
+  font-size: 0.8rem; line-height: 1.45;
+}
+.wm-cell__lead { color: var(--ink-2); margin-bottom: 0.65rem !important; }
+.wm-cell--plain .wm-cell__lead { color: var(--ink-2); }
+
+.wm-cell--empty {
+  display: flex; flex-direction: column; justify-content: center; gap: 0.45rem;
+  background: var(--paper-2);
+  text-align: center;
+}
+.wm-empty__title { font-family: var(--font-serif); font-size: 1.05rem; font-style: italic; color: var(--ink-3); line-height: 1.3; }
+.wm-empty__text { font-size: 0.76rem; color: var(--ink-3); max-width: 18rem; margin: 0 auto !important; }
+
+/* Entries */
+.wm-entries { display: flex; flex-direction: column; gap: 0.6rem; }
+.wm-entry { display: flex; flex-direction: column; gap: 0.15rem; }
+.wm-entry__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.1rem 0.45rem; }
+.wm-entry__name { color: var(--ink); font-weight: 600; font-size: 0.82rem; }
+.wm-entry__meta { color: var(--ink-3); font-size: 0.74rem; }
+.wm-entry__text { color: var(--ink-2); }
+.wm-chips { display: inline-flex; gap: 0.2rem; }
+
+.wm-entry--hl {
+  margin-top: 0.15rem;
+  padding: 0.55rem 0.6rem 0.6rem 0.65rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+}
+.wm-entry--hl .wm-entry__text { color: var(--ink); }
+.wm-entry__flag {
+  font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--accent-ink);
+}
+
+/* Code-level strip */
+.wm-strip {
+  margin-top: 1rem;
+  padding: 0.75rem 0.8rem 0.85rem;
+  border: 1px dashed var(--ink-3);
+  border-radius: 4px;
+  font-size: 0.8rem; line-height: 1.45;
+}
+.wm-strip__label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 0.3rem !important; }
+.wm-strip__lead { color: var(--ink-3); margin-bottom: 0.6rem !important; }
+.wm--mid .wm-strip .wm-entries { flex-direction: row; gap: 1.2rem; }
+.wm--mid .wm-strip .wm-entry { flex: 1 1 0; min-width: 0; }
+
+/* Stacked layout (narrow) */
+.wm--stack { display: flex; flex-direction: column; gap: 0.75rem; }
+.wm--stack .wm-cell { border: 1px solid var(--rule); border-top: 2px solid var(--ink); border-radius: 0 0 4px 4px; }
+.wm--stack .wm-cell--empty { text-align: left; }
+.wm--stack .wm-empty__text { margin: 0 !important; max-width: none; }
+.wm--stack .wm-strip { margin-top: 0.25rem; }
+.wm-axes { display: flex; flex-wrap: wrap; gap: 0.2rem 0.9rem; margin-bottom: 0.55rem; font-size: 0.72rem; color: var(--ink); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.wm-axes__k { color: var(--ink-3); font-weight: 500; }
+
+/* Data table */
+.wm-src { display: inline-flex; align-items: center; gap: 0.3rem; margin: 0 0.5rem 0.2rem 0; white-space: nowrap; }

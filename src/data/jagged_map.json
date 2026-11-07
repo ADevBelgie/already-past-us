@@ -1,0 +1,306 @@
+{
+  "meta": {
+    "description": "Section 4 jagged map: where AI stands against people, one row per domain, on the five steps of the s4 headings.",
+    "built_by": "scripts/data/build_jagged_map.mjs",
+    "source": "already-past-us.md, section 4 (rows icpc and research-math from section 0, which section 4 places at the far right)",
+    "as_of": "Data as of 7 November 2026",
+    "tiers": [
+      {
+        "key": 0,
+        "label": "Far below humans"
+      },
+      {
+        "key": 1,
+        "label": "Below humans"
+      },
+      {
+        "key": 2,
+        "label": "Level with the best"
+      },
+      {
+        "key": 3,
+        "label": "Ahead of trained people, with caveats"
+      },
+      {
+        "key": 4,
+        "label": "Beyond the best humans"
+      }
+    ],
+    "groups": {
+      "best": "Best humans",
+      "trained": "Trained experts",
+      "people": "People in general",
+      "machine": "Another computer model"
+    }
+  },
+  "rows": [
+    {
+      "id": "robotics",
+      "domain": "Robotics",
+      "tier": 0,
+      "tier_label": "Far below humans",
+      "confirmed": true,
+      "compared_with": "people",
+      "compared_group": "people",
+      "compared_group_label": "People in general",
+      "comparison_text": "Epoch AI's review found robots typically 3 to 10 times slower than people. No robot has yet been shown doing every part of cleaning a kitchen.",
+      "ai_value": "3 to 10 times slower",
+      "human_value": "people (baseline)",
+      "date": "2026-02-10",
+      "date_label": "10 February 2026",
+      "provenance": "verified",
+      "baseline_provenance": null,
+      "footnote_id": "s4-robots",
+      "footnote_ids": [
+        "s4-robots"
+      ],
+      "manuscript_section": "s4"
+    },
+    {
+      "id": "arc-agi-3",
+      "domain": "ARC-AGI-3 puzzle games",
+      "tier": 1,
+      "tier_label": "Below humans",
+      "confirmed": true,
+      "compared_with": "people",
+      "compared_group": "people",
+      "compared_group_label": "People in general",
+      "comparison_text": "People have solved every game. Every frontier model scored under 1% at launch in March 2026; by September GPT-6 Astra reached a verified 62.7% on ARC Prize's standard setup.",
+      "ai_value": "62.7% (standard setup)",
+      "human_value": "100% of games solved by people",
+      "date": "2026-09-03",
+      "date_label": "3 September 2026",
+      "provenance": "verified",
+      "baseline_provenance": null,
+      "footnote_id": "s4-arc-astra",
+      "footnote_ids": [
+        "s4-arc-astra",
+        "s4-arc-launch"
+      ],
+      "manuscript_section": "s4"
+    },
+    {
+      "id": "freelance",
+      "domain": "Real freelance work",
+      "tier": 1,
+      "tier_label": "Below humans",
+      "confirmed": true,
+      "compared_with": "human freelancers",
+      "compared_group": "trained",
+      "compared_group_label": "Trained experts",
+      "comparison_text": "On the Remote Labor Index, the best agent's work was judged as good as a human freelancer's on about 21% of 240 real paid projects.",
+      "ai_value": "21.25% of projects",
+      "human_value": "the human freelancer's deliverable",
+      "date": "2026-11-07",
+      "date_label": "accessed 7 November 2026",
+      "provenance": "verified",
+      "baseline_provenance": null,
+      "footnote_id": "s4-rli",
+      "footnote_ids": [
+        "s4-rli"
+      ],
+      "manuscript_section": "s4"
+    },
+    {
+      "id": "forecasting",
+      "domain": "Forecasting",
+      "tier": 2,
+      "tier_label": "Level with the best",
+      "confirmed": true,
+      "compared_with": "superforecasters",
+      "compared_group": "best",
+      "compared_group_label": "Best humans",
+      "comparison_text": "The Forecasting Research Institute found the best AI forecasters statistically indistinguishable from superforecasters on its questions. The superforecaster baseline was collected in 2024 and is extrapolated.",
+      "ai_value": "not distinguishable (p = 0.41)",
+      "human_value": "superforecasters",
+      "date": "2026-07-16",
+      "date_label": "16 July 2026",
+      "provenance": "verified",
+      "baseline_provenance": null,
+      "footnote_id": "s4-forecast",
+      "footnote_ids": [
+        "s4-forecast"
+      ],
+      "manuscript_section": "s4"
+    },
+    {
+      "id": "imo-2026",
+      "domain": "Math olympiad (IMO 2026)",
+      "tier": 2,
+      "tier_label": "Level with the best, if confirmed",
+      "confirmed": false,
+      "compared_with": "top contestants",
+      "compared_group": "best",
+      "compared_group_label": "Best humans",
+      "comparison_text": "Huawei and Xiaohongshu reported perfect scores of 42 out of 42. The IMO has published no statement. 7 of the 666 human contestants also got full marks, so even at face value it is a tie with the best.",
+      "ai_value": "42/42 (company-reported)",
+      "human_value": "42/42 for 7 of 666 contestants",
+      "date": "2026-07-23",
+      "date_label": "July 2026",
+      "provenance": "vendor",
+      "baseline_provenance": null,
+      "footnote_id": "s4-imo",
+      "footnote_ids": [
+        "s4-imo"
+      ],
+      "manuscript_section": "s4"
+    },
+    {
+      "id": "waymo",
+      "domain": "Driving (Waymo)",
+      "tier": 3,
+      "tier_label": "Ahead of trained people, with caveats",
+      "confirmed": true,
+      "compared_with": "average drivers",
+      "compared_group": "people",
+      "compared_group_label": "People in general",
+      "comparison_text": "Waymo says its driverless cars had 95% fewer serious-injury crashes than human drivers over 270 million miles. That is Waymo's own analysis, against average drivers in the same places.",
+      "ai_value": "95% fewer serious-injury crashes",
+      "human_value": "average human drivers, same places",
+      "date": "2026-09-24",
+      "date_label": "24 September 2026",
+      "provenance": "vendor",
+      "baseline_provenance": null,
+      "footnote_id": "s4-waymo",
+      "footnote_ids": [
+        "s4-waymo",
+        "s4-waymo-recall"
+      ],
+      "manuscript_section": "s4"
+    },
+    {
+      "id": "diagnosis",
+      "domain": "Diagnosis on written cases",
+      "tier": 3,
+      "tier_label": "Ahead of trained people, with caveats",
+      "confirmed": true,
+      "compared_with": "doctors",
+      "compared_group": "trained",
+      "compared_group_label": "Trained experts",
+      "comparison_text": "In a randomised trial in Pakistan using written clinical cases, not real patients, GPT-4o alone scored 82.9%, doctors using GPT-4o 71.4% and doctors using ordinary references 42.6%. AI alone versus doctors with AI is an exploratory finding.",
+      "ai_value": "82.9% (GPT-4o alone)",
+      "human_value": "71.4% doctors with GPT-4o; 42.6% with ordinary references",
+      "date": "2026-02-06",
+      "date_label": "6 February 2026",
+      "provenance": "verified",
+      "baseline_provenance": null,
+      "footnote_id": "s4-pakistan",
+      "footnote_ids": [
+        "s4-pakistan"
+      ],
+      "manuscript_section": "s4"
+    },
+    {
+      "id": "gpqa",
+      "domain": "GPQA Diamond science questions",
+      "tier": 3,
+      "tier_label": "Ahead of trained people, with caveats",
+      "confirmed": true,
+      "compared_with": "PhD experts",
+      "compared_group": "trained",
+      "compared_group_label": "Trained experts",
+      "comparison_text": "In Epoch AI's testing, Grok 4 scored 87% (July 2025). PhD experts scored about 70%, a baseline OpenAI measured. The questions are multiple-choice.",
+      "ai_value": "87% (Grok 4)",
+      "human_value": "about 70% (PhD experts)",
+      "date": "2025-07-09",
+      "date_label": "July 2025",
+      "provenance": "verified",
+      "baseline_provenance": "vendor",
+      "footnote_id": "s4-gpqa-ai",
+      "footnote_ids": [
+        "s4-gpqa-ai",
+        "s4-gpqa-human"
+      ],
+      "manuscript_section": "s4"
+    },
+    {
+      "id": "hurricanes",
+      "domain": "Hurricane tracks",
+      "tier": 4,
+      "tier_label": "Beyond the best humans",
+      "confirmed": true,
+      "compared_with": "official forecasts",
+      "compared_group": "trained",
+      "compared_group_label": "Trained experts",
+      "comparison_text": "According to press coverage of the US National Hurricane Center's review of the 2025 season, Google DeepMind's model did slightly better than the official Atlantic track forecasts at some lead times.",
+      "ai_value": "slightly better at some lead times",
+      "human_value": "official NHC Atlantic track forecasts",
+      "date": "2026-03-01",
+      "date_label": "report March 2026 (2025 season)",
+      "provenance": "verified",
+      "baseline_provenance": null,
+      "footnote_id": "s4-nhc",
+      "footnote_ids": [
+        "s4-nhc"
+      ],
+      "manuscript_section": "s4"
+    },
+    {
+      "id": "weather",
+      "domain": "Weather ensembles",
+      "tier": 4,
+      "tier_label": "Beyond the best humans",
+      "confirmed": true,
+      "compared_with": "a physics model",
+      "compared_group": "machine",
+      "compared_group_label": "Another computer model",
+      "comparison_text": "Google DeepMind's GenCast beat Europe's leading physics-based forecast ensemble on 97.2% of 1,320 test targets. That comparison is with another computer model, not with human forecasters.",
+      "ai_value": "better on 97.2% of 1,320 targets",
+      "human_value": "ECMWF ENS physics ensemble (not people)",
+      "date": "2024-12-04",
+      "date_label": "December 2024",
+      "provenance": "verified",
+      "baseline_provenance": null,
+      "footnote_id": "s4-gencast",
+      "footnote_ids": [
+        "s4-gencast"
+      ],
+      "manuscript_section": "s4"
+    },
+    {
+      "id": "research-math",
+      "domain": "Research math (Erdős)",
+      "tier": 4,
+      "tier_label": "Beyond the best humans",
+      "confirmed": true,
+      "compared_with": "an open problem",
+      "compared_group": "best",
+      "compared_group_label": "Best humans",
+      "comparison_text": "An OpenAI model disproved Paul Erdős's 1946 unit distance conjecture. Nine mathematicians checked it. Humans improved on the AI's construction within weeks.",
+      "ai_value": "disproof of a 1946 conjecture",
+      "human_value": "open since 1946",
+      "date": "2026-05-20",
+      "date_label": "May 2026",
+      "provenance": "verified",
+      "baseline_provenance": null,
+      "footnote_id": "s0-erdos",
+      "footnote_ids": [
+        "s0-erdos",
+        "s0-erdos-context"
+      ],
+      "manuscript_section": "s0"
+    },
+    {
+      "id": "icpc",
+      "domain": "Programming finals (ICPC)",
+      "tier": 4,
+      "tier_label": "Beyond the best humans",
+      "confirmed": true,
+      "compared_with": "best human team",
+      "compared_group": "best",
+      "compared_group_label": "Best humans",
+      "comparison_text": "On OpenAI's own account, its system solved all 12 problems at the 2025 world finals. The best human team solved 11. We found no ICPC statement on it.",
+      "ai_value": "12 of 12 problems (OpenAI-reported)",
+      "human_value": "11 of 12 (best human team)",
+      "date": "2025-09-04",
+      "date_label": "4 September 2025",
+      "provenance": "vendor",
+      "baseline_provenance": null,
+      "footnote_id": "s0-icpc",
+      "footnote_ids": [
+        "s0-icpc"
+      ],
+      "manuscript_section": "s0"
+    }
+  ]
+}

@@ -1,0 +1,327 @@
+[
+ {
+  "n": 0,
+  "word_count_brief": 262,
+  "chart_specs": [
+   {
+    "id": "s0-cards",
+    "purpose": "Open the piece with the unevenness in one glance: two places AI is already past the best humans, one place it is far below a temp worker, each with its counter-fact.",
+    "data_file": "none (values inline; taken from footnotes s0-icpc, s0-ioi, s0-erdos, s0-erdos-context, s0-rli, s0-rli-growth)",
+    "encoding": "Three equal stat cards in a row (stacked on phone). Card 1: big '12 / 12' with '11' for best human team, label 'ICPC 2025 world finals'. Card 2: big '1946' with 'Erdős conjecture disproved, May 2026', sub-line 'checked by 9 mathematicians'. Card 3: big '~21%' with 'real freelance projects done to human standard', sub-line 'up from 2.5% in Oct 2025'. Each card has a muted counter-fact line underneath and a provenance chip (Vendor-reported / Verified / Verified). Accent colour only on the big numbers; card 3 uses the same accent so it does not read as a loser card.",
+    "interactions": "Provenance chip links to the matching footnote; hovering or tapping a card reveals its counter-fact sentence on small screens. No animation.",
+    "caveat_label": "ICPC: OpenAI-reported, not validated by ICPC. RLI: as of 7 Nov 2026; top two models tied, no confidence intervals."
+   }
+  ],
+  "signposts": [
+   "Remote Labor Index top automation rate (labs.scale.com/leaderboard/rli): 21.25% as of 7 Nov 2026 (Opus 5.5, tied with GPT-6 Astra at 20.83%). Recheck monthly; a top score above ~33% (one in three projects) would mark the work gap closing; no change by mid-2027 would suggest a stall.",
+   "Remote Labor Index: whether Scale publishes confidence intervals or an update date, which would let ties like 21.25 vs 20.83 be resolved. Last checked 7 Nov 2026: neither published.",
+   "Erdős problems database (Thomas Bloom): count of problems resolved with AI help and whether further AI results get independent write-ups like arXiv:2605.20695. Snapshot 3 Aug 2026 (Quanta): 565 solved / 652 open, including problems solved without AI.",
+   "Next ICPC World Finals: date and whether an AI track runs with ICPC validating the systems, not only accepting solutions. Date not verified in the research folder (a postponement to April 2027 was reported but unsourced)."
+  ],
+  "open_issues": [
+   "No primary OpenAI or ICPC URL for the ICPC 12/12 and best-human-team 11 figures is in the research folder; the footnote cites the DeepMind ICPC post, which does not mention OpenAI. Add OpenAI's announcement or an ICPC statement before publishing.",
+   "The ICPC phrase 'did not validate the system, processes, or underlying model' (used, paraphrased, in the expert note) appears in the r1-superhuman finding notes without a clear source URL. Confirm where ICPC said this.",
+   "The RLI launch paper arXiv 2510.26787 is not in sources.csv; footnote s0-rli-growth cites the leaderboard URL and names the paper ID only. Add https://arxiv.org/abs/2510.26787 to sources.csv if confirmed.",
+   "Tagging: s0-erdos-context rests on press reports (Quanta, TechCrunch) tagged Verified for lack of a 'press' tag; the arXiv paper in s0-erdos is a preprint, not peer-reviewed. The editor should confirm these tags fit STYLE.md.",
+   "The Gowers line 'no previous AI proof had come close' is unsourced in the research and was not used.",
+   "The brief body runs ~262 words, slightly over the ~250 budget; the last paragraph's list of what the reader gets can be trimmed if needed.",
+   "The thesis paragraph points ahead to sections 2, 3, 4, 5 and 6 without § links; add them when the site is built."
+  ]
+ },
+ {
+  "n": 1,
+  "word_count_brief": 475,
+  "chart_specs": [
+   {
+    "id": "s1-forecast-dumbbell",
+    "purpose": "Show that forecasters mostly guessed too low on benchmark progress, but not always, so the reader sees both directions of error in one view.",
+    "data_file": "data/forecast_vs_actual.csv (does not exist yet; build from FRI 2026-09-22 and AI Digest 2026-01-16)",
+    "encoding": "One row per question, sorted by size of miss. Hollow dot = forecast (median; for LEAP/XPT use the expert median, with the superforecaster median as a second smaller dot), filled dot = actual, joined by a line. Line colour: accent (burnt orange) for 'AI came in above forecast', ink grey for 'AI came in below forecast', dashed for unresolved. Percent questions on a shared 0-100% axis: FrontierMath T1-3 end-2025 (31%/30% vs 40.7%), LiveCodeBench Pro Hard end-2026 (14%/12% vs 53.8% as of May 2026, unresolved), Cybench 2025 (62% vs 82%), OSWorld 2025 (60% vs 66.3%), SWE-bench Verified 2025 (88% vs 80.9%), bio uplift (virologists 40%, biosecurity experts 22.5%, superforecasters 16.2% vs 5.2%). METR 80% horizon (3.4h/3.5h vs 3.1h as of May 2026, unresolved) as a separate small panel in hours. Optional inset: IMO gold year, forecast 2030 (experts) / 2035 (superforecasters) vs actual July 2025.",
+    "interactions": "Hover a row to show forecaster group, forecast date, resolution date, source and provenance tag. Toggle between expert and superforecaster medians where both exist. Unresolved rows labelled 'not yet resolved'.",
+    "caveat_label": "Forecasts are medians from different panels and dates. FRI notes its review is biased toward finding underestimates. FrontierMath score predates Epoch's finding of errors in ~42% of problems. AI Digest pool was self-selected."
+   }
+  ],
+  "signposts": [
+   "31 December 2026: FRI/LEAP LiveCodeBench Pro (Hard) question resolves (forecast 14% experts / 12% superforecasters; already 53.8% by May 2026).",
+   "31 December 2026: LEAP METR 80%-success time-horizon question resolves (forecast 3.4 h experts / 3.5 h superforecasters vs ~3.1 h as of May 2026); check whether METR publishes a newer 80% measurement given its page is no longer actively updated.",
+   "31 December 2026: XPT/LEAP revenue questions resolve (AI-company ARR forecast $20-25B vs ~$100B currently reported by vendors); check FRI's resolution against audited or filed figures.",
+   "Next FRI accuracy update (the last was 22 September 2026): does the share of underestimates hold as overestimate questions (robotaxi share 2027, AI electricity share) reach their deadlines?",
+   "Results of METR's redesigned developer-productivity study (redesign announced 24 February 2026): first clean measured speedup or slowdown since the 2025 RCT.",
+   "Reuters Institute Generative AI and News Report 2027 (expected around October 2027): does the 18% paid-access share in nine countries rise?",
+   "Next Bentley-Gallup AI survey (2027): does AI still rate worse than people on every task asked?",
+   "Next revision of Humlum and Vestergaard (NBER w33777) or other administrative-data studies covering 2025-26 models: does the 2% bound on earnings/hours effects hold?"
+  ],
+  "open_issues": [
+   "Reuters Institute 2026 figures (18% paid access; agent use 39% vs 11%) and the OpenAI 50M/900M figures were not re-checked by the fact-checker (search budget ran out); they carry the researcher's high confidence only. Confirm against the primary pages before publication.",
+   "No data file exists for the forecast-vs-actual dumbbell chart; data/forecast_vs_actual.csv must be built from the FRI 2026-09-22 page and AI Digest 2026-01-16 results (values listed in r1-perception.md).",
+   "IMO 2025 footnote cites Simon Willison's blog; the fact-checker asked for the primary Google DeepMind post, whose URL is not in sources.csv or the research folder.",
+   "The phrase 'free versions are often not the latest models' paraphrases the Reuters Institute report's own statement ('likely not the latest models'); the report does not measure the free-vs-paid capability gap, and no direct Epoch analysis of that gap was found.",
+   "Danish study sample sizes (~25,000 workers, 7,000 workplaces) and the ~3% time-saving figure were not verified, so they are omitted from the section.",
+   "The 'newer FRI panel' (LEAP) forecast date is not stated in the research files; the text avoids giving one.",
+   "Bentley-Gallup article does not give full per-task 2023 vs 2026 percentages or explicitly state the baseline year for the 5-7 point changes (2023 implied)."
+  ]
+ },
+ {
+  "n": 2,
+  "word_count_brief": 512,
+  "chart_specs": [
+   {
+    "id": "s2-frontier-snapshots",
+    "purpose": "Show both halves of 'cheaper and better' at once: the price-capability frontier moving left (same ECI for less) and up (more ECI for the same price) across three dates.",
+    "data_file": "data/frontier_epoch.csv",
+    "encoding": "x = blended list price $/M tokens (3:1 input:output), log scale; y = ECI. For each snapshot (2025-11-07, 2026-05-07, 2026-11-07) keep models with release_date <= snapshot and draw a step line of max ECI at or below each price. Latest snapshot in the accent colour, earlier two as faded ink lines. Points as dots, hollow for open weights. Horizontal reference line at ECI 150 (GPT-5 level) with the cheapest crossing marked at each snapshot ($3.44, $1.13, $0.20); vertical reference line at $4 with best ECI marked (150.0, ~152, 168.9). Optional vertical whiskers for ECI credible intervals.",
+    "interactions": "Toggle or slider to step through the three snapshots (earlier frontiers stay as faded ghosts); hover a dot for model, lab, release date, ECI with interval, input/output price and price source; toggle to show/hide unpriced or third-party-priced models.",
+    "caveat_label": "List price per token at today's prices for all three dates (historical prices pending). Ignores how many tokens a model uses; effort settings can change cost per task about 10x. ECI scores are Epoch's 7 Nov 2026 vintage. Our calculation."
+   },
+   {
+    "id": "s2-cost-per-question",
+    "purpose": "Optional second view: cost per question at a fixed accuracy, which counts tokens actually used, showing the ~13x/yr decline independently of per-token list prices.",
+    "data_file": "external: https://raw.githubusercontent.com/droodman/inference-cost/main/output/slides/Figure%202.csv (not yet in research/data; must be downloaded and verified)",
+    "encoding": "x = date; y = cost per question in US$, log scale; one step line per accuracy level (e.g. GPQA Diamond 75% above chance, FrontierMath 75%), each step labelled with the cheapest model reaching that level. Annotate Epoch's 13x/yr average.",
+    "interactions": "Hover a step for model, date, cost per question; toggle benchmark.",
+    "caveat_label": "Verified (Epoch AI, 22 Sep 2026). Cost-record steps only, five benchmarks, no standard errors. Epoch's source misdates o3 to 31 Jan 2025 (actual release 16 Apr 2025); correct before plotting."
+   }
+  ],
+  "signposts": [
+   "30 Nov 2026: GPT-5.6 Sol's $4/$20 promotional price ends; check OpenAI's pricing page for the post-promo price.",
+   "1 Dec 2026: Gemini 4 Argon moves from $2/$10 to $4/$20 per million tokens; check whether other labs follow with list-price rises at the top.",
+   "1 Jan 2027: Gemini 3.8 Flash and 3.6 Flash double to $1.50/$7.50; a sign of whether cheap-tier prices can rise too.",
+   "7 May 2027 (next six-month snapshot): does the cheapest ECI>=150 model fall below $0.20 blended, and does the best ECI at <=$4 rise above ~169? A stall on both would mean the frontier is flattening.",
+   "Next Epoch eci_scores.csv refresh: check whether the top-four statistical tie (Astra, 6.1 Sol, Opus 5.5, 6.1 Terra) breaks, and whether any model above ECI ~170 arrives priced above $20 blended.",
+   "Next update of Epoch's 'plunging price of thought' data (github.com/droodman/inference-cost): whether the ~13x/yr cost-per-question decline holds as 2026 models are added.",
+   "Big-four Q4 2026 earnings (late Jan to early Feb 2027): first numeric 2027 capex guidance versus the ~$720-740B 2026 level."
+  ],
+  "open_issues": [
+   "Historical list prices for the 2025-11-07 and 2026-05-07 snapshots are not collected; all three panels use today's prices. Needed before publishing the 17x and 150->152->169 figures as final (e.g. Grok 4.20's February 2026 launch price, Sonnet 5 intro pricing, Gemini 3 Flash at May 2026).",
+   "The optional cost-per-question chart needs Epoch's Figure 2.csv (or staircase_check.csv) downloaded into research/data and verified locally; it is currently only read through a fetch tool.",
+   "Epoch's own 725x example (o3 vs GPT-5.6 Luna) was left out because of the o3 date/model conflict in Epoch's article; if wanted, ask Epoch or re-derive from the CSV.",
+   "Grok 4.20's price ($1.25/$2.50) is low confidence (current listing for the 0309 version); it determines the May 2026 'tie' at ~152 but not the headline.",
+   "Capex aggregate rests mainly on secondary coverage; only the Alphabet SEC exhibit was checked at the primary source. Microsoft's calendar-2026 basis (~$170B) should be confirmed against the FY27 Q1 call transcript.",
+   "The 'announced as introductory' framing for Gemini 4 Argon comes from the research summaries; the exact wording on Google's pricing page (truncated in the fetch) should be confirmed before publishing.",
+   "Unpriced open-weight models (Muse Spark Open 155.42, Beam 1.0 150.78) could undercut $0.20 via third-party hosts; the 'cheapest today' claim holds only among priced models.",
+   "Artificial Analysis effort-spread figure ($0.98 vs $10.04) is from the v5 announcement; the leaderboard now shows Opus 5.5 max at 59 rather than 58 (likely the v5.0.1 regrade)."
+  ]
+ },
+ {
+  "n": 3,
+  "word_count_brief": 530,
+  "chart_specs": [
+   {
+    "id": "s3-metr-curve",
+    "purpose": "Show the 50% time horizon rising from seconds to about two working days, the 2024 step-up in pace, and the point where the measuring stick stops working, so readers see both the speed and why the public curve can't answer the 2025-26 acceleration question.",
+    "data_file": "research/data/metr_points.json",
+    "encoding": "x = release date (2019-02 to 2026-11, leaving visible empty space after April 2026). y = p50 horizon in minutes, log scale, with human-readable tick labels (1 min, 10 min, 1 h, 4 h, 8 h, 16 h, 2 days, 1 week). sota=true points are filled ink dots with vertical lo-hi 95% interval bars. sota=false points (GPT-5.3-Codex, Gemini 3.1 Pro, GPT-5.4, Claude 3 Opus, GPT-4 Turbo, Claude 4/4.1 Opus, GPT-5.1-Codex-Max) are hollow grey dots. Two fitted lines (our OLS on SOTA points with p50 <=16h): pre-2024 fit (doubling ~260 d), dashed grey, drawn over 2019-2023; 2024+ fit (doubling ~105 d), solid accent (burnt orange), drawn 2024-01 to 2026-04, then dotted beyond with no extrapolation past the band. A horizontal shaded band from 960 min (16 h) upward labelled 'METR: measurements above 16 h unreliable'. A vertical rule at 2026-09-08 labelled 'Leaderboard no longer updated'. Optional annotation for GPT-5.6 Sol (Jun 2026, not in the JSON; from METR's 26 Jun 2026 post): an open marker at 11.3 h with a dotted arrow up to '>270 h if cheating counts', labelled 'not a robust measurement'. Toggle: a second series for the p80 horizon (same file, field p80) in a lighter tint, to show the reliability gap.",
+    "interactions": "Hover a dot for model name (humanised from key), release date, 50% horizon in h/min with 95% interval, and 80% horizon. Toggle 50% / 50%+80%. Toggle the fitted lines on and off. Each tooltip carries a 'Verified: METR' tag; the fitted lines carry an 'Our calculation' tag. Must work at phone width (labels can collapse into a legend).",
+    "caveat_label": "Verified: METR Time Horizon 1.1 data (file as of 8 May 2026, page frozen 8 Sep 2026). Trend lines: our calculation. Pre-2023 points are stitched from METR's older suite. Above 16 h the suite cannot measure reliably; the top points are effectively lower bounds with very wide intervals. Software tasks only."
+   }
+  ],
+  "signposts": [
+   "By 7 May 2027: has METR published a successor to Time Horizon 1.1 (a 'TH2' or long-task suite) or any robust time horizon for a model released after April 2026? If not, the public curve stays blind to the period in which the private data finds acceleration. Check https://metr.org/time-horizons/.",
+   "1 January 2027: Epoch projected the public ECI frontier at 169.95 by this date (90% interval 166.23-176.37). A frontier clearly above ~176 would be public evidence of a second speed-up; at or below ~169 (GPT-6 Astra, 3 Sep 2026, still the top as of 7 Nov 2026) would suggest none. Check https://epoch.ai/data/eci_scores.csv and record the snapshot date, since scores are re-estimated.",
+   "Whether Epoch publishes a formal test for a 2025-26 break in its public index (it has not as of 7 Nov 2026). Check https://epoch.ai/data-insights/eci-frontier-trend.",
+   "Whether any other developer (OpenAI, Google DeepMind, xAI) lets METR or another independent group run a comparable private-data acceleration assessment, which would show if the ~1.9x is an Anthropic-specific effect or the 1.4x all-developer figure is the better read.",
+   "November 2027: METR found no convincing bottlenecks for the next 12 months (report of 5 Nov 2026). A follow-up assessment, or Anthropic designating a model as over its AI R&D threshold (its S-1/A of 2 Nov 2026 says it 'may imminently meet' it), would test that."
+  ],
+  "open_issues": [
+   "The claim that 'only 5 of 228 TH1.1 tasks are 16h or longer' appears in r1-metr's summary and via secondary press (the-decoder), but the confirmed TH1.1 blog figure is that 5 of the 31 tasks of 8h+ are human-baselined. These may be conflated. I used the confirmed 31 / 5-baselined framing. Someone should check the primary page before anyone uses '5 of 228 above 16h'.",
+   "Provenance tag for METR's 5 Nov 2026 Anthropic assessment: I tagged the 1.9x / 1.4x / 80% figures 'Estimate' because they are METR's modelled analysis of Anthropic-supplied, partly redacted data that outsiders cannot check, not a public measurement. Section 6 (the RSI dashboard) should use the same tag; the alternative is 'Verified' with a 'private data' qualifier.",
+   "80% horizon mismatch: METR's Frontier Risk Report gives the public frontier 80% horizon as ~1.5h [50m-2h40m], but the data file's highest public p80 among the checked models is Opus 4.6 at 69.9 min (Gemini 3.1 Pro is 89.8 min, non-SOTA). This is not reconciled. I cite the data file throughout.",
+   "No METR FAQ URL in sources.csv for the 'horizon is not how long the AI runs' point; I cited the 22 Jan 2026 limitations note and the time-horizons page. Someone should confirm the limitations note states this directly, or add the FAQ URL.",
+   "The GPT-5.6 Sol chart annotation (11.3h / >270h) is not in metr_points.json. The chart builder needs to add it by hand from https://metr.org/blog/2026-06-26-gpt-5-6-sol/, or leave it out.",
+   "Pre-2024 doubling (260 days) is our refit on only 5 points, three of them stitched from TH1.0. METR's own all-time stitched figure is 187.8 days. The '8½ months before 2024' framing rests on our calculation alone. It is labelled that way, but an editor may prefer METR's 187.8-day all-time figure as a more conservative contrast.",
+   "Anthropic's April 2026 'no 2x' statement versus METR's October 2025 breakpoint looks contradictory to a lay reader. METR attributes the higher later estimate mainly to data on newer unreleased models. A sentence explaining this may be needed if space allows (Haiku 5.5 card 1.7x is known only via METR's citation)."
+  ]
+ },
+ {
+  "n": 4,
+  "word_count_brief": 457,
+  "chart_specs": [
+   {
+    "id": "s4-jagged-map",
+    "purpose": "Show at a glance that AI's standing relative to humans varies enormously by domain, and that the most striking 'beyond humans' results often carry weaker evidence labels.",
+    "data_file": "research/data/jagged_map.csv (not yet created; build from s4 footnotes: one row per domain with columns domain, tier, comparison_text, ai_value, human_value, date, provenance, footnote_id)",
+    "encoding": "Y: one row per domain (12 rows: robotics, ARC-AGI-3, Remote Labor Index, forecasting, IMO 2026, Waymo, Pakistan RCT diagnosis, GPQA, hurricane tracks, GenCast weather, Erdős research math, ICPC 2025), sorted by tier. X: ordinal five-step axis 'far below humans' / 'below humans' / 'level with the best' / 'ahead of trained or typical people' / 'beyond the best humans'. Dot colour = evidence quality using site provenance tags: Verified (official or peer-reviewed), Vendor-reported, and a hollow/outlined dot for company claims not officially confirmed (IMO 2026). Optional ghost dot for ARC-AGI-3 at launch (<1%, March 2026) connected by an arrow to Astra 62.7% (September 2026) to show the rapid rise. Accent colour only for the tier labels, not the dots.",
+    "interactions": "Hover/tap a dot to show the exact comparison (e.g. 'GPT-4o alone 82.9% vs doctors with GPT-4o 71.4%; exploratory secondary analysis'), date, provenance tag and a link to the footnote. Legend toggles to fade one evidence class. Keyboard focusable dots; mobile shows the comparison in a sheet below the chart.",
+    "caveat_label": "Positions are qualitative tiers, not a common scale. Several 'ahead' dots compare AI with machines (GenCast vs ECMWF ENS) or average people (Waymo), not the best humans. IMO 2026 grading is company-reported; ICPC 12/12 and Waymo are vendor-reported. Data as of 7 Nov 2026."
+   }
+  ],
+  "signposts": [
+   "ARC-AGI-3 Standard-harness top score (62.7% GPT-6 Astra, 2 Sep 2026): watch for a verified score near the human 100% line, or ARC-AGI-4 (reportedly Q1 2027, unverified).",
+   "Remote Labor Index top automation rate (21.25%, accessed 7 Nov 2026): a move above ~40% would shift 'real freelance work' up a tier.",
+   "ForecastBench fall-2026 rematch with fresh superforecaster forecasts (scheduled, results not yet found): would confirm or break the parity finding.",
+   "An official IMO statement on AI grading for 2026, or official AI entries at IMO 2027.",
+   "NHC 2026-season verification report (expected spring 2027): whether NHC's 2026 reliance on the DeepMind model held up.",
+   "Robotics: a robot reliably completing multi-step household tasks (kitchen cleaning, trash removal) in Epoch's next review."
+  ],
+  "open_issues": [
+   "Chart data file research/data/jagged_map.csv does not exist yet; it needs to be built from the s4 footnotes, and the tier assignments (especially 'beyond the best' for weather, where the comparison is with a physics model rather than humans) need an editorial decision.",
+   "GPQA AI score: the Epoch figure (~87-90%, Grok 4 87% July 2025) comes from researcher notes citing 'Epoch AI GPQA Diamond page' without a specific URL; I cited https://epoch.ai/benchmarks. Confirm the exact Epoch page and a current top Epoch-run score. The GPQA Diamond human-expert figure (81.3%) was not verified and is not used.",
+   "Robotics claims (Epoch AI, Feb 2026) are marked high confidence/primary by the researcher but the r1 fact-checker said robotics claims were not independently checked; recheck the 3-10x and trash-bag/kitchen statements against the Epoch page before publishing.",
+   "Waymo: the r1 fact-checker flagged a 2026 freeway pause/recall that was not investigated; check it before keeping Waymo on the map.",
+   "Pakistan RCT: the r1 fact-checker described the cases as vignettes rather than real patients; the r2 confirmation did not restate this. I wrote 'diagnostic cases' to stay safe; confirm the case type from the paper.",
+   "NHC hurricane result read only via secondary coverage (WIS-TV) because the PDF was too large to fetch; the error tables should be read directly. The 66.5 vs 81.4 nmi figures were deliberately not used.",
+   "IMO 2026 human count conflict: AFP's 7 of 666 vs the IMO's own 'nearly 700' and 'expected 685'; the official results table was not checked. The body says only 'seven human contestants'.",
+   "Footnote tag punctuation differs across finished drafts (s0 uses '**Verified.**', s8 '**Verified**:', s1 '**Verified**'); I followed s0. An editor should normalise across sections."
+  ]
+ },
+ {
+  "n": 5,
+  "word_count_brief": 487,
+  "chart_specs": [
+   {
+    "id": "s5-definitions",
+    "purpose": "Show at a glance that the four best-known AGI definitions test four different things, so 'has AI reached AGI?' has no single answer; the last column shows the same AI scoring very differently depending on the test.",
+    "data_file": "none (values inline in the markdown table; from footnotes s5-charter, s5-levels, s5-hendrycks, s5-arc)",
+    "encoding": "Small editorial table, four rows by three columns (Definition / What it tests / Where AI stands), not a plotted chart. The 'What it tests' cell is set in the accent colour as a short label (Economic output; Percentile of skilled adults; Breadth of thinking; Learning efficiency). The 'Where AI stands' cell carries a provenance chip (Vendor-reported for the OpenAI charter row, Verified for the other three). Optional micro-visual in the Hendrycks row: a 10-cell strip of GPT-5's domain scores showing maths at 10 and memory storage at 0. Stacks to cards on phone width.",
+    "interactions": "Provenance chip links to the matching footnote. On hover or tap of a row, show the full definition quote (charter wording, Levels thresholds, Hendrycks 'well-educated adult' definition, ARC 'learning efficiency of humans'). No animation.",
+    "caveat_label": "Definitions, not measurements. DeepMind's 'Emerging' rating is the authors' 2023 judgement; Hendrycks scores are a preprint's own assessment; ARC-AGI-3 62.7% is the standard harness (99.9% on OpenAI's own harness)."
+   }
+  ],
+  "signposts": [
+   "31 December 2026: Altman told TIME (26 Aug 2026, TIME's paraphrase) that OpenAI would have an internal system he would call AGI by year-end. Check whether OpenAI makes such a claim, and whether it triggers any expert-panel process. Last checked 7 Nov 2026: no claim found in the research.",
+   "Microsoft-OpenAI contract: whether either company says if the October 2025 independent expert panel survives the 27 April 2026 amendment (Microsoft's post is silent). Last checked 7 Nov 2026: unclear.",
+   "Hendrycks et al. 'A Definition of AGI' (agidefinition.ai): first official scores for any 2026 model. Last checked 7 Nov 2026: only GPT-4 (27%) and GPT-5 (57%) listed; watch whether long-term memory storage moves off 0.",
+   "GDPval: an independent replication or third-party-graded score for a 2026 frontier model, or an OpenAI-published GPT-6 Astra figure. Last checked 7 Nov 2026: latest is vendor-reported 84.9% for GPT-5.5 (April 2026); no Astra figure found.",
+   "ARC Prize: next benchmark (ARC-AGI-4) and whether any model reaches high scores on ARC-AGI-3's standard harness rather than a provider's own harness. Last checked 7 Nov 2026: Astra 62.7% standard; the reported ARC-AGI-4 'Q1 2027' date is secondary and unverified."
+  ],
+  "open_issues": [
+   "Word count: the brief body is about 375 words of prose plus about 110 words of table (487 total by a raw count), over the ~400 budget if the table counts. If needed, cut the Karpathy sentence or shorten the table's 'Where AI stands' cells.",
+   "Provenance tags for quotes: STYLE.md's four tags are built for numbers. I tagged statements by company executives (Altman, Brockman, Huang, Amodei) and company posts (OpenAI charter, Microsoft blogs) as Vendor-reported, Karpathy's transcript as Verified, and the 2024 $100B profit press report as Estimate for lack of a 'press report' tag. s0 tagged press reports as Verified. The editor should settle one convention for the whole piece.",
+   "Brockman: only 'Welcome to the AGI era' is quoted, per the backlog fact-check. Its source is iTWire (secondary); OpenAI's launch page and Axios returned 403. The r1 fact-check had marked the longer 'not unreasonable' quote unsupported, so it appears only as a paraphrase in the expert note.",
+   "Altman's August 2025 'not a super useful term' comes from CNBC via reproductions; no CNBC URL is in the research folder, so the footnote cites the TIME URL. Add the CNBC article URL if found.",
+   "GDPval 84.9% (GPT-5.5) was read from a search excerpt of OpenAI's page (403). Recheck the table on openai.com/index/introducing-gpt-5-5/ before publishing.",
+   "GDPval workflow figures: the r1 finding gives about 1.12x faster and 1.18x cheaper, while the r1 counter-evidence list says 1.1-1.4x faster and 1.2-1.6x cheaper. I used the finding's values. Check against the paper.",
+   "The Verge piece on the AGI clause was never fetched; it is named only because Willison cites it. Willison's URL comes from the topic file text, not from sources.csv. Add it to sources.csv.",
+   "Heading numbering differs across drafts: s3 and s7 use '## 3.' and '## 7.', while s0, s1, s2 and s8 have no number. I followed s3/s7. Make all sections match.",
+   "Cross-references 'section 0' and 'section 3' should become § links on the site. Section 4 (jagged map) is not yet drafted; the ARC harness gap and Hendrycks profile may overlap with it.",
+   "Amodei's 2026 essay restating the 'sci-fi baggage' view was not checked; the footnote cites only the 2024 essay."
+  ]
+ },
+ {
+  "n": 6,
+  "word_count_brief": 578,
+  "chart_specs": [
+   {
+    "id": "s6-rsi-dashboard",
+    "purpose": "Show every measurable 'AI improving AI' indicator at once while making it impossible to miss who measured each one: steady independent curves on top, steeper lab self-reports below, and the gap to each lab's formal threshold.",
+    "data_file": "research/data/rsi_series.csv (plus three points to add: Anthropic S-1 >90% of codebase contributions Sep 2026; CoBench 2.1 Opus 5.5 55.8% / Mythos 5.1 53.4% / Opus 5 53.2% vs ~85% line; skilled-human 4x reference for the speedup panel). EXCLUDE: the OpenAI 2026-06 value-1 'crossover' row (unsupported), the Microsoft 2025-04-29 row (unverified, different metric), and do not connect the Anthropic 4x survey row to the Slack-poll line.",
+    "encoding": "Grid of small multiples, each with its own y-axis and a coloured provenance tag in the panel header. Tier 1 'Independent': (a) METR 50% time horizon, log scale, 2023-Apr 2026, shaded 'unreliable above 16h' band, Mythos point hollow; (b) Epoch ECI frontier running max, 2023-Sep 2026, with note 'flat since GPT-6 Astra 169.07'. Tier 2 'Independent analysis of private lab data': (c) METR AECI slope before vs after 7 Oct 2025 as paired bars, Anthropic 15 -> 29 pts/yr and all developers 17 -> 24, 95% CI whisker 1.5-2.8x on the ratio label, tag 'evidence mostly redacted'. Tier 3 'Lab self-reports' (muted ink, never accent): (d) Google share of new code AI-generated, 25 -> ~50 -> 75%; (e) Anthropic code share as two unconnected markers, >80% merged code May 2026 and >90% codebase contributions Sep 2026, different marker shapes; (f) Anthropic training-code optimisation speedup 3x -> 52x, log scale, 17x/34x as hollow third-party points, dashed 4x human reference line, warning glyph on 52x 'reward-hacking reported'; (g) OpenAI agent-workdays per human workday as a single stat tile 3.1 (mid-Aug 2026) with 'counts runtime, not quality'; (h) Google fully delegated PRs 7.5 -> 11.9%. Bottom strip 'Formal thresholds': CoBench 2.1 bars vs ~85% line; text chips 'OpenAI: below High', 'Google: Not reached', 'Anthropic: not crossed; may imminently meet (S-1/A)'.",
+    "interactions": "Hover/tap a point for date, model, value, exact source wording and provenance tag. Toggle 'show only independent' to grey out tier 3. Clicking a panel tag jumps to its footnote. No lines are ever drawn across companies.",
+    "caveat_label": "Lab self-reports are unaudited and use different definitions; do not compare across panels. METR horizons above 16h unreliable; page frozen since 8 Sep 2026. AECI is not on Epoch's ECI scale. Anthropic open-ended task success (26/76/91%) left out because its chart dating is internally inconsistent. Data as of 7 Nov 2026."
+   }
+  ],
+  "signposts": [
+   "Anthropic RSP determination: whether Anthropic formally designates a model as exceeding its AI R&D threshold ('dramatically accelerated progress attributable to AI') after the 2 Nov 2026 S-1/A said it 'may imminently meet' it. Last checked 7 Nov 2026: no model designated.",
+   "Next METR independent assessment (of Anthropic or any other lab), and whether it gets unredacted evidence or query access to unreleased models. A second lab with a measured >1.5x acceleration would show the speed-up spreading; a revision toward 1.1-1.4x would suggest it was overstated.",
+   "A successor to METR's Time Horizon 1.1 suite that can measure above 16 hours. Last checked 7 Nov 2026: none published; page 'no longer actively updated' since 8 Sep 2026.",
+   "Epoch ECI frontier: whether any model beats GPT-6 Astra's 169.07 and whether Epoch tests for a second (2025-26) breakpoint. Last checked 7 Nov 2026: frontier unchanged since 3 Sep 2026; no test published.",
+   "Next system cards: OpenAI's AI Self-Improvement rating (currently below High for GPT-6 Astra), Google's ML R&D CCLs (Not reached for Gemini 4 Argon), Anthropic's CoBench score against the ~85% line (55.8% for Opus 5.5).",
+   "OpenAI's next research-acceleration update and progress toward its 'automated AI researcher by March 2028' target; whether it reports output quality, not only agent runtime.",
+   "Google's next AI-generated code share statement (75% as of 22 Apr 2026) and fully delegated PR share (11.9% Sep 2026)."
+  ],
+  "open_issues": [
+   "Epoch's compute-labour complementarity argument (Ho and Whitfill, Nov 2025) and Arvind Narayanan's July 2026 test are described in r1-rsi.md but have no URL in sources.csv or the topic files, so the skeptic paragraph relies on METR's own footnote about compute limits instead. Add primary URLs if the editor wants a named outside skeptic.",
+   "Opus 5.5 CoBench 2.1 figures (55.8% vs ~85%) come only from secondary summaries of a >10MB system card; the comparison model's name (Mythos 5.1 vs Fable 5.1) and a possible mix-up with a Terminal-Bench 55.8% score need checking against the PDF.",
+   "The 52x training-code speedup reward-hacking caveat rests on secondary summaries of the Mythos Preview system card; the primary PDF was not read.",
+   "OpenAI's 6 Sep 2026 post returned 403 to every fetch; 3.1 agent-workdays and 'over half of successful 4-8h tasks needed intervention' come via eWeek and Unite.AI. The r1 fact-check marked the bundled claim 'unsupported' as first-hand; r2-backlog_a confirmed the core figures via secondary coverage. Labelled Vendor-reported; verify against the primary page before publishing.",
+   "GPT-6 Astra 'below High for AI self-improvement' was confirmed by the r1 fact-check against the system card, but the r2 fact-check could not find it in secondary coverage. The banned 78.05% figure is not used. Re-confirm the qualitative statement on deploymentsafety.openai.com.",
+   "Gemini 4 Argon 'Not reached' CCL status and the delegated-PR figures rest on a LessWrong summary plus the model card URL listed as a fact-checker 'missed evidence' item; the safety report PDF was not read.",
+   "The S-1/A quotes were verified against EDGAR in r1-selfweights, but r1-rsi and r2-metr_accel say the full filing was too large to fetch. The '>90% of codebase contributions' figure is dated to the original 26 Oct S-1 per the fact-checker.",
+   "Brief body is ~578 words against a ~550 budget; the 'Code share and agent hours count activity' line or the 1.4x parenthetical could be cut if needed.",
+   "Chart data: rsi_series.csv needs the OpenAI June crossover row and Microsoft row excluded, the Anthropic >80% row split out of the code-share series, and new rows for the S-1 >90% point and CoBench.",
+   "Section references ('section 3') should become links when the site is built."
+  ]
+ },
+ {
+  "n": 7,
+  "word_count_brief": 400,
+  "chart_specs": [
+   {
+    "id": "s7-weights-matrix",
+    "purpose": "Show that 'AI changing weights' covers distinct kinds of work, place the MIT result in its correct cell (another model's weights, direct edit), and make visible that the 'own weights + direct edit' cell is empty.",
+    "data_file": "none (qualitative taxonomy drawn from research/topics/r2-selfweights_landscape.md and r1-selfweights.md; no CSV)",
+    "encoding": "2x2 grid. Columns: whose weights change (the model's own / another model's). Rows: how (gradient training on self-generated data / direct edit without training on the target). Cells: own+gradient = STaR (2022), Self-Rewarding LMs (2024), SEAL (2025), MASS (Oct 2026); other+direct = ROME/MEMIT (2022), Heretic (optimizer), Text-to-LoRA / Drag-and-Drop (generated by a trained network), MIT Weight-Space Programming (Nov 2026, highlighted in the accent colour); other+gradient = ordinary fine-tuning by people, e.g. Cursor Tab online RL run by the company (vendor-reported); own+direct = empty, labelled 'Not yet shown; MIT lists it as future work'. A side strip outside the grid, 'Weights untouched: code-level self-modification', holds Darwin Gödel Machine (2025), Gödel Agent (2025), AlphaEvolve (2025). Each name carries a small status badge (research toy / benchmark gain / in production) and a provenance tag.",
+    "interactions": "Hover or tap a name for a one-line description, date and source tag with link. On phones the grid stacks into four labelled cards plus the code strip, with the empty cell kept visible.",
+    "caveat_label": "Our classification; examples, not a complete census. The MIT result is a blog post, not peer-reviewed."
+   }
+  ],
+  "signposts": [
+   "By 1 March 2027: has 'Sparks of Weight-Space Programming' (MIT CSAIL, 2 Nov 2026) been posted to arXiv or accepted at a peer-reviewed venue, and has anyone independently re-derived the Qwen3.5-0.8B edit (not just re-evaluated the released checkpoint)?",
+   "Ongoing, check monthly from December 2026: does any lab or academic group publish an LLM directly editing its OWN weights (the empty 'self + direct edit' cell)? The MIT authors list it only as future work.",
+   "16 January 2027 (three months after last update): recheck FutureSearch's continual-learning forecast page; median for a frontier model with weekly weight updates is January 2033 as of 16 Oct 2026.",
+   "1 July 2027: does any frontier chat model (OpenAI, Anthropic, Google, Meta, xAI) update its weights from live use? FutureSearch gave 75% to 'memory only, no weight change' for mid-2027.",
+   "By mid-2027: do MASS-style self-training loops run beyond two rounds and show gains on coding benchmarks (SWE-bench Verified, Terminal-Bench 2.0), where round 2 was flat or slightly down?",
+   "Before publication and at NeurIPS 2026: confirm or rule out a venue for arXiv 2607.11020 (the ~1% recall after 20 sequential writes paper); do not say NeurIPS until confirmed."
+  ],
+  "open_issues": [
+   "Provenance tags fit imperfectly. STYLE.md's 'Verified' means an independent organisation measured it, but several footnotes here are non-peer-reviewed sources: the MIT blog post (the authors' own measurements, independent of OpenAI, with public logs), arXiv preprints (MASS, DGM, 2607.11020, Drag-and-Drop), and individual commentators' posts (Willison, Goedecke, Honnibal). I tagged them 'Verified' and spelled out the status in each footnote. The editor may want a house rule for preprints and commentary.",
+   "Krentsel's rerun is mentioned with an inline link and no footnote. The fact-checker marked his cross-generation multiples (e.g. Astra 22x, Opus 5.5 20x) 'unsupported': they come from OfficeChai describing an X chart, and the original was not checked. None of the four provenance tags honestly fits, so I used no numbers and an inline link. Change this if the site requires footnotes for every source.",
+   "No data file exists for the s7-weights-matrix chart. It is a qualitative diagram built from r2-selfweights_landscape.md. Where learned weight generators go is a judgement call: I put them under 'another model, direct edit' because they write weights in one forward pass, though the generator itself is trained by gradient descent. The 'other + gradient' cell uses Cursor Tab (vendor-reported) as its example; an editor may prefer to leave that cell as generic 'ordinary fine-tuning'.",
+   "The claim that 'no publicly known frontier chatbot updates its weights from live use' rests on a FutureSearch evidence sheet surfaced via search (not fetched directly), an AI-2027 tracker entry, and limited searches (about 15). Lab release notes were not crawled exhaustively.",
+   "STaR (2022), ROME (2022) and Self-Rewarding LMs details were not re-fetched in round 2. STaR's source is from prior knowledge, per the topic file. They are named only as examples, without numbers; verify before charting them with dates.",
+   "Drag-and-Drop LLMs (https://arxiv.org/abs/2506.16406), Heretic (https://github.com/p-e-w/heretic) and the AI-2027 tracker URL come from the topic files. I did not confirm that they have rows in sources.csv.",
+   "Deliberately excluded, per the fact-check: the WeightLoop preprint (does not exist), the Zhihu '576 of 579' reconstruction (unsupported, secondary only), Krentsel's precise multiples, and the 'NeurIPS' venue for arXiv 2607.11020. R&D World's 'steering' paraphrase of Goedecke is replaced by his primary post.",
+   "The body rounds MATH-500 to '8% to 48%' and calls it 'a standard maths test'. The exact values (7.9% to 48.1%) and the benchmark name are in the footnote."
+  ]
+ },
+ {
+  "n": 8,
+  "word_count_brief": 365,
+  "chart_specs": [],
+  "signposts": [
+   "4 December 2026: ARC Prize 2026 competition results. Does anyone reach 85% on ARC-AGI-2 within Kaggle efficiency limits, and do verified ARC-AGI-3 runs land under the $10,000 cap?",
+   "Late January to early February 2027: Q4 2026 earnings from Microsoft, Alphabet, Amazon and Meta. First numeric 2027 capex guidance; tests whether the 'capex discipline' brake from July ever shows up.",
+   "METR: announcement of a successor to its time-horizon task suite (page frozen since 8 September 2026). Until one exists, the July watch item on the ~4-month doubling cannot be re-scored.",
+   "Scale SWE-bench Pro V2: whether the 51-task Hard split (52.9-98.0% at release) saturates, which would be another test retired within months of release.",
+   "ARC Prize: publication of ARC-AGI-4 tasks and a release date (not yet disclosed)."
+  ],
+  "open_issues": [
+   "The July brief needs a public URL to link from this section; none is in the research folder. Quotes of what we said in July are not footnoted, since none of the four provenance tags fits our own past text. Editor should decide on a convention (e.g. a plain link to the archived July page).",
+   "Heading: written without the section number ('## Report card: how our July brief did'). Add '8.' if other sections are numbered.",
+   "Capex ($720-740B): r1 fact-checker marked this unsupported; r2 backlog corrected and confirmed it, but only Alphabet's SEC exhibit was checked at the primary source. The valueaddvc tracker URL (valueaddvc.com/ai-spending) is taken from the r2-backlog_a text and is not a row in sources.csv. The Meta exhibit URL is also from that text.",
+   "The 30-50% ARC-AGI-3 forecast came from the April 2026 brief; July endorsed it as 'merely ambitious'. The table wording reflects that; check the editor is comfortable grading July on it.",
+   "Deliberately omitted: FrontierMath Tier 4 'saturated' (unverified; spans a June 2026 re-versioning), IMO 2026 certification (unsupported), ARC-AGI-2 $0.44/task (unsupported), SWE-bench Pro V2 'Sep 22' release date and Scale V2 leaderboard 99.40 entry (unverified; arXiv date 16 Oct used instead).",
+   "Year-horizon re-scoring is kept in an Expert note as our arithmetic, per fact-checker advice; the Mythos 50% (~17.4h) and 80% (~3.1h) values rest on the local parse of METR's YAML, while the r1 fact-checker could not read them on the web page.",
+   "The grade 'Roughly right; low for Anthropic' compares the July phrase 'tens of %' (AI's contribution to AI R&D) with METR's capability-progress-rate ratio; these are not identical measures. Consider softening to 'Too early to grade' if the editor prefers.",
+   "Other July items not graded for space: deployment gap (Census 18% of firms using AI, direction right), Anthropic Economic Index delegation claim (partly wrong), SWE-bench Verified retirement (right; broken tests were a co-equal reason)."
+  ]
+ },
+ {
+  "n": 9,
+  "word_count_brief": 378,
+  "chart_specs": [
+   {
+    "id": "s9-signposts",
+    "purpose": "Turn the section into a checkable watch list that visibly ages: each signpost shows its date, today's value, what would count as spreading or stalling, and where to check, under a decay banner stamped 'data as of 7 Nov 2026'.",
+    "data_file": "none (values inline, from footnotes s9-arc, s9-leap, s9-eci, s9-price, s9-argon, s9-rli, s9-metr, s9-s1, s9-google, s9-accel, s9-work)",
+    "encoding": "Vertical list or compact table, sorted by date (4 Dec 2026 first; 'any day' and 'when published' items last). Columns: date, indicator, value as of 7 Nov 2026, spreading line, stalling line, source link. Status chip per row (not yet due / moved toward spreading / moved toward stalling / no change) in neutral ink; accent colour only for rows whose date has passed. Decay banner above the list shows 'data as of 7 Nov 2026' and days elapsed, computed client-side, turning amber after 60 days and showing 'overdue' on any row past its date without an update.",
+    "interactions": "Each source cell links to the checking URL; each value links to its footnote. Rows past their date expand to show a placeholder 'result' line for the next update. No animation.",
+    "caveat_label": "Thresholds such as RLI 'one in three' and ECI '176' are our reading lines (ECI from Epoch's 90% interval), not official pass marks. Anthropic's S-1/A wording is quoted via TechCrunch; the EDGAR filing was not read directly."
+   }
+  ],
+  "signposts": [
+   "4 Dec 2026: ARC Prize 2026 results; verified ARC-AGI-3 standard-harness scores within the $10,000 cap (top today 62.7% at $26,098, over the cap) and any ARC-AGI-4 tasks or date. https://arcprize.org/leaderboard",
+   "1 Dec 2026: Gemini 4 Argon price doubles ($2/$10 to $4/$20); watch whether other labs raise top-tier list prices. https://aistudio.google.com/docs/pricing",
+   "31 Dec 2026: FRI LEAP questions resolve: METR 80% horizon (forecast 3.4 h experts / 3.5 h superforecasters vs ~3.1 h May 2026) and LiveCodeBench Pro Hard (14% vs 53.8%). https://forecastingresearch.org/research/ai-progress-accuracy-update",
+   "1 Jan 2027: Epoch ECI frontier vs projection 169.95 (90% PI 166.23-176.37); above ~176 = public second speed-up, still ~169 = none. https://epoch.ai/data/eci_scores.csv",
+   "7 May 2027: cheapest ECI>=150 model below $0.20 blended (spreading) or flat/rising (stalling). Epoch CSV plus lab price pages",
+   "Monthly: Remote Labor Index top automation rate (21.25% on 7 Nov 2026); above ~33% = work gap closing, flat into mid-2027 = stall. https://labs.scale.com/leaderboard/rli",
+   "By 7 May 2027: METR successor to Time Horizon 1.1 or a robust horizon for any post-April-2026 model. https://metr.org/time-horizons/",
+   "Any day: Anthropic designates a model over its AI R&D threshold (S-1/A of 2 Nov 2026: 'may imminently meet') or rewords the threshold again in its RSP; Google changes Gemini ML R&D CCL status from 'Not reached'.",
+   "Nov 2027: METR follow-up to its 5 Nov 2026 'no convincing bottlenecks' call, or a second developer opening private data to a comparable acceleration assessment.",
+   "When published: METR redesigned developer-productivity results; revision of Humlum and Vestergaard (NBER w33777) covering 2025-26 models."
+  ],
+  "open_issues": [
+   "Brief body runs ~378 words, over the ~300 budget, because nine signposts each carry a date, current value, spreading/stalling line and source. To trim, cut signpost 8 (METR bottleneck call) or fold signpost 4 into a single sentence.",
+   "Stanford Digital Economy Lab 'Canaries' entry-level hiring update and court AI-citation sanctions were suggested signposts but appear nowhere in the research folder (no topic finding, no sources.csv row). Left out. A researcher should add them, with sources, before they go in.",
+   "OpenAI's AI self-improvement threshold status for GPT-6 Astra was left out: the 'Research Debugging 78.05%' claim and the 'below High' finding are marked unsupported in r2-rsi_series.",
+   "The '4 December 2026' ARC Prize results date is confirmed in the r1-scorecard fact-check, but no specific URL is given for it. The footnote cites the Astra blog and leaderboard. Add the competition page URL if one exists.",
+   "ARC-AGI-4 is sourced only to an ARC Prize X post that was not fetched. The Chollet tweet's 'Q1 2027' date is unverified and was not used.",
+   "Anthropic S-1/A 'may imminently meet' wording rests on secondary coverage (TechCrunch, FourWeekMBA). EDGAR filing 0001628280-26-068676 was not read directly. 'Reworded three times this year' counts RSP v3.0, v3.1 (a clarification) and v3.4. The editor may prefer 'changed'.",
+   "Google's 90% decision line and buggy-task figure come from a LessWrong summary of the Gemini 4 safety report. The primary PDF was not read. Only the model card's 'Not reached' is primary.",
+   "RLI 'one in three' and ECI '176' are our reading lines, not official thresholds. The 176 comes from Epoch's 90% interval and is flagged in the footnotes.",
+   "Heading has no number ('## What to watch'), matching s0/s1/s2/s8. s3 and s7 are numbered, so headings need to be made consistent.",
+   "Section 7's weight-editing signposts (MIT post peer review, a model editing its own weights, FutureSearch January 2033 median) were left out for space. Add them as a tenth item if wanted."
+  ]
+ }
+]

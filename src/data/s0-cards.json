@@ -1,0 +1,121 @@
+{
+  "generated_by": "scripts/data/build_s0_cards.py",
+  "source_file": "already-past-us.md (s0 footnotes)",
+  "rli_accessed": "7 November 2026",
+  "records": [
+    {
+      "card": "icpc",
+      "metric": "ai_solved",
+      "label": "OpenAI system, problems solved",
+      "value": 12,
+      "of": 12,
+      "tag": "Vendor-reported",
+      "source": "s0-icpc"
+    },
+    {
+      "card": "icpc",
+      "metric": "best_human_solved",
+      "label": "Best human team, problems solved",
+      "value": 11,
+      "of": 12,
+      "tag": "Vendor-reported",
+      "source": "s0-icpc"
+    },
+    {
+      "card": "icpc",
+      "metric": "ioi_humans_ahead",
+      "label": "IOI 2025: human contestants who beat OpenAI's entry",
+      "value": 5,
+      "of": 330,
+      "tag": "Vendor-reported",
+      "source": "s0-ioi"
+    },
+    {
+      "card": "erdos",
+      "metric": "conjecture_year",
+      "label": "Year of Erdős's unit-distance conjecture",
+      "value": 1946,
+      "tag": "Verified",
+      "source": "s0-erdos"
+    },
+    {
+      "card": "erdos",
+      "metric": "checkers",
+      "label": "Mathematicians who checked and published a simplified version",
+      "value": 9,
+      "names": [
+        "Alon",
+        "Bloom",
+        "Gowers",
+        "Litt",
+        "Sawin",
+        "Shankar",
+        "Tsimerman",
+        "Wang",
+        "Wood"
+      ],
+      "preprint": "arXiv:2605.20695",
+      "date": "20 May 2026",
+      "tag": "Verified",
+      "source": "s0-erdos"
+    },
+    {
+      "card": "erdos",
+      "metric": "false_claim_oct_2025",
+      "label": "Erdős problems OpenAI wrongly said GPT-5 solved (Oct 2025)",
+      "value": 10,
+      "tag": "Verified",
+      "source": "s0-erdos-context"
+    },
+    {
+      "card": "rli",
+      "metric": "best_rate_pct",
+      "label": "Best agent automation rate, as of 7 November 2026",
+      "value": 21.25,
+      "tag": "Verified",
+      "source": "s0-rli"
+    },
+    {
+      "card": "rli",
+      "metric": "projects",
+      "label": "Real paid freelance projects in the index",
+      "value": 240,
+      "tag": "Verified",
+      "source": "s0-rli"
+    },
+    {
+      "card": "rli",
+      "metric": "projects_matched",
+      "label": "Projects judged as good as a human's (21.25% of 240)",
+      "value": 51,
+      "of": 240,
+      "tag": "Verified",
+      "source": "s0-rli"
+    },
+    {
+      "card": "rli",
+      "metric": "projects_not_matched",
+      "label": "Projects not judged as good as a human's (240 - 51)",
+      "value": 189,
+      "of": 240,
+      "tag": "Verified",
+      "source": "s0-rli"
+    },
+    {
+      "card": "rli",
+      "metric": "launch_rate_pct",
+      "label": "Best automation rate at launch, October 2025",
+      "value": 2.5,
+      "tag": "Our calculation",
+      "source": "s0-rli-growth"
+    },
+    {
+      "card": "rli",
+      "metric": "growth_ratio",
+      "label": "Growth since launch (21.25 / 2.50)",
+      "value": 8.5,
+      "tag": "Our calculation",
+      "source": "s0-rli-growth"
+    }
+  ]
+}

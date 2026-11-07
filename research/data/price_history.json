@@ -1,0 +1,359 @@
+{
+ "models": [
+  {
+   "model": "GPT-5 nano",
+   "launch_date": "2025-08-07",
+   "price_2025_11_07": "$0.05/$0.40",
+   "price_2026_05_07": "$0.05/$0.40",
+   "price_2026_11_07": "$0.05/$0.40",
+   "changes": "No change found; still listed at $0.05/$0.40 on OpenAI pricing page (2026-11-07).",
+   "first_party": true,
+   "urls": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "GPT-5 mini",
+   "launch_date": "2025-08-07",
+   "price_2025_11_07": "$0.25/$2.00",
+   "price_2026_05_07": "$0.25/$2.00",
+   "price_2026_11_07": "$0.25/$2.00",
+   "changes": "No change found.",
+   "first_party": true,
+   "urls": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "GPT-5",
+   "launch_date": "2025-08-07",
+   "price_2025_11_07": "$1.25/$10.00",
+   "price_2026_05_07": "$1.25/$10.00",
+   "price_2026_11_07": "$1.25/$10.00",
+   "changes": "No change found.",
+   "first_party": true,
+   "urls": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "GPT-5 Pro",
+   "launch_date": "2025-10-06 (API)",
+   "price_2025_11_07": "$15/$120",
+   "price_2026_05_07": "$15/$120",
+   "price_2026_11_07": "$15/$120",
+   "changes": "No change found; still $15/$120 on OpenAI page; matches Epoch.",
+   "first_party": true,
+   "urls": [
+    "https://developers.openai.com/api/docs/pricing",
+    "https://epoch.ai/models/gpt-5-pro"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "gpt-oss-120b",
+   "launch_date": "2025-08-05",
+   "price_2025_11_07": "unverified (no first-party API; Epoch $0.10/$0.55, host unnamed)",
+   "price_2026_05_07": "unverified (cheapest host at that date not found)",
+   "price_2026_11_07": "$0.037/$0.17 (DeepInfra)",
+   "changes": "No OpenAI first-party API. DeepInfra lists $0.037/$0.17 now; undated aggregator listings show DeepInfra earlier at $0.05/$0.45, Groq/Fireworks $0.15/$0.60, Cerebras $0.35/$0.75. Cut date unknown.",
+   "first_party": false,
+   "urls": [
+    "https://deepinfra.com/openai/gpt-oss-120b",
+    "https://epoch.ai/models/gpt-oss-120b",
+    "https://cloudprice.net/models/gpt-oss-120b"
+   ],
+   "confidence": "low"
+  },
+  {
+   "model": "Grok 4 Fast",
+   "launch_date": "2025-09-19",
+   "price_2025_11_07": "$0.20/$0.50",
+   "price_2026_05_07": "$0.20/$0.50",
+   "price_2026_11_07": "retired 2026-05-15 (redirects to grok-4.3, billed $1.25/$2.50)",
+   "changes": "Launch $0.20/$0.50 (<128K). Retired from xAI API 2026-05-15 12:00 PT; grok-4-fast-* redirect to grok-4.3 billed at $1.25/$2.50.",
+   "first_party": true,
+   "urls": [
+    "https://docs.x.ai/docs/migration/may-15-retirement",
+    "https://epoch.ai/models/grok-4-fast"
+   ],
+   "confidence": "medium-high"
+  },
+  {
+   "model": "Gemini 3 Flash",
+   "launch_date": "2025-12-17",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "$0.50/$3.00",
+   "price_2026_11_07": "$0.50/$3.00",
+   "changes": "No change; gemini-3-flash-preview still $0.50/$3.00 (labeled legacy; no shutdown date).",
+   "first_party": true,
+   "urls": [
+    "https://aistudio.google.com/docs/pricing",
+    "https://aistudio.google.com/docs/deprecations"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "Gemini 3 Pro",
+   "launch_date": "2025-11-18",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "retired 2026-03-09 (was $2/$12)",
+   "price_2026_11_07": "retired",
+   "changes": "gemini-3-pro-preview $2/$12 (≤200K). Deprecation announced 2026-02-26; -latest alias moved 2026-03-06; shut down on Gemini API 2026-03-09 (replacement 3.1 Pro Preview at same price).",
+   "first_party": true,
+   "urls": [
+    "https://aistudio.google.com/docs/deprecations",
+    "https://discuss.ai.google.dev/t/migrate-from-gemini-3-pro-preview-to-gemini-3-1-pro-preview-before-march-9-2026/127062"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "Gemini 3.1 Pro",
+   "launch_date": "2026-02-19",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "$2/$12",
+   "price_2026_11_07": "$2/$12",
+   "changes": "No change; ≤200K tier $2/$12 ($4/$18 above).",
+   "first_party": true,
+   "urls": [
+    "https://aistudio.google.com/docs/pricing"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "Grok 4.20",
+   "launch_date": "2026-02-17 (API March 2026, 0309)",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "$2/$6 likely (cut to $1.25/$2.50 at unknown date, possibly ~2026-04-30)",
+   "price_2026_11_07": "$1.25/$2.50",
+   "changes": "Initial API $2/$6 (VentureBeat; AI Pricing Guru 2026-04-25 citing xAI docs). xAI docs now list grok-4.20-0309 at $1.25/$2.50 (<200K), same as Grok 4.3 (launched ~2026-04-30). Cut date not found.",
+   "first_party": true,
+   "urls": [
+    "https://docs.x.ai/docs/models/grok-4.20",
+    "https://www.aipricing.guru/news/xai-grok-4-20-batch-api-pricing-april-2026/",
+    "https://venturebeat.com/technology/xai-launches-grok-4-3-at-an-aggressively-low-price-and-a-new-fast-powerful-voice-cloning-suite"
+   ],
+   "confidence": "medium (Nov 2026); low (May 2026)"
+  },
+  {
+   "model": "Kimi K2.5",
+   "launch_date": "2026-01-27",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "$0.60/$3.00",
+   "price_2026_11_07": "deprecated; last known $0.60/$3.00 (availability uncertain)",
+   "changes": "Moonshot launch price $0.60 cache-miss/$3.00 output per multiple sources (some say $2.50–3.00 output). Now under Deprecated Models; K2 closed to new users 2026-10-31, all K2 retired by end Dec 2026; one third party claims Aug 31 sunset.",
+   "first_party": true,
+   "urls": [
+    "https://platform.kimi.ai/docs/pricing/chat-k25",
+    "https://platform.kimi.ai/docs/pricing/chat",
+    "https://www.requesty.ai/models-new/moonshot/kimi-k2.5"
+   ],
+   "confidence": "medium"
+  },
+  {
+   "model": "Qwen3.5 397B-A17B",
+   "launch_date": "2026-02-13",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "$0.60/$3.60 (Model Studio International; assumed unchanged)",
+   "price_2026_11_07": "$0.60/$3.60 International; $0.172/$1.032 Global/US/China (≤128K)",
+   "changes": "Alibaba Model Studio lists Singapore $0.60/$3.60; Frankfurt/Virginia/Beijing $0.172/$1.032 (≤128K). Page updated 2026-10-11. Start date of Global-region rate unknown. Epoch $0.39/$2.34 is averaged.",
+   "first_party": true,
+   "urls": [
+    "https://www.alibabacloud.com/help/en/model-studio/qwen3-5-397b-a17b.md"
+   ],
+   "confidence": "medium"
+  },
+  {
+   "model": "DeepSeek-V4-Flash",
+   "launch_date": "2026-04-24",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "$0.14/$0.28",
+   "price_2026_11_07": "retired (alias served by V4.1-Flash-1017 at $0.30/$1.20 peak, $0.15/$0.60 off-peak)",
+   "changes": "Launch flat $0.14/$0.28. 2026-08-16 16:00 UTC: peak/off-peak introduced, $0.44/$1.32 peak, $0.22/$0.66 off-peak (InfoWorld 2026-08-13). V4.1 Flash 2026-09-09; V4.1-Flash-1017 2026-10-17; V4-Flash now retired, billed at Flash price. Retirement date unknown.",
+   "first_party": true,
+   "urls": [
+    "https://api-docs.deepseek.com/quick_start/pricing/",
+    "https://www.infoworld.com/article/4209439/deepseek-raises-some-v4-prices-by-more-than-10x-as-ai-demand-strains-capacity.html",
+    "https://docs.apiyi.com/en/news/deepseek-price-increase-2026-08.md"
+   ],
+   "confidence": "high (May); medium (Nov)"
+  },
+  {
+   "model": "GPT-5.4",
+   "launch_date": "2026-03-05",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "$2.50/$15",
+   "price_2026_11_07": "$2.50/$15",
+   "changes": "No change found (<272K).",
+   "first_party": true,
+   "urls": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "GPT-5.5",
+   "launch_date": "2026-04-23",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "$5/$30",
+   "price_2026_11_07": "$5/$30",
+   "changes": "No change found (<272K).",
+   "first_party": true,
+   "urls": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "GPT-5.5 Pro",
+   "launch_date": "2026-04-23",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "$30/$180",
+   "price_2026_11_07": "$30/$180",
+   "changes": "No change found.",
+   "first_party": true,
+   "urls": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "GPT-6 Luna",
+   "launch_date": "2026-09-22",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "not released",
+   "price_2026_11_07": "$0.10/$0.50",
+   "changes": "No change since launch.",
+   "first_party": true,
+   "urls": [
+    "https://developers.openai.com/api/docs/pricing",
+    "https://www.eesel.ai/blog/gpt-6-astra-pricing"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "Claude Haiku 5.5",
+   "launch_date": "2026-10-07",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "not released",
+   "price_2026_11_07": "$0.10/$0.50 (≤100K prompt; $0.50/$2.50 above)",
+   "changes": "Launch price; not described as introductory. New tokenizer.",
+   "first_party": true,
+   "urls": [
+    "https://platform.claude.com/docs/en/about-claude/pricing",
+    "https://www.techrepublic.com/article/news-anthropic-claude-haiku-5-5-api-pricing/"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "GPT-6.1 Terra",
+   "launch_date": "2026-10-26",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "not released",
+   "price_2026_11_07": "$1/$5",
+   "changes": "Launch price; no change.",
+   "first_party": true,
+   "urls": [
+    "https://developers.openai.com/api/docs/pricing",
+    "https://www.neoteo.com/en/gpt-61-terra-api-pricing-rates-cache-fees-and-thresholds"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "GPT-6.1 Sol",
+   "launch_date": "2026-09-29",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "not released",
+   "price_2026_11_07": "$2/$10",
+   "changes": "Launch price (DevDay); no change.",
+   "first_party": true,
+   "urls": [
+    "https://developers.openai.com/api/docs/pricing",
+    "https://www.eesel.ai/blog/gpt-6-astra-pricing"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "GPT-6 Astra",
+   "launch_date": "2026-09-03",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "not released",
+   "price_2026_11_07": "$10/$50",
+   "changes": "Launch price; no promo for base model (promo only for 'GPT-6 Astra for Law'). >272K: $20/$75.",
+   "first_party": true,
+   "urls": [
+    "https://developers.openai.com/api/docs/pricing",
+    "https://www.eesel.ai/blog/gpt-6-astra-pricing"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "Claude Opus 5.5",
+   "launch_date": "2026-09-22",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "not released",
+   "price_2026_11_07": "$4/$20",
+   "changes": "Launch price, 20% below prior Opus $5/$25; not introductory.",
+   "first_party": true,
+   "urls": [
+    "https://platform.claude.com/docs/en/about-claude/pricing",
+    "https://www.techrepublic.com/article/news-anthropic-claude-opus-5-5-pricing-performance/"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "Claude Sonnet 5.5",
+   "launch_date": "2026-09-28",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "not released",
+   "price_2026_11_07": "$2/$10",
+   "changes": "Launch price; no change.",
+   "first_party": true,
+   "urls": [
+    "https://platform.claude.com/docs/en/about-claude/pricing",
+    "https://aicybr.com/blog/claude-sonnet-5-5-pricing-benchmarks-api"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "Gemini 4 Argon",
+   "launch_date": "2026-09-30",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "not released",
+   "price_2026_11_07": "$2/$10 (introductory)",
+   "changes": "Introductory $2/$10 through 2026-11-30; $4/$20 from 2026-12-01 per Google pricing page.",
+   "first_party": true,
+   "urls": [
+    "https://aistudio.google.com/docs/pricing"
+   ],
+   "confidence": "high"
+  },
+  {
+   "model": "Claude Fable 5.1",
+   "launch_date": "2026-09-01",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "not released",
+   "price_2026_11_07": "$10/$50",
+   "changes": "Listed $10/$50 (same as Fable 5); no change or intro pricing found (launch post not checked).",
+   "first_party": true,
+   "urls": [
+    "https://platform.claude.com/docs/en/about-claude/pricing"
+   ],
+   "confidence": "medium-high"
+  }
+ ],
+ "summary": "Saved to C:\\dev\\ai-website\\already-past-us\\research\\data\\price_history.json. Most CSV prices are correct for their dates. OpenAI and Anthropic list prices have not changed since launch. Changes found: Grok 4 Fast was retired on 2026-05-15. Gemini 3 Pro Preview shut down on 2026-03-09, so it was not available at the May snapshot. Grok 4.20 went from $2/$6 to $1.25/$2.50, date of the cut unknown. DeepSeek-V4-Flash was $0.14/$0.28, then rose to $0.44/$1.32 peak on 2026-08-16, and is now retired (the name is served by V4.1-Flash-1017 at $0.30/$1.20 peak). Gemini 4 Argon's $2/$10 is introductory through 2026-11-30, then $4/$20. Kimi K2.5's first-party price was $0.60/$3.00 and it is now deprecated. Qwen3.5-397B first-party is $0.60/$3.60 International, or $0.172/$1.032 in the Global/US region. gpt-oss-120b has no first-party API: DeepInfra is now $0.037/$0.17, and earlier host prices are unverified.",
+ "open_questions": [
+  "Grok 4.20: date of the cut from $2/$6 to $1.25/$2.50, so the price in effect on 2026-05-07 is uncertain. A Wayback snapshot from 2026-05-06 exists but could not be fetched.",
+  "gpt-oss-120b: cheapest reputable host price on 2025-11-07 and 2026-05-07.",
+  "Kimi K2.5: whether it was still served first-party on 2026-11-07. Output price is $3.00 vs $2.50 in different sources and not confirmed on a Moonshot page.",
+  "Qwen3.5 397B: which region's price to use, and when the cheaper Global/US-region rate started.",
+  "DeepSeek-V4-Flash: exact retirement date, and whether there was an off-peak discount at launch.",
+  "Grok 4 Fast: the $0.20/$0.50 launch price was not re-verified on an xAI page.",
+  "Claude Fable 5.1: launch post not checked for introductory pricing.",
+  "Gemini 3 Pro: whether it stayed available on Vertex AI after 2026-03-09."
+ ]
+}

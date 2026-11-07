@@ -1,0 +1,31 @@
+/* JaggedMap (s4-jagged-map). Every class is prefixed jm-. */
+.jm { position: relative; }
+
+.jm-row { cursor: pointer; outline: none; }
+.jm-row:focus-visible .jm-row__band { fill: var(--grid); stroke: var(--accent); stroke-width: 1.5; }
+
+/* The details card reuses .chart-tooltip; when pinned it takes pointer events so the source chips work. */
+.figure__body .jm-tip { width: 17rem; max-width: calc(100% - 8px); }
+.figure__body .jm-tip--pinned { pointer-events: auto; }
+.jm-tip p { margin: 0; }
+.jm-tip__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.2rem; }
+.jm-tip__head strong { font-size: 0.84rem; line-height: 1.3; }
+.jm-tip__close {
+  flex: none; width: 24px; height: 24px; margin: -4px -6px 0 0; padding: 0;
+  border: 0; border-radius: 999px; background: transparent; color: var(--ink-3);
+  font: 400 1.05rem/1 var(--font-sans); cursor: pointer;
+}
+.jm-tip__close:hover { color: var(--ink); background: var(--grid); }
+.jm-tip__tier { color: var(--ink); font-size: 0.76rem; margin-bottom: 0.35rem !important; }
+.jm-tip__level { color: var(--accent-ink); font-weight: 600; }
+.jm-tip__group { color: var(--ink-3); }
+.jm-tip__text { margin-bottom: 0.45rem !important; }
+.jm-tip__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.5rem; font-size: 0.74rem; color: var(--ink-3); }
+.jm-tip__unconfirmed { color: var(--ink-2); font-style: italic; }
+.jm-tip__sources { display: inline-flex; gap: 0.2rem; }
+.jm-tip__hint { margin-top: 0.4rem !important; font-size: 0.7rem; color: var(--ink-3); }
+
+/* "Show the data" table */
+.jm-data__domain { color: var(--ink) !important; font-weight: 600; }
+.jm-data__src { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.25rem; }
+.jm-tip__baseline { display: inline-flex; align-items: center; gap: 0.3rem; }

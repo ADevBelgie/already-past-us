@@ -1,0 +1,77 @@
+capability_metric,capability_value,cost_metric,cost_value,developer,model,notes,open_weights,price_in_per_mtok,price_out_per_mtok,price_url,release_date,score_url
+ECI,150,blended $/Mtok 3:1,3.4375,OpenAI,GPT-5,"ECI anchor model (=150 by definition, no CI). Available at all three snapshots.",False,1.25,10,https://developers.openai.com/api/docs/pricing,2025-08-07,https://epoch.ai/data/eci_scores.csv
+ECI,146.08,blended $/Mtok 3:1,0.6875,OpenAI,GPT-5 mini,,False,0.25,2,https://developers.openai.com/api/docs/pricing,2025-08-07,https://epoch.ai/data/eci_scores.csv
+ECI,139.17,blended $/Mtok 3:1,0.1375,OpenAI,GPT-5 nano,,False,0.05,0.4,https://developers.openai.com/api/docs/pricing,2025-08-07,https://epoch.ai/data/eci_scores.csv
+ECI,151.15,blended $/Mtok 3:1,41.25,OpenAI,GPT-5 Pro,Price from Epoch model page. Top ECI model available at the 2025-11-07 snapshot.,False,15,120,https://epoch.ai/models/gpt-5-pro,2025-10-07,https://epoch.ai/data/eci_scores.csv
+ECI,146.99,blended $/Mtok 3:1,3.5,OpenAI,o3,"Current price. Launched at $10/$40, cut in June 2025 (from memory, verify).",False,2,8,https://developers.openai.com/api/docs/pricing,2025-04-16,https://epoch.ai/data/eci_scores.csv
+ECI,145.24,blended $/Mtok 3:1,1.925,OpenAI,o4-mini,No longer on OpenAI pricing page; price from Epoch model page.,False,1.1,4.4,https://epoch.ai/models/o4-mini,2025-04-16,https://epoch.ai/data/eci_scores.csv
+ECI,135.9,blended $/Mtok 3:1,3.5,OpenAI,GPT-4.1,Non-reasoning model.,False,2,8,https://developers.openai.com/api/docs/pricing,2025-04-14,https://epoch.ai/data/eci_scores.csv
+ECI,140.22,blended $/Mtok 3:1,0.2125,OpenAI,gpt-oss-120b,Open weights; third-party hosted price per Epoch page (source not named).,True,0.1,0.55,https://epoch.ai/models/gpt-oss-120b,2025-08-05,https://epoch.ai/data/eci_scores.csv
+ECI,147.56,blended $/Mtok 3:1,6,Anthropic,Claude Sonnet 4.5,,False,3,15,https://platform.claude.com/docs/en/about-claude/pricing,2025-09-29,https://epoch.ai/data/eci_scores.csv
+ECI,142.82,blended $/Mtok 3:1,2,Anthropic,Claude Haiku 4.5,,False,1,5,https://platform.claude.com/docs/en/about-claude/pricing,2025-10-15,https://epoch.ai/data/eci_scores.csv
+ECI,144.74,blended $/Mtok 3:1,30,Anthropic,Claude Opus 4.1,Now retired on the first-party API (still on some clouds).,False,15,75,https://platform.claude.com/docs/en/about-claude/pricing,2025-08-05,https://epoch.ai/data/eci_scores.csv
+ECI,144.79,blended $/Mtok 3:1,3.4375,Google DeepMind,Gemini 2.5 Pro (Jun 2025),≤200K-prompt tier. Deprecated; requests route to Gemini 3.8 Flash on 2026-12-01.,False,1.25,10,https://aistudio.google.com/docs/pricing,2025-06-05,https://epoch.ai/data/eci_scores.csv
+ECI,141.87,blended $/Mtok 3:1,0.85,Google DeepMind,Gemini 2.5 Flash (Sep 2025),Text price; deprecated.,False,0.3,2.5,https://aistudio.google.com/docs/pricing,2025-09-25,https://epoch.ai/data/eci_scores.csv
+ECI,133.07,blended $/Mtok 3:1,0.175,Google DeepMind,Gemini 2.5 Flash-Lite (Jun 2025),,False,0.1,0.4,https://aistudio.google.com/docs/pricing,2025-06-17,https://epoch.ai/data/eci_scores.csv
+ECI,146.86,blended $/Mtok 3:1,6,xAI,Grok 4,No longer on xAI docs; price from Epoch page.,False,3,15,https://epoch.ai/models/grok-4,2025-07-09,https://epoch.ai/data/eci_scores.csv
+ECI,144.33,blended $/Mtok 3:1,0.275,xAI,Grok 4 Fast,Price from Epoch page.,False,0.2,0.5,https://epoch.ai/models/grok-4-fast,2025-09-19,https://epoch.ai/data/eci_scores.csv
+ECI,152.88,blended $/Mtok 3:1,4.5,Google DeepMind,Gemini 3 Pro,Released after the 2025-11-07 snapshot. No longer on Google's price page.,False,2,12,https://epoch.ai/models/gemini-3-pro,2025-11-18,https://epoch.ai/data/eci_scores.csv
+ECI,150.87,blended $/Mtok 3:1,3.4375,OpenAI,GPT-5.1,Released 6 days after the 12-month snapshot.,False,1.25,10,https://developers.openai.com/api/docs/pricing,2025-11-13,https://epoch.ai/data/eci_scores.csv
+ECI,151.82,blended $/Mtok 3:1,10,Anthropic,Claude Opus 4.5,,False,5,25,https://platform.claude.com/docs/en/about-claude/pricing,2025-11-24,https://epoch.ai/data/eci_scores.csv
+ECI,154.42,blended $/Mtok 3:1,4.8125,OpenAI,GPT-5.2,,False,1.75,14,https://developers.openai.com/api/docs/pricing,2025-12-11,https://epoch.ai/data/eci_scores.csv
+ECI,157.22,blended $/Mtok 3:1,57.75,OpenAI,GPT-5.2 Pro,Price from Epoch page.,False,21,168,https://epoch.ai/models/gpt-5-2-pro,2025-12-11,https://epoch.ai/data/eci_scores.csv
+ECI,152.25,blended $/Mtok 3:1,1.125,Google DeepMind,Gemini 3 Flash,Listed as Gemini 3 Flash Preview. Cheapest ECI≥150 model at the 2026-05-07 snapshot.,False,0.5,3,https://aistudio.google.com/docs/pricing,2025-12-17,https://epoch.ai/data/eci_scores.csv
+ECI,146.22,blended $/Mtok 3:1,0.474,DeepSeek,DeepSeek-V3.2,"Epoch price looks like a host average, not DeepSeek first-party (no longer listed by DeepSeek).",True,0.289,1.029,https://epoch.ai/models/deepseek-v3-2,2025-12-01,https://epoch.ai/data/eci_scores.csv
+ECI,143.24,blended $/Mtok 3:1,1,Z.ai (Zhipu AI),GLM-4.7,Open-weight status from prior knowledge; verify in CSV Accessibility column.,True,0.6,2.2,https://docs.z.ai/guides/overview/pricing,2025-12-22,https://epoch.ai/data/eci_scores.csv
+ECI,148.72,blended $/Mtok 3:1,1.1195,Moonshot,Kimi K2.5,"Epoch price, source not named (looks averaged).",True,0.551,2.825,https://epoch.ai/models/kimi-k2-5,2026-01-27,https://epoch.ai/data/eci_scores.csv
+ECI,156.3,blended $/Mtok 3:1,10,Anthropic,Claude Opus 4.6,,False,5,25,https://platform.claude.com/docs/en/about-claude/pricing,2026-02-05,https://epoch.ai/data/eci_scores.csv
+ECI,152.86,blended $/Mtok 3:1,6,Anthropic,Claude Sonnet 4.6,,False,3,15,https://platform.claude.com/docs/en/about-claude/pricing,2026-02-17,https://epoch.ai/data/eci_scores.csv
+ECI,156.24,blended $/Mtok 3:1,4.5,Google DeepMind,Gemini 3.1 Pro,"Listed as Preview, ≤200K tier.",False,2,12,https://aistudio.google.com/docs/pricing,2026-02-19,https://epoch.ai/data/eci_scores.csv
+ECI,146.43,blended $/Mtok 3:1,1.55,Z.ai (Zhipu AI),GLM-5,Open-weight status: verify.,True,1,3.2,https://docs.z.ai/guides/overview/pricing,2026-02-11,https://epoch.ai/data/eci_scores.csv
+ECI,147.87,blended $/Mtok 3:1,0.8775,Alibaba,Qwen3.5 397B-A17B,Epoch price.,True,0.39,2.34,https://epoch.ai/models/qwen3-5-397b-a17b,2026-02-13,https://epoch.ai/data/eci_scores.csv
+ECI,152.27,blended $/Mtok 3:1,1.5625,xAI,Grok 4.20,LOW CONFIDENCE price: current price for grok-4.20-0309 version; Epoch page has no price; Feb launch price unverified.,False,1.25,2.5,https://docs.x.ai/docs/models,2026-02-17,https://epoch.ai/data/eci_scores.csv
+ECI,144.91,blended $/Mtok 3:1,0.5625,Google,Gemini 3.1 Flash-Lite,,False,0.25,1.5,https://aistudio.google.com/docs/pricing,2026-03-03,https://epoch.ai/data/eci_scores.csv
+ECI,157.82,blended $/Mtok 3:1,5.625,OpenAI,GPT-5.4,≤272K context.,False,2.5,15,https://developers.openai.com/api/docs/pricing,2026-03-05,https://epoch.ai/data/eci_scores.csv
+ECI,149.34,blended $/Mtok 3:1,1.6875,OpenAI,GPT-5.4 Mini,,False,0.75,4.5,https://developers.openai.com/api/docs/pricing,2026-03-17,https://epoch.ai/data/eci_scores.csv
+ECI,146.4,blended $/Mtok 3:1,0.4625,OpenAI,GPT-5.4 Nano,,False,0.2,1.25,https://developers.openai.com/api/docs/pricing,2026-03-17,https://epoch.ai/data/eci_scores.csv
+ECI,150.67,blended $/Mtok 3:1,2.15,Z.ai (Zhipu AI),GLM-5.1,Open-weight status: verify.,True,1.4,4.4,https://docs.z.ai/guides/overview/pricing,2026-04-07,https://epoch.ai/data/eci_scores.csv
+ECI,157.55,blended $/Mtok 3:1,10,Anthropic,Claude Opus 4.7,"New tokenizer, about 30% more tokens per text, so effective cost is higher than Opus 4.6 at the same list price.",False,5,25,https://platform.claude.com/docs/en/about-claude/pricing,2026-04-16,https://epoch.ai/data/eci_scores.csv
+ECI,151.56,blended $/Mtok 3:1,1.7125,Moonshot,Kimi K2.6,Epoch price.,True,0.95,4,https://epoch.ai/models/kimi-k2-6,2026-04-20,https://epoch.ai/data/eci_scores.csv
+ECI,160.04,blended $/Mtok 3:1,11.25,OpenAI,GPT-5.5,,False,5,30,https://developers.openai.com/api/docs/pricing,2026-04-23,https://epoch.ai/data/eci_scores.csv
+ECI,162.67,blended $/Mtok 3:1,67.5,OpenAI,GPT-5.5 Pro,Top ECI model available at the 2026-05-07 snapshot.,False,30,180,https://developers.openai.com/api/docs/pricing,2026-04-23,https://epoch.ai/data/eci_scores.csv
+ECI,150.13,blended $/Mtok 3:1,1.5125,DeepSeek,DeepSeek-V4-Pro,Epoch price (launch version); current official V4-Pro-0813 is $1.32/$3.96 peak.,True,1.15,2.6,https://epoch.ai/models/deepseek-v4-pro,2026-04-24,https://epoch.ai/data/eci_scores.csv
+ECI,146.86,blended $/Mtok 3:1,0.175,DeepSeek,DeepSeek-V4-Flash,Epoch price; model now retired (routes to V4.1-Flash-1017).,True,0.14,0.28,https://epoch.ai/models/deepseek-v4-flash,2026-04-24,https://epoch.ai/data/eci_scores.csv
+ECI,155.24,blended $/Mtok 3:1,3.375,Google DeepMind,Gemini 3.5 Flash,Epoch price; no longer listed by Google.,False,1.5,9,https://epoch.ai/models/gemini-3-5-flash,2026-05-19,https://epoch.ai/data/eci_scores.csv
+ECI,154.5,blended $/Mtok 3:1,2.2125,Alibaba,Qwen3.7-Max,Epoch price (looks averaged).,False,1.475,4.425,https://epoch.ai/models/qwen3-7-max,2026-05-19,https://epoch.ai/data/eci_scores.csv
+ECI,159.89,blended $/Mtok 3:1,10,Anthropic,Claude Opus 4.8,New tokenizer.,False,5,25,https://platform.claude.com/docs/en/about-claude/pricing,2026-05-28,https://epoch.ai/data/eci_scores.csv
+ECI,147.6,blended $/Mtok 3:1,0.525,MiniMax,MiniMax-M3,Epoch price.,True,0.3,1.2,https://epoch.ai/models/minimax-m3,2026-06-01,https://epoch.ai/data/eci_scores.csv
+ECI,164.19,blended $/Mtok 3:1,20,Anthropic,Claude Fable 5,,False,10,50,https://platform.claude.com/docs/en/about-claude/pricing,2026-06-09,https://epoch.ai/data/eci_scores.csv
+ECI,152.99,blended $/Mtok 3:1,2.15,Z.ai (Zhipu AI),GLM-5.2,Open-weight status: verify.,True,1.4,4.4,https://docs.z.ai/guides/overview/pricing,2026-06-16,https://epoch.ai/data/eci_scores.csv
+ECI,156.71,blended $/Mtok 3:1,4,Anthropic,Claude Sonnet 5,Intro pricing made permanent; the planned Sep 1 rise to $3/$15 was cancelled.,False,2,10,https://platform.claude.com/docs/en/about-claude/pricing,2026-06-30,https://epoch.ai/data/eci_scores.csv
+ECI,162.99,blended $/Mtok 3:1,8,OpenAI,GPT-5.6 Sol,Promotional price until 2026-11-30; post-promo price not stated.,False,4,20,https://developers.openai.com/api/docs/pricing,2026-07-09,https://epoch.ai/data/eci_scores.csv
+ECI,160.89,blended $/Mtok 3:1,4.5,OpenAI,GPT-5.6 Terra,,False,2,12,https://developers.openai.com/api/docs/pricing,2026-07-09,https://epoch.ai/data/eci_scores.csv
+ECI,156.79,blended $/Mtok 3:1,0.45,OpenAI,GPT-5.6 Luna,Epoch's cost-per-question example: $0.000412/question at GPQA 75% level.,False,0.2,1.2,https://developers.openai.com/api/docs/pricing,2026-07-09,https://epoch.ai/data/eci_scores.csv
+ECI,155.08,blended $/Mtok 3:1,3,xAI,Grok 4.5,<200K tier.,False,2,6,https://docs.x.ai/docs/models,2026-07-08,https://epoch.ai/data/eci_scores.csv
+ECI,158.51,blended $/Mtok 3:1,6,Moonshot,Kimi K3,Epoch price; Kimi's official table did not render.,True,3,15,https://epoch.ai/models/kimi-k3,2026-07-16,https://epoch.ai/data/eci_scores.csv
+ECI,164.45,blended $/Mtok 3:1,10,Anthropic,Claude Opus 5,,False,5,25,https://platform.claude.com/docs/en/about-claude/pricing,2026-07-24,https://epoch.ai/data/eci_scores.csv
+ECI,157.43,blended $/Mtok 3:1,3,Alibaba,Qwen 3.8 Max,Epoch price.,False,2,6,https://epoch.ai/models/qwen-3-8-max,2026-08-02,https://epoch.ai/data/eci_scores.csv
+ECI,157.92,blended $/Mtok 3:1,3,xAI,Grok 4.6,,False,2,6,https://docs.x.ai/docs/models,2026-08-12,https://epoch.ai/data/eci_scores.csv
+ECI,158.4,blended $/Mtok 3:1,1.5,Google DeepMind,Gemini 3.7 Flash,Epoch price; not on Google's current page.,False,0.75,3.75,https://epoch.ai/models/gemini-3-7-flash,2026-08-13,https://epoch.ai/data/eci_scores.csv
+ECI,156.91,blended $/Mtok 3:1,2.15,Z.ai (Zhipu AI),GLM-5.3,Open-weight status unverified.,True,1.4,4.4,https://docs.z.ai/guides/overview/pricing,2026-08-14,https://epoch.ai/data/eci_scores.csv
+ECI,153.64,blended $/Mtok 3:1,0.2375,Z.ai (Zhipu AI),GLM-5.3-Flash,Open-weight status unverified.,True,0.15,0.5,https://docs.z.ai/guides/overview/pricing,2026-08-20,https://epoch.ai/data/eci_scores.csv
+ECI,166.9,blended $/Mtok 3:1,20,Anthropic,Claude Fable 5.1,,False,10,50,https://platform.claude.com/docs/en/about-claude/pricing,2026-09-01,https://epoch.ai/data/eci_scores.csv
+ECI,158.63,blended $/Mtok 3:1,1.5,Google DeepMind,Gemini 3.8 Flash,Rises to $1.50/$7.50 on 2027-01-01.,False,0.75,3.75,https://aistudio.google.com/docs/pricing,2026-09-02,https://epoch.ai/data/eci_scores.csv
+ECI,169.07,blended $/Mtok 3:1,20,OpenAI,GPT-6 Astra,Top ECI model today.,False,10,50,https://developers.openai.com/api/docs/pricing,2026-09-03,https://epoch.ai/data/eci_scores.csv
+ECI,156.49,blended $/Mtok 3:1,0.2625,DeepSeek,DeepSeek V4.1 Flash,Epoch price equals DeepSeek's official off-peak rate; peak is $0.30/$1.20.,True,0.15,0.6,https://epoch.ai/models/deepseek-v4-1-flash,2026-09-09,https://epoch.ai/data/eci_scores.csv
+ECI,156.07,blended $/Mtok 3:1,3,xAI,Grok 4.7,,False,2,6,https://docs.x.ai/docs/models,2026-09-21,https://epoch.ai/data/eci_scores.csv
+ECI,168.36,blended $/Mtok 3:1,8,Anthropic,Claude Opus 5.5,Cheaper per token than Opus 5 ($5/$25).,False,4,20,https://platform.claude.com/docs/en/about-claude/pricing,2026-09-22,https://epoch.ai/data/eci_scores.csv
+ECI,164.06,blended $/Mtok 3:1,4,OpenAI,GPT-6 Sol,,False,2,10,https://developers.openai.com/api/docs/pricing,2026-09-22,https://epoch.ai/data/eci_scores.csv
+ECI,156.68,blended $/Mtok 3:1,0.2,OpenAI,GPT-6 Luna,,False,0.1,0.5,https://developers.openai.com/api/docs/pricing,2026-09-22,https://epoch.ai/data/eci_scores.csv
+ECI,166.24,blended $/Mtok 3:1,4,Anthropic,Claude Sonnet 5.5,,False,2,10,https://platform.claude.com/docs/en/about-claude/pricing,2026-09-28,https://epoch.ai/data/eci_scores.csv
+ECI,168.94,blended $/Mtok 3:1,4,OpenAI,GPT-6.1 Sol,OpenAI note: 'Near-Astra intelligence for a fifth of the price' (via Epoch page).,False,2,10,https://developers.openai.com/api/docs/pricing,2026-09-29,https://epoch.ai/data/eci_scores.csv
+ECI,166.45,blended $/Mtok 3:1,4,Google DeepMind,Gemini 4 Argon,Doubles to $4/$20 (blended $8) on 2026-12-01.,False,2,10,https://aistudio.google.com/docs/pricing,2026-09-30,https://epoch.ai/data/eci_scores.csv
+ECI,160.22,blended $/Mtok 3:1,0.2,Anthropic,Claude Haiku 5.5,Price for prompts ≤100K tokens; $0.50/$2.50 above. New tokenizer.,False,0.1,0.5,https://platform.claude.com/docs/en/about-claude/pricing,2026-10-07,https://epoch.ai/data/eci_scores.csv
+ECI,159.31,blended $/Mtok 3:1,0.525,DeepSeek,DeepSeek V4.1 Flash 1017,"Official peak price; off-peak is half ($0.15/$0.60, blended 0.2625). Open-weight status assumed from the V4.1 Flash page.",True,0.3,1.2,https://api-docs.deepseek.com/quick_start/pricing/,2026-10-17,https://epoch.ai/data/eci_scores.csv
+ECI,155.87,blended $/Mtok 3:1,1.98,DeepSeek,DeepSeek V4 Pro 0813,Official peak price; off-peak half.,True,1.32,3.96,https://api-docs.deepseek.com/quick_start/pricing/,2026-08-13,https://epoch.ai/data/eci_scores.csv
+ECI,167.82,blended $/Mtok 3:1,2,OpenAI,GPT-6.1 Terra,Close to the top ECI at $2 blended.,False,1,5,https://developers.openai.com/api/docs/pricing,2026-10-26,https://epoch.ai/data/eci_scores.csv
+ECI,145.59,blended $/Mtok 3:1,0.85,Google DeepMind,Gemini 3.5 Flash-Lite,,False,0.3,2.5,https://aistudio.google.com/docs/pricing,2026-07-21,https://epoch.ai/data/eci_scores.csv

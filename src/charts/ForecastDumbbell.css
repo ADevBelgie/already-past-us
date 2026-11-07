@@ -1,0 +1,10 @@
+/* ForecastDumbbell (s1-forecast-dumbbell). Every class is prefixed fdb-. */
+.fdb-row { cursor: default; }
+.fdb-row:focus { outline: none; }
+.fdb-row:focus-visible .fdb-hit { stroke: var(--accent); stroke-width: 1.5; }
+.fdb-tip-line { display: block; }
+.fdb-tip-muted { color: var(--ink-3); }
+.fdb-table td.fdb-num, .fdb-table th.fdb-num { text-align: right; white-space: nowrap; }
+.fdb-table td:last-child { font-weight: 400; color: var(--ink-2); }
+.fdb-table td.fdb-wrap { white-space: normal; }
+.fdb-src { white-space: nowrap; }
