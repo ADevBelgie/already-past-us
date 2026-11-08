@@ -459,7 +459,7 @@ A more accurate headline than November's: frontier models with tools can now dia
 
 On 10 July 2026 we published [*Measuring the End of Measurement*](https://measuring-the-end-of-measurement.vercel.app). It argued that AI tests wear out faster than people can replace them, and that they break in sudden jumps.
 
-The direction held. Where we put numbers on the future, we were too cautious. We also described three of our own headline figures wrongly.
+It is playing out as we described, but our numbers and estimates were too conservative.
 
 | What we said in July | What happened by November 2026 | Grade |
 |---|---|---|
