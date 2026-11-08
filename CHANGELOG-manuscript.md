@@ -140,3 +140,6 @@ Twelve findings from a third external review, each checked against the research 
 Checks: node scripts/data/build_jagged_map.mjs, node scripts/check-manuscript.mjs and npm run build.
 
 Review of these edits: the DeepMind sentence first stated ICPC's acceptance as fact, though the only source is DeepMind's own post; it now reads "Google DeepMind says its entry solved 10 and would have placed second, and that ICPC confirmed its answers as accepted." The tightened Remote Labor Index sentence gained "of them" ("on about 21% of them"), which the cut had dropped.
+
+## Frontier chart: open-weight models still hosted (8 November 2026)
+Reader report: DeepSeek-V4-Flash sat on the May 2026 frontier above and to the left of today's line, although the model is still available. Cause: DeepSeek retired its own endpoint and the snapshot only used first-party prices, so the model dropped out of the November 2026 snapshot. Fix: for open-weight models the maker no longer serves, use the cheapest reputable host's price (DeepInfra $0.09/$0.18 for V4-Flash; $0.26/$0.38 for V3.2), as already done for gpt-oss-120b. Footnotes s2-blend and s2-hist updated. Headline figures unchanged.

@@ -1599,6 +1599,27 @@
   },
   {
    "snapshot": "2026-11-07",
+   "model": "DeepSeek-V3.2",
+   "developer": "DeepSeek",
+   "release_date": "2025-12-01",
+   "eci": 146.22,
+   "eci_lo": 144.73,
+   "eci_hi": 147.75,
+   "price_in": 0.26,
+   "price_out": 0.38,
+   "blended": 0.29,
+   "open_weights": true,
+   "price_basis": "third-party host price (AtlasCloud/DeepInfra, checked 8 Nov 2026)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
    "model": "GLM-4.7",
    "developer": "Z.ai (Zhipu AI)",
    "release_date": "2025-12-22",
@@ -1974,6 +1995,27 @@
     "s2-hist"
    ],
    "frontier": false
+  },
+  {
+   "snapshot": "2026-11-07",
+   "model": "DeepSeek-V4-Flash",
+   "developer": "DeepSeek",
+   "release_date": "2026-04-24",
+   "eci": 146.86,
+   "eci_lo": 143.56,
+   "eci_hi": 150.15,
+   "price_in": 0.09,
+   "price_out": 0.18,
+   "blended": 0.1125,
+   "open_weights": true,
+   "price_basis": "third-party host price (DeepInfra, checked 8 Nov 2026)",
+   "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
+   "footnotes": [
+    "s2-eci",
+    "s2-blend",
+    "s2-hist"
+   ],
+   "frontier": true
   },
   {
    "snapshot": "2026-11-07",

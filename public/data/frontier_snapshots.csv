@@ -71,6 +71,7 @@ snapshot,model,developer,release_date,eci,price_in,price_out,blended,open_weight
 2026-11-07,GPT-5.2,OpenAI,2025-12-11,154.42,1.75,14.0,4.8125,False,list price (unchanged per price_history or not checked)
 2026-11-07,GPT-5.2 Pro,OpenAI,2025-12-11,157.22,21.0,168.0,57.75,False,list price (unchanged per price_history or not checked)
 2026-11-07,Gemini 3 Flash,Google DeepMind,2025-12-17,152.25,0.5,3.0,1.125,False,list price (unchanged per price_history or not checked)
+2026-11-07,DeepSeek-V3.2,DeepSeek,2025-12-01,146.22,0.26,0.38,0.29,True,"third-party host price (AtlasCloud/DeepInfra, checked 8 Nov 2026)"
 2026-11-07,GLM-4.7,Z.ai (Zhipu AI),2025-12-22,143.24,0.6,2.2,1.0,True,list price (unchanged per price_history or not checked)
 2026-11-07,Kimi K2.5,Moonshot,2026-01-27,148.72,0.6,3.0,1.2,True,price_history override
 2026-11-07,Claude Opus 4.6,Anthropic,2026-02-05,156.3,5.0,25.0,10.0,False,list price (unchanged per price_history or not checked)
@@ -89,6 +90,7 @@ snapshot,model,developer,release_date,eci,price_in,price_out,blended,open_weight
 2026-11-07,GPT-5.5,OpenAI,2026-04-23,160.04,5.0,30.0,11.25,False,list price (unchanged per price_history or not checked)
 2026-11-07,GPT-5.5 Pro,OpenAI,2026-04-23,162.67,30.0,180.0,67.5,False,list price (unchanged per price_history or not checked)
 2026-11-07,DeepSeek-V4-Pro,DeepSeek,2026-04-24,150.13,1.15,2.6,1.5125,True,list price (unchanged per price_history or not checked)
+2026-11-07,DeepSeek-V4-Flash,DeepSeek,2026-04-24,146.86,0.09,0.18,0.1125,True,"third-party host price (DeepInfra, checked 8 Nov 2026)"
 2026-11-07,Qwen3.7-Max,Alibaba,2026-05-19,154.5,1.475,4.425,2.2125,False,list price (unchanged per price_history or not checked)
 2026-11-07,Claude Opus 4.8,Anthropic,2026-05-28,159.89,5.0,25.0,10.0,False,list price (unchanged per price_history or not checked)
 2026-11-07,MiniMax-M3,MiniMax,2026-06-01,147.6,0.3,1.2,0.525,True,list price (unchanged per price_history or not checked)

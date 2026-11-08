@@ -65,7 +65,7 @@ def load_price_history():
 def price_basis(r, history):
     """Word the price basis from what research/data/price_history.json says about this model."""
     basis = r["price_basis"]
-    if basis == OVERRIDE:
+    if basis == OVERRIDE or basis.startswith("third-party host price ("):
         return basis
     assert basis == "list price (unchanged per price_history or not checked)", (r["model"], basis)
     h = history.get(r["model"])

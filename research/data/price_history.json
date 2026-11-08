@@ -171,13 +171,16 @@
    "launch_date": "2026-04-24",
    "price_2025_11_07": "not released",
    "price_2026_05_07": "$0.14/$0.28",
-   "price_2026_11_07": "retired (alias served by V4.1-Flash-1017 at $0.30/$1.20 peak, $0.15/$0.60 off-peak)",
-   "changes": "Launch flat $0.14/$0.28. 2026-08-16 16:00 UTC: peak/off-peak introduced, $0.44/$1.32 peak, $0.22/$0.66 off-peak (InfoWorld 2026-08-13). V4.1 Flash 2026-09-09; V4.1-Flash-1017 2026-10-17; V4-Flash now retired, billed at Flash price. Retirement date unknown.",
+   "price_2026_11_07": "$0.09/$0.18 (third-party host: DeepInfra; first-party endpoint retired)",
+   "changes": "Launch flat $0.14/$0.28. 2026-08-16 16:00 UTC: peak/off-peak introduced, $0.44/$1.32 peak, $0.22/$0.66 off-peak (InfoWorld 2026-08-13). V4.1 Flash 2026-09-09; V4.1-Flash-1017 2026-10-17; V4-Flash now retired, billed at Flash price. Retirement date unknown. Open weights: still served by third-party hosts; cheapest reputable host checked 2026-11-08 is DeepInfra at $0.09/$0.18 (FP8, standard tier), confirmed on its model and pricing pages and on OpenRouter's endpoint list (14 hosts).",
    "first_party": true,
    "urls": [
     "https://api-docs.deepseek.com/quick_start/pricing/",
     "https://www.infoworld.com/article/4209439/deepseek-raises-some-v4-prices-by-more-than-10x-as-ai-demand-strains-capacity.html",
-    "https://docs.apiyi.com/en/news/deepseek-price-increase-2026-08.md"
+    "https://docs.apiyi.com/en/news/deepseek-price-increase-2026-08.md",
+    "https://deepinfra.com/deepseek-ai/DeepSeek-V4-Flash",
+    "https://deepinfra.com/pricing",
+    "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4-flash/endpoints"
    ],
    "confidence": "high (May); medium (Nov)"
   },
@@ -343,6 +346,20 @@
     "https://platform.claude.com/docs/en/about-claude/pricing"
    ],
    "confidence": "medium-high"
+  },
+  {
+   "model": "DeepSeek-V3.2",
+   "launch_date": "2025-12-01",
+   "price_2025_11_07": "not released",
+   "price_2026_05_07": "not checked (Epoch lists $0.289/$1.029, apparently a host average)",
+   "price_2026_11_07": "$0.26/$0.38 (third-party host; DeepSeek no longer serves it)",
+   "changes": "Open weights; DeepSeek no longer lists it first-party. Checked 2026-11-08: AtlasCloud fp8 $0.26/$0.38 via OpenRouter, DeepInfra $0.26/$0.38 (fp4) on its own page. A GMICloud listing at $0.2088/$0.3096 carries a 28% discount and looked temporary, so it is not used.",
+   "first_party": false,
+   "urls": [
+    "https://deepinfra.com/deepseek-ai/DeepSeek-V3.2",
+    "https://openrouter.ai/api/v1/models/deepseek/deepseek-v3.2/endpoints"
+   ],
+   "confidence": "medium"
   }
  ],
  "summary": "Saved to C:\\dev\\ai-website\\already-past-us\\research\\data\\price_history.json. Most CSV prices are correct for their dates. OpenAI and Anthropic list prices have not changed since launch. Changes found: Grok 4 Fast was retired on 2026-05-15. Gemini 3 Pro Preview shut down on 2026-03-09, so it was not available at the May snapshot. Grok 4.20 went from $2/$6 to $1.25/$2.50, date of the cut unknown. DeepSeek-V4-Flash was $0.14/$0.28, then rose to $0.44/$1.32 peak on 2026-08-16, and is now retired (the name is served by V4.1-Flash-1017 at $0.30/$1.20 peak). Gemini 4 Argon's $2/$10 is introductory through 2026-11-30, then $4/$20. Kimi K2.5's first-party price was $0.60/$3.00 and it is now deprecated. Qwen3.5-397B first-party is $0.60/$3.60 International, or $0.172/$1.032 in the Global/US region. gpt-oss-120b has no first-party API: DeepInfra is now $0.037/$0.17, and earlier host prices are unverified.",
