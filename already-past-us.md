@@ -107,7 +107,7 @@ We score models with the Epoch Capabilities Index, from the independent research
 
 <!-- CHART: s2-cost-per-question | Optional: cost per question at a fixed GPQA Diamond accuracy over time, cheapest model at each date, log scale (Epoch "plunging price of thought" data) | external: github.com/droodman/inference-cost output/slides/Figure 2.csv (not yet in research/data; download and verify before plotting) -->
 
-**What these numbers leave out:**
+**Why price per token is an incomplete comparison:**
 - Token use varies: Artificial Analysis, an independent testing firm, found that one model, Claude Opus 5.5, costs about 10 times more per task when told to think hardest than when told to think least.[^s2-effort]
 - Token sizes differ: Anthropic says its newer models split the same text into about 30% more tokens, so Haiku 5.5 costs a little more than its $0.20 suggests.[^s2-tokenizer]
 - Prices change: each of the three dates uses the list prices in force then, not today's.[^s2-hist]
