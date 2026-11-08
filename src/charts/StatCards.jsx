@@ -153,7 +153,7 @@ export default function StatCards() {
   return (
     <Figure
       id="s0-cards"
-      subtitle="Two results where AI is past the best humans, each with the fact that limits it, and one where it is not, with its growth since launch."
+      subtitle="Two results where AI has beaten the best humans, and one where it still falls well short. Each card ends with the catch, or with how fast it is changing."
       caveat="The ICPC result is OpenAI's own account; we found no ICPC statement on it. The Remote Labor Index publishes no confidence intervals."
       source="OpenAI researchers (ICPC, IOI); arXiv:2605.20695; Scale AI and Center for AI Safety, Remote Labor Index"
       notes={NOTE_IDS}

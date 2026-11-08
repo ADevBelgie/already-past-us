@@ -167,3 +167,7 @@ Reader feedback: the numbered source chips in the running text help readers who 
 ## Review comment: "fails" means working alone (8 November 2026)
 
 Reader comment on the subtitle: say that the freelance result is for AI working fully on its own. The Remote Labor Index scores an agent's own deliverable against the human freelancer's, with no human help, so the subtitle, the s0 summary sentence, the s0 stat card and the s4 "Below humans" line now say "on its own"; the page description in index.html matches the subtitle.
+
+## Review comment: opening stat-card subtitle (8 November 2026)
+
+Reader comment: the subtitle of the opening cards read badly. "Two results where AI is past the best humans, each with the fact that limits it, and one where it is not, with its growth since launch" is now "Two results where AI has beaten the best humans, and one where it still falls well short. Each card ends with the catch, or with how fast it is changing."
