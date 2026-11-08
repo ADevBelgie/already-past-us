@@ -255,3 +255,7 @@ The s1 sentence now gives levels instead of point changes: "the share saying AI 
 ## Review comment: s1 forecasters paragraph shortened (8 November 2026)
 
 Rewritten from 107 to 81 words: "Forecasters were too cautious as well. In 2022 the Forecasting Research Institute (FRI) asked top forecasters and AI experts about four AI tests. On average, they gave what actually happened only a 10% to 25% chance. They expected AI to win gold at the International Mathematical Olympiad (IMO) around 2030 to 2035; it did in July 2025. A newer FRI panel expected about 14% on a hard coding-contest test by the end of 2026; the best AI had 53.8% by May." The exact 9.7% (superforecasters) and 24.6% (experts) and the definition of superforecasters moved to the s1 expert note; the definition was also added at the s4 "Level with the best" line, which no longer follows a Brief-mode definition.
+
+## Review comment: drop the 10%-25% sentence from the Brief (8 November 2026)
+
+"On average, they gave what actually happened only a 10% to 25% chance" was wordy for the Brief and is gone; the paragraph now reads "In 2022 the Forecasting Research Institute (FRI) asked top forecasters and AI experts about AI milestones, including when AI would win gold at the International Mathematical Olympiad (IMO). They expected around 2030 to 2035; it happened in July 2025." The 9.7% and 24.6% averages, with footnote s1-xpt, now live in the s1 expert note.
