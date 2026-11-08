@@ -658,7 +658,7 @@ function Dashboard({ width }) {
           </Panel>
           <Panel
             title="OpenAI: agent time per human workday"
-            measure="Agent working time logged across OpenAI's research organisation for every human workday (8-hour days)."
+            measure="For every 8-hour day a human researcher at OpenAI works, how many 8-hour days its AI agents run in total, adding up agents running at the same time. 3.1 means about 25 hours of agent running time per human workday. It measures time, not the share of the work AI does."
             who="OpenAI"
             tag="vendor"
             footnote="s6-openai"

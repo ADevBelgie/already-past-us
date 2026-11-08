@@ -405,3 +405,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s6 training-code speedup: say what is sped up (review comment)
 - Dashboard panel and the s6 Brief sentence now explain the test: the model is given slow AI-training code and asked to make it run faster; the score is how many times faster it runs afterwards (skilled person: about 4 times in four to eight hours; footnote s6-speedup).
+
+## 2026-11-08 — s6 dashboard: what OpenAI's agent-workdays mean (review comment)
+- OpenAI panel description now explains the ratio in plain words (agent running time, summed across agents running at once, per 8-hour human workday; 3.1 ≈ 25 agent-hours per human day) and says it measures time, not the share of work done by AI (footnote s6-openai).
