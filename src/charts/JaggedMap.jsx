@@ -452,7 +452,7 @@ export default function JaggedMap() {
   return (
     <Figure
       id="s4-jagged-map"
-      title="AI leads mostly on short tasks with an answer key, and lags on long, open-ended or physical work"
+      title="AI leads mostly on short tasks with one clear right answer, and lags on long, open-ended or physical work"
       subtitle="Twelve tests of AI, placed on five steps from far below humans to beyond the best humans. Dot colour shows who checked each result. Each row also says who or what AI was compared with."
       legend={
         <>

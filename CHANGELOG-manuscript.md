@@ -362,3 +362,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s4 opening sentence (review comment)
 - Replaced the saw-blade metaphor with a plain, shorter sentence: "Tested against people, AI is beyond the best humans at some tasks and far below them at others."
+
+## 2026-11-08 — s4 "answer key" (review comment)
+- Jagged-map chart title and the matching s4 sentence: "with an answer key" became "with one clear right answer".
