@@ -235,3 +235,7 @@ Removed "Every number carries a tag saying who measured it." from the end of the
 ## Review comment: s1 agent-use sentence shortened (8 November 2026)
 
 "Free users also do less: 11% of free-only users had used an AI agent in the past week, against 39% of those with paid access" is now "Paying users also do more: 39% had used an AI agent in the past week, against 11% of free users."
+
+## Review comment: s1 Gallup sentence reworded (8 November 2026)
+
+"…Americans rated AI worse than people at every task they were asked about, as they had in 2023" is now "…Americans still rated AI worse than people at every task on the list, just as in 2023."
