@@ -15,12 +15,18 @@ const PRICE_TEST = H.price_test // 4
 
 const X_DOMAIN = [0.05, 100]
 const Y_DOMAIN = [130, 172]
+// The May 2027 estimate view needs room below 5 cents and above 172 (footnote s2-projection).
+const PROJ = H.projection
+const X_DOMAIN_PROJ = [0.03, 100]
+const Y_DOMAIN_PROJ = [130, 182]
+const cents = v => `${Math.round(v * 100)}¢`
 
 const VIEW_OPTIONS = [
   { value: '2025-11-07', label: 'A year ago', short: 'Year ago' },
   { value: '2026-05-07', label: 'Six months ago', short: '6 months' },
   { value: '2026-11-07', label: 'Today', short: 'Today' },
   { value: 'all', label: 'All three', short: 'All three' },
+  { value: 'proj', label: 'May 2027 (estimate)', short: '2027?' },
 ]
 
 // Models named in the manuscript's two tests (s2-cheaper, s2-better) or as the top model (s2-top).
@@ -59,7 +65,7 @@ function stepPath(points, x, y) {
   if (!points.length) return ''
   let d = `M${x(points[0].blended)},${y(points[0].eci)}`
   for (let i = 1; i < points.length; i++) d += `H${x(points[i].blended)}V${y(points[i].eci)}`
-  return d + `H${x(X_DOMAIN[1])}`
+  return d + `H${x(x.domain()[1])}`
 }
 
 function labelGeom(pos, cx, cy, r) {
@@ -124,12 +130,14 @@ function Chart({ width, view }) {
   const iw = Math.max(10, width - m.left - m.right)
   const ih = height - m.top - m.bottom
 
-  const x = useMemo(() => scaleLog().domain(X_DOMAIN).range([0, iw]), [iw])
-  const y = useMemo(() => scaleLinear().domain(Y_DOMAIN).range([ih, 0]), [ih])
+  const proj = view === 'proj'
+  const x = useMemo(() => scaleLog().domain(proj ? X_DOMAIN_PROJ : X_DOMAIN).range([0, iw]), [iw, proj])
+  const y = useMemo(() => scaleLinear().domain(proj ? Y_DOMAIN_PROJ : Y_DOMAIN).range([ih, 0]), [ih, proj])
 
   const all = view === 'all'
-  const shownSnaps = all ? SNAPS : SNAPS.filter(s => s.date === view)
-  const ghostSnaps = all ? [] : SNAPS.filter(s => s.date !== view)
+  const snapView = proj ? SNAPS[2].date : view // the estimate view shows today's frontier as its base
+  const shownSnaps = all ? SNAPS : SNAPS.filter(s => s.date === snapView)
+  const ghostSnaps = all ? [] : SNAPS.filter(s => s.date !== snapView)
   const r = narrow ? 4.5 : 4
   const hitR = narrow ? 13 : 9
 
@@ -146,8 +154,8 @@ function Chart({ width, view }) {
     return out.sort((a, b) => (a.frontier - b.frontier) || a.snapshot.localeCompare(b.snapshot))
   }, [view]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const yTicks = (narrow ? [130, 140, 150, 160, 170] : [130, 135, 140, 145, 150, 155, 160, 165, 170]).filter(t => t !== ECI_TEST)
-  const xTicks = tiny ? [0.1, 1, 10, 100] : [0.1, 0.3, 1, 3, 10, 30, 100]
+  const yTicks = (narrow ? [130, 140, 150, 160, 170, ...(proj ? [180] : [])] : [130, 135, 140, 145, 150, 155, 160, 165, 170, ...(proj ? [175, 180] : [])]).filter(t => t !== ECI_TEST)
+  const xTicks = tiny ? [0.1, 1, 10, 100] : [...(proj ? [0.03] : []), 0.1, 0.3, 1, 3, 10, 30, 100]
   const xTickLabel = t => (t < 1 ? `$${t.toFixed(2)}` : `$${t}`)
 
   const x150 = [CROSS_150[SNAPS[0].date].price, CROSS_150[SNAPS[2].date].price]
@@ -166,6 +174,19 @@ function Chart({ width, view }) {
     ...yTicks.map(t => textBox(-6, y(t) + 4, 'end', String(t))),
   ]
   if (all) obstacles.push(textBox(x(x150[1]) + 8, y(ECI_TEST) + 15, 'start', arrowLabel, 12.5))
+  const pp = PROJ.price_at_eci_test, pe = PROJ.eci_at_price_test
+  const projPriceText = `May 2027: ${cents(pp.low)}-${cents(pp.high)}`
+  const projEciText = `May 2027: ${Math.round(pe.low)}-${Math.round(pe.high)}`
+  // The ECI 150 label sits above the line on wide charts and below it on compact ones: take the other side.
+  const projPriceY = y(ECI_TEST) + (compact ? -10 : 20)
+  if (proj) {
+    obstacles.push(
+      textBox(x(pp.low), projPriceY, 'start', projPriceText, 12),
+      textBox(x(PRICE_TEST) - 9, y(pe.high) + 4, 'end', projEciText, 12),
+      { x0: x(pp.low), x1: x(pp.high), y0: y(ECI_TEST) - 6, y1: y(ECI_TEST) + 6 },
+      { x0: x(PRICE_TEST) - 6, x1: x(PRICE_TEST) + 6, y0: y(pe.high), y1: y(pe.low) },
+    )
+  }
   if (all && !compact) {
     const by = y((y4[0] + y4[1]) / 2 - 2.5)
     obstacles.push(textBox(x(PRICE_TEST) - 6, by, 'end', 'best score', 12.5), textBox(x(PRICE_TEST) - 6, by + 14, 'end', 'for $4 or less', 12.5))
@@ -219,8 +240,9 @@ function Chart({ width, view }) {
   const activeDot = tip.active ? dots.find(d => keyOf(d) === tip.active) ?? null : null
   const halo = { stroke: C.paper, strokeWidth: 3, paintOrder: 'stroke', strokeLinejoin: 'round' }
 
-  const summary =
-    `Step lines show the highest Epoch Capabilities Index score available at or below each blended list price on ${SNAPS.map(s => s.long).join(', ')}; ` +
+  const summary = proj
+    ? `Estimate for May 2027, if nothing changes or if the past year's pace continues: the cheapest model scoring ${ECI_TEST} or more would cost between ${cents(pp.low)} and ${cents(pp.high)} per million tokens (today ${cents(pp.high)}), and the best score at $${PRICE_TEST} or less would be between ${Math.round(pe.low)} and ${Math.round(pe.high)} (today ${Math.round(pe.low)}). Rough estimates, not data.`
+    : `Step lines show the highest Epoch Capabilities Index score available at or below each blended list price on ${SNAPS.map(s => s.long).join(', ')}; ` +
     `the cheapest model scoring ${ECI_TEST} or more fell from ${fmt.usd(x150[0])} to ${fmt.usd(x150[1])}, ` +
     `and the best score at $${PRICE_TEST} or less rose from ${Math.round(y4[0])} to ${Math.round(y4[1])}.`
 
@@ -228,6 +250,10 @@ function Chart({ width, view }) {
     <div className="fs-chart">
       <svg {...svgSize(width, height)} role="group" aria-label={summary}>
         <defs>
+          <pattern id="fs-hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <rect width="5" height="5" fill={C.paper} />
+            <line x1="0" y1="0" x2="0" y2="5" stroke={C.ink3} strokeWidth="2" />
+          </pattern>
           <marker id="fs-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0,1 L9,5 L0,9" fill="none" stroke={C.ink} strokeWidth="1.6" />
           </marker>
@@ -319,6 +345,22 @@ function Chart({ width, view }) {
             </g>
           ))}
 
+          {/* May 2027 estimate: two hatched ranges, never a fourth step line (footnote s2-projection) */}
+          {proj && (
+            <g aria-hidden="true">
+              <rect
+                x={x(pp.low)} y={y(ECI_TEST) - 5} width={x(pp.high) - x(pp.low)} height={10}
+                fill="url(#fs-hatch)" stroke={C.ink3} strokeDasharray="3 2" opacity={0.9}
+              />
+              <text x={x(pp.low)} y={projPriceY} fontSize={12} fill={C.ink} fontWeight={600} {...halo}>{projPriceText}</text>
+              <rect
+                x={x(PRICE_TEST) - 5} y={y(pe.high)} width={10} height={y(pe.low) - y(pe.high)}
+                fill="url(#fs-hatch)" stroke={C.ink3} strokeDasharray="3 2" opacity={0.9}
+              />
+              <text x={x(PRICE_TEST) - 9} y={y(pe.high) + 4} textAnchor="end" fontSize={12} fill={C.ink} fontWeight={600} {...halo}>{projEciText}</text>
+            </g>
+          )}
+
           {/* model dots */}
           {dots.map(d => {
             const s = SNAP_BY_DATE[d.snapshot]
@@ -366,7 +408,7 @@ function Chart({ width, view }) {
   )
 }
 
-function Readout() {
+function Readout({ view }) {
   const [c1, c2, c3] = H.cheaper
   const [b1, b2, b3] = H.better
   const may = BY_SNAP[b2.snapshot]
@@ -388,6 +430,14 @@ function Readout() {
               <span className="fs-readout__who">{c.models.slice().reverse().join(' or ')}</span>
             </li>
           ))}
+          {view === 'proj' && (
+            <li className="fs-readout__proj">
+              <span className="fs-sw fs-sw--hatch" aria-hidden="true" />
+              <span className="fs-readout__when">May 2027?</span>
+              <strong>{cents(PROJ.price_at_eci_test.low)}-{cents(PROJ.price_at_eci_test.high)}</strong>
+              <span className="fs-readout__who">estimate</span>
+            </li>
+          )}
         </ol>
         <p className="fs-readout__result">About {Math.round(H.cheaper_ratio)} times cheaper in a year.</p>
       </div>
@@ -406,6 +456,14 @@ function Readout() {
               </span>
             </li>
           ))}
+          {view === 'proj' && (
+            <li className="fs-readout__proj">
+              <span className="fs-sw fs-sw--hatch" aria-hidden="true" />
+              <span className="fs-readout__when">May 2027?</span>
+              <strong>{Math.round(PROJ.eci_at_price_test.low)}-{Math.round(PROJ.eci_at_price_test.high)}</strong>
+              <span className="fs-readout__who">estimate</span>
+            </li>
+          )}
         </ol>
         <p className="fs-readout__result">GPT-6.1 Sol sits at exactly $4.00.</p>
       </div>
@@ -464,11 +522,14 @@ export default function FrontierSnapshots() {
     <div className="fs-legend">
       <SegmentedResponsive value={view} onChange={setView} />
       <div className="fs-keys">
-        {(view === 'all' ? SNAPS : SNAPS.filter(s => s.date === view)).map(s => (
+        {(view === 'all' ? SNAPS : SNAPS.filter(s => s.date === (view === 'proj' ? SNAPS[2].date : view))).map(s => (
           <LegendItem key={s.date} color={C[s.key]} shape="line" label={`${s.long} (${s.label.toLowerCase()})`} />
         ))}
         {view !== 'all' && <LegendItem color={C.ink3} hollow label="Other models that date" />}
         {view !== 'all' && <LegendItem color={C.rule} shape="line" dashed label="Other dates" />}
+        {view === 'proj' && (
+          <span className="fs-key-proj"><span className="fs-sw fs-sw--hatch" aria-hidden="true" />May 2027 range: from &ldquo;nothing new&rdquo; to &ldquo;the past year&rsquo;s pace continues&rdquo; (estimate)</span>
+        )}
       </div>
     </div>
   )
@@ -478,14 +539,16 @@ export default function FrontierSnapshots() {
       title="A year on, the cheapest GPT-5-level AI costs about 17 times less, and $4 per million tokens buys an index score of 169, not 150"
       subtitle="Each line is one date: the best Epoch Capabilities Index (ECI) score you could buy at or below each price on that day. Prices are list prices then, in dollars per million tokens, assuming three tokens read per token written. Each step along the price axis is a multiple, not a fixed amount."
       legend={legend}
-      notes={['s2-cheaper', 's2-better', 's2-top', 's2-hist', 's2-tokenizer', 's2-eci', 's2-blend']}
+      notes={['s2-cheaper', 's2-better', 's2-top', 's2-hist', 's2-tokenizer', 's2-eci', 's2-blend', ...(view === 'proj' ? ['s2-projection'] : [])]}
       source="Epoch AI, Epoch Capabilities Index (scores as of 7 Nov 2026); company list prices (some open-weight prices appear to be third-party host prices); our calculation"
-      caveat="All three dates use Epoch's 7 November 2026 scores, so older models are scored on today's scale. Scores carry uncertainty of about ±2-3 points, so smaller gaps are noise. Price per token ignores how many tokens a model uses to reach an answer."
+      caveat={view === 'proj'
+        ? "The May 2027 ranges are our rough estimate, not data. Each runs from today's value (if no cheaper or better model arrives) to where the past year's pace would lead in six months. Three dates are too few to measure a steady trend, and list prices can also rise."
+        : "All three dates use Epoch's 7 November 2026 scores, so older models are scored on today's scale. Scores carry uncertainty of about ±2-3 points, so smaller gaps are noise. Price per token ignores how many tokens a model uses to reach an answer."}
     >
       {width => (
         <>
           <Chart width={width} view={view} />
-          <Readout />
+          <Readout view={view} />
           <DataTable />
         </>
       )}

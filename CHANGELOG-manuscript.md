@@ -411,3 +411,8 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s6 thresholds: AI already speeds up work (review comment)
 - s6 Brief: the thresholds sentence now says AI is already speeding up the labs' work, and that the thresholds are for a much bigger speed-up (Anthropic's: a doubling of its normal rate of progress, footnote s6-rsp). Dashboard strip heading reworded to match.
+
+## 2026-11-08 — s2 six-month estimate (review comment)
+- New Brief paragraph "Six months from now?" and footnote s2-projection (Our calculation): by about May 2027, GPT-5-level AI between about 5 cents (past year's pace continues) and 20 cents (nothing cheaper arrives); best score at $4 or less between 169 and about 178. Epoch AI's published rates (13x a year, slowing to 4.7x for older levels; 14 ECI points a year) fall inside both ranges.
+- Chart: a fifth view, "May 2027 (estimate)", shows today's frontier plus two hatched ranges (never a fourth line), with its own caveat, legend item and readout rows. Numbers computed and asserted in scripts/data/build_frontier_snapshots.py (headlines.projection).
+- Method from a research workflow (trend fit, published forecasts, adversarial review); dropped from the agents' proposal: an unverified 90% interval for Epoch's 14-points rate, and a claim that big labs never cut list prices.

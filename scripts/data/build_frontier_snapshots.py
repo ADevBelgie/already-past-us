@@ -196,6 +196,34 @@ def main():
         "price_test": PRICE_TEST,
     }
 
+    # Six-month projection to about 7 May 2027 (footnote s2-projection, "Our calculation", an estimate).
+    # Each range runs from "nothing new arrives" (today's value) to "the past year's pace continues"
+    # for half a year. Epoch's published rates (s2-epoch: ~13x a year at fixed accuracy, slowing to
+    # ~4.7x for older levels; s6-eci: ~14 ECI points a year at the frontier) land inside both ranges.
+    half = lambda year_factor: year_factor ** 0.5
+    p_now, e_now = cheaper[d3][0], better[d3][0]
+    e_year_gain = better[d3][0] - better[d1][0]                      # 18.94 points at <= $4 over the year
+    projection = {
+        "date": "2027-05-07",
+        "label": "May 2027 (estimate)",
+        "footnote": "s2-projection",
+        "price_at_eci_test": {
+            "high": p_now,                                           # no cheaper model arrives
+            "low": round(p_now / half(ratio), 4),                    # past year's 17.2x pace continues
+            "epoch_avg": round(p_now / half(13), 4),                 # Epoch ~13x a year
+            "epoch_aged": round(p_now / half(4.7), 4),               # Epoch, levels eight quarters old
+        },
+        "eci_at_price_test": {
+            "low": e_now,                                            # no better model at <= $4
+            "high": round(e_now + e_year_gain / 2, 2),               # past year's pace at <= $4 continues
+            "epoch_frontier": round(e_now + 14 / 2, 2),              # Epoch ~14 points a year
+        },
+    }
+    pp, pe = projection["price_at_eci_test"], projection["eci_at_price_test"]
+    assert (pp["low"], pp["epoch_avg"], pp["epoch_aged"]) == (0.0482, 0.0555, 0.0923), pp   # "about 5 cents"; 5.5 and 9 cents
+    assert (pe["high"], pe["epoch_frontier"]) == (178.41, 175.94), pe
+    headlines["projection"] = projection
+
     missing_ci = sorted({m["model"] for m in models if m["eci_lo"] is None})
     out = {
         "generated_by": "scripts/data/build_frontier_snapshots.py",

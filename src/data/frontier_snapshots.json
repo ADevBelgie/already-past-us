@@ -79,7 +79,23 @@
    }
   ],
   "eci_test": 150.0,
-  "price_test": 4.0
+  "price_test": 4.0,
+  "projection": {
+   "date": "2027-05-07",
+   "label": "May 2027 (estimate)",
+   "footnote": "s2-projection",
+   "price_at_eci_test": {
+    "high": 0.2,
+    "low": 0.0482,
+    "epoch_avg": 0.0555,
+    "epoch_aged": 0.0923
+   },
+   "eci_at_price_test": {
+    "low": 168.94,
+    "high": 178.41,
+    "epoch_frontier": 175.94
+   }
+  }
  },
  "models_without_interval": [
   "GPT-5"
@@ -874,7 +890,7 @@
    "price_out": 1.029,
    "blended": 0.474,
    "open_weights": true,
-   "price_basis": "list price (not checked against price history)",
+   "price_basis": "third-party host price (not confirmed in price history)",
    "source": "research/data/frontier_snapshots.csv; ECI and interval: research/data/raw/eci_scores.csv",
    "footnotes": [
     "s2-eci",
