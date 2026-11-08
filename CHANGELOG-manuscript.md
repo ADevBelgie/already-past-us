@@ -311,3 +311,7 @@ Each row's second line now reads "Asked <when> · for <deadline>" (e.g. "Asked N
 ## Review comment: GPT-5 release date (8 November 2026)
 
 s2 now says "GPT-5 (released August 2025) sits at 150"; release date 7 August 2025, as in research/data/frontier_epoch.csv.
+
+## Review comment: say why the chart is not cost per task (8 November 2026)
+
+The "A second view: cost per task" paragraph under the s2 chart now says cost per task would be the better measure, and why the chart cannot use it: no source measured it the same way across the year; Artificial Analysis changed its test several times in 2026, its tasks now use far more tokens (median 35k to 59k output tokens per task, v4.3 to v5, per its v5 announcement, added to footnote s2-aa-versions), and its current version does not score most late-2025 models such as GPT-5. Epoch's measurement follows as "the closest long-run evidence". Checked while editing: the v5 announcement does not itself say per-task costs are incomparable across versions (a research note had claimed it did); the footnote keeps that as our inference.
