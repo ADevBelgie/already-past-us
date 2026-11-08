@@ -158,7 +158,7 @@ The total bill is clearly rising. Amazon, Microsoft, Alphabet and Meta expect to
 
 ## 3. How fast AI is improving, and whether it is speeding up {#s3}
 
-METR publishes the most-quoted measure of AI progress: the "time horizon". Take a set of software tasks, time how long each takes a skilled human, then find the task length at which an AI agent succeeds half the time. The horizon measures how hard a task is, in human working time, not how long the AI runs on its own.[^s3-def]
+The most-quoted measure of AI progress is METR's "time horizon": how long a software task can be, measured in a skilled person's working time, before an AI agent fails at it more often than it succeeds. A 2-hour horizon means the AI completes about half of the tasks that take a person two hours. It measures how hard the tasks are, not how long the AI works.[^s3-def]
 
 On that measure, GPT-4, the best model of March 2023, managed tasks of about 4 minutes. OpenAI's o3 reached about 2 hours in April 2025, GPT-5 about 3.4 hours that August, and Claude Opus 4.6 about 12 hours in February 2026.[^s3-arc] An early version of Claude Mythos Preview, tested in early 2026, scored about 17 hours. METR's own estimate for the leading internal model of that period is "Likely ≥16h", about two working days.[^s3-mythos]
 

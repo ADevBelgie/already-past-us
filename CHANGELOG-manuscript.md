@@ -327,3 +327,7 @@ The s2 "A second view: cost per task" paragraph is cut to three sentences: "Pric
 ## Review comment: section 2 tightened for the Brief (8 November 2026)
 
 Whole-section pass on s2's Brief text (526 to 458 words) and the frontier chart's title, subtitle and caveat. No figures, dates or footnotes changed; each paragraph keeps its claims, in fewer and plainer sentences (e.g. the three-step "same capability, less money" sentence is now one: "$3.44 … in November 2025 (GPT-5 itself), $1.13 in May 2026 (Gemini 3 Flash) and $0.20 today (GPT-6 Luna or Claude Haiku 5.5): about 17 times cheaper in a year"). The ±2-3 point credible-interval detail left the chart caveat; it stays in the "How the frontier is built" expert note.
+
+## Review comment: s3 time-horizon definition reworked (8 November 2026)
+
+The s3 opening now reads: "The most-quoted measure of AI progress is METR's 'time horizon': how long a software task can be, measured in a skilled person's working time, before an AI agent fails at it more often than it succeeds. A 2-hour horizon means the AI completes about half of the tasks that take a person two hours. It measures how hard the tasks are, not how long the AI works." The procedural description ("take a set of tasks, time them, find the length…") gave way to a definition plus a worked example.
