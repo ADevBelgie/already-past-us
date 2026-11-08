@@ -32,7 +32,7 @@ const UNCONFIRMED_HEADING = 'Level with the best, if confirmed'
 // GenCast sits in the rightmost column but under its own s4 heading: it was compared with a
 // physics-based computer model, not with people. A row's `heading` becomes its tier_label and is
 // the heading its footnote must sit under; `vs_machine` marks a comparison with a machine.
-const MACHINE_HEADING = 'Beyond the best non-AI method'
+const MACHINE_HEADING = 'Improving on the best known algorithms'
 
 // Who AI was compared with. The manuscript and its expert notes stress that several right-hand
 // dots are not comparisons with the best humans.

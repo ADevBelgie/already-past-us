@@ -365,3 +365,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s4 "answer key" (review comment)
 - Jagged-map chart title and the matching s4 sentence: "with an answer key" became "with one clear right answer".
+
+## 2026-11-08 — s4 weather heading (review comment)
+- "Beyond the best non-AI method" became "Improving on the best known algorithms" in the s4 text and the jagged-map tier label (build_jagged_map.mjs, jagged_map.json regenerated).

@@ -248,7 +248,7 @@
       "id": "weather",
       "domain": "Weather ensembles",
       "tier": 4,
-      "tier_label": "Beyond the best non-AI method",
+      "tier_label": "Improving on the best known algorithms",
       "confirmed": true,
       "vs_machine": true,
       "compared_with": "a physics model",
