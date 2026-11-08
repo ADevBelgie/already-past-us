@@ -381,3 +381,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 ## 2026-11-08 — s4 forecasting: name the system (review comment)
 - "the best AI forecasters" → "the best AI forecaster", plus a plain sentence that it is Cassi, a system that searches the web and combines several models, not a single model.
 - Footnote s4-forecast: adds FRI's description of Cassi (multi-stage pipeline, retrieval, ensemble of models, a final LLM; underlying models not named). Checked against the FRI post on 8 Nov 2026.
+
+## 2026-11-08 — s4 closing paragraph wording (review comment)
+- "Most dots on the right / on the left" became "Most tasks where AI is superior / where it is behind".
