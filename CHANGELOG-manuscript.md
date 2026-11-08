@@ -219,3 +219,7 @@ The s0 sentence no longer names Noga Alon and Tim Gowers: "nine of them publishe
 ## Review comment: drop the tag sentence from s0 (8 November 2026)
 
 Removed "Every number carries a tag saying who measured it." from the end of the s0 summary paragraph; the hero legend above already says it.
+
+## Review comment: s1 opening sentence (8 November 2026)
+
+"Most people meet AI through a free app." is now "Most people only use the free versions of AI apps."
