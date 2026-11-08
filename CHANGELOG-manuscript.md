@@ -275,3 +275,7 @@ Reader comment: too in-depth for the Brief. The paragraph is now "Not every fore
 ## Review comment: forecast chart title (8 November 2026)
 
 The s1 forecast-vs-actual chart title is now "Most of these forecasts underestimated AI progress, but not all of them" (was "…came in below the outcome, but not all of them").
+
+## Review comment: forecast chart subtitle (8 November 2026)
+
+Shortened to "What forecasters predicted for seven AI questions, and what happened. Most rows are test scores; the biosecurity row is the share of students who finished the tasks with AI help." The still-open question no longer needs a mention here: the chart labels it "Not yet resolved (measured in hours)".

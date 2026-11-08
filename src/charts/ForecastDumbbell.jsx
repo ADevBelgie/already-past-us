@@ -57,7 +57,7 @@ export default function ForecastDumbbell() {
     <Figure
       id="s1-forecast-dumbbell"
       title="Most of these forecasts underestimated AI progress, but not all of them"
-      subtitle={`Forecasts and outcomes for ${WORDS[data.rows.length] ?? data.rows.length} questions about AI, in %, plus ${WORDS[data.unresolved.length] ?? data.unresolved.length} still-open question measured in hours. Test rows show the share of problems or tasks solved; the biosecurity row shows the share of science students who completed all three tasks with AI help.`}
+      subtitle={`What forecasters predicted for ${WORDS[data.rows.length] ?? data.rows.length} AI questions, and what happened. Most rows are test scores; the biosecurity row is the share of students who finished the tasks with AI help.`}
       legend={<>
         <LegendItem color={C.ink2} hollow label="Forecast" />
         <LegendItem color={C.rule} shape="line" label="Range across forecaster groups" />
