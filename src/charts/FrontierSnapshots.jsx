@@ -475,12 +475,12 @@ export default function FrontierSnapshots() {
   return (
     <Figure
       id="s2-frontier-snapshots"
-      title="A year on, GPT-5-level AI costs about 17 times less, and $4 per million tokens buys a score of 169 instead of 150"
-      subtitle="Each line shows the best Epoch Capabilities Index (ECI) score you could buy at or below each price on that date. Prices are the list prices then, in dollars per million tokens (log scale)."
+      title="A year on, the cheapest GPT-5-level AI costs about 17 times less, and $4 per million tokens buys an index score of 169, not 150"
+      subtitle="Each line is one date: the best Epoch Capabilities Index (ECI) score you could buy at or below each price on that day. Prices are list prices then, in dollars per million tokens, assuming three tokens read per token written. Each step along the price axis is a multiple, not a fixed amount."
       legend={legend}
       notes={['s2-cheaper', 's2-better', 's2-top', 's2-hist', 's2-tokenizer', 's2-eci', 's2-blend']}
       source="Epoch AI, Epoch Capabilities Index (scores as of 7 Nov 2026); company list prices (some open-weight prices appear to be third-party host prices); our calculation"
-      caveat="All three dates use Epoch's 7 November 2026 scores; gaps under about 3 points are noise. Price per token ignores how many tokens a model uses to reach an answer."
+      caveat="All three dates use Epoch's 7 November 2026 scores, so older models are scored on today's scale. Scores carry uncertainty of about ±2-3 points, so smaller gaps are noise. Price per token ignores how many tokens a model uses to reach an answer."
     >
       {width => (
         <>

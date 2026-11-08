@@ -335,3 +335,7 @@ The s3 opening now reads: "The most-quoted measure of AI progress is METR's 'tim
 ## Review comment: what "falls 13 times a year" means (8 November 2026)
 
 "…the cost of answering a test question at a fixed accuracy, which falls about 13 times a year" is now "…which tracks what it costs to answer a test question at a fixed level of accuracy: each year, that cost drops to about a thirteenth of what it was."
+
+## Section 2 tightening: fixes from the fidelity check (8 November 2026)
+
+An adversarial check of the s2 tightening found one change in meaning and several looser claims; all fixed. Restored: the scope of Google's 32 billion tokens a minute ("through the services it sells to developers", i.e. first-party model APIs); "cheapest" in the chart title; Argon's starting prices and the attribution of "introductory" to Google; "list" prices and "not today's"; "for these models" in the cost-per-task claim; "no maximum" on the ECI; the ±2-3 point reason for the chart's noise threshold and the 3:1 blend in the chart subtitle. Reworded: the Pro-tier sentence no longer implies OpenAI raised Pro prices (one Pro model replaced another; prices did not change); long sentences were split; "effort setting", "snapshot" and "log scale" are explained in plain words.
