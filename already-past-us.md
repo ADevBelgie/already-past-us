@@ -9,7 +9,7 @@ byline: "Arthur Devresse, with Claude"
 
 <!-- CHART: s0-cards | Three stat cards side by side: ICPC 2025 (AI 12/12 vs best human team 11, OpenAI-reported), Erdős 1946 conjecture disproved (checked by nine mathematicians), best AI agent ~21% of real freelance projects (up from 2.5% in Oct 2025); each card shows its counter-fact and a provenance tag linking to the footnote | none (values inline, from footnotes s0-icpc, s0-ioi, s0-erdos, s0-erdos-context, s0-rli, s0-rli-growth) -->
 
-At the 2025 world finals of the top university programming contest (ICPC), OpenAI says its system solved all 12 problems, one more than the best human team.[^s0-icpc] Google DeepMind says its entry solved 10.[^s0-gemini] At the 2025 International Olympiad in Informatics, for secondary-school students, the top 1.5% of contestants (5 of 330) still beat OpenAI's entry.[^s0-ioi]
+At the 2025 world finals of the top university programming contest (ICPC), OpenAI says its system solved all 12 problems, one more than the best human team.[^s0-icpc] Google DeepMind says its entry solved 10.[^s0-gemini] But at a different contest, the 2025 International Olympiad in Informatics (IOI) for secondary-school students, the top 1.5% of contestants (5 of 330) still beat OpenAI's entry.[^s0-ioi]
 
 In May 2026 an OpenAI model disproved Paul Erdős's 1946 "unit distance" conjecture, on how many pairs of points in a plane can be exactly one unit apart. Mathematicians have since built on it: nine of them [published a simpler version](https://arxiv.org/abs/2605.20695),[^s0-erdos] and within weeks humans improved on the AI's construction.[^s0-erdos-context]
 

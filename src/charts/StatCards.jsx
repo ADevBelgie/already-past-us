@@ -176,7 +176,7 @@ export default function StatCards() {
                 </div>
               }
               butLabel="But"
-              but={<>The top {(ioi.value / ioi.of * 100).toFixed(1)}% of human contestants ({ioi.value} of {ioi.of}) still beat OpenAI's entry at the 2025 International Olympiad in Informatics.<FootnoteRef id={ioi.source} /></>}
+              but={<>The top {(ioi.value / ioi.of * 100).toFixed(1)}% of human contestants ({ioi.value} of {ioi.of}) still beat OpenAI's entry at a different contest: the 2025 International Olympiad in Informatics, for secondary-school students.<FootnoteRef id={ioi.source} /></>}
             >
               problems solved by an OpenAI system. The best human team solved {humanSolved.value}.{' '}
               <span className="sc-prov"><TagChip tag={TAG_KEY[aiSolved.tag]} /><FootnoteRef id={aiSolved.source} /></span>

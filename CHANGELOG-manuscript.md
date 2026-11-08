@@ -476,3 +476,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 - Research workflow (12 rows x 2 dates, each placement and source checked by a second agent; 7 entries corrected by the checker) placed every row as it stood on 7 Nov 2025 and 7 May 2026, using only evidence published by then; predecessor tests stand in where today's test did not exist (Humanoid Olympics for robots, ARC-AGI-3 preview, IMO 2025, a 2024 US diagnosis trial, AlphaEvolve for research maths).
 - New expert note "The map 6 and 12 months ago" and 15 new footnotes (s4-h-*), each tagged and dated. Data in research/data/jagged_history.json; build_jagged_map.mjs checks every number against the footnotes and that no evidence postdates its view.
 - JaggedMap.jsx: date buttons; past views show that date's dot, a dashed circle where the row stands today, the dated details in the card, and their own caveat; legend adds Estimate and "Where it stands today" in past views. Checked at desktop and 375px, no console errors.
+
+## 2026-11-08 — s0 ICPC vs IOI made explicit (review comment)
+- The opening paragraph and the ICPC card's "But" line now say the IOI is a different contest (for secondary-school students), so "5 of 330 beat OpenAI" no longer reads as contradicting "12 of 12 at ICPC".
