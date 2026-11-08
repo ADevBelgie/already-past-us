@@ -451,3 +451,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s9 forecast item shortened (review comment)
 - Brief item cut to three short sentences (forecast 3.4 hours, last measurement 3.1 hours in April, trend points far past, METR stopped updating). The full wording (80% of tasks, when forecasters were asked, link to section 1) moved to the "Signpost details" expert note.
+
+## 2026-11-08 — s9 price item: trend, not a predicted reversal (review comment)
+- "Spreading: cheaper still. Stalling: other companies copying Google's price rise" → what the past year's pace implies (about 5 cents by May 2027, section 2's estimate, footnote s2-projection) and that staying near 20 cents would mean the fall has slowed.
