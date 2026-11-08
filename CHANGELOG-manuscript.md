@@ -443,3 +443,8 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s9 forecast item reframed (review comment)
 - The 31 December 2026 METR-forecast check no longer frames a shortfall as the outcome to watch: if the 2024-on trend held, newer models would be far past 3.4 hours, so the questions are by how much and whether METR measures them at all. Footnote s9-leap adds our calculation (about 5x in eight months, roughly 15 hours, assuming the 80% horizon doubles as fast as the 50% one).
+
+## 2026-11-08 — s7 Brief cut by about 70% (review comment)
+- Brief prose 428 → about 130 words: what weights are; no public case of a model directly editing its own weights; the one narrow real form (training on its own output); the November MIT claim (Astra edited another, smaller model; 8% → 48%, mostly a repair); no frontier chatbot learns as people use it; FutureSearch's January 2033 median.
+- Everything else moved unchanged into expert notes: "Four kinds of work on changing models" (new, holds the four-kinds list), "The November post, and what is still hard" (new), plus the existing notes. All 15 s7 footnotes and all 43 weights-matrix passages still present (script re-run OK).
+- Drafted by three agents, judged, checked for fidelity and rules; one fix applied (gloss "frontier (most capable)").
