@@ -287,3 +287,7 @@ Rows with several forecaster groups (FRI's experts and superforecasters; the thr
 ## Review comment: forecast chart caveat (8 November 2026)
 
 Shortened to "These are selected questions. Forecasts that were too low show up sooner than ones that were too high, and the AI Digest forecasters leaned optimistic." The full explanation is in the s1 expert note "Forecasts that came in too high" and footnote s1-xpt.
+
+## Review comment: why a 2025 trial in late 2026 (8 November 2026)
+
+Reader question: is a 2025 trial still the best evidence? It is the most-cited randomised measurement; METR's late-2025 follow-up (published February 2026) is newer but inconclusive, and the redesigned study has no results date. The paragraph now says so: it opens "Faster progress on tests has not yet clearly shown up as faster work. The best-known measurement comes from METR…", dates the first trial "early-2025", and says "A larger follow-up in late 2025, with newer tools, pointed toward a speedup, but METR calls the result 'an unreliable signal' and is redesigning the study."
