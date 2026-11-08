@@ -271,3 +271,7 @@ The s1 sentence now dates the forecast: "A newer FRI panel, asked in late 2025, 
 ## Review comment: s1 "Not every forecast was too low" made Brief-level (8 November 2026)
 
 Reader comment: too in-depth for the Brief. The paragraph is now "Not every forecast was too low. Forecasters overestimated some things too, such as scores on a well-known coding test in 2025 and how much AI would help students with biosecurity tasks. FRI also notes that its method spots forecasts that were too low more easily than ones that were too high." The specifics (survey size and dates, 88% vs 80.9% on SWE-bench Verified, 16–40% vs 5.2% biosecurity uplift, and why FRI's method leans toward underestimates) moved unchanged into a new s1 expert note, "Forecasts that came in too high". The forecast-vs-actual chart right below still shows the numbers.
+
+## Review comment: forecast chart title (8 November 2026)
+
+The s1 forecast-vs-actual chart title is now "Most of these forecasts underestimated AI progress, but not all of them" (was "…came in below the outcome, but not all of them").
