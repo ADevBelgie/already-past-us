@@ -400,12 +400,12 @@ So AI now does much of the hands-on work inside the leading labs. But code share
 
 An AI model is a very large set of numbers, called weights, learned in training. The weights hold what the model knows and how it behaves. Change them and you change the model. An AI that could improve its own weights would be the most direct form of the AI-building-AI loop in [section 6](#s6).
 
-There are four kinds of work on changing models. Only the first touches a model's own weights:
+Work on changing models comes in four kinds. Only the first changes a model's own weights:
 
-- A model trains on material it wrote, so ordinary training updates its own weights. This genuinely "self" kind is real but narrow, as in research systems from 2025 and October 2026.[^s7-self]
-- Networks built to generate weights for other models.[^s7-gen]
-- Direct edits to another model's weights, done since 2022 by algorithms that write facts straight into a model.[^s7-edit]
-- Agents that rewrite their own code, or code used to train them, and leave their weights alone, such as Google DeepMind's AlphaEvolve.[^s7-alphaevolve]
+- Training on its own output: a model trains on material it wrote. Real, but narrow so far.[^s7-self]
+- Weight generators: networks that produce weights for other models.[^s7-gen]
+- Direct edits: algorithms that write facts straight into another model's weights, since 2022.[^s7-edit]
+- Code rewriting: agents that rewrite code, including code used to train them, but leave weights alone, such as Google DeepMind's AlphaEvolve.[^s7-alphaevolve]
 
 We found no public demonstration of a model working out and applying a direct edit to its own weights.
 

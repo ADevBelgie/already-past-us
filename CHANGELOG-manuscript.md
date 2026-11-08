@@ -424,3 +424,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 - New self-report bullet "Labs that release open models": MiniMax (80% of newly committed code, Feb 2026), Alibaba (33 automated self-improvement cycles on Qwen3.8-Max, Sep 2026), Mistral's CEO to the French National Assembly (May 2026); plus Epoch's estimate that open models trail closed ones by about four months (May 2026). Footnotes s6-open-claims, s6-open-gap.
 - Thresholds paragraph: "each lab" → "each of the three big closed labs"; added that only Meta among open-model labs has an AI R&D threshold (and withheld Muse Spark's weights), and FLI (July 2026) found no safety framework at DeepSeek, Z.ai, Alibaba or Mistral. Footnote s6-open-th.
 - From a research workflow with per-source verification (46 verified, 6 rejected); the unofficial DeepSeek transcript is mentioned in the footnote but not used.
+
+## 2026-11-08 — s7 four-kinds list shortened (review comment)
+- Each kind now starts with a short name (training on its own output, weight generators, direct edits, code rewriting) and one plain clause. The "research systems from 2025 and October 2026" detail stays in the expert note (SEAL, MASS). build-weights-matrix.mjs passages updated; weightsMatrix.json regenerated.

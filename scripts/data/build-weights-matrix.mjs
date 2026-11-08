@@ -36,7 +36,7 @@ const cells = [
   {
     row: 'training', col: 'own', kind: 'filled',
     lead: 'The genuinely "self" kind: a model trains on material it wrote, so ordinary training updates its own weights.',
-    leadEvidence: [['ms', 'A model trains on material it wrote, so ordinary training updates its own weights. This genuinely "self" kind']],
+    leadEvidence: [['ms', 'Training on its own output: a model trains on material it wrote.']],
     entries: [
       {
         id: 'seal', name: 'SEAL', who: 'MIT', when: '2025',
@@ -93,19 +93,19 @@ const cells = [
   {
     row: 'edit', col: 'other', kind: 'filled',
     lead: 'Weights written directly, with no training of the model that changes.',
-    leadEvidence: [['ms', 'Direct edits to another model']],
+    leadEvidence: [['ms', 'Direct edits: algorithms that write facts straight into another model']],
     entries: [
       {
         id: 'rome-memit', name: 'ROME and MEMIT', who: 'Algorithms, not AI models', when: 'since 2022',
         text: 'Write facts straight into a model’s weights. MEMIT handles thousands at once.',
         footnotes: ['s7-edit'],
-        evidence: [['ms', "Direct edits to another model's weights, done since 2022 by algorithms that write facts straight into a model."], ['ms', 'The fact-writing algorithms are ROME and MEMIT, from 2022.'], ['ms', 'What was new is that an AI worked out the edit'],['ms', 'It scales to "thousands of associations"']],
+        evidence: [['ms', "Direct edits: algorithms that write facts straight into another model's weights, since 2022."], ['ms', 'The fact-writing algorithms are ROME and MEMIT, from 2022.'], ['ms', 'What was new is that an AI worked out the edit'],['ms', 'It scales to "thousands of associations"']],
       },
       {
         id: 'text-to-lora', name: 'Text-to-LoRA', who: 'Charakorn et al.', when: '2025',
         text: 'A network built to generate add-on weights for another model from a task description. The list above treats weight generators as their own kind. They sit here because the model receiving the weights is not trained.',
         footnotes: ['s7-gen'],
-        evidence: [['ms', 'Networks built to generate weights for other models.'], ['ms', 'The best-known weight generator is Text-to-LoRA'], ['r2', 'Text-to-LoRA (Sakana AI): a hypernetwork generates LoRA adapters for an LLM from a natural-language task description in one forward pass'], ['r2', 'OTHER + learned weight generator.'], ['ms', 'Charakorn et al., "Text-to-LoRA: Instant Transformer Adaption", ICML 2025']],
+        evidence: [['ms', 'Weight generators: networks that produce weights for other models.'], ['ms', 'The best-known weight generator is Text-to-LoRA'], ['r2', 'Text-to-LoRA (Sakana AI): a hypernetwork generates LoRA adapters for an LLM from a natural-language task description in one forward pass'], ['r2', 'OTHER + learned weight generator.'], ['ms', 'Charakorn et al., "Text-to-LoRA: Instant Transformer Adaption", ICML 2025']],
       },
       {
         id: 'mit-csail', name: 'GPT-6 Astra edits Qwen3.5-0.8B', who: 'MIT CSAIL', when: '2 November 2026',
@@ -121,7 +121,7 @@ const cells = [
 const strip = {
   label: 'Rewrites its own code, not its weights',
   lead: 'Agents that change their own code and leave the model’s weights alone.',
-  leadEvidence: [['ms', 'Agents that rewrite their own code, or code used to train them, and leave their weights alone']],
+  leadEvidence: [['ms', 'Code rewriting: agents that rewrite code, including code used to train them, but leave weights alone']],
   entries: [
     {
       id: 'dgm', name: 'Darwin Gödel Machine', who: 'Research preprint', when: 'May 2025',
