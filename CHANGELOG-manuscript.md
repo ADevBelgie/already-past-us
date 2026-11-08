@@ -227,3 +227,7 @@ Removed "Every number carries a tag saying who measured it." from the end of the
 ## Review comment: s1 Reuters sentence reworded (8 November 2026)
 
 "In a nine-country survey published by the Reuters Institute in October 2026, about 18% of people had any paid access to an AI tool" is now "A Reuters Institute survey across nine countries, published in October 2026, found that only about 18% of people use a paid AI tool, either paying themselves or through work or school" (the report: 10% pay themselves, 9% through work or school, 18% together).
+
+## Review comment: s1 OpenAI subscriber sentence reworded (8 November 2026)
+
+"OpenAI's own figures from February 2026 point the same way: more than 50 million consumer subscribers out of more than 900 million weekly ChatGPT users, or about 6%" is now "OpenAI's own figures from February 2026 tell the same story: of more than 900 million people using ChatGPT each week, only about 6% (over 50 million) pay for a subscription."
