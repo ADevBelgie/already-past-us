@@ -464,3 +464,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s9 threshold item: self-reports need confirmation across labs (review comment)
 - Item now says a lab's own declaration is hard to check, and that similar speed-ups at other labs, including Chinese and European ones (about four months behind, Epoch; footnote s6-open-gap), would be more telling. The three revisions and the OpenAI/Google ratings moved to the "Signpost details" expert note.
+
+## 2026-11-08 — s9 young-workers item: trend and expectation (review comment)
+- Reworded; now states the trend (gap 15% at the July 2025 vintage → about 19% with data to June 2026), what the same pace implies (about 21% in data for December 2026; our calculation added to s9-canaries) and what would count as faster or fading.
