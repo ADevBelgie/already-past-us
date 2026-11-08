@@ -215,3 +215,7 @@ The s0 sentence no longer names Noga Alon and Tim Gowers: "nine of them publishe
 ## Review comment: s0 summary sentence reworded (8 November 2026)
 
 "So AI is past the best humans at some narrow tasks with an answer key, and, working on its own, still fails about four in five real freelance jobs" is now two sentences: "So AI already beats the best humans at some narrow tasks that have a clear right answer. Yet working on its own, it still fails about four in five real freelance jobs."
+
+## Review comment: drop the tag sentence from s0 (8 November 2026)
+
+Removed "Every number carries a tag saying who measured it." from the end of the s0 summary paragraph; the hero legend above already says it.
