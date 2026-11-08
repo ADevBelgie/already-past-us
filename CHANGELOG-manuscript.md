@@ -377,3 +377,7 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 ## 2026-11-08 — s4 "Ahead of trained or typical people" paragraph (review comment)
 - Brief paragraph cut to one headline per example (GPQA, Pakistan trial, Waymo); kept Waymo's 95% and the freeway pause. The exact figures (about 70% vs 87%, 71.4% / 42.6% / 82.9%, 270 million miles through June 2026) moved unchanged into the expert note "What the right-hand dots compare against".
 - Closing paragraph: "this saw blade" became "this uneven picture", following the earlier removal of the saw-blade metaphor.
+
+## 2026-11-08 — s4 forecasting: name the system (review comment)
+- "the best AI forecasters" → "the best AI forecaster", plus a plain sentence that it is Cassi, a system that searches the web and combines several models, not a single model.
+- Footnote s4-forecast: adds FRI's description of Cassi (multi-stage pipeline, retrieval, ensemble of models, a final LLM; underlying models not named). Checked against the FRI post on 8 Nov 2026.
