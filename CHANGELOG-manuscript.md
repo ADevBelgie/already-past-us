@@ -343,3 +343,7 @@ An adversarial check of the s2 tightening found one change in meaning and severa
 ## Review comment: s2 caveat list heading (8 November 2026)
 
 "What these numbers leave out:" is now "Why price per token is an incomplete comparison:".
+
+## Review comment: shorter Gemini price-rise sentence (8 November 2026)
+
+Now one sentence: "Some prices are rising: Google will double the price of Gemini 4 Argon on 1 December 2026, ending what it called an introductory price, and of two cheaper Gemini Flash models on 1 January 2027." The exact before-and-after prices stay in footnote s2-argon.

@@ -114,7 +114,7 @@ We score models with the Epoch Capabilities Index, from the independent research
 
 The most capable model did not get steadily more expensive. Between November 2025 and May 2026 its price rose from $41 to $68 per million tokens, as one premium OpenAI "Pro" model replaced another. Today's top scorer, GPT-6 Astra, costs $20, and GPT-6.1 Terra, statistically tied with it, costs $2.[^s2-top]
 
-Some prices are rising. On 1 December 2026 Google will double Gemini 4 Argon's launch price, which it had called introductory: from $2 to $4 per million tokens read and from $10 to $20 per million written. Two cheaper Gemini Flash models double on 1 January 2027.[^s2-argon]
+Some prices are rising: Google will double the price of Gemini 4 Argon on 1 December 2026, ending what it called an introductory price, and of two cheaper Gemini Flash models on 1 January 2027.[^s2-argon]
 
 The total bill is clearly rising. Amazon, Microsoft, Alphabet and Meta expect to spend about $720-740 billion on capital investment in 2026.[^s2-capex] Through the services it sells to developers alone, Google now processes nearly 32 billion tokens a minute, more than four times a year earlier.[^s2-volume] Each unit of capability gets cheaper, and the world buys far more units.
 
