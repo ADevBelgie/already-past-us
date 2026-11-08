@@ -430,3 +430,7 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s8 summary sentence (review comment)
 - "The direction held. Where we put numbers on the future, we were too cautious. We also described three of our own headline figures wrongly." → "It is playing out as we described, but our numbers and estimates were too conservative." (the three misdescribed figures are covered below the table).
+
+## 2026-11-08 — s8 report card: takeaways in Brief, full table in an expert note (review comment)
+- Brief now lists six short takeaways (tests wear out faster; ARC-AGI-3 beyond our range; task-length doubling held but is uncheckable; AI research speed-up, different measure; spending did not slow; three of our figures misdescribed).
+- The full eight-row table moved unchanged into a new expert note, "The full report card" (tables render inside notes; checked at desktop and 375px).

@@ -461,16 +461,27 @@ On 10 July 2026 we published [*Measuring the End of Measurement*](https://measur
 
 It is playing out as we described, but our numbers and estimates were too conservative.
 
-| What we said in July | What happened by November 2026 | Grade |
-|---|---|---|
-| Tests lose half their usefulness in about 8 months, a "conservative" estimate. | A cleaned-up version of the hard coding test SWE-bench Pro was posted in October 2026. It repaired or retired 480 of the original 731 tasks. AI agents already score up to 99.4% on it.[^s8-swev2] | Right, if anything slow |
-| A puzzle-game test, ARC-AGI-3, would move in jumps. AI started below 1% on it at its March 2026 launch. Reaching 30–50% by end-2026 had moved "from implausible toward merely ambitious". | By 2 September, GPT-6 Astra scored 62.7% on the standard setup used by ARC Prize, the group that runs the test ([section 4](#s4)).[^s8-arc3] | Shape right, too cautious |
-| The length of task AI can finish was doubling about every 4 months. | METR's data agrees: about 4 months since 2023, about 3½ months since 2024. But METR says its measurements above 16 hours are unreliable. And on 8 September it stopped updating the page that tracks these figures ([section 3](#s3)).[^s8-metr] | Right, now uncheckable |
-| AI was speeding up AI research by "tens of %". | Using private Anthropic data, METR estimates that Anthropic's models gained capability 1.9 times as fast after October 2025 as before. Across all developers' models, the figure is 1.4 times.[^s8-accel] | Direction right; not the same measure |
-| Big tech holding back on spending could slow the race. | Amazon, Microsoft, Alphabet and Meta expect to spend about $720–740 billion in 2026 on data centres, chips and other equipment ([section 2](#s2)).[^s8-capex] | Not visible |
-| 59.1% was the top "standardized" score on SWE-bench Pro, up from about 46% in ten weeks. | It was one model's score (GPT-5.4, released March 2026). The score of about 46% was Gemini 3.1 Pro's (released February 2026). Scale AI's leaderboard does not say when scores were posted, so the ten-week trend cannot be checked.[^s8-scale] | Misdescribed |
-| 69.2% was a "vendor aggregate". | It was the score Anthropic reported for its own Claude Opus 4.8.[^s8-llmstats] | Misdescribed |
-| GPT-5.6 Sol "reportedly" scored 92.5% on ARC-AGI-2. | ARC Prize verified it on 9 July, a day before we published.[^s8-arc2] | Misdescribed, undersold |
+What held, and what did not:
+
+- Tests wear out even faster than we said. On a cleaned-up version of a hard coding test, posted in October 2026, AI agents already score up to 99.4%.[^s8-swev2]
+- AI moved further than we predicted on the ARC-AGI-3 puzzle test: 62.7% by September, above the 30–50% we had called ambitious for the end of 2026.[^s8-arc3]
+- The length of task AI can finish kept doubling about every 4 months, as we said, but that can no longer be checked.[^s8-metr]
+- AI is speeding up AI research, as we said, though the best estimate now (Anthropic's models improving 1.9 times as fast as before) measures something different from our July figure.[^s8-accel]
+- Spending did not slow the race: Amazon, Microsoft, Alphabet and Meta expect to spend about $720–740 billion in 2026.[^s8-capex]
+- We misdescribed three of our own headline figures. The full report card, with every claim and grade, is in the expert note below.
+
+> **Expert note: The full report card.** Every claim from our July brief, what happened by November 2026, and our grade.
+>
+> | What we said in July | What happened by November 2026 | Grade |
+> |---|---|---|
+> | Tests lose half their usefulness in about 8 months, a "conservative" estimate. | A cleaned-up version of the hard coding test SWE-bench Pro was posted in October 2026. It repaired or retired 480 of the original 731 tasks. AI agents already score up to 99.4% on it.[^s8-swev2] | Right, if anything slow |
+> | A puzzle-game test, ARC-AGI-3, would move in jumps. AI started below 1% on it at its March 2026 launch. Reaching 30–50% by end-2026 had moved "from implausible toward merely ambitious". | By 2 September, GPT-6 Astra scored 62.7% on the standard setup used by ARC Prize, the group that runs the test ([section 4](#s4)).[^s8-arc3] | Shape right, too cautious |
+> | The length of task AI can finish was doubling about every 4 months. | METR's data agrees: about 4 months since 2023, about 3½ months since 2024. But METR says its measurements above 16 hours are unreliable. And on 8 September it stopped updating the page that tracks these figures ([section 3](#s3)).[^s8-metr] | Right, now uncheckable |
+> | AI was speeding up AI research by "tens of %". | Using private Anthropic data, METR estimates that Anthropic's models gained capability 1.9 times as fast after October 2025 as before. Across all developers' models, the figure is 1.4 times.[^s8-accel] | Direction right; not the same measure |
+> | Big tech holding back on spending could slow the race. | Amazon, Microsoft, Alphabet and Meta expect to spend about $720–740 billion in 2026 on data centres, chips and other equipment ([section 2](#s2)).[^s8-capex] | Not visible |
+> | 59.1% was the top "standardized" score on SWE-bench Pro, up from about 46% in ten weeks. | It was one model's score (GPT-5.4, released March 2026). The score of about 46% was Gemini 3.1 Pro's (released February 2026). Scale AI's leaderboard does not say when scores were posted, so the ten-week trend cannot be checked.[^s8-scale] | Misdescribed |
+> | 69.2% was a "vendor aggregate". | It was the score Anthropic reported for its own Claude Opus 4.8.[^s8-llmstats] | Misdescribed |
+> | GPT-5.6 Sol "reportedly" scored 92.5% on ARC-AGI-2. | ARC Prize verified it on 9 July, a day before we published.[^s8-arc2] | Misdescribed, undersold |
 
 > **Expert note: Astra's two ARC-AGI-3 scores.** ARC Prize's 3 September 2026 post (leaderboard entry 2 September) lists two verified GPT-6 Astra scores on ARC-AGI-3: 62.7% at max effort on its standard setup, and 99.9% at high effort on a setup OpenAI supplied. Only the standard-setup score is comparable across providers.[^s8-arc3]
 
