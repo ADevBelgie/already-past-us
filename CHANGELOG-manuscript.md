@@ -251,3 +251,7 @@ Removed "Every number carries a tag saying who measured it." from the end of the
 ## Review comment: Gallup shifts as "went from X to Y" (8 November 2026)
 
 The s1 sentence now gives levels instead of point changes: "the share saying AI does worse went from 68% to 61% for driving, from 62% to 57% for medical advice and from 49% to 43% for financial advice." The article text gives only the changes; the levels come from the data file behind the article's own chart (Datawrapper fcHj9, dataset.csv, read 8 November 2026), now cited in footnote s1-gallup. They agree with the article's 7/6/5-point drops.
+
+## Review comment: s1 forecasters paragraph shortened (8 November 2026)
+
+Rewritten from 107 to 81 words: "Forecasters were too cautious as well. In 2022 the Forecasting Research Institute (FRI) asked top forecasters and AI experts about four AI tests. On average, they gave what actually happened only a 10% to 25% chance. They expected AI to win gold at the International Mathematical Olympiad (IMO) around 2030 to 2035; it did in July 2025. A newer FRI panel expected about 14% on a hard coding-contest test by the end of 2026; the best AI had 53.8% by May." The exact 9.7% (superforecasters) and 24.6% (experts) and the definition of superforecasters moved to the s1 expert note; the definition was also added at the s4 "Level with the best" line, which no longer follows a Brief-mode definition.
