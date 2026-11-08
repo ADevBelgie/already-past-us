@@ -220,7 +220,7 @@ The caveat is large. Anthropic blacked out more than half of the evidence that M
 
 ## 4. The jagged map {#s4}
 
-Put every head-to-head test of AI against people on one line, from "far below humans" to "beyond the best humans", and the line looks like a saw blade.
+Tested against people, AI is beyond the best humans at some tasks and far below them at others.
 
 <!-- CHART: s4-jagged-map | Jagged-frontier dot plot: one row per domain (robotics, ARC-AGI-3, real freelance work, forecasting, IMO 2026, Waymo driving, physician diagnosis on written cases, GPQA Diamond science questions, hurricane tracks, weather ensembles, research math, ICPC programming), placed on a five-step axis from "far below humans" to "beyond the best humans"; dot colour = provenance tag (Verified / Vendor-reported / company claim not officially confirmed, hollow); the weather-ensemble row, compared with a computer model rather than people, gets a distinct marker; hover shows the exact comparison, date and footnote link | src/data/jagged_map.json (built by scripts/data/build_jagged_map.mjs from the s4 footnotes) -->
 
