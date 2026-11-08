@@ -390,3 +390,9 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s5 closing sentence made concrete (review comment)
 - Replaced "Comparing AI with people is still useful, as long as each comparison is reported on its own, not folded into one finish line." with a concrete example from the "Definition of AGI" scores (GPT-5: 57% overall; 10/10 maths, 0/10 long-term memory storage; footnote s5-hendrycks) and a pointer to the section 4 map.
+
+## 2026-11-08 — s4 IMO 2026 paragraph researched and shortened (review comment)
+- Research (8 Nov 2026): no IMO 2026 AI result has been confirmed by the IMO or an independent party. imo-official.org has no statement on AI entries; MathArena has no IMO 2026 evaluation.
+- Correction: our footnote said only Xiaohongshu claimed IMO grading. Huawei also claims it, and its announcement quotes a congratulation from IMO President Gregor Dolinar that the IMO has not published. NVIDIA also says official IMO graders gave its Nemotron 3 Ultra system 30/42. Anthropic's Claude Opus 5 system card reports 42/42 on its own grading.
+- Brief: "Huawei, Xiaohongshu and others reported perfect scores of 42 out of 42 for their AI. The IMO has confirmed none of them. Even if true, it is a tie: 7 of the 666 students also got full marks."
+- Expert note "Caveats on the test-score comparisons" and footnote s4-imo updated with the above; jagged-map row text updated to match.
