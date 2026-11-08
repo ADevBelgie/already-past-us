@@ -368,3 +368,8 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s4 weather heading (review comment)
 - "Beyond the best non-AI method" became "Improving on the best known algorithms" in the s4 text and the jagged-map tier label (build_jagged_map.mjs, jagged_map.json regenerated).
+
+## 2026-11-08 — s3 Brief cut roughly in half (review comment)
+- Brief prose 486 → 246 words. Kept: what the time horizon measures, 4 min (GPT-4) → 12 h (Opus 4.6), the 2024 speed-up (8½ → 3½ months), the 16-hour limit and the frozen leaderboard, and METR's 1.9x with its range, the 1.1x low end and the redaction caveat.
+- Moved to expert notes, unchanged: the 2-hour example, o3/GPT-5/Mythos points, the 80% figures (new note "What the horizon means, and more data points"); the Epoch single-speed-up sentence (refit note); task-suite counts, 16% cheating, Sol 11 h / 270 h ("Beyond the public curve"); internal-data scope, AECI and the 1.4x figure ("What METR's 1.9x rests on"); the 80% attribution and Anthropic's spring 2026 statement (new note "Why the speed-up, and Anthropic's spring view"). All 16 footnotes still referenced.
+- Drafted by three independent agents, judged, then checked for fidelity and rules; one fix applied ("1.1" → "1.1 times").
