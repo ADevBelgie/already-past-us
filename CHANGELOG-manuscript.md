@@ -199,3 +199,7 @@ Wording preference: the Erdős card's "But" line and the s0 sentence now say "wi
 ## Review comment: freelance growth as a percentage (8 November 2026)
 
 The card's growth line now reads "The best score has grown by 750% in 12 months" (computed from s0-cards.json as (8.5 − 1) × 100). Footnote s0-rli-growth adds "an increase of 750% in about 12 months (30 October 2025 to 7 November 2026)".
+
+## Review comment: ICPC caveat out of the Brief text (8 November 2026)
+
+"We found no ICPC statement on it" was too much detail for the Brief's opening paragraph; "OpenAI says" already marks the claim as the company's own. The caveat moved into the s0 expert note ("…submitted its answers to the World Finals local judge; we found no ICPC statement on its result") and stays in the stat cards' caveat line and in footnote s0-icpc.
