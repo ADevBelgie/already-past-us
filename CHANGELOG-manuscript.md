@@ -461,3 +461,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s9 METR task-set item shortened (review comment)
 - "METR's public measure of task length stops at models from April 2026. New tasks, or a second AI company sharing its data, would show outsiders whether progress is speeding up, as METR found inside Anthropic."
+
+## 2026-11-08 — s9 threshold item: self-reports need confirmation across labs (review comment)
+- Item now says a lab's own declaration is hard to check, and that similar speed-ups at other labs, including Chinese and European ones (about four months behind, Epoch; footnote s6-open-gap), would be more telling. The three revisions and the OpenAI/Google ratings moved to the "Signpost details" expert note.
