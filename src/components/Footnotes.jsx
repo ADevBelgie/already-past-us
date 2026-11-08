@@ -172,6 +172,7 @@ export function SectionNotes({ ids }) {
           const fn = footnotes[id]
           return (
             <li key={id} id={`fn-${id}`} value={fn.n}>
+              {fn.claim && <span className="notes__claim">“{fn.claim}”</span>}
               <span className={`tag-chip tag-chip--${tagKey(fn.tag)}`}>{fn.tag}</span>{' '}
               <Md tree={fn.tree} inline />
             </li>

@@ -159,3 +159,7 @@ Author's report: section 7 assumed readers had followed the November 2026 news, 
 10. Other sections: no other section, footnote or the Sources section referred to the old s7 title or framing, so nothing else changed.
 
 Checks: node scripts/data/build-weights-matrix.mjs, node scripts/check-manuscript.mjs and npm run build.
+
+## Brief mode: sources folded into each section (8 November 2026)
+
+Reader feedback: the numbered source chips in the running text help readers who know the provenance tags, not the general readers the Brief is for. In Brief mode the chips are now hidden in the text and in figure bodies (figure source lines and data tables keep them); sources stay in the folded "Sources for this section" list. Each entry in that list now starts with the claim it backs, quoted from the text at its first reference (built by `claimFor` in scripts/manuscript-plugin.mjs). Expert mode is unchanged. No manuscript text changed.

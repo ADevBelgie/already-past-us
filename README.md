@@ -40,6 +40,8 @@ npm run check    # manuscript integrity
 npm run build    # check, client build, SSR build, pre-render into dist/index.html, pre-render check
 ```
 
+Review copy for wording feedback: after `npm run build`, `node scripts/review/make-review-page.mjs` writes `review/already-past-us-review.html` (gitignored), the pre-rendered Brief with inlined CSS and fonts and a "Comment on selection" button. It is published as a private claude.ai artifact with the `comments` capability; comments are read back from there.
+
 ## Updating the data
 
 1. Edit the figure and its footnote in `already-past-us.md`; keep the provenance tag honest.

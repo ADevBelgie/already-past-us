@@ -6,3 +6,6 @@ dist
 # Private review notes on the earlier sites (kept local)
 research/background/
 dist-ssr
+
+# Review copy for wording feedback (built by scripts/review/make-review-page.mjs, published as an artifact)
+review/

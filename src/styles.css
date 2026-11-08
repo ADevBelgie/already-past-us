@@ -301,6 +301,12 @@ a:hover { text-decoration-thickness: 2px; }
 .notes__list li { margin-bottom: 0.7rem; padding: 0.2rem 0.3rem; border-radius: 6px; transition: background 0.6s; }
 .notes__list li::marker { font-family: var(--font-mono); color: var(--ink-3); font-size: 0.75rem; }
 .notes__list li.is-flash { background: var(--accent-soft); }
+/* The claim a source backs, quoted from the text (Brief mode hides the inline chips). */
+.notes__claim { display: block; font-family: var(--font-serif); font-size: 0.92rem; color: var(--ink); margin-bottom: 0.2rem; }
+/* Brief: no source chips in the running text; sources are listed at the end of each section.
+   Figures keep theirs (source lines, data tables) and so do opened expert notes. */
+.layout[data-mode='brief'] .section > :is(p, ul, ol, blockquote, .table-wrap) .fn-wrap,
+.layout[data-mode='brief'] .figure__body .fn-wrap:not(td .fn-wrap) { display: none; }
 
 /* Expert notes */
 .expert { margin: 0 0 1.3rem; border-left: 2px solid var(--rule); padding-left: 1rem; font-family: var(--font-sans); }

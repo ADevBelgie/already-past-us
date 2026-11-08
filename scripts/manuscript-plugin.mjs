@@ -148,6 +148,39 @@ export function compileMarkdown(text) {
   return compact(processor.runSync(processor.parse(linkFootnoteRefs(text))))
 }
 
+// Markdown to plain text, for the short claim excerpts in the source lists.
+const plainText = s => s
+  .replace(/\[\^[^\]]+\]/g, '')
+  .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
+  .replace(/\*\*|__|\*|`/g, '')
+  .replace(/\s+/g, ' ')
+  .trim()
+
+const CLAIM_MAX = 150
+
+/**
+ * The words a footnote backs: the sentence (or table cell, or list item) that holds its first
+ * reference, up to the reference. In Brief mode the inline chips are hidden, so the section's
+ * source list shows this excerpt to say which claim each source supports.
+ */
+function claimFor(text, id) {
+  const at = text.indexOf(`[^${id}]`)
+  if (at < 0) return null
+  let before = text.slice(0, at)
+  // Start of the enclosing line, table cell or list item.
+  const cut = Math.max(before.lastIndexOf('\n'), before.lastIndexOf('|'))
+  // Plain text first, so earlier references and bold labels do not hide a sentence end.
+  before = plainText(before.slice(cut + 1).replace(/^\s*(?:[-*]|\d+\.)\s+/, ''))
+  // Back to the start of the sentence: the last ". " / "? " / "! " / "; " followed by a capital or digit.
+  const ends = [...before.matchAll(/[.?!;:]\s+(?=["“(]?[A-Z0-9$])/g)]
+  const last = ends[ends.length - 1]
+  let s = last ? before.slice(last.index + last[0].length) : before
+  s = s.replace(/[,;:\s]+$/, '')
+  if (!s) return null
+  if (s.length > CLAIM_MAX) s = '…' + s.slice(s.length - CLAIM_MAX).replace(/^\S*\s/, '')
+  return s
+}
+
 /** The whole manuscript, parsed and compiled, ready to serialise. */
 export function compileManuscript(source) {
   const { meta, sections, footnotes, problems } = parseManuscript(source)
@@ -165,9 +198,20 @@ export function compileManuscript(source) {
       return out
     }),
   }))
+  // Excerpt of the claim at each footnote's first reference (sections and blocks in order).
+  const claims = {}
+  for (const s of sections) {
+    for (const b of s.blocks) {
+      if (b.type === 'chart') continue
+      for (const m of b.text.matchAll(/\[\^([^\]]+)\]/g)) {
+        if (!(m[1] in claims)) claims[m[1]] = claimFor(b.text, m[1])
+      }
+    }
+  }
   const outNotes = {}
   for (const [id, fn] of Object.entries(footnotes)) {
     outNotes[id] = { tag: fn.tag, n: fn.n, tree: compileMarkdown(fn.text) }
+    if (claims[id]) outNotes[id].claim = claims[id]
   }
   return { meta, sections: outSections, footnotes: outNotes, minutes: Math.round(words / 230), problems }
 }

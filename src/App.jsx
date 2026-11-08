@@ -370,7 +370,7 @@ export default function App() {
       <a className="skip" href="#s0">Skip to the briefing</a>
       <DecayBanner />
       <TopBar mode={mode} setMode={setMode} theme={theme} setTheme={setTheme} active={active} />
-      <div className="layout" id="top">
+      <div className="layout" id="top" data-mode={mode}>
         <aside className="layout__aside"><Toc active={active} /></aside>
         <main className="layout__main">
           <header className="hero">
@@ -390,8 +390,8 @@ export default function App() {
             </div>
             <p className="hero__mode-hint">
               {mode === 'brief'
-                ? <>You are reading the <strong>Brief</strong>. Expert notes are folded away; open any of them, or switch to <button type="button" className="linklike" onClick={() => setMode('expert')}>Expert</button> to show them all.</>
-                : <>You are reading the <strong>Expert</strong> version: every expert note is open. <button type="button" className="linklike" onClick={() => setMode('brief')}>Back to Brief</button>.</>}
+                ? <>You are reading the <strong>Brief</strong>. Expert notes and sources are folded away at the end of each section; open any of them, or switch to <button type="button" className="linklike" onClick={() => setMode('expert')}>Expert</button> to show every expert note and a source marker after each claim.</>
+                : <>You are reading the <strong>Expert</strong> version: every expert note is open, and each claim has a numbered source marker. <button type="button" className="linklike" onClick={() => setMode('brief')}>Back to Brief</button>.</>}
             </p>
           </header>
           {doc.sections.map(s => <Section key={s.id} section={s} mode={mode} />)}
