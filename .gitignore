@@ -8,4 +8,4 @@ research/background/
 dist-ssr
 
 # Review copy for wording feedback (built by scripts/review/make-review-page.mjs, published as an artifact)
-review/
+/review/
