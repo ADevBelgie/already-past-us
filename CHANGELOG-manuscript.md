@@ -267,3 +267,7 @@ The s1 sentence now dates the forecast: "A newer FRI panel, asked in late 2025, 
 ## Review comment: date the AI Digest survey (8 November 2026)
 
 "A 2025 survey of 421 forecasters expected 88% … by year end" is now "A survey of 421 forecasters, taken from late November 2024 to January 2025, expected 88% … by the end of 2025". AI Digest's May 2025 update gives the window as 30 November 2024 to 20 January 2025; added to footnote s1-aidigest.
+
+## Review comment: s1 "Not every forecast was too low" made Brief-level (8 November 2026)
+
+Reader comment: too in-depth for the Brief. The paragraph is now "Not every forecast was too low. Forecasters overestimated some things too, such as scores on a well-known coding test in 2025 and how much AI would help students with biosecurity tasks. FRI also notes that its method spots forecasts that were too low more easily than ones that were too high." The specifics (survey size and dates, 88% vs 80.9% on SWE-bench Verified, 16–40% vs 5.2% biosecurity uplift, and why FRI's method leans toward underestimates) moved unchanged into a new s1 expert note, "Forecasts that came in too high". The forecast-vs-actual chart right below still shows the numbers.
