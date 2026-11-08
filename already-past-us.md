@@ -83,7 +83,7 @@ The fair reading is narrow. On tasks with a clear score, AI has mostly moved fas
 
 ## 2. Cheaper and better, measured fairly {#s2}
 
-"AI is getting cheaper" only means something if you compare AI models of the same quality. We use two tests. Cheaper means the same capability for less money. Better means more capability for the same money.
+"AI is getting cheaper" only means something if you compare AI models of the same quality. We use two tests: the same capability for less money (cheaper), and more capability for the same money (better).
 
 To put models on one scale, we use the Epoch Capabilities Index from Epoch AI, an independent research group. It combines more than 50 benchmarks (standard sets of test questions) into one score. Higher is better, there is no maximum, and GPT-5 sits at 150.[^s2-eci] For price, we use each company's list price per million tokens (a token is a small chunk of text), counting three tokens sent to the model for every token it writes back.[^s2-blend]
 

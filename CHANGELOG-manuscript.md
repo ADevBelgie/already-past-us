@@ -303,3 +303,7 @@ Each row's second line now reads "Asked <when> · for <deadline>" (e.g. "Asked N
 ## Review comment: s2 "like with like" (8 November 2026)
 
 "…only means something if you compare like with like" is now "…only means something if you compare AI models of the same quality."
+
+## Review comment: s2 two tests, shorter (8 November 2026)
+
+"We use two tests. Cheaper means the same capability for less money. Better means more capability for the same money." is now "We use two tests: the same capability for less money (cheaper), and more capability for the same money (better)."
