@@ -166,7 +166,7 @@ export default function StatCards() {
           <div className="sc-group__cards">
             <Card
               variant="past"
-              event="ICPC 2025 world finals, the top university programming contest"
+              event="World finals of the top university programming contest (ICPC), 2025"
               big={`${aiSolved.value} of ${aiSolved.of}`}
               visual={
                 <div className="sc-rows">

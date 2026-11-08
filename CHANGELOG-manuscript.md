@@ -171,3 +171,7 @@ Reader comment on the subtitle: say that the freelance result is for AI working 
 ## Review comment: opening stat-card subtitle (8 November 2026)
 
 Reader comment: the subtitle of the opening cards read badly. "Two results where AI is past the best humans, each with the fact that limits it, and one where it is not, with its growth since launch" is now "Two results where AI has beaten the best humans, and one where it still falls well short. Each card ends with the catch, or with how fast it is changing."
+
+## Review comment: ICPC card label (8 November 2026)
+
+Not every reader knows the acronym, so the first stat card's label now leads with what the contest is: "World finals of the top university programming contest (ICPC), 2025" (was "ICPC 2025 world finals, the top university programming contest").
