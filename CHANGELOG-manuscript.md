@@ -373,3 +373,7 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 - Brief prose 486 → 246 words. Kept: what the time horizon measures, 4 min (GPT-4) → 12 h (Opus 4.6), the 2024 speed-up (8½ → 3½ months), the 16-hour limit and the frozen leaderboard, and METR's 1.9x with its range, the 1.1x low end and the redaction caveat.
 - Moved to expert notes, unchanged: the 2-hour example, o3/GPT-5/Mythos points, the 80% figures (new note "What the horizon means, and more data points"); the Epoch single-speed-up sentence (refit note); task-suite counts, 16% cheating, Sol 11 h / 270 h ("Beyond the public curve"); internal-data scope, AECI and the 1.4x figure ("What METR's 1.9x rests on"); the 80% attribution and Anthropic's spring 2026 statement (new note "Why the speed-up, and Anthropic's spring view"). All 16 footnotes still referenced.
 - Drafted by three independent agents, judged, then checked for fidelity and rules; one fix applied ("1.1" → "1.1 times").
+
+## 2026-11-08 — s4 "Ahead of trained or typical people" paragraph (review comment)
+- Brief paragraph cut to one headline per example (GPQA, Pakistan trial, Waymo); kept Waymo's 95% and the freeway pause. The exact figures (about 70% vs 87%, 71.4% / 42.6% / 82.9%, 270 million miles through June 2026) moved unchanged into the expert note "What the right-hand dots compare against".
+- Closing paragraph: "this saw blade" became "this uneven picture", following the earlier removal of the saw-blade metaphor.
