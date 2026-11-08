@@ -128,7 +128,9 @@ a:hover { text-decoration-thickness: 2px; }
 .topbar__menu-btn[aria-expanded='true'] .topbar__menu-chev { transform: rotate(180deg); }
 .topbar-menu {
   position: absolute; top: calc(100% + 4px); left: var(--gutter); z-index: 45;
-  width: min(23rem, calc(100vw - 2 * var(--gutter))); max-height: calc(100vh - 7rem); overflow-y: auto;
+  width: min(23rem, calc(100vw - 2 * var(--gutter))); overflow-y: auto;
+  max-height: calc(100vh - 7rem);
+  max-height: calc(100dvh - 7rem); /* the visible height on phones, whatever the browser toolbars do */
   padding: 0.5rem 0; border-radius: 10px; background: var(--card); border: 1px solid var(--rule); box-shadow: var(--shadow);
   font-size: 0.86rem;
 }
@@ -198,7 +200,18 @@ a:hover { text-decoration-thickness: 2px; }
 .section blockquote { margin: 0 0 1.1em; padding-left: 1em; border-left: 2px solid var(--rule); color: var(--ink-2); }
 
 /* Tables (sections 5 and 8) */
-.table-wrap { overflow-x: auto; margin: 1.4rem 0 1.6rem; border-top: 2px solid var(--ink); }
+/* Scroll hint: edge shadows appear only on a side that has more table to scroll to. The paper-coloured
+   covers scroll with the content (background-attachment: local) and hide the fixed shadows at either
+   end. Colours come from tokens, so it works in both themes; it adds no height. */
+.table-wrap {
+  overflow-x: auto; margin: 1.4rem 0 1.6rem; border-top: 2px solid var(--ink);
+  background:
+    linear-gradient(to right, var(--paper) 30%, transparent) left center / 2.5rem 100% no-repeat local,
+    linear-gradient(to left, var(--paper) 30%, transparent) right center / 2.5rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, color-mix(in srgb, var(--ink) 18%, transparent), transparent) left center / 0.9rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, color-mix(in srgb, var(--ink) 18%, transparent), transparent) right center / 0.9rem 100% no-repeat scroll;
+}
+.table-wrap:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .table-wrap table { width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 0.86rem; line-height: 1.45; min-width: 36rem; }
 .table-wrap th { text-align: left; font-weight: 600; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); padding: 0.6rem 0.7rem 0.5rem 0; border-bottom: 1px solid var(--rule); vertical-align: bottom; }
 .table-wrap td { padding: 0.65rem 0.7rem 0.65rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--ink-2); }
@@ -245,7 +258,8 @@ a:hover { text-decoration-thickness: 2px; }
 .fn-pop__body { display: block; max-height: 15rem; overflow-y: auto; }
 .fn-pop__more { display: inline-block; margin-top: 0.55rem; font-size: 0.76rem; }
 @media (max-width: 640px) {
-  .fn-pop { left: var(--gutter) !important; right: var(--gutter); top: auto !important; bottom: 12px; width: auto; }
+  /* Bottom sheet; stays clear of the iPhone home indicator (the inset is 0 elsewhere). */
+  .fn-pop { left: var(--gutter) !important; right: var(--gutter); top: auto !important; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); width: auto; }
 }
 
 .tag-chip {
@@ -403,6 +417,7 @@ a:hover { text-decoration-thickness: 2px; }
   .topbar, .decay, .layout__aside, .theme-btn, .skip, .fn-pop, .hero__mode-hint, .segmented { display: none !important; }
   details::details-content { content-visibility: visible; } /* App.jsx also opens every <details> on beforeprint */
   .figure { break-inside: avoid; }
+  .table-wrap { background: none; }
   a { color: inherit; }
 }
 @media print and (prefers-color-scheme: dark) {

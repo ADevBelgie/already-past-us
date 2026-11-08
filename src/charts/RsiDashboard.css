@@ -65,3 +65,52 @@
 @container figure (width < 480px) {
   .figure__body svg.rsi-accel__svg { height: var(--rsi-accel-h-narrow); }
 }
+
+/* Chart heights: full, or compact under 640px (COMPACT_BELOW in RsiDashboard.jsx). Both come from
+   the SVG's own CSS variables, so the server HTML reserves the right height at every width. */
+.figure__body svg.rsi-svg { height: var(--rsi-h); }
+
+/* ── Compact layout: one panel per row (figure under 640px, COMPACT_BELOW in RsiDashboard.jsx) ──
+   Same information, tighter spacing. The `.rsi` prefix lifts these paragraph margins above
+   `.section p` (styles.css), which otherwise adds a 1.05em gap under every line of panel text. */
+@container figure (width < 640px) {
+  .figure__body svg.rsi-svg { height: var(--rsi-h-compact); }
+
+  .rsi { gap: 1rem; }
+  .rsi-tier { gap: 0.55rem; }
+  .rsi-grid { row-gap: 0.9rem; }
+
+  /* Tier heading: title and description run on in one paragraph. The wrapper sets the line box
+     (it would otherwise inherit the body text's larger font and line height). */
+  .rsi-tier__head > div { font-size: 0.8rem; line-height: 1.4; }
+  .rsi .rsi-tier__title { display: inline; }
+  .rsi .rsi-tier__title::after { content: ':'; }
+  .rsi .rsi-tier__desc { display: inline; margin: 0 0 0 0.3em; }
+
+  .rsi-panel { padding-top: 0.45rem; }
+  .rsi-panel__head { margin-bottom: 0.3rem; }
+  .rsi .rsi-panel__measure { margin: 0.1rem 0 0; line-height: 1.4; }
+  .rsi .rsi-panel__who { margin: 0.2rem 0 0; line-height: 1.3; }
+  .rsi .rsi-panel__note { margin: 0.25rem 0 0; line-height: 1.4; }
+  .rsi .rsi-chart .rsi-chart__aside { margin: 0.1rem 0 0; }
+
+  .rsi-strip { padding-top: 0.55rem; }
+  .rsi-strip__head { margin-bottom: 0.55rem; }
+  .rsi-strip__grid { row-gap: 0.9rem; column-gap: 16px; }
+  .rsi-cell__text { line-height: 1.4; }
+  .rsi-cell .rsi-cell__model { line-height: 1.35; }
+  .rsi-cell .rsi-cell__who { line-height: 1.3; }
+
+  /* Anthropic's cell spans the strip: its provenance chip moves up beside the lab name. */
+  .rsi-cell--anthropic { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 0.5rem; align-items: center; }
+  .rsi-cell--anthropic > * { grid-column: 1 / -1; }
+  .rsi-cell--anthropic > .rsi-cell__lab { grid-column: 1; grid-row: 1; }
+  .rsi-cell--anthropic > .rsi-cell__who { grid-column: 2; grid-row: 1; margin-top: 0 !important; }
+}
+
+/* Under 680px the threshold strip has OpenAI and Google side by side and Anthropic (with its meter)
+   across both columns; from 680px all three sit in a row (rule above). */
+@container figure (width < 680px) {
+  .rsi-strip__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rsi-cell--anthropic { grid-column: 1 / -1; }
+}

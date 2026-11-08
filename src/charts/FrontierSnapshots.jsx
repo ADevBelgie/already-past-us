@@ -1,10 +1,10 @@
 // Section 2 signature chart: price-capability frontier at three dates.
 // Data: src/data/frontier_snapshots.json, built by scripts/data/build_frontier_snapshots.py from
 // research/data/frontier_snapshots.csv (+ ECI credible intervals from research/data/raw/eci_scores.csv).
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { scaleLinear, scaleLog } from 'd3-scale'
 import data from '../data/frontier_snapshots.json'
-import { C, Figure, LegendItem, Segmented, Tooltip, fmt, svgSize, utc } from './kit.jsx'
+import { C, Figure, LegendItem, Segmented, Tooltip, fmt, svgSize, usePinnableTip, utc } from './kit.jsx'
 import './FrontierSnapshots.css'
 
 const SNAPS = data.snapshots // [{date, key, label, long}], oldest first
@@ -106,7 +106,16 @@ function TooltipBody({ m }) {
 }
 
 function Chart({ width, view }) {
-  const [active, setActive] = useState(null) // key of hovered/focused dot
+  // Hover, focus and tap/click/Enter/Space to pin (kit.jsx); Escape or a press elsewhere clears.
+  const tip = usePinnableTip()
+  // A snapshot switch can remove the pinned or focused dot from the plot: drop it (a pointer press
+  // on the toggle already clears the pin; this also covers the keyboard).
+  const lastView = useRef(view)
+  useEffect(() => {
+    if (lastView.current === view) return
+    lastView.current = view
+    tip.clear()
+  }, [view]) // eslint-disable-line react-hooks/exhaustive-deps
   const narrow = width < 560
   const tiny = width < 400
   const compact = width < 760 // annotation layout switches before the axis layout does
@@ -206,7 +215,8 @@ function Chart({ width, view }) {
     labels.push({ k, text: d.model, ...best.g })
   }
 
-  const activeDot = active ? dots.find(d => keyOf(d) === active) : null
+  // Only a dot plotted in the current view can show a tooltip.
+  const activeDot = tip.active ? dots.find(d => keyOf(d) === tip.active) ?? null : null
   const halo = { stroke: C.paper, strokeWidth: 3, paintOrder: 'stroke', strokeLinejoin: 'round' }
 
   const summary =
@@ -215,7 +225,7 @@ function Chart({ width, view }) {
     `and the best score at $${PRICE_TEST} or less rose from ${Math.round(y4[0])} to ${Math.round(y4[1])}.`
 
   return (
-    <div className="fs-chart" onPointerLeave={() => setActive(null)}>
+    <div className="fs-chart">
       <svg {...svgSize(width, height)} role="group" aria-label={summary}>
         <defs>
           <marker id="fs-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -337,24 +347,18 @@ function Chart({ width, view }) {
             return (
               <circle
                 key={k}
+                {...tip.bind(k, d, { label: `Details: ${d.model}, ${s.long}` })}
                 className="fs-hit"
                 cx={x(d.blended)} cy={y(d.eci)} r={hitR}
                 fill="transparent"
-                tabIndex={0}
-                role="button"
                 aria-label={`${d.model}, ${s.long}: ECI ${d.eci.toFixed(2)}, blended ${fmt.usd(d.blended)} per million tokens`}
-                onPointerEnter={() => setActive(k)}
-                onClick={() => setActive(k)}
-                onFocus={() => setActive(k)}
-                onBlur={() => setActive(a => (a === k ? null : a))}
-                onKeyDown={e => { if (e.key === 'Escape') setActive(null) }}
               />
             )
           })}
         </g>
       </svg>
       {activeDot && (
-        <Tooltip x={x(activeDot.blended) + m.left} y={y(activeDot.eci) + m.top} width={width}>
+        <Tooltip x={x(activeDot.blended) + m.left} y={y(activeDot.eci) + m.top} width={width} {...tip.tipProps}>
           <TooltipBody m={activeDot} />
         </Tooltip>
       )}
@@ -413,7 +417,7 @@ function DataTable() {
   return (
     <details className="chart-data">
       <summary>Show the data</summary>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label="Data table: price-capability frontier">
         <table>
           <thead>
             <tr>

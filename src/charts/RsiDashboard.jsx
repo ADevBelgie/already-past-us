@@ -18,12 +18,21 @@ const find = (id, pred) => panelRows(id).find(pred)
 const GAP = 24
 // Invisible hit circle around each point: 12px radius gives a 24x24px touch target.
 const HIT_R = 12
-// These charts have a height that does not depend on width: keep it while the server-rendered SVG
-// (drawn at the 960px first-render width) is scaled down to a phone, so hydration does not move
-// the page. The inline style beats the kit's `height: auto` for svg[viewBox] (styles.css).
-const FIXED_H = h => ({ height: h })
+// Single-column ("compact") layout below this figure width: one panel per row, shorter charts and
+// tighter spacing. The same breakpoint is the `@container figure (width < 640px)` rules in
+// RsiDashboard.css, so the server HTML (rendered at 960px) already has the compact heights on phones.
+const COMPACT_BELOW = 640
+// Chart heights do not depend on the exact width, only on the layout: each chart SVG carries both
+// heights as CSS variables and RsiDashboard.css picks one with the container query above. That keeps
+// the height while the server-rendered SVG (drawn at 960px) is scaled down to a phone, so hydration
+// does not move the page; the class beats the kit's `height: auto` for svg[viewBox] (styles.css).
+const heightVars = (full, compact) => ({ '--rsi-h': `${full}px`, '--rsi-h-compact': `${compact}px` })
+// TimeChart heights (full, compact). The compact one trims the top margin and keeps a 60px plot.
+const TIME_H = { full: 140, compact: 100 }
+// BarChart row heights (full, compact).
+const BAR_ROW_H = { full: 44, compact: 36 }
 // AccelChart row height, wide and narrow (under 480px) layouts.
-const ACCEL_ROW_H = { wide: 40, narrow: 56 }
+const ACCEL_ROW_H = { wide: 40, narrow: 52 }
 
 // 'YYYY-MM-DD', or 'YYYY-MM' (month only in the source: placed mid-month).
 const toDate = s => new Date((s.length === 7 ? `${s}-15` : s) + 'T00:00:00Z')
@@ -78,10 +87,11 @@ function Panel({ title, measure, who, tag, footnote, note, children, wide }) {
 
 // `tip` is one usePinnableTip() shared by every panel of the dashboard, so at most one tooltip is
 // pinned per figure; keys are `${panel}:${index}` and each panel shows only its own.
-function TimeChart({ w, rows, tip, makeY, yTicks, refLine, label, aria, xTicks = 'years', connect = true }) {
+// `compactH` overrides TIME_H.compact for a chart whose labels need more room.
+function TimeChart({ w, compact, compactH = TIME_H.compact, rows, tip, makeY, yTicks, refLine, label, aria, xTicks = 'years', connect = true }) {
   const pid = rows[0].panel
-  const h = 140
-  const m = { t: 22, r: 10, b: 22, l: 42 }
+  const h = compact ? compactH : TIME_H.full
+  const m = { t: compact ? 18 : 22, r: 10, b: 22, l: 42 }
   const dates = rows.map(r => toDate(r.date))
   const [d0, d1] = extent(dates)
   const pad = (d1 - d0) * 0.05
@@ -112,7 +122,7 @@ function TimeChart({ w, rows, tip, makeY, yTicks, refLine, label, aria, xTicks =
   const a = tip.active?.startsWith(`${pid}:`) ? tip.datum : null
   return (
     <div className="rsi-chart">
-      <svg {...svgSize(w, h)} style={FIXED_H(h)} role="group" aria-label={aria}>
+      <svg {...svgSize(w, h)} className="rsi-svg" style={heightVars(TIME_H.full, compactH)} role="group" aria-label={aria}>
         {yTicks.map(t => (
           <g key={t.v}>
             <line x1={m.l} x2={w - m.r} y1={y(t.v)} y2={y(t.v)} stroke={C.grid} />
@@ -191,15 +201,16 @@ function TimeChart({ w, rows, tip, makeY, yTicks, refLine, label, aria, xTicks =
 
 /* ── Horizontal bars for statements that are not a time series ─────────── */
 
-function BarChart({ w, rows, max, ticks, tickText, refLine, aria }) {
-  const rowH = 44
+function BarChart({ w, compact, rows, max, ticks, tickText, refLine, aria }) {
   const m = { t: refLine ? 20 : 6, r: 104, b: 20, l: 0 }
-  const h = m.t + rows.length * rowH + m.b
+  const barH = rowH => m.t + rows.length * rowH + m.b
+  const rowH = compact ? BAR_ROW_H.compact : BAR_ROW_H.full
+  const h = barH(rowH)
   const x = scaleLinear().domain([0, max]).range([m.l, w - m.r])
   const narrow = w < 330
   return (
     <div className="rsi-chart">
-      <svg {...svgSize(w, h)} style={FIXED_H(h)} role="img" aria-label={aria}>
+      <svg {...svgSize(w, h)} className="rsi-svg" style={heightVars(barH(BAR_ROW_H.full), barH(BAR_ROW_H.compact))} role="img" aria-label={aria}>
         {ticks.map(t => (
           <g key={t}>
             <line x1={x(t)} x2={x(t)} y1={m.t} y2={h - m.b} stroke={C.grid} />
@@ -279,7 +290,7 @@ function AccelChart({ w }) {
             <g key={label}>
               <text
                 x={narrow ? x(0.8) : m.l}
-                y={narrow ? cy - 27 : cy}
+                y={narrow ? cy - 26 : cy}
                 dy={narrow ? 0 : '0.32em'}
                 textAnchor={narrow ? 'start' : 'end'}
                 dx={narrow ? 0 : -8}
@@ -331,25 +342,31 @@ function AccelChart({ w }) {
 
 /* ── Threshold strip ───────────────────────────────────────────────────── */
 
-function CoBenchMeter({ w }) {
+// Meter heights (full, compact); the compact one tightens the gaps around the bar.
+const METER_H = { full: 46, compact: 40 }
+
+function CoBenchMeter({ w, compact }) {
   const score = find('thresholds', r => r.kind === 'point')
   const line85 = find('thresholds', r => r.kind === 'reference')
-  const h = 46
+  const h = compact ? METER_H.compact : METER_H.full
+  // Vertical positions: labels above the bar, bar, end labels below.
+  const v = compact ? { lab: 12, bar: 16, tickTop: 13, tickBot: 29, ends: 38 } : { lab: 13, bar: 18, tickTop: 14, tickBot: 32, ends: 43 }
   const x = scaleLinear().domain([0, 100]).range([0, w - 2])
   return (
     <svg
       {...svgSize(w, h)}
-      style={FIXED_H(h)}
+      className="rsi-svg"
+      style={heightVars(METER_H.full, METER_H.compact)}
       role="img"
       aria-label={`Bar: ${score.label} scored ${score.value}% on CoBench 2.1; Anthropic puts a model able to replace its research staff at ${line85.value}% or more, a line set on the earlier version of the test.`}
     >
-      <rect x="0" y="18" width={x(100)} height="10" fill="none" stroke={C.rule} />
-      <rect x="0" y="18" width={x(score.value)} height="10" fill={C.ink2} />
-      <text x={x(score.value) - 4} y="13" textAnchor="end" fontSize="12" fontWeight="600" fill={C.ink}>{`${score.value}%`}</text>
-      <line x1={x(line85.value)} x2={x(line85.value)} y1="14" y2="32" stroke={C.ink} strokeWidth="1.6" />
-      <text x={x(line85.value)} y="13" textAnchor="middle" fontSize="11" fill={C.ink2}>{`${line85.value}% line`}</text>
-      <text x="0" y="43" fontSize="11" fill={C.ink3}>0%</text>
-      <text x={x(100)} y="43" textAnchor="end" fontSize="11" fill={C.ink3}>100%</text>
+      <rect x="0" y={v.bar} width={x(100)} height="10" fill="none" stroke={C.rule} />
+      <rect x="0" y={v.bar} width={x(score.value)} height="10" fill={C.ink2} />
+      <text x={x(score.value) - 4} y={v.lab} textAnchor="end" fontSize="12" fontWeight="600" fill={C.ink}>{`${score.value}%`}</text>
+      <line x1={x(line85.value)} x2={x(line85.value)} y1={v.tickTop} y2={v.tickBot} stroke={C.ink} strokeWidth="1.6" />
+      <text x={x(line85.value)} y={v.lab} textAnchor="middle" fontSize="11" fill={C.ink2}>{`${line85.value}% line`}</text>
+      <text x="0" y={v.ends} fontSize="11" fill={C.ink3}>0%</text>
+      <text x={x(100)} y={v.ends} textAnchor="end" fontSize="11" fill={C.ink3}>100%</text>
     </svg>
   )
 }
@@ -364,8 +381,9 @@ function Thresholds({ width }) {
   return (
     <div className="rsi-strip">
       <h4 className="rsi-strip__head">Each lab&rsquo;s own threshold for AI-driven research acceleration: none says it has been crossed</h4>
-      {/* Columns come from @container figure queries in RsiDashboard.css (3 from 680px), so the
-          pre-rendered HTML is laid out right at every width; `cols` here only sizes the meter. */}
+      {/* Columns come from @container figure queries in RsiDashboard.css (3 from 680px; below that
+          OpenAI and Google side by side with Anthropic across both columns), so the pre-rendered
+          HTML is laid out right at every width; `cols` here only sizes the meter. */}
       <div className="rsi-strip__grid">
         <div className="rsi-cell">
           <p className="rsi-cell__lab">OpenAI</p>
@@ -381,11 +399,11 @@ function Thresholds({ width }) {
           <p className="rsi-cell__text">ML research acceleration and automation, level 1 of each.</p>
           <p className="rsi-cell__who"><TagChip tag="vendor" /><FootnoteRef id="s6-google-th" /></p>
         </div>
-        <div className="rsi-cell">
+        <div className="rsi-cell rsi-cell--anthropic">
           <p className="rsi-cell__lab">Anthropic</p>
           <p className="rsi-cell__model">{co.label}, {co.date_label}</p>
           <p className="rsi-cell__text">Score on an internal research-engineering test (CoBench 2.1) against the level Anthropic says a model able to replace its research staff would reach. Anthropic set that line on the earlier version of the test.</p>
-          <CoBenchMeter w={Math.floor(Math.min(cellW, 420))} />
+          <CoBenchMeter w={Math.floor(Math.min(cellW, 420))} compact={width < COMPACT_BELOW} />
           <p className="rsi-cell__who"><TagChip tag="vendor" /><FootnoteRef id="s6-cobench" /></p>
           <p className="rsi-cell__text rsi-cell__text--filing">
             Yet its amended IPO filing ({s1.date_label}) says that, judging by its internal estimates and expectations for future models, it &ldquo;may
@@ -415,7 +433,7 @@ function DataTable() {
   return (
     <details className="chart-data">
       <summary>Show the data</summary>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label="Data table: AI research acceleration indicators">
         <table>
           <thead>
             <tr>
@@ -474,7 +492,8 @@ function Grid({ children }) {
 
 function Dashboard({ width }) {
   const w = Math.max(240, width)
-  const cols = w >= 640 ? 2 : 1
+  const compact = w < COMPACT_BELOW
+  const cols = compact ? 1 : 2
   const pw = Math.floor(cols === 2 ? (w - GAP) / 2 : w)
   const tip = usePinnableTip()
 
@@ -505,6 +524,7 @@ function Dashboard({ width }) {
           >
             <TimeChart
               w={pw}
+              compact={compact}
               rows={metr}
               tip={tip}
               makeY={() => scaleLog().domain([2.5, 2400])}
@@ -527,6 +547,7 @@ function Dashboard({ width }) {
           >
             <TimeChart
               w={pw}
+              compact={compact}
               rows={eci}
               tip={tip}
               makeY={() => scaleLinear().domain([115, 175])}
@@ -575,6 +596,7 @@ function Dashboard({ width }) {
           >
             <TimeChart
               w={pw}
+              compact={compact}
               rows={google}
               tip={tip}
               xTicks="points"
@@ -598,6 +620,7 @@ function Dashboard({ width }) {
           >
             <BarChart
               w={pw}
+              compact={compact}
               max={100}
               ticks={[0, 50, 100]}
               tickText={t => `${t}%`}
@@ -618,9 +641,11 @@ function Dashboard({ width }) {
           >
             <TimeChart
               w={pw}
+              compact={compact}
               rows={speed}
               tip={tip}
               xTicks="ends"
+              compactH={124}
               makeY={() => scaleLinear().domain([0, 60])}
               yTicks={[{ v: 0, text: '0x' }, { v: 20, text: '20x' }, { v: 40, text: '40x' }, { v: 60, text: '60x' }]}
               refLine={{ v: speedRef.value, text: 'Skilled human, 4–8 h: about 4x', short: 'Human: ~4x', anchor: 'end', below: false }}
@@ -641,6 +666,7 @@ function Dashboard({ width }) {
           >
             <BarChart
               w={pw}
+              compact={compact}
               max={3.5}
               ticks={[0, 1, 2, 3]}
               tickText={t => String(t)}

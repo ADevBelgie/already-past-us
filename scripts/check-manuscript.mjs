@@ -55,6 +55,7 @@ for (const s of sections) {
 }
 
 if (!meta.title) problems.push('front matter has no title')
+if (sections.length === 0) problems.push('no sections found (headings must look like "## 1. Title {#s1}")')
 if (/\[link to add before launch\]/.test(md)) problems.push('placeholder link still present')
 
 const counts = {}

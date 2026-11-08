@@ -1,7 +1,7 @@
 // s3-metr-curve: METR 50% (optionally 80%) time horizon of frontier models, 2019 to April 2026.
 // Data: src/data/metrCurve.json, built by scripts/data/metr_curve.mjs from research/data/metr_points.json
 // and METR's raw data file. Horizons are in MINUTES of skilled-human working time.
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { scaleLog, scaleUtc } from 'd3-scale'
 import { Figure, C, LegendItem, Tooltip, Segmented, utc, svgSize, usePinnableTip } from './kit.jsx'
 import data from '../data/metrCurve.json'
@@ -59,6 +59,15 @@ const HIT_R = 12
 function Chart({ width, metric }) {
   // Hover, focus and tap-to-pin (kit.jsx). `width` starts at SSR_WIDE (Figure) on the server.
   const pt = usePinnableTip()
+  // Switching between 50% and 80% drops any pin, hover or focus state: the pinned point may not be
+  // plotted in the new view (GPT-5.6 Sol is 50% only), and a hidden pin would also block hover
+  // tooltips there. A pointer press on the toggle already clears the pin; this covers the keyboard.
+  const lastMetric = useRef(metric)
+  useEffect(() => {
+    if (lastMetric.current === metric) return
+    lastMetric.current = metric
+    pt.clear()
+  }, [metric]) // eslint-disable-line react-hooks/exhaustive-deps
   const w = Math.max(280, width)
   const narrow = w < 560
   const tiny = w < 420
@@ -80,7 +89,8 @@ function Chart({ width, metric }) {
   for (let yr = 2019; yr <= 2026; yr++) if (!tiny || yr % 2 === 1) years.push(yr)
   const fs = narrow ? 11 : 12
 
-  // The Sol annotation is drawn in the 50% view only, so its tooltip is too.
+  // The Sol annotation is drawn in the 50% view only, so its tooltip is too (this also covers the one
+  // render between a metric switch and the effect above clearing the pin).
   const hover = pt.datum && !(pt.datum.kind === 'sol' && !isP50) ? pt.datum : null
 
   // label geometry
@@ -278,7 +288,7 @@ function DataTable() {
   return (
     <details className="chart-data">
       <summary>Show the data</summary>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label="Data table: METR time horizons">
         <table className="metr-table">
           <thead>
             <tr><th>Model</th><th>Release date</th><th>50% horizon, min (95% CI)</th><th>80% horizon, min (95% CI)</th><th>State of the art</th><th>Source</th></tr>

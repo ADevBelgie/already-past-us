@@ -81,9 +81,16 @@ export function parseManuscript(source) {
   const footnotes = {}
   const body = []
   const problems = []
-  for (const line of rest) {
+  for (let i = 0; i < rest.length; i++) {
+    const line = rest[i]
     const def = line.match(FN_DEF)
     if (!def) { body.push(line); continue }
+    // A footnote is one line here. Markdown would fold a non-blank next line into the footnote
+    // ("lazy continuation"); this parser keeps it as body text, so flag it instead.
+    const next = rest[i + 1]
+    if (next != null && next.trim() !== '' && !FN_DEF.test(next) && !/^#{1,6}\s/.test(next) && !CHART.test(next) && !next.startsWith('>')) {
+      problems.push(`line directly after footnote ${def[1]} would become body text (add a blank line, or join it to the footnote): "${next.slice(0, 60)}"`)
+    }
     const [, id, raw] = def
     if (!/^[\w-]+$/.test(id)) problems.push(`footnote id must be letters, digits, _ or -: ${id}`)
     if (footnotes[id]) problems.push(`duplicate footnote definition: ${id}`)

@@ -273,7 +273,7 @@ function DataTable() {
   return (
     <details className="chart-data">
       <summary>Show the data</summary>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label="Data table: forecasts and outcomes">
         <table className="fdb-table">
           <thead>
             <tr>

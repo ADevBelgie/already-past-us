@@ -1,7 +1,8 @@
 // s4-jagged-map: where AI stands against people, one row per domain, on the five steps of the
 // section 4 headings. Dot colour = provenance tag of the row's main footnote; a hollow dashed dot
-// marks a company claim that has not been officially confirmed (IMO 2026). Each row also says who
-// AI was compared with, because several right-hand dots are not comparisons with the best humans.
+// marks a company claim that has not been officially confirmed (IMO 2026), and a diamond marks a
+// row where AI was compared with another computer model rather than with people. Each row also says
+// who AI was compared with, because several right-hand dots are not comparisons with the best humans.
 // Data: src/data/jagged_map.json, built and checked against the manuscript by
 // scripts/data/build_jagged_map.mjs.
 import { useContext, useEffect, useRef, useState } from 'react'
@@ -12,6 +13,8 @@ import './JaggedMap.css'
 
 const ROWS = data.rows
 const TIERS = data.meta.tiers
+/** Compared with another computer model, not people. */
+const vsMachine = r => r.vs_machine === true
 const LEVEL = 2 // "Level with the best"
 const NOTE_IDS = [...new Set(ROWS.flatMap(r => r.footnote_ids))]
 const LINE = 14 // px between text lines
@@ -75,12 +78,23 @@ function narrowDotX(width, tier) {
   return x0 + ((x1 - x0) / TIERS.length) * (tier + 0.5)
 }
 
+/** Diamond path centred on (0, 0) with the same area as a circle of radius `size`. */
+const diamond = size => {
+  const s = +(size * 1.25).toFixed(2)
+  return `M0,${-s}L${s},0L0,${s}L${-s},0Z`
+}
+
 function Dot({ r, x, y, size = 6.5 }) {
   const color = PROVENANCE[r.provenance]?.color ?? C.ink3
-  if (!r.confirmed) {
-    return <circle cx={x} cy={y} r={size} fill={C.paper} stroke={color} strokeWidth={1.8} strokeDasharray="2.6 2" />
-  }
-  return <circle cx={x} cy={y} r={size} fill={color} stroke={C.paper} strokeWidth={1.5} />
+  const style = r.confirmed
+    ? { fill: color, stroke: C.paper, strokeWidth: 1.5 }
+    : { fill: C.paper, stroke: color, strokeWidth: 1.8, strokeDasharray: '2.6 2' }
+  if (!vsMachine(r)) return <circle cx={x} cy={y} r={size} {...style} />
+  const shape = <path d={diamond(size)} strokeLinejoin="round" {...style} />
+  // The narrow layout positions marks with percentages, which a transform cannot take: a nested,
+  // non-clipping <svg> moves the origin there instead.
+  if (typeof x === 'string') return <svg x={x} y={y} overflow="visible">{shape}</svg>
+  return <g transform={`translate(${x},${y})`}>{shape}</g>
 }
 
 function TextLines({ lines, x, y, size, fill, weight, anchor = 'start' }) {
@@ -97,7 +111,10 @@ function summary() {
   const byTier = TIERS.map(t => ROWS.filter(r => r.tier === t.key))
   const parts = byTier.map((rows, i) => {
     if (!rows.length) return null
-    const names = rows.map(r => (r.confirmed ? r.domain : `${r.domain} (if confirmed)`)).join(', ')
+    const names = rows.map(r => {
+      const notes = [!r.confirmed && 'if confirmed', vsMachine(r) && 'compared with a computer model'].filter(Boolean)
+      return notes.length ? `${r.domain} (${notes.join(', ')})` : r.domain
+    }).join(', ')
     return `${TIERS[i].label.toLowerCase()}: ${names}`
   }).filter(Boolean)
   return `Dot plot placing ${ROWS.length} tests of AI on five steps, from far below humans to beyond the best humans; ${parts.join('; ')}.`
@@ -138,21 +155,26 @@ function Chart({ width }) {
     if (!pinned) return
     const onDoc = e => {
       if (cardRef.current?.contains(e.target)) return
-      if (e.target.closest?.('.jm-row')) return
+      // A footnote popover opened from the card is portalled to <body>; pressing inside it (its
+      // "Show in this section's sources" link, say) must not close the card under it (as kit.jsx).
+      if (e.target.closest?.('.jm-row, .fn-pop')) return
       setPinned(false)
       setActive(null)
     }
     const onKey = e => {
       if (e.key !== 'Escape') return
-      // Let an open footnote popover inside the card close first.
+      // Let an open footnote popover inside the card close first. This listener runs in the capture
+      // phase, so it always sees the popover before the popover's own (bubble-phase) Escape handler
+      // closes it, whatever order the two were registered in.
       if (cardRef.current?.querySelector('.fn[aria-expanded="true"]')) return
+      if (document.activeElement?.closest?.('.fn-pop')) return
       close(true)
     }
     document.addEventListener('pointerdown', onDoc)
-    document.addEventListener('keydown', onKey)
+    document.addEventListener('keydown', onKey, true)
     return () => {
       document.removeEventListener('pointerdown', onDoc)
-      document.removeEventListener('keydown', onKey)
+      document.removeEventListener('keydown', onKey, true)
     }
   })
 
@@ -359,7 +381,7 @@ function DataTable() {
   return (
     <details className="chart-data">
       <summary>Show the data</summary>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label="Data table: AI against people, by domain">
         <table>
           <thead>
             <tr>
@@ -401,6 +423,17 @@ function DataTable() {
   )
 }
 
+function DiamondItem({ label }) {
+  return (
+    <span className="legend-item">
+      <svg width="18" height="12" aria-hidden="true">
+        <path d="M9,0.5L14.5,6L9,11.5L3.5,6Z" fill={C.ink3} strokeLinejoin="round" />
+      </svg>
+      {label}
+    </span>
+  )
+}
+
 function HollowDashedItem({ label }) {
   return (
     <span className="legend-item">
@@ -426,6 +459,7 @@ export default function JaggedMap() {
           <LegendItem color={C.verified} label="Verified" />
           <LegendItem color={C.vendor} label="Vendor-reported" />
           <HollowDashedItem label="Company claim, not officially confirmed" />
+          <DiamondItem label="Compared with a computer model, not people" />
           <LegendItem color={C.accent} shape="line" label="Level with the best humans" />
         </>
       }

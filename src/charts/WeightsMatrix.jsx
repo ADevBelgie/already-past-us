@@ -115,7 +115,7 @@ function DataTable() {
   return (
     <details className="chart-data">
       <summary>Show the data</summary>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label="Data table: changes to model weights">
         <table>
           <thead>
             <tr><th>Cell</th><th>Example</th><th>What it is</th><th>Source</th></tr>

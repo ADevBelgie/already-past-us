@@ -124,7 +124,7 @@ function DataTable() {
   return (
     <details className="chart-data">
       <summary>Show the data</summary>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label="Data table: opening stat cards">
         <table>
           <thead>
             <tr><th>Card</th><th>Measure</th><th>Value</th><th>Provenance</th><th>Source</th></tr>
@@ -153,7 +153,7 @@ export default function StatCards() {
   return (
     <Figure
       id="s0-cards"
-      subtitle="A 2025 programming contest, a 2026 maths result, and the share of 240 real paid freelance projects where the best AI agent's work was judged as good as a human's. The two past-the-best-humans cards end with the fact that limits them; the Remote Labor Index card ends with its growth since launch."
+      subtitle="Two results where AI is past the best humans, each with the fact that limits it, and one where it is not, with its growth since launch."
       caveat="The ICPC result is OpenAI's own account; we found no ICPC statement on it. The Remote Labor Index publishes no confidence intervals."
       source="OpenAI researchers (ICPC, IOI); arXiv:2605.20695; Scale AI and Center for AI Safety, Remote Labor Index"
       notes={NOTE_IDS}

@@ -13,13 +13,28 @@ function link(n, key, inl) {
   return <a key={key} href={href} title={title} target="_blank" rel="noopener noreferrer">{children}</a>
 }
 
+/** Plain text of a compact tree (footnote chips dropped), for accessible names. */
+function plain(list) {
+  if (!list) return ''
+  return list.map(n => {
+    if (typeof n === 'string') return n
+    if (n.t === 'f') return ''
+    if (n.t === 'br') return ' '
+    if (n.t === 'a' && !n.c) return n.h
+    return n.v ?? plain(n.c)
+  }).join('')
+}
+
 function table(n, key, inl) {
   const [head, ...body] = n.c
   const cells = (row, Tag) => row.map((cell, i) => (
     <Tag key={i} style={n.a[i] ? { textAlign: n.a[i] } : undefined}>{nodes(cell, inl)}</Tag>
   ))
+  const columns = head.map(cell => plain(cell).replace(/\s+/g, ' ').trim()).filter(Boolean)
+  // The wrapper scrolls sideways on narrow screens, so keyboard users must be able to focus it;
+  // the region is named after its columns.
   return (
-    <div key={key} className="table-wrap">
+    <div key={key} className="table-wrap" tabIndex={0} role="region" aria-label={columns.length ? `Table: ${columns.join(', ')}` : 'Table'}>
       <table>
         <thead><tr>{cells(head, 'th')}</tr></thead>
         {body.length > 0 && <tbody>{body.map((row, i) => <tr key={i}>{cells(row, 'td')}</tr>)}</tbody>}

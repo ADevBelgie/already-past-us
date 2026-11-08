@@ -39,6 +39,20 @@ function useSystemTheme() {
   return sys
 }
 
+/**
+ * Keeps the browser chrome colour (<meta name="theme-color"> in index.html) in step with the visible
+ * theme. The two metas carry media queries for the OS preference; a manual theme overrides both with
+ * that theme's paper colour, read from the meta for that scheme, and 'auto' restores the originals.
+ */
+function useThemeColor(theme) {
+  useEffect(() => {
+    const metas = [...document.querySelectorAll('meta[name="theme-color"]')]
+    for (const m of metas) m.dataset.auto ??= m.content
+    const paper = scheme => metas.find(m => m.media.includes(scheme))?.dataset.auto
+    for (const m of metas) m.content = (theme !== 'auto' && paper(theme)) || m.dataset.auto
+  }, [theme])
+}
+
 const sectionLabel = s => (s ? (s.num ? `${s.num}. ${s.title}` : s.title) : '')
 
 function DecayBanner() {
@@ -271,7 +285,8 @@ const Section = memo(function Section({ section, mode }) {
   return (
     <section className={`section${isLead ? ' section--lead' : ''}`} id={section.id} aria-labelledby={`${section.id}-h`}>
       <h2 id={`${section.id}-h`} className="section__title" tabIndex={-1}>
-        {section.num && <span className="section__num">{section.num.padStart(2, '0')}</span>}
+        {/* Hidden from screen readers so the heading is not read as "01Progress"; the contents list keeps the number. */}
+        {section.num && <span className="section__num" aria-hidden="true">{section.num.padStart(2, '0')}</span>}
         {section.title}
       </h2>
       {section.blocks.map((b, i) => <Block key={`${b.type}-${i}`} block={b} mode={mode} />)}
@@ -309,6 +324,7 @@ export default function App() {
     else root.setAttribute('data-theme', t)
     try { localStorage.setItem('apu-theme', t) } catch { /* storage unavailable */ }
   }
+  useThemeColor(theme)
 
   // Track the section in view for the contents list and top bar.
   useEffect(() => {

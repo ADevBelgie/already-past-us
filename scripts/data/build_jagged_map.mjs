@@ -23,11 +23,16 @@ const TIERS = [
   { key: 0, label: 'Far below humans', heading: 'Far below humans' },
   { key: 1, label: 'Below humans', heading: 'Below humans' },
   { key: 2, label: 'Level with the best', heading: 'Level with the best' },
-  // The label keeps the heading's "with caveats": Waymo (average drivers) sits on this step.
-  { key: 3, label: 'Ahead of trained people, with caveats', heading: 'Ahead of trained people, with caveats' },
+  // "Typical" because Waymo (compared with average drivers) sits on this step. The label is the
+  // chart's column name; the heading keeps the manuscript's "with caveats".
+  { key: 3, label: 'Ahead of trained or typical people', heading: 'Ahead of trained or typical people, with caveats' },
   { key: 4, label: 'Beyond the best humans', heading: 'Beyond the best humans' },
 ]
 const UNCONFIRMED_HEADING = 'Level with the best, if confirmed'
+// GenCast sits in the rightmost column but under its own s4 heading: it was compared with a
+// physics-based computer model, not with people. A row's `heading` becomes its tier_label and is
+// the heading its footnote must sit under; `vs_machine` marks a comparison with a machine.
+const MACHINE_HEADING = 'Beyond the best non-AI method'
 
 // Who AI was compared with. The manuscript and its expert notes stress that several right-hand
 // dots are not comparisons with the best humans.
@@ -183,6 +188,8 @@ const ROWS = [
     id: 'weather',
     domain: 'Weather ensembles',
     tier: 4,
+    heading: MACHINE_HEADING,
+    vs_machine: true,
     compared_with: 'a physics model',
     compared_group: 'machine',
     comparison_text:
@@ -255,7 +262,7 @@ const rows = ROWS.map(r => {
 
   // Tier must match the s4 heading that cites the main footnote.
   const confirmed = r.confirmed !== false
-  const expected = confirmed ? TIERS[r.tier].heading : UNCONFIRMED_HEADING
+  const expected = r.heading ?? (confirmed ? TIERS[r.tier].heading : UNCONFIRMED_HEADING)
   if (r.section === 's4') {
     const got = headingOf[r.footnote_ids[0]]
     if (got !== expected) problems.push(`${r.id}: tier heading is "${got}", row says "${expected}"`)
@@ -273,6 +280,7 @@ const rows = ROWS.map(r => {
     }
   }
   if (!GROUPS[r.compared_group]) problems.push(`${r.id}: unknown compared_group`)
+  if ((r.vs_machine === true) !== (r.compared_group === 'machine')) problems.push(`${r.id}: vs_machine and compared_group disagree`)
 
   // When the human baseline comes from another footnote, carry that footnote's tag too.
   let baseline_provenance = null
@@ -287,8 +295,9 @@ const rows = ROWS.map(r => {
     id: r.id,
     domain: r.domain,
     tier: r.tier,
-    tier_label: confirmed ? TIERS[r.tier].label : UNCONFIRMED_HEADING,
+    tier_label: r.heading ?? (confirmed ? TIERS[r.tier].label : UNCONFIRMED_HEADING),
     confirmed,
+    vs_machine: r.vs_machine === true,
     compared_with: r.compared_with,
     compared_group: r.compared_group,
     compared_group_label: GROUPS[r.compared_group],
