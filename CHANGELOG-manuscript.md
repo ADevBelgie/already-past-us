@@ -347,3 +347,7 @@ An adversarial check of the s2 tightening found one change in meaning and severa
 ## Review comment: shorter Gemini price-rise sentence (8 November 2026)
 
 Now one sentence: "Some prices are rising: Google will double the price of Gemini 4 Argon on 1 December 2026, ending what it called an introductory price, and of two cheaper Gemini Flash models on 1 January 2027." The exact before-and-after prices stay in footnote s2-argon.
+
+## Review comment: the total bill, and what capital spending pays for (8 November 2026)
+
+The s2 closing paragraph now says what the $720-740 billion buys and that it is not all AI inference or training: "…expect to spend about $720-740 billion in 2026 on data centres, chips and other equipment. That pays for training new AI models, for running them for users (what the prices above cover), and for the rest of their businesses." The Google token figure is shortened to "more than four times as many tokens as a year ago" (the 32 billion a minute stays in the footnote). Footnote s2-capex adds that capex covers non-AI cloud and, for Amazon, logistics, and that none of the four reports the AI share or the training/inference split.
