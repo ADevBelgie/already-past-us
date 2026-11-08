@@ -570,7 +570,7 @@ function Dashboard({ width }) {
         <Panel
           wide
           title="METR's assessment of Anthropic"
-          measure="How fast Anthropic's models gained capability after October 2025, on Anthropic's own version of Epoch's index, as a multiple of the earlier pace (2x would be twice as fast). Dot: central estimate. Bar: 95% interval."
+          measure="How much faster Anthropic's models improved after October 2025 than before (2x would mean twice as fast), measured on Anthropic's own version of Epoch's index. This is the speed-up in progress, not a direct measure of AI's help: METR guesses that perhaps 80% of the speed-up comes from AI speeding up the work, and calls that very uncertain. Dot: central estimate. Bar: 95% interval."
           who="METR, using Anthropic's partly redacted data"
           tag="estimate"
           footnote="s6-accel"

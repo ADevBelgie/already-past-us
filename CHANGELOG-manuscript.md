@@ -399,3 +399,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s6 dashboard: explain the log scale (review comment)
 - METR panel of the s6 dashboard: "Log scale." became "Each step up the scale multiplies the length, so a straight line means it keeps doubling at a steady pace."
+
+## 2026-11-08 — s6 dashboard: what METR's 1.9x measures (review comment)
+- METR panel description now says the figure is the speed-up in Anthropic's progress after October 2025, not a direct measure of AI's help, and adds METR's guess that perhaps 80% of the speed-up comes from AI, with high uncertainty (footnotes s6-accel, s3-attrib).
