@@ -225,8 +225,8 @@ export default function StatCards() {
                   </p>
                 </div>
               }
-              butLabel="Since launch"
-              but={<>Up from {rliLaunch.value.toFixed(1)}% in October 2025, about {rliRatio.value} times higher in a year.<FootnoteRef id={rliRatio.source} /></>}
+              butLabel="October 2025"
+              but={<>Just {rliLaunch.value.toFixed(1)}%, when the index launched. The best score has grown about {rliRatio.value} times since.<FootnoteRef id={rliRatio.source} /></>}
             >
               of projects where the best AI agent, working on its own, was judged as good as a human freelancer, as of {data.rli_accessed}.{' '}
               <span className="sc-prov"><TagChip tag={TAG_KEY[rliBest.tag]} /><FootnoteRef id={rliBest.source} /></span>

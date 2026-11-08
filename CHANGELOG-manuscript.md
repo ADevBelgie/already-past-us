@@ -191,3 +191,7 @@ Reader comment: OpenAI's false October 2025 claim says more about OpenAI than ab
 ## Review comment: "improved on the AI's construction" (8 November 2026)
 
 Wording preference: the Erdős card's "But" line and the s0 sentence now say "within weeks, humans improved on the AI's construction" (was "found a better construction than the AI's").
+
+## Review comment: freelance card's growth line (8 November 2026)
+
+"Since launch: Up from 2.5% in October 2025, about 8.5 times higher in a year" is now "October 2025: Just 2.5%, when the index launched. The best score has grown about 8.5 times since."
