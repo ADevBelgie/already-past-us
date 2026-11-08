@@ -299,3 +299,7 @@ Each row's second line now reads "Asked <when> · for <deadline>" (e.g. "Asked N
 ## Review comment: date the Danish study (8 November 2026)
 
 "In Denmark, official records of workers' earnings and hours rule out AI chatbots changing either by more than 2% in the two years after ChatGPT launched" is now "A Danish study of official pay and hours records from 2023 and 2024, before today's models, rules out AI chatbots changing either by more than 2%." The period is the one the s1 expert note already gives (data cover 2023–24).
+
+## Review comment: s2 "like with like" (8 November 2026)
+
+"…only means something if you compare like with like" is now "…only means something if you compare AI models of the same quality."
