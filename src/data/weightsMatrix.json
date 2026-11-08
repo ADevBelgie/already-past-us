@@ -134,7 +134,7 @@
       "leadEvidence": [
         {
           "file": "already-past-us.md",
-          "passage": "A model trains on material it wrote, so ordinary training updates its own weights. This is the genuinely \"self\" kind"
+          "passage": "A model trains on material it wrote, so ordinary training updates its own weights. This genuinely \"self\" kind"
         }
       ]
     },
@@ -280,11 +280,15 @@
           "evidence": [
             {
               "file": "already-past-us.md",
-              "passage": "Direct edits to another model, done by algorithms such as ROME and MEMIT since 2022"
+              "passage": "Direct edits to another model's weights, done since 2022 by algorithms that write facts straight into a model."
             },
             {
               "file": "already-past-us.md",
-              "passage": "What is new in the MIT work is that an AI worked out the edit."
+              "passage": "The fact-writing algorithms are ROME and MEMIT, from 2022."
+            },
+            {
+              "file": "already-past-us.md",
+              "passage": "What was new is that an AI worked out the edit"
             },
             {
               "file": "already-past-us.md",
@@ -310,7 +314,11 @@
           "evidence": [
             {
               "file": "already-past-us.md",
-              "passage": "Networks built to generate weights for other models, such as Text-to-LoRA."
+              "passage": "Networks built to generate weights for other models."
+            },
+            {
+              "file": "already-past-us.md",
+              "passage": "The best-known weight generator is Text-to-LoRA"
             },
             {
               "file": "research/topics/r2-selfweights_landscape.md",
@@ -355,11 +363,15 @@
           "evidence": [
             {
               "file": "already-past-us.md",
-              "passage": "published on 2 November 2026 and not peer-reviewed"
+              "passage": "published on 2 November and not peer-reviewed"
             },
             {
               "file": "already-past-us.md",
-              "passage": "They gave OpenAI's GPT-6 Astra a far smaller open model, Alibaba's Qwen3.5-0.8B"
+              "passage": "They gave OpenAI's GPT-6 Astra a far smaller, freely available model with under a billion weights"
+            },
+            {
+              "file": "already-past-us.md",
+              "passage": "The small model is Alibaba's Qwen3.5-0.8B"
             },
             {
               "file": "already-past-us.md",
@@ -383,7 +395,7 @@
             },
             {
               "file": "already-past-us.md",
-              "passage": "Most of that was a repair. This model is known to get stuck repeating itself"
+              "passage": "Most of that gain was a repair. The small model is known to get stuck repeating itself"
             },
             {
               "file": "research/topics/r3-sourcecheck-c.md",
@@ -422,7 +434,7 @@
         "evidence": [
           {
             "file": "already-past-us.md",
-            "passage": "such as the Darwin Gödel Machine"
+            "passage": "is the Darwin Gödel Machine (2025)"
           },
           {
             "file": "already-past-us.md",
@@ -468,7 +480,7 @@
     "leadEvidence": [
       {
         "file": "already-past-us.md",
-        "passage": "Agents that rewrite their own code and leave their weights alone"
+        "passage": "Agents that rewrite their own code, or code used to train them, and leave their weights alone"
       }
     ]
   }

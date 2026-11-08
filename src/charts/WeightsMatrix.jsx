@@ -146,7 +146,7 @@ export default function WeightsMatrix() {
   return (
     <Figure
       id="s7-weights-matrix"
-      title="The November result edited another model's weights; we found no public case of a model directly editing its own"
+      title="In public work, models change their own weights only by training on material they wrote; every direct edit we found was to another model"
       subtitle="Published examples of changes to model weights, sorted by whose weights change (columns) and how (rows). A grouping, not a measurement."
       notes={NOTE_IDS}
       source="Section 7 sources; grouping from our research notes"

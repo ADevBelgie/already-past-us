@@ -36,7 +36,7 @@ const cells = [
   {
     row: 'training', col: 'own', kind: 'filled',
     lead: 'The genuinely "self" kind: a model trains on material it wrote, so ordinary training updates its own weights.',
-    leadEvidence: [['ms', 'A model trains on material it wrote, so ordinary training updates its own weights. This is the genuinely "self" kind']],
+    leadEvidence: [['ms', 'A model trains on material it wrote, so ordinary training updates its own weights. This genuinely "self" kind']],
     entries: [
       {
         id: 'seal', name: 'SEAL', who: 'MIT', when: '2025',
@@ -99,20 +99,20 @@ const cells = [
         id: 'rome-memit', name: 'ROME and MEMIT', who: 'Algorithms, not AI models', when: 'since 2022',
         text: 'Write facts straight into a model’s weights. MEMIT handles thousands at once.',
         footnotes: ['s7-edit'],
-        evidence: [['ms', 'Direct edits to another model, done by algorithms such as ROME and MEMIT since 2022'], ['ms', 'What is new in the MIT work is that an AI worked out the edit.'],['ms', 'It scales to "thousands of associations"']],
+        evidence: [['ms', "Direct edits to another model's weights, done since 2022 by algorithms that write facts straight into a model."], ['ms', 'The fact-writing algorithms are ROME and MEMIT, from 2022.'], ['ms', 'What was new is that an AI worked out the edit'],['ms', 'It scales to "thousands of associations"']],
       },
       {
         id: 'text-to-lora', name: 'Text-to-LoRA', who: 'Charakorn et al.', when: '2025',
         text: 'A network built to generate add-on weights for another model from a task description. Section 7 lists weight generators as a separate family; they sit here because the model receiving the weights is not trained.',
         footnotes: ['s7-gen'],
-        evidence: [['ms', 'Networks built to generate weights for other models, such as Text-to-LoRA.'], ['r2', 'Text-to-LoRA (Sakana AI): a hypernetwork generates LoRA adapters for an LLM from a natural-language task description in one forward pass'], ['r2', 'OTHER + learned weight generator.'], ['ms', 'Charakorn et al., "Text-to-LoRA: Instant Transformer Adaption", ICML 2025']],
+        evidence: [['ms', 'Networks built to generate weights for other models.'], ['ms', 'The best-known weight generator is Text-to-LoRA'], ['r2', 'Text-to-LoRA (Sakana AI): a hypernetwork generates LoRA adapters for an LLM from a natural-language task description in one forward pass'], ['r2', 'OTHER + learned weight generator.'], ['ms', 'Charakorn et al., "Text-to-LoRA: Instant Transformer Adaption", ICML 2025']],
       },
       {
         id: 'mit-csail', name: 'GPT-6 Astra edits Qwen3.5-0.8B', who: 'MIT CSAIL', when: '2 November 2026',
         highlight: 'The November story is here',
         text: 'With Python and no training, OpenAI’s model worked out an edit to about 0.016% of the weights of a far smaller open model. On the largest of three test-run budgets, the small model’s maths score rose from 8% to 48%, mostly by fixing a fault that made it repeat itself. A blog post, not peer-reviewed.',
         footnotes: ['s7-post', 's7-qwen', 's7-loops'],
-        evidence: [['ms', 'published on 2 November 2026 and not peer-reviewed'], ['ms', "They gave OpenAI's GPT-6 Astra a far smaller open model, Alibaba's Qwen3.5-0.8B"], ['ms', 'plus Python'], ['ms', 'Reasoning about the weights, with no training, Astra edited about 0.016% of them'], ['ms', 'rose from 8% to 48%'], ['ms', 'The headline Qwen result is a single run with the largest budget, 50 forward passes'], ['ms', 'in separate runs allowed 10, 25 and 50 forward passes, one run per budget'], ['ms', 'Most of that was a repair. This model is known to get stuck repeating itself'], ['r3c', 'MATH-500 accuracy: 7.9 unedited; 12.3, 14.1 and 48.1 at 10, 25 and 50 passes.']],
+        evidence: [['ms', 'published on 2 November and not peer-reviewed'], ['ms', "They gave OpenAI's GPT-6 Astra a far smaller, freely available model with under a billion weights"], ['ms', "The small model is Alibaba's Qwen3.5-0.8B"], ['ms', 'plus Python'], ['ms', 'Reasoning about the weights, with no training, Astra edited about 0.016% of them'], ['ms', 'rose from 8% to 48%'], ['ms', 'The headline Qwen result is a single run with the largest budget, 50 forward passes'], ['ms', 'in separate runs allowed 10, 25 and 50 forward passes, one run per budget'], ['ms', 'Most of that gain was a repair. The small model is known to get stuck repeating itself'], ['r3c', 'MATH-500 accuracy: 7.9 unedited; 12.3, 14.1 and 48.1 at 10, 25 and 50 passes.']],
       },
     ],
   },
@@ -121,13 +121,13 @@ const cells = [
 const strip = {
   label: 'Rewrites its own code, not its weights',
   lead: 'Agents that change their own code and leave the model’s weights alone.',
-  leadEvidence: [['ms', 'Agents that rewrite their own code and leave their weights alone']],
+  leadEvidence: [['ms', 'Agents that rewrite their own code, or code used to train them, and leave their weights alone']],
   entries: [
     {
       id: 'dgm', name: 'Darwin Gödel Machine', who: 'Research preprint', when: 'May 2025',
       text: 'An agent rewrites its own code while the model underneath stays frozen.',
       footnotes: ['s7-code'],
-      evidence: [['ms', 'such as the Darwin Gödel Machine'], ['ms', 'The agent rewrites its own code, with the underlying model frozen.'], ['ms', 'arXiv 2505.22954, May 2025']],
+      evidence: [['ms', 'is the Darwin Gödel Machine (2025)'], ['ms', 'The agent rewrites its own code, with the underlying model frozen.'], ['ms', 'arXiv 2505.22954, May 2025']],
     },
     {
       id: 'alphaevolve', name: 'AlphaEvolve', who: 'Google DeepMind', when: 'May 2025',
