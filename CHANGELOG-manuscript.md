@@ -448,3 +448,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 - Brief prose 428 → about 130 words: what weights are; no public case of a model directly editing its own weights; the one narrow real form (training on its own output); the November MIT claim (Astra edited another, smaller model; 8% → 48%, mostly a repair); no frontier chatbot learns as people use it; FutureSearch's January 2033 median.
 - Everything else moved unchanged into expert notes: "Four kinds of work on changing models" (new, holds the four-kinds list), "The November post, and what is still hard" (new), plus the existing notes. All 15 s7 footnotes and all 43 weights-matrix passages still present (script re-run OK).
 - Drafted by three agents, judged, checked for fidelity and rules; one fix applied (gloss "frontier (most capable)").
+
+## 2026-11-08 — s9 forecast item shortened (review comment)
+- Brief item cut to three short sentences (forecast 3.4 hours, last measurement 3.1 hours in April, trend points far past, METR stopped updating). The full wording (80% of tasks, when forecasters were asked, link to section 1) moved to the "Signpost details" expert note.
