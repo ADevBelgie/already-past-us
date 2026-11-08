@@ -408,3 +408,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s6 dashboard: what OpenAI's agent-workdays mean (review comment)
 - OpenAI panel description now explains the ratio in plain words (agent running time, summed across agents running at once, per 8-hour human workday; 3.1 ≈ 25 agent-hours per human day) and says it measures time, not the share of work done by AI (footnote s6-openai).
+
+## 2026-11-08 — s6 thresholds: AI already speeds up work (review comment)
+- s6 Brief: the thresholds sentence now says AI is already speeding up the labs' work, and that the thresholds are for a much bigger speed-up (Anthropic's: a doubling of its normal rate of progress, footnote s6-rsp). Dashboard strip heading reworded to match.

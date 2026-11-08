@@ -380,7 +380,7 @@ function Thresholds({ width }) {
   const s1 = find('thresholds', r => r.footnote === 's6-s1')
   return (
     <div className="rsi-strip">
-      <h4 className="rsi-strip__head">Each lab&rsquo;s own threshold for AI speeding up its research: none says it has been crossed</h4>
+      <h4 className="rsi-strip__head">Each lab&rsquo;s threshold for a much bigger AI speed-up of its research: none says it has been crossed</h4>
       {/* Columns come from @container figure queries in RsiDashboard.css (3 from 680px; below that
           OpenAI and Google side by side with Anthropic across both columns), so the pre-rendered
           HTML is laid out right at every width; `cols` here only sizes the meter. */}
