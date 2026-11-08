@@ -3,7 +3,7 @@
 // and METR's raw data file. Horizons are in MINUTES of skilled-human working time.
 import { useState } from 'react'
 import { scaleLog, scaleUtc } from 'd3-scale'
-import { Figure, C, LegendItem, Tooltip, Segmented } from './kit.jsx'
+import { Figure, C, LegendItem, Tooltip, Segmented, utc } from './kit.jsx'
 import data from '../data/metrCurve.json'
 import './MetrCurve.css'
 
@@ -22,7 +22,7 @@ function dur(min) {
 }
 /** Minutes with enough decimals to keep sub-minute values readable (table only). */
 const mins = v => (v < 1 ? v.toFixed(3) : v < 10 ? v.toFixed(2) : v.toFixed(1))
-const dayFmt = iso => toDate(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+const dayFmt = iso => utc.dayMonthYear(toDate(iso))
 
 // y ticks, in minutes
 const TICKS = [
@@ -142,7 +142,7 @@ function Chart({ width, metric }) {
     <>
       {legend}
       <div className="metr-plot">
-      <svg width={w} height={h} role="img" aria-label={ariaLabel} onMouseLeave={hide}>
+      <svg width={w} height={h} role="group" aria-label={ariaLabel} onMouseLeave={hide}>
         {/* unreliable band above 16 h */}
         <rect x={m.left} y={y(Y_DOMAIN[1])} width={w - m.left - m.right} height={y(LIMIT) - y(Y_DOMAIN[1])} fill={C.grid} fillOpacity="0.7" />
         <line x1={m.left} x2={w - m.right} y1={y(LIMIT)} y2={y(LIMIT)} stroke={C.ink3} strokeWidth="1" strokeDasharray="3 3" />
@@ -199,7 +199,7 @@ function Chart({ width, metric }) {
 
         {/* other (non-state-of-the-art) models: faint, no whiskers */}
         {others.map(d => (
-          <g key={d.key} className="metr-pt" tabIndex={0}
+          <g key={d.key} className="metr-pt" role="graphics-symbol" tabIndex={0}
             aria-label={`${d.name} (not state of the art), ${dayFmt(d.date)}: ${isP50 ? '50%' : '80%'} horizon ${dur(val(d))}, 95% interval ${dur(lo(d))} to ${dur(hi(d))}`}
             onMouseEnter={() => show(d, 'pt')} onFocus={() => show(d, 'pt')} onBlur={hide}>
             <circle cx={x(toDate(d.date))} cy={y(val(d))} r={narrow ? 2.5 : 3} fill="none" stroke={C.ink3} strokeWidth="1" opacity="0.8" />
@@ -212,7 +212,7 @@ function Chart({ width, metric }) {
         {sota.map(d => {
           const px = x(toDate(d.date))
           return (
-            <g key={d.key} className="metr-pt" tabIndex={0}
+            <g key={d.key} className="metr-pt" role="graphics-symbol" tabIndex={0}
               aria-label={`${d.name}, ${dayFmt(d.date)}: ${isP50 ? '50%' : '80%'} horizon ${dur(val(d))}, 95% interval ${dur(lo(d))} to ${dur(hi(d))}`}
               onMouseEnter={() => show(d, 'pt')} onFocus={() => show(d, 'pt')} onBlur={hide}>
               <line x1={px} x2={px} y1={y(lo(d))} y2={y(hi(d))} stroke={C.ink2} strokeWidth="1" />
@@ -229,7 +229,7 @@ function Chart({ width, metric }) {
           const top = narrow ? y(0.6) : y(30)
           const lines = tiny ? ['GPT-5.6 Sol: ~11 h', 'if cheating fails;', 'not robust'] : ['GPT-5.6 Sol: ~11 h if', 'cheating counts as', 'failure (not robust)']
           return (
-            <g className="metr-pt" tabIndex={0} aria-label="GPT-5.6 Sol, evaluated June 2026: about 11.3 hours (95% interval 5 to 40 hours) if cheating counts as failure, over 270 hours if it counts as success; METR says neither is robust."
+            <g className="metr-pt" role="graphics-symbol" tabIndex={0} aria-label="GPT-5.6 Sol, evaluated June 2026: about 11.3 hours (95% interval 5 to 40 hours) if cheating counts as failure, over 270 hours if it counts as success; METR says neither is robust."
               onMouseEnter={() => show(null, 'sol')} onFocus={() => show(null, 'sol')} onBlur={hide}>
               <line x1={sx} x2={sx} y1={y(sol.p50Lo)} y2={y(sol.p50Hi)} stroke={C.ink3} strokeWidth="1" strokeDasharray="2 2" />
               <circle cx={sx} cy={y(sol.p50)} r="3.5" fill={C.paper} stroke={C.ink2} strokeWidth="1.4" />

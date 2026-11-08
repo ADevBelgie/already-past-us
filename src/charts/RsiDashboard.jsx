@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { scaleLinear, scaleLog, scaleUtc } from 'd3-scale'
 import { line } from 'd3-shape'
 import { extent } from 'd3-array'
-import { Figure, C, TagChip, Tooltip } from './kit.jsx'
+import { Figure, C, TagChip, Tooltip, utc } from './kit.jsx'
 import { FootnoteRef } from '../components/Footnotes.jsx'
 import data from '../data/rsi_series.json'
 import './RsiDashboard.css'
@@ -20,11 +20,10 @@ const GAP = 24
 
 // 'YYYY-MM-DD', or 'YYYY-MM' (month only in the source: placed mid-month).
 const toDate = s => new Date((s.length === 7 ? `${s}-15` : s) + 'T00:00:00Z')
-const monthYear = s =>
-  new Date((s.length === 7 ? `${s}-01` : s) + 'T00:00:00Z').toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' })
+const monthYear = s => utc.monthYear(new Date((s.length === 7 ? `${s}-01` : s) + 'T00:00:00Z'))
 const shortMonth = s => {
   const d = toDate(s)
-  return `${d.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' })} ’${String(d.getUTCFullYear()).slice(2)}`
+  return `${utc.month(d)} ’${String(d.getUTCFullYear()).slice(2)}`
 }
 const when = r => r.date_label || (r.date ? monthYear(r.date) : '')
 

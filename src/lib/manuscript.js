@@ -13,6 +13,7 @@ const HEADING = /^##\s+(.*?)\s*\{#([\w-]+)\}\s*$/
 const CHART = /^<!--\s*CHART:\s*([\w-]+)\s*\|\s*(.*?)\s*\|\s*(.*?)\s*-->\s*$/
 const TAG_PREFIX = /^\*\*(Verified|Vendor-reported|Estimate|Our calculation)\.\*\*\s*/
 const FN_REF = /\[\^([^\]]+)\]/g
+const EXPERT = /^\*\*Expert note:(?:\s+([^*]+?))?\.?\*\*\s*([\s\S]*)$/
 
 function parseFrontMatter(lines) {
   const meta = {}
@@ -60,8 +61,9 @@ function toBlocks(lines, problems = [], where = '') {
       }
       i--
       const text = quote.join('\n').trim()
-      const expert = text.match(/^\*\*Expert note:\*\*\s*([\s\S]*)$/)
-      if (expert) blocks.push({ type: 'expert', text: expert[1].trim() })
+      // "**Expert note: Label.** body", or the older unlabelled "**Expert note:** body".
+      const expert = text.match(EXPERT)
+      if (expert) blocks.push({ type: 'expert', label: expert[1]?.trim() || undefined, text: expert[2].trim() })
       else blocks.push({ type: 'md', text: quote.map(q => '> ' + q).join('\n') })
       continue
     }

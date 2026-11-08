@@ -30,5 +30,5 @@ A curious, smart non-specialist: a manager, a teacher, a policy aide, a parent w
 
 ## Format
 - Markdown. `##` for the section heading, `###` sparingly.
-- Brief text is the main body. Optional "Expert note" blocks go in `> **Expert note:** ...` blockquotes and are hidden by default on the site.
+- Brief text is the main body. Optional "Expert note" blocks go in `> **Expert note: Label.** ...` blockquotes and are hidden by default on the site. The label says what the note covers, since it is all a Brief reader sees: required, plain text in sentence case (no `*`, markdown or footnote refs), at most 60 characters, unique within its section.
 - Chart placeholders: `<!-- CHART: id | one-line description | data file -->`.

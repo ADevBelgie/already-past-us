@@ -1,8 +1,8 @@
-import { DATA_AS_OF_LABEL, daysSince, decayTier } from '../lib/dates.js'
+import { DATA_AS_OF_LABEL, decayTier, useDaysSince } from '../lib/dates.js'
 
 /** Section 9: a "last checked" stamp that visibly ages, above the list of signposts. */
 export default function SignpostStamp() {
-  const days = daysSince()
+  const days = useDaysSince()
   const tier = decayTier(days)
   return (
     <div className={`stamp stamp--${tier}`} role="note">

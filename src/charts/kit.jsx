@@ -146,11 +146,20 @@ export function Segmented({ label, options, value, onChange }) {
   )
 }
 
+// Dates are formatted by hand, not with toLocaleDateString: the page is pre-rendered in Node and
+// hydrated in the browser, and the two can ship different locale data. These match en-GB (CLDR 42+).
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+export const utc = {
+  month: d => MONTHS[d.getUTCMonth()],
+  monthYear: d => `${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`,
+  dayMonthYear: d => `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`,
+}
+
 export const fmt = {
   usd: v => (v >= 10 ? `$${v.toFixed(0)}` : v >= 1 ? `$${v.toFixed(2)}` : `$${v.toFixed(2)}`),
   pct: (v, d = 0) => `${v.toFixed(d)}%`,
   hours: h => (h < 1 ? `${Math.round(h * 60)} min` : h < 10 ? `${h.toFixed(1)} h` : `${Math.round(h)} h`),
-  date: iso => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' }),
+  date: iso => utc.monthYear(new Date(iso + 'T00:00:00Z')),
 }
 
 /** True when the viewer prefers reduced motion. */

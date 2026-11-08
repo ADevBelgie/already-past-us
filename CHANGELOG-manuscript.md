@@ -117,3 +117,6 @@ Four primary pages that blocked the agents' fetcher were read in a browser and c
 - IMO 2026 official individual results: 666 contestants, 7 with 42/42 (s4-imo).
 - Epoch's GPQA Diamond page confirms Grok 4 at 87% (±2%) and the 69.7% PhD-expert baseline; it shows no current top score in text, so s4 stays as written.
 Still unread: the full NHC 2025 verification PDF (s4-nhc rests on press coverage plus NHC's preview).
+
+## Expert-note labels (8 November 2026)
+Every expert note now carries a short label (`> **Expert note: Label.** ...`) shown in its folded summary, so Brief-mode readers can see what each note covers. In three notes the opening phrase became the label ("How the frontier is built", "Each better yardstick has limits", "Two smaller slips"); all other note text is unchanged. The section 6 label was reworded after review to match what the note says about the labs' thresholds.

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/check-manuscript.mjs && vite build",
+    "build": "node scripts/check-manuscript.mjs && node scripts/build.mjs",
     "check": "node scripts/check-manuscript.mjs",
     "preview": "vite preview"
   },
@@ -14,12 +14,13 @@
     "d3-scale": "^4.0.3",
     "d3-shape": "^3.2.1",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1",
-    "react-markdown": "^10.1.0",
-    "remark-gfm": "^4.0.1"
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.2.1",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.5",
     "vite": "^8.3.6"
   }
 }

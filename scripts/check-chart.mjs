@@ -20,7 +20,7 @@ try {
       outDir: out,
       emptyOutDir: true,
       lib: { entry: resolve(file), formats: ['es'], fileName: basename(file, '.jsx') },
-      rolldownOptions: { external: id => /^(react|react-dom|react-markdown|remark-gfm|d3-.*)(\/|$)/.test(id) },
+      rolldownOptions: { external: id => /^(react|react-dom|d3-.*)(\/|$)/.test(id) },
     },
   })
   console.log(`OK: ${file} compiles`)

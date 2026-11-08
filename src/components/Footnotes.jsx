@@ -9,6 +9,20 @@ export const FootnoteContext = createContext({ footnotes: {} })
 const tagKey = tag => TAGS[tag]?.key ?? 'none'
 const EDGE = 16
 const SHEET_MAX = 640 // at or below this width the popover is a bottom sheet (CSS)
+const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), summary, [tabindex]:not([tabindex="-1"])'
+
+const isShown = el => el.getClientRects().length > 0 && getComputedStyle(el).visibility !== 'hidden'
+
+/** The first focusable element after `from` in document order, ignoring anything inside `skip`. */
+function nextFocusable(from, skip) {
+  const all = document.querySelectorAll(FOCUSABLE)
+  for (const el of all) {
+    if (from.contains(el) || skip?.contains(el)) continue
+    if (!(from.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING)) continue
+    if (isShown(el)) return el
+  }
+  return null
+}
 
 /**
  * Inline footnote reference: a small numbered chip coloured by provenance tag.
@@ -22,6 +36,7 @@ export function FootnoteRef({ id }) {
   const [pos, setPos] = useState(null)
   const btn = useRef(null)
   const pop = useRef(null)
+  const closeBtn = useRef(null)
   const popId = useId()
 
   const place = useCallback(() => {
@@ -37,6 +52,9 @@ export function FootnoteRef({ id }) {
   }, [])
 
   useLayoutEffect(() => { if (open) place() }, [open, place])
+
+  // Opening (by click or keyboard) moves focus into the popover, to its close button.
+  useEffect(() => { if (open) closeBtn.current?.focus({ preventScroll: true }) }, [open])
 
   const close = useCallback((refocus = false) => {
     setOpen(false)
@@ -70,6 +88,26 @@ export function FootnoteRef({ id }) {
     if (next) setOpen(false)
   }
 
+  // The popover is portalled to <body>, so the natural tab order would jump to the end of the page.
+  // Tabbing out of it closes it and continues from the chip instead.
+  const onPopKey = e => {
+    if (e.key !== 'Tab' || !pop.current) return
+    const items = [...pop.current.querySelectorAll(FOCUSABLE)].filter(isShown)
+    if (!items.length) return
+    const first = items[0]
+    const last = items[items.length - 1]
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault()
+      close(true)
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault()
+      const target = nextFocusable(btn.current, pop.current)
+      setOpen(false)
+      if (target) target.focus()
+      else btn.current?.focus()
+    }
+  }
+
   return (
     <span className="fn-wrap" onBlur={onBlur}>
       <button
@@ -89,14 +127,20 @@ export function FootnoteRef({ id }) {
           className="fn-pop"
           id={popId}
           role="dialog"
+          aria-modal="false"
           aria-label={`Source ${fn.n}`}
-          style={pos ? { left: pos.left, top: pos.top } : { visibility: window.innerWidth <= SHEET_MAX ? 'visible' : 'hidden' }}
+          onKeyDown={onPopKey}
+          /* Before the first measurement it sits off-screen (not visibility: hidden, which would block focus). */
+          style={pos ? { left: pos.left, top: pos.top } : window.innerWidth <= SHEET_MAX ? undefined : { left: -9999, top: 0 }}
         >
           <span className="fn-pop__head">
             <span className={`tag-chip tag-chip--${key}`}>{fn.tag}</span>
             <span className="fn-pop__blurb">{TAGS[fn.tag]?.blurb}</span>
+            <button ref={closeBtn} type="button" className="fn-pop__close" aria-label="Close source" onClick={() => close(true)}>
+              <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
+            </button>
           </span>
-          <span className="fn-pop__body"><Md text={fn.text} inline /></span>
+          <span className="fn-pop__body"><Md tree={fn.tree} inline /></span>
           <a
             className="fn-pop__more"
             href={`#fn-${id}`}
@@ -129,7 +173,7 @@ export function SectionNotes({ ids }) {
           return (
             <li key={id} id={`fn-${id}`} value={fn.n}>
               <span className={`tag-chip tag-chip--${tagKey(fn.tag)}`}>{fn.tag}</span>{' '}
-              <Md text={fn.text} inline />
+              <Md tree={fn.tree} inline />
             </li>
           )
         })}

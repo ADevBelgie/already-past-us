@@ -37,6 +37,23 @@ for (const dir of ['src/charts', 'src/data']) {
   }
 }
 
+// Expert notes are folded in Brief mode, so each needs a short label saying what it covers.
+for (const s of sections) {
+  const seen = new Set()
+  for (const b of s.blocks) {
+    // A malformed note (e.g. "*" in the label, or no colon) silently becomes a quote that shows in Brief mode.
+    if (b.type === 'md' && /^>\s*\*\*Expert note/m.test(b.text)) {
+      problems.push(`looks like an expert note but did not parse (the label must have no "*" and end with ".**"): "${b.text.slice(0, 60)}" (${s.id})`)
+      continue
+    }
+    if (b.type !== 'expert') continue
+    if (!b.label) { problems.push(`expert note without a label: "${b.text.slice(0, 50)}" (${s.id})`); continue }
+    if (b.label.length > 60) problems.push(`expert note label longer than 60 characters: "${b.label}" (${s.id})`)
+    if (seen.has(b.label)) problems.push(`duplicate expert note label in section: "${b.label}" (${s.id})`)
+    seen.add(b.label)
+  }
+}
+
 if (!meta.title) problems.push('front matter has no title')
 if (/\[link to add before launch\]/.test(md)) problems.push('placeholder link still present')
 

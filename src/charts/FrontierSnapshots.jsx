@@ -4,7 +4,7 @@
 import { useMemo, useState } from 'react'
 import { scaleLinear, scaleLog } from 'd3-scale'
 import data from '../data/frontier_snapshots.json'
-import { C, Figure, LegendItem, Segmented, Tooltip, fmt } from './kit.jsx'
+import { C, Figure, LegendItem, Segmented, Tooltip, fmt, utc } from './kit.jsx'
 import './FrontierSnapshots.css'
 
 const SNAPS = data.snapshots // [{date, key, label, long}], oldest first
@@ -44,8 +44,7 @@ const ALWAYS_SHOWN = new Set(['2026-11-07|GPT-6 Luna'])
 
 const keyOf = m => `${m.snapshot}|${m.model}`
 const usdExact = v => `$${+v.toFixed(4)}`
-const dateLong = iso =>
-  new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+const dateLong = iso => utc.dayMonthYear(new Date(iso + 'T00:00:00Z'))
 const textWidth = (s, px = 11) => s.length * px * 0.56
 
 const BY_SNAP = Object.fromEntries(SNAPS.map(s => [s.date, data.models.filter(m => m.snapshot === s.date)]))
