@@ -10,8 +10,8 @@ export default function SignpostStamp() {
       <span>
         Last checked <strong>{DATA_AS_OF_LABEL}</strong>
         {days > 0 && <> · {days} {days === 1 ? 'day' : 'days'} ago</>}
-        {tier === 'warn' && <>. Some of these dates may have passed; check each source.</>}
-        {tier === 'alarm' && <>. Most of these signposts have likely resolved; read this list as a record.</>}
+        {tier === 'warn' && <>. Some of these dates may have passed. Check each source.</>}
+        {tier === 'alarm' && <>. Most of these checks have likely been settled. Read this list as a record.</>}
       </span>
     </div>
   )

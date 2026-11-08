@@ -342,11 +342,11 @@ export default function MetrCurve() {
       id="s3-metr-curve"
       title="From 2024 to early 2026, the length of task AI agents can finish half the time doubled about every 3½ months, faster than the 8½ months before 2024"
       subtitle={metric === 'p50'
-        ? 'METR time horizon: the length of a software task, in skilled-human working time, that a model completes half the time. By model release date, log scale, with 95% intervals. Trend lines are our least-squares fit.'
-        : 'METR 80% time horizon: the length of a software task, in skilled-human working time, that a model completes four times in five. By model release date, log scale, with 95% intervals.'}
+        ? 'METR time horizon: the length of a software task, in a skilled person\'s working time, that each model completes half the time. By release date, with 95% uncertainty ranges. Each step up the time axis is a multiple, not a fixed amount. Trend lines are our fit.'
+        : 'METR 80% time horizon: the length of a software task, in a skilled person\'s working time, that each model completes four times in five. By release date, with 95% uncertainty ranges. Each step up the time axis is a multiple, not a fixed amount.'}
       notes={NOTES}
       source="METR Time Horizon 1.1 data file (last model added 8 May 2026); trend lines our calculation"
-      caveat="METR says scores above 16 hours are unreliable, and on 8 September 2026 it marked its leaderboard as no longer updated (the last model was added in May), so no model newer than April 2026 has a reliable public time horizon. The fits treat wide-interval points as exact."
+      caveat="METR says scores above 16 hours are unreliable. It added its last model in May 2026, and on 8 September 2026 it marked its leaderboard as no longer updated. So no model newer than April 2026 has a reliable public time horizon. Our fits treat points with wide uncertainty ranges as exact."
     >
       {width => (
         <>

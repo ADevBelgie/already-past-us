@@ -67,7 +67,7 @@
           "name": "MASS",
           "who": "Sakana AI and UC Berkeley",
           "when": "October 2026",
-          "text": "Two LoRA training rounds on material it produced. Gains of 1.2–1.6x are in score per output token; coding tests were flat or slightly down.",
+          "text": "Two rounds of add-on (LoRA) training on material it produced. Its gains of 1.2–1.6x are in score per output token. Coding tests were flat or slightly down.",
           "footnotes": [
             "s7-self"
           ],
@@ -227,7 +227,7 @@
           "name": "No public demonstration found",
           "who": null,
           "when": null,
-          "text": "The MIT CSAIL authors describe a model that improves its own weights only as a future direction.",
+          "text": "The MIT authors describe a model that improves its own weights only as a future direction.",
           "footnotes": [
             "s7-post"
           ],
@@ -301,7 +301,7 @@
           "name": "Text-to-LoRA",
           "who": "Charakorn et al.",
           "when": "2025",
-          "text": "A network built to generate add-on weights for another model from a task description. Section 7 lists weight generators as a separate family; they sit here because the model receiving the weights is not trained.",
+          "text": "A network built to generate add-on weights for another model from a task description. The list above treats weight generators as their own kind. They sit here because the model receiving the weights is not trained.",
           "footnotes": [
             "s7-gen"
           ],
@@ -340,7 +340,7 @@
           "who": "MIT CSAIL",
           "when": "2 November 2026",
           "highlight": "The November story is here",
-          "text": "With Python and no training, OpenAI’s model worked out an edit to about 0.016% of the weights of a far smaller open model. On the largest of three test-run budgets, the small model’s maths score rose from 8% to 48%, mostly by fixing a fault that made it repeat itself. A blog post, not peer-reviewed.",
+          "text": "With Python and no training, OpenAI’s model worked out an edit to about 0.016% of the weights of a far smaller open model. On the largest of three test-run budgets, the small model’s maths score rose from 8% to 48%. Most of the gain came from fixing a fault that made it repeat itself. A blog post, not peer-reviewed.",
           "footnotes": [
             "s7-post",
             "s7-qwen",
@@ -451,7 +451,7 @@
         "name": "AlphaEvolve",
         "who": "Google DeepMind",
         "when": "May 2025",
-        "text": "Google DeepMind says a faster kernel it found cut Gemini training time by about 1%: an indirect loop through code.",
+        "text": "Google DeepMind says AlphaEvolve found a faster kernel, a piece of low-level code, that cut Gemini training time by about 1%. That is an indirect loop through code, not weight editing.",
         "footnotes": [
           "s7-alphaevolve"
         ],

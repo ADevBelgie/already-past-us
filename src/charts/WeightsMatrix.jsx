@@ -146,11 +146,11 @@ export default function WeightsMatrix() {
   return (
     <Figure
       id="s7-weights-matrix"
-      title="In public work, models change their own weights only by training on material they wrote; every direct edit we found was to another model"
-      subtitle="Published examples of changes to model weights, sorted by whose weights change (columns) and how (rows). A grouping, not a measurement."
+      title="In public work, models change their own weights only by training on material they wrote"
+      subtitle="Every direct edit we found was to another model. Published examples, sorted by whose weights change (columns) and how (rows). A grouping, not a measurement."
       notes={NOTE_IDS}
       source="Section 7 sources; grouping from our research notes"
-      caveat="The MIT CSAIL result is a blog post, not peer-reviewed, and most of its gain came from repairing a fault that made the small model repeat itself."
+      caveat="The MIT result is a blog post, not peer-reviewed. Most of its gain came from repairing a fault that made the small model repeat itself."
     >
       <Matrix />
       <DataTable />

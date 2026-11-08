@@ -452,8 +452,8 @@ export default function JaggedMap() {
   return (
     <Figure
       id="s4-jagged-map"
-      title="AI's leads are mostly on short tasks with an answer key; its gaps are in long, open-ended or physical work"
-      subtitle="Twelve tests of AI, placed on five steps from far below humans to beyond the best humans. Dot colour shows who checked the result; each row also says who or what AI was compared with."
+      title="AI leads mostly on short tasks with an answer key, and lags on long, open-ended or physical work"
+      subtitle="Twelve tests of AI, placed on five steps from far below humans to beyond the best humans. Dot colour shows who checked each result. Each row also says who or what AI was compared with."
       legend={
         <>
           <LegendItem color={C.verified} label="Verified" />
@@ -463,7 +463,7 @@ export default function JaggedMap() {
           <LegendItem color={C.accent} shape="line" label="Level with the best humans" />
         </>
       }
-      caveat="Several right-hand dots compare AI with trained experts, average drivers or another computer model, not with the best humans. The IMO 2026 perfect scores are company reports the IMO has not confirmed, and the hurricane result is known through press coverage of NHC's report."
+      caveat="Several right-hand dots compare AI with trained experts, average drivers or another computer model, not with the best humans. The IMO 2026 perfect scores are company reports the IMO has not confirmed. The hurricane result is known through press coverage of the National Hurricane Center's report."
       source="section 4 footnotes; the ICPC and Erdős rows come from the opening section"
       notes={notes}
     >

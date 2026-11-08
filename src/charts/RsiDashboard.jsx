@@ -380,7 +380,7 @@ function Thresholds({ width }) {
   const s1 = find('thresholds', r => r.footnote === 's6-s1')
   return (
     <div className="rsi-strip">
-      <h4 className="rsi-strip__head">Each lab&rsquo;s own threshold for AI-driven research acceleration: none says it has been crossed</h4>
+      <h4 className="rsi-strip__head">Each lab&rsquo;s own threshold for AI speeding up its research: none says it has been crossed</h4>
       {/* Columns come from @container figure queries in RsiDashboard.css (3 from 680px; below that
           OpenAI and Google side by side with Anthropic across both columns), so the pre-rendered
           HTML is laid out right at every width; `cols` here only sizes the meter. */}
@@ -396,7 +396,7 @@ function Thresholds({ width }) {
           <p className="rsi-cell__lab">Google DeepMind</p>
           <p className="rsi-cell__model">{gg.label}, {gg.date_label}</p>
           <p className="rsi-cell__status">Not reached</p>
-          <p className="rsi-cell__text">ML research acceleration and automation, level 1 of each.</p>
+          <p className="rsi-cell__text">Machine-learning research acceleration and automation, level 1 of each.</p>
           <p className="rsi-cell__who"><TagChip tag="vendor" /><FootnoteRef id="s6-google-th" /></p>
         </div>
         <div className="rsi-cell rsi-cell--anthropic">
@@ -565,7 +565,7 @@ function Dashboard({ width }) {
       <Tier
         letter="B"
         title="Independent analysis of private lab data"
-        desc="An outside group's estimate, built on data the lab supplied; the lab redacted most of the evidence the outside group found most informative."
+        desc="An outside group's estimate from data the lab supplied. The lab redacted most of the evidence the outside group found most informative."
       >
         <Panel
           wide
@@ -691,10 +691,10 @@ export default function RsiDashboard() {
     <Figure
       id="s6-rsi-dashboard"
       title="The steepest curves come from the labs' own, unchecked numbers"
-      subtitle="Indicators that AI is speeding up the work of building AI, grouped by who measured them. Each panel has its own scale and dates."
+      subtitle="Signs that AI is speeding up the building of AI, grouped by who measured them. Each panel has its own scale and dates."
       notes={['s6-metr', 's6-eci', 's6-accel', 's6-google', 's6-anthro-code', 's6-speedup', 's6-openai', 's6-openai-th', 's6-google-th', 's6-cobench', 's6-s1']}
       source={<>METR; Epoch AI; Google; Anthropic; OpenAI. <a href="/data/rsi_series.csv">Download the data (CSV)</a>.</>}
-      caveat="Code share and agent hours count activity, not research value. Each lab uses its own measure, some of them undefined, so the labs' figures cannot be compared with one another."
+      caveat="Code share and agent hours count activity, not research value. Each lab uses its own measure, some undefined. The labs' figures cannot be compared with one another."
     >
       {width => (
         <>
