@@ -211,3 +211,7 @@ The s0 sentence is now "Google DeepMind says its entry solved 10." Its second pl
 ## Review comment: no mathematicians' names in the Brief text (8 November 2026)
 
 The s0 sentence no longer names Noga Alon and Tim Gowers: "nine of them published a simpler version", with "published a simpler version" linking to the paper (arXiv:2605.20695) so the credit is visible without the source list. All nine authors stay named in footnote s0-erdos and on the Erdős stat card.
+
+## Review comment: s0 summary sentence reworded (8 November 2026)
+
+"So AI is past the best humans at some narrow tasks with an answer key, and, working on its own, still fails about four in five real freelance jobs" is now two sentences: "So AI already beats the best humans at some narrow tasks that have a clear right answer. Yet working on its own, it still fails about four in five real freelance jobs."
