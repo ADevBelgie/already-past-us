@@ -263,3 +263,7 @@ Rewritten from 107 to 81 words: "Forecasters were too cautious as well. In 2022 
 ## Review comment: when the LEAP panel forecast (8 November 2026)
 
 The s1 sentence now dates the forecast: "A newer FRI panel, asked in late 2025, expected about 14% on a hard coding-contest test by the end of 2026; the best AI had 53.8% by May 2026." FRI's footnote 11 gives the elicitation window as November–December 2025 for LiveCodeBench Pro (June–August 2025 for FrontierMath); added to footnote s1-leap.
+
+## Review comment: date the AI Digest survey (8 November 2026)
+
+"A 2025 survey of 421 forecasters expected 88% … by year end" is now "A survey of 421 forecasters, taken from late November 2024 to January 2025, expected 88% … by the end of 2025". AI Digest's May 2025 update gives the window as 30 November 2024 to 20 January 2025; added to footnote s1-aidigest.
