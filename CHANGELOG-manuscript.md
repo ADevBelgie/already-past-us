@@ -454,3 +454,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s9 price item: trend, not a predicted reversal (review comment)
 - "Spreading: cheaper still. Stalling: other companies copying Google's price rise" → what the past year's pace implies (about 5 cents by May 2027, section 2's estimate, footnote s2-projection) and that staying near 20 cents would mean the fall has slowed.
+
+## 2026-11-08 — s9 Remote Labor Index check: explicit expectation (review comment)
+- Item now gives the past year's change (2.5% → about 21%), what the same pace implies (about 30% by May 2027; our calculation in s9-rli, steady points per year), and what would count as a speed-up (well above 30%) or a slowdown (still near 21%). Replaces the "one in three" / "flat into mid-2027" thresholds.
