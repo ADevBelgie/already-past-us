@@ -84,7 +84,7 @@
             },
             {
               "file": "already-past-us.md",
-              "passage": "A model trains on material it wrote"
+              "passage": "a model trains on material it wrote"
             },
             {
               "file": "already-past-us.md",
@@ -134,7 +134,7 @@
       "leadEvidence": [
         {
           "file": "already-past-us.md",
-          "passage": "A model trains on material it wrote, so ordinary training updates its own weights. This genuinely \"self\" kind"
+          "passage": "Training on its own output: a model trains on material it wrote."
         }
       ]
     },
@@ -280,7 +280,7 @@
           "evidence": [
             {
               "file": "already-past-us.md",
-              "passage": "Direct edits to another model's weights, done since 2022 by algorithms that write facts straight into a model."
+              "passage": "Direct edits: algorithms that write facts straight into another model's weights, since 2022."
             },
             {
               "file": "already-past-us.md",
@@ -314,7 +314,7 @@
           "evidence": [
             {
               "file": "already-past-us.md",
-              "passage": "Networks built to generate weights for other models."
+              "passage": "Weight generators: networks that produce weights for other models."
             },
             {
               "file": "already-past-us.md",
@@ -407,7 +407,7 @@
       "leadEvidence": [
         {
           "file": "already-past-us.md",
-          "passage": "Direct edits to another model"
+          "passage": "Direct edits: algorithms that write facts straight into another model"
         }
       ]
     }
@@ -480,7 +480,7 @@
     "leadEvidence": [
       {
         "file": "already-past-us.md",
-        "passage": "Agents that rewrite their own code, or code used to train them, and leave their weights alone"
+        "passage": "Code rewriting: agents that rewrite code, including code used to train them, but leave weights alone"
       }
     ]
   }

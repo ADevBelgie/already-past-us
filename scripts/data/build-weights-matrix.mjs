@@ -48,7 +48,7 @@ const cells = [
         id: 'mass', name: 'MASS', who: 'Sakana AI and UC Berkeley', when: 'October 2026',
         text: 'Two rounds of add-on (LoRA) training on material it produced. Its gains of 1.2–1.6x are in score per output token. Coding tests were flat or slightly down.',
         footnotes: ['s7-self'],
-        evidence: [['ms', 'MASS (Sakana AI and UC Berkeley, October 2026)'], ['ms', 'A model trains on material it wrote'], ['ms', 'MASS ran two LoRA cycles on Qwen3.6-27B'], ['ms', 'with no gain on SWE-bench Verified or Terminal-Bench 2.0'], ['r2', 'then is fine-tuned on its own best trajectories'], ['ms', 'Its gains of 1.2–1.6x are score per output token'], ['ms', 'Scores on SWE-bench Verified and Terminal-Bench 2.0 were flat or slightly down']],
+        evidence: [['ms', 'MASS (Sakana AI and UC Berkeley, October 2026)'], ['ms', 'a model trains on material it wrote'], ['ms', 'MASS ran two LoRA cycles on Qwen3.6-27B'], ['ms', 'with no gain on SWE-bench Verified or Terminal-Bench 2.0'], ['r2', 'then is fine-tuned on its own best trajectories'], ['ms', 'Its gains of 1.2–1.6x are score per output token'], ['ms', 'Scores on SWE-bench Verified and Terminal-Bench 2.0 were flat or slightly down']],
       },
       {
         id: 'earlier-self', name: 'Earlier work', who: null, when: null,
