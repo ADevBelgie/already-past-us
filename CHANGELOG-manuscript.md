@@ -203,3 +203,7 @@ The card's growth line now reads "The best score has grown by 750% in 12 months"
 ## Review comment: ICPC caveat out of the Brief text (8 November 2026)
 
 "We found no ICPC statement on it" was too much detail for the Brief's opening paragraph; "OpenAI says" already marks the claim as the company's own. The caveat moved into the s0 expert note ("…submitted its answers to the World Finals local judge; we found no ICPC statement on its result") and stays in the stat cards' caveat line and in footnote s0-icpc.
+
+## Review comment: shorter DeepMind ICPC sentence (8 November 2026)
+
+The s0 sentence is now "Google DeepMind says its entry solved 10." Its second place and ICPC's acceptance of its answers moved into the s0 expert note ("DeepMind says ICPC confirmed its answers as accepted, but that review did not extend to validating its system or model; DeepMind says it would have placed second, by its own comparison with the 139 university teams…").
