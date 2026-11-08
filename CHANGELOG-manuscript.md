@@ -207,3 +207,7 @@ The card's growth line now reads "The best score has grown by 750% in 12 months"
 ## Review comment: shorter DeepMind ICPC sentence (8 November 2026)
 
 The s0 sentence is now "Google DeepMind says its entry solved 10." Its second place and ICPC's acceptance of its answers moved into the s0 expert note ("DeepMind says ICPC confirmed its answers as accepted, but that review did not extend to validating its system or model; DeepMind says it would have placed second, by its own comparison with the 139 university teams…").
+
+## Review comment: no mathematicians' names in the Brief text (8 November 2026)
+
+The s0 sentence no longer names Noga Alon and Tim Gowers: "nine of them published a simpler version", with "published a simpler version" linking to the paper (arXiv:2605.20695) so the credit is visible without the source list. All nine authors stay named in footnote s0-erdos and on the Erdős stat card.
