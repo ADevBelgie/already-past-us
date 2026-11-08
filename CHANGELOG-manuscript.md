@@ -307,3 +307,7 @@ Each row's second line now reads "Asked <when> · for <deadline>" (e.g. "Asked N
 ## Review comment: s2 two tests, shorter (8 November 2026)
 
 "We use two tests. Cheaper means the same capability for less money. Better means more capability for the same money." is now "We use two tests: the same capability for less money (cheaper), and more capability for the same money (better)."
+
+## Review comment: GPT-5 release date (8 November 2026)
+
+s2 now says "GPT-5 (released August 2025) sits at 150"; release date 7 August 2025, as in research/data/frontier_epoch.csv.

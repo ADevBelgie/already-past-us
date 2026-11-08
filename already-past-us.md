@@ -85,7 +85,7 @@ The fair reading is narrow. On tasks with a clear score, AI has mostly moved fas
 
 "AI is getting cheaper" only means something if you compare AI models of the same quality. We use two tests: the same capability for less money (cheaper), and more capability for the same money (better).
 
-To put models on one scale, we use the Epoch Capabilities Index from Epoch AI, an independent research group. It combines more than 50 benchmarks (standard sets of test questions) into one score. Higher is better, there is no maximum, and GPT-5 sits at 150.[^s2-eci] For price, we use each company's list price per million tokens (a token is a small chunk of text), counting three tokens sent to the model for every token it writes back.[^s2-blend]
+To put models on one scale, we use the Epoch Capabilities Index from Epoch AI, an independent research group. It combines more than 50 benchmarks (standard sets of test questions) into one score. Higher is better, there is no maximum, and GPT-5 (released August 2025) sits at 150.[^s2-eci] For price, we use each company's list price per million tokens (a token is a small chunk of text), counting three tokens sent to the model for every token it writes back.[^s2-blend]
 
 **Same capability, less money.** In November 2025 the cheapest model at GPT-5's level was GPT-5 itself, at $3.44 per million tokens. By May 2026 it was Gemini 3 Flash, at $1.13. Today it is GPT-6 Luna or Claude Haiku 5.5, at $0.20. That is about 17 times cheaper in a year.[^s2-cheaper]
 
