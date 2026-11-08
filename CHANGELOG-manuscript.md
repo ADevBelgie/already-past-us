@@ -291,3 +291,7 @@ Shortened to "These are selected questions. Forecasts that were too low show up 
 ## Review comment: why a 2025 trial in late 2026 (8 November 2026)
 
 Reader question: is a 2025 trial still the best evidence? It is the most-cited randomised measurement; METR's late-2025 follow-up (published February 2026) is newer but inconclusive, and the redesigned study has no results date. The paragraph now says so: it opens "Faster progress on tests has not yet clearly shown up as faster work. The best-known measurement comes from METR…", dates the first trial "early-2025", and says "A larger follow-up in late 2025, with newer tools, pointed toward a speedup, but METR calls the result 'an unreliable signal' and is redesigning the study."
+
+## Review comment: forecast chart says when each forecast was made (8 November 2026)
+
+Each row's second line now reads "Asked <when> · for <deadline>" (e.g. "Asked Nov–Dec 2025 · for end-2026", "Asked Nov 2024–Jan 2025 · for end-2025", "Asked Apr–May 2026 · for end-2026"), and the plain-English name ("Hard contest coding") replaces the benchmark name on the row, which stays in the tooltip and data table. The dates are added in scripts/data/build_forecast_vs_actual.py, which checks each against the footnote that states it: s1-leap (now also dating the METR question, April–May 2026), s1-aidigest (30 November 2024 to 20 January 2025) and s1-bio (now noting FRI asked in mid-2025).

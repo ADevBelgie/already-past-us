@@ -62,6 +62,13 @@ def factcheck(claim_start):
     return claim, checked
 
 
+def asked(fid, pattern, label):
+    """When a forecast was made: `label`, provided footnote `fid` still says so (regex `pattern`)."""
+    if not re.search(pattern, footnote(fid)):
+        raise SystemExit(f'footnote {fid} no longer dates the forecast: {pattern}')
+    return label
+
+
 def agree(name, a, b):
     if a != b:
         raise SystemExit(f'{name}: research {a} != manuscript footnote {b}')
@@ -281,6 +288,20 @@ unresolved = [
         'url': FRI_URL,
     }
 ]
+
+# When each forecast was made, checked against the footnote that dates it.
+ASKED = {
+    'livecodebench-pro-hard': asked('s1-leap', r'LiveCodeBench Pro forecasts in November–December 2025', 'Nov–Dec 2025'),
+    'frontiermath-leap': asked('s1-leap', r'FrontierMath forecasts were elicited in June–August 2025', 'Jun–Aug 2025'),
+    'metr-80-horizon': asked('s1-leap', r'METR time-horizon question was asked in April–May 2026', 'Apr–May 2026'),
+    'bio-uplift': asked('s1-bio', r'asked for these predictions in mid-2025', 'mid-2025'),
+}
+for rid in ('cybench', 'osworld', 'frontiermath-aidigest', 'swe-bench-verified'):
+    ASKED[rid] = asked('s1-aidigest', r'open from 30 November 2024 to 20 January 2025', 'Nov 2024–Jan 2025')
+for r in rows + unresolved:
+    if r['id'] not in ASKED:
+        raise SystemExit(f"no forecast date for row {r['id']}")
+    r['asked'] = ASKED[r['id']]
 
 out = {
     'id': 's1-forecast-dumbbell',

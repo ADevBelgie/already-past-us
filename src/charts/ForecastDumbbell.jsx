@@ -15,7 +15,7 @@ const SHORT = {
   osworld: 'Everyday computer tasks',
   'frontiermath-aidigest': 'Very hard maths',
   'swe-bench-verified': 'Fixing real software bugs',
-  'bio-uplift': 'Students finishing 3 tasks',
+  'bio-uplift': 'Biosecurity tasks with AI help',
   'metr-80-horizon': 'Task length at 80% success',
 }
 const panelShort = p => (p.startsWith('FRI LEAP') ? 'FRI panel' : p.startsWith('AI Digest') ? 'AI Digest' : 'FRI')
@@ -48,6 +48,8 @@ const forecastList = r => (r.forecasts.length === 1
   ? v(r.forecasts[0].value, r.unit)
   : r.forecasts.map(f => `${lowerFirst(f.group)} ${v(f.value, r.unit)}`).join(', '))
 const rowName = r => `${r.label} (${panelShort(r.panel)})`
+// 'by end-2026' -> 'for end-2026'; 'mid-2025 trial' -> 'for a mid-2025 trial'.
+const forWhen = d => (d.startsWith('by ') ? `for ${d.slice(3)}` : `for a ${d}`)
 const WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
 
 const above = data.rows.filter(r => r.direction === 'above').sort((a, b) => gap(b) - gap(a))
@@ -222,8 +224,10 @@ function Row({ it, w, rowH, stacked, x0, active, bindProps }) {
   const labelX = 0
   const nameY = stacked ? top + 15 : cy - 3
   const subY = stacked ? top + 29 : cy + 11
-  const sub = `${SHORT[r.id] ?? r.what}, ${r.deadline}`
-  const summary = `${r.label}, ${r.panel}, ${r.deadline}: forecast ${forecastList(r)}; ${dir === 'unresolved' ? 'measured so far' : 'outcome'} ${v(r.actual, r.unit)}${r.asOf ? `, ${r.asOf}` : ''} (${lowerFirst(r.actualNote)})${r.nearTie ? `, ${r.note}` : ''}. ${r.status}.`
+  // Plain-English name on top; when the forecast was made, and for when, underneath.
+  // The benchmark's own name is in the tooltip and the data table.
+  const sub = `Asked ${r.asked} · ${forWhen(r.deadline)}`
+  const summary = `${r.label}, ${r.panel}, asked ${r.asked}, ${r.deadline}: forecast ${forecastList(r)}; ${dir === 'unresolved' ? 'measured so far' : 'outcome'} ${v(r.actual, r.unit)}${r.asOf ? `, ${r.asOf}` : ''} (${lowerFirst(r.actualNote)})${r.nearTie ? `, ${r.note}` : ''}. ${r.status}.`
 
   return (
     <g {...bindProps} className="fdb-row" aria-label={summary}>
@@ -231,7 +235,7 @@ function Row({ it, w, rowH, stacked, x0, active, bindProps }) {
       <rect className="fdb-hit" x={-4} y={top + 2} width={w + 4} height={rowH - 4} rx={4}
         fill={active ? C.grid : 'transparent'} fillOpacity={active ? 0.7 : 0} />
       <text x={labelX} y={nameY} fontSize={12} fontWeight={600} fill={C.ink}>
-        {r.label}
+        {SHORT[r.id] ?? r.label}
         <tspan dx={6} fontWeight={400} fontSize={11} fill={C.ink3}>{panelShort(r.panel)}</tspan>
       </text>
       <text x={labelX} y={subY} fontSize={11} fill={C.ink3}>{sub}</text>
@@ -253,7 +257,7 @@ function TipBody({ r }) {
     <>
       <strong className="fdb-tip-line">{r.label}</strong>
       <span className="fdb-tip-line fdb-tip-muted">{r.what}, {r.deadline}</span>
-      <span className="fdb-tip-line fdb-tip-muted">Forecasters: {r.panel}</span>
+      <span className="fdb-tip-line fdb-tip-muted">Forecasters: {r.panel}, asked {r.asked}</span>
       <span className="fdb-tip-line">
         Forecast: {forecastList(r)}
       </span>
@@ -274,7 +278,7 @@ function DataTable() {
           <thead>
             <tr>
               <th scope="col">Question</th>
-              <th scope="col">Forecaster, deadline</th>
+              <th scope="col">Forecaster, when asked, deadline</th>
               <th scope="col" className="fdb-num">Forecast</th>
               <th scope="col" className="fdb-num">Outcome or latest</th>
               <th scope="col">Result</th>
@@ -285,7 +289,7 @@ function DataTable() {
             {rows.map(r => (
               <tr key={r.id}>
                 <td>{r.label}<br /><span className="fdb-tip-muted">{r.what}</span></td>
-                <td>{r.panel}, {r.deadline}</td>
+                <td>{r.panel}, asked {r.asked}, {r.deadline}</td>
                 <td className="fdb-num fdb-wrap">
                   {r.forecasts.map(f => <div key={f.group}>{f.group}: {v(f.value, r.unit)}</div>)}
                 </td>
