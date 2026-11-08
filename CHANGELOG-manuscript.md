@@ -458,3 +458,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 ## 2026-11-08 — s9 Remote Labor Index check: explicit expectation (review comment)
 - Item now gives the past year's change (2.5% → about 21%), what the same pace implies (about 30% by May 2027; our calculation in s9-rli, steady points per year), and what would count as a speed-up (well above 30%) or a slowdown (still near 21%). Replaces the "one in three" / "flat into mid-2027" thresholds.
 - s9 intro now says each check gives what to expect if the trend continues and what would mean speeding up or slowing down; the last "Spreading/Stalling" labels (young-worker jobs item) rewritten in plain words to match.
+
+## 2026-11-08 — s9 METR task-set item shortened (review comment)
+- "METR's public measure of task length stops at models from April 2026. New tasks, or a second AI company sharing its data, would show outsiders whether progress is speeding up, as METR found inside Anthropic."
