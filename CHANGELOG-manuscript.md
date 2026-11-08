@@ -467,3 +467,7 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s9 young-workers item: trend and expectation (review comment)
 - Reworded; now states the trend (gap 15% at the July 2025 vintage → about 19% with data to June 2026), what the same pace implies (about 21% in data for December 2026; our calculation added to s9-canaries) and what would count as faster or fading.
+
+## 2026-11-08 — s4 cost of AI vs experts (owner request)
+- New short Brief paragraph "What about cost?": in GDPval, AI's raw output cost about 470 times less than an expert's, but only about 1.2 times less once an expert checked it and redid what fell short (footnote s5-gdpval, Table 2).
+- New expert note "The cost comparison in detail": speed and cost under raw, try-once and try-n workflows; OpenAI models only; one-shot tasks; September 2025 figures.
