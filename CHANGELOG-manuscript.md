@@ -295,3 +295,7 @@ Reader question: is a 2025 trial still the best evidence? It is the most-cited r
 ## Review comment: forecast chart says when each forecast was made (8 November 2026)
 
 Each row's second line now reads "Asked <when> · for <deadline>" (e.g. "Asked Nov–Dec 2025 · for end-2026", "Asked Nov 2024–Jan 2025 · for end-2025", "Asked Apr–May 2026 · for end-2026"), and the plain-English name ("Hard contest coding") replaces the benchmark name on the row, which stays in the tooltip and data table. The dates are added in scripts/data/build_forecast_vs_actual.py, which checks each against the footnote that states it: s1-leap (now also dating the METR question, April–May 2026), s1-aidigest (30 November 2024 to 20 January 2025) and s1-bio (now noting FRI asked in mid-2025).
+
+## Review comment: date the Danish study (8 November 2026)
+
+"In Denmark, official records of workers' earnings and hours rule out AI chatbots changing either by more than 2% in the two years after ChatGPT launched" is now "A Danish study of official pay and hours records from 2023 and 2024, before today's models, rules out AI chatbots changing either by more than 2%." The period is the one the s1 expert note already gives (data cover 2023–24).
