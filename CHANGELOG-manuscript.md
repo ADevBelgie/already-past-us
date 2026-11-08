@@ -163,3 +163,7 @@ Checks: node scripts/data/build-weights-matrix.mjs, node scripts/check-manuscrip
 ## Brief mode: sources folded into each section (8 November 2026)
 
 Reader feedback: the numbered source chips in the running text help readers who know the provenance tags, not the general readers the Brief is for. In Brief mode the chips are now hidden in the text and in figure bodies (figure source lines and data tables keep them); sources stay in the folded "Sources for this section" list. Each entry in that list now starts with the claim it backs, quoted from the text at its first reference (built by `claimFor` in scripts/manuscript-plugin.mjs). Expert mode is unchanged. No manuscript text changed.
+
+## Review comment: "fails" means working alone (8 November 2026)
+
+Reader comment on the subtitle: say that the freelance result is for AI working fully on its own. The Remote Labor Index scores an agent's own deliverable against the human freelancer's, with no human help, so the subtitle, the s0 summary sentence, the s0 stat card and the s4 "Below humans" line now say "on its own"; the page description in index.html matches the subtitle.

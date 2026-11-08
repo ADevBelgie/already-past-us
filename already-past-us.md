@@ -1,6 +1,6 @@
 ---
 title: "Already Past Us"
-subtitle: "AI is already beyond the best humans at some things, and still fails most real freelance projects. What the data says, and why \"human-level\" is the wrong question."
+subtitle: "AI is already beyond the best humans at some things, and still fails most real freelance projects when it works on its own. What the data says, and why \"human-level\" is the wrong question."
 data_as_of: "Data as of 7 November 2026"
 byline: "Arthur Devresse, with Claude"
 ---
@@ -15,7 +15,7 @@ In May 2026 an OpenAI model disproved Paul Erdős's 1946 "unit distance" conject
 
 On the Remote Labor Index, 240 real paid freelance projects, the best AI agent (a system that does multi-step computer work by itself) was judged as good as the human freelancer on about 21% of them as of 7 November 2026,[^s0-rli] about eight and a half times its 2.5% at launch in October 2025.[^s0-rli-growth]
 
-So AI is past the best humans at some narrow tasks with an answer key, and still fails about four in five real freelance jobs.[^s0-rli] "Has AI reached human level?" is the wrong question; the answer depends on the task. This briefing goes task by task through [cost](#s2), [task length](#s3), [where AI leads and lags](#s4), [the "AGI" claims](#s5) and [whether AI is speeding up AI research](#s6). Every number carries a tag saying who measured it.
+So AI is past the best humans at some narrow tasks with an answer key, and, working on its own, still fails about four in five real freelance jobs.[^s0-rli] "Has AI reached human level?" is the wrong question; the answer depends on the task. This briefing goes task by task through [cost](#s2), [task length](#s3), [where AI leads and lags](#s4), [the "AGI" claims](#s5) and [whether AI is speeding up AI research](#s6). Every number carries a tag saying who measured it.
 
 > **Expert note: ICPC entries and the Remote Labor Index.** OpenAI says it competed in ICPC's onsite AI track and submitted its answers to the World Finals local judge.[^s0-icpc] Google DeepMind's entry, Gemini 2.5 Deep Think, competed remotely in a separate AI track, starting 10 minutes after the human teams. ICPC's review did not extend to validating its system or model; the second place is DeepMind's comparison with the 139 university teams, and Gemini also solved one problem that no university team solved.[^s0-gemini] On the Remote Labor Index, Claude Opus 5.5 (21.25%) and GPT-6 Astra (20.83%) are one project apart out of 240, and the leaderboard publishes no confidence intervals, so neither should be called the leader. Scale AI, which co-runs the index, is a commercial data vendor.[^s0-rli]
 
@@ -214,7 +214,7 @@ Put every head-to-head test of AI against people on one line, from "far below hu
 
 **Level with the best, if confirmed.** At the 2026 International Mathematical Olympiad, Huawei and Xiaohongshu reported perfect scores of 42 out of 42, and Xiaohongshu says it submitted its answers to the organisers for grading. The IMO has published no statement. The official results show that 7 of the 666 human contestants also got full marks, so even at face value this is a tie with the best.[^s4-imo]
 
-**Below humans.** The best agent completes only about 21% of real freelance projects on the Remote Labor Index ([see the opening](#s0)).[^s4-rli] ARC-AGI-3, a set of puzzle games, each of which people have solved, launched in March 2026 with every frontier model under 1%.[^s4-arc-launch] By September GPT-6 Astra reached a verified 62.7% on ARC Prize's standard setup: fast progress, still well short of people.[^s4-arc-astra]
+**Below humans.** Working on its own, the best agent completes only about 21% of real freelance projects on the Remote Labor Index ([see the opening](#s0)).[^s4-rli] ARC-AGI-3, a set of puzzle games, each of which people have solved, launched in March 2026 with every frontier model under 1%.[^s4-arc-launch] By September GPT-6 Astra reached a verified 62.7% on ARC Prize's standard setup: fast progress, still well short of people.[^s4-arc-astra]
 
 **Far below humans.** Epoch AI's February 2026 review found robots typically 3 to 10 times slower than people. No robot has yet been shown doing every part of cleaning a kitchen, and the robots shown handling trash bags had not yet removed one from an indoor bin.[^s4-robots]
 
