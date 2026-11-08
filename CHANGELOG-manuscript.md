@@ -323,3 +323,7 @@ Reader comment: with no recent data, the work paragraph had a big hole. A resear
 ## Review comment: shorter cost-per-task paragraph (8 November 2026)
 
 The s2 "A second view: cost per task" paragraph is cut to three sentences: "Price per token ignores how many tokens a model uses to reach an answer, so cost per task would be a better measure. No source has tracked it consistently for these models over the whole year. The closest is Epoch AI, which finds that the cost of answering a test question at a fixed accuracy falls about 13 times a year." The Artificial Analysis details and Epoch's method moved into a new s2 expert note, "Why not cost per task".
+
+## Review comment: section 2 tightened for the Brief (8 November 2026)
+
+Whole-section pass on s2's Brief text (526 to 458 words) and the frontier chart's title, subtitle and caveat. No figures, dates or footnotes changed; each paragraph keeps its claims, in fewer and plainer sentences (e.g. the three-step "same capability, less money" sentence is now one: "$3.44 … in November 2025 (GPT-5 itself), $1.13 in May 2026 (Gemini 3 Flash) and $0.20 today (GPT-6 Luna or Claude Haiku 5.5): about 17 times cheaper in a year"). The ±2-3 point credible-interval detail left the chart caveat; it stays in the "How the frontier is built" expert note.

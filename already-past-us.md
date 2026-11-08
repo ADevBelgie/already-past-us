@@ -93,30 +93,30 @@ The fair reading is narrow. On tasks with a clear score, AI has mostly moved fas
 
 ## 2. Cheaper and better, measured fairly {#s2}
 
-"AI is getting cheaper" only means something if you compare AI models of the same quality. We use two tests: the same capability for less money (cheaper), and more capability for the same money (better).
+"AI is getting cheaper" only means something if you compare AI models of the same quality. So we ask two questions: does the same capability cost less, and does the same money buy more capability?
 
-To put models on one scale, we use the Epoch Capabilities Index from Epoch AI, an independent research group. It combines more than 50 benchmarks (standard sets of test questions) into one score. Higher is better, there is no maximum, and GPT-5 (released August 2025) sits at 150.[^s2-eci] For price, we use each company's list price per million tokens (a token is a small chunk of text), counting three tokens sent to the model for every token it writes back.[^s2-blend]
+We score models with the Epoch Capabilities Index from Epoch AI, an independent research group, which combines more than 50 benchmarks (standard sets of test questions) into one number. GPT-5, released in August 2025, scores 150; higher is better.[^s2-eci] Prices are each company's list price per million tokens (a token is a small chunk of text), counting three tokens sent in for every token written back.[^s2-blend]
 
-**Same capability, less money.** In November 2025 the cheapest model at GPT-5's level was GPT-5 itself, at $3.44 per million tokens. By May 2026 it was Gemini 3 Flash, at $1.13. Today it is GPT-6 Luna or Claude Haiku 5.5, at $0.20. That is about 17 times cheaper in a year.[^s2-cheaper]
+**Same capability, less money.** The cheapest model at GPT-5's level cost $3.44 per million tokens in November 2025 (GPT-5 itself), $1.13 in May 2026 (Gemini 3 Flash) and $0.20 today (GPT-6 Luna or Claude Haiku 5.5): about 17 times cheaper in a year.[^s2-cheaper]
 
-**Same money, more capability.** For up to $4 per million tokens, the best score you could buy was 150 a year ago, about 152 six months ago, and 169 today, with GPT-6.1 Sol.[^s2-better]
+**Same money, more capability.** At up to $4 per million tokens, the best score you could buy rose from 150 a year ago to about 152 six months ago and 169 today (GPT-6.1 Sol).[^s2-better]
 
 <!-- CHART: s2-frontier-snapshots | Price-capability frontier at three dates (7 Nov 2025, 7 May 2026, 7 Nov 2026): log blended list price (the price in effect on each date) vs ECI, step line of best ECI at or below each price, with the ECI 150 line and the $4 line marked | research/data/frontier_snapshots.csv -->
 
-**A second view: cost per task.** Price per token ignores how many tokens a model uses to reach an answer, so cost per task would be a better measure. No source has tracked it consistently for these models over the whole year.[^s2-aa-versions] The closest is Epoch AI, which finds that the cost of answering a test question at a fixed accuracy falls about 13 times a year.[^s2-epoch]
+**Cost per task.** Price per token ignores how many tokens a model uses to reach an answer, so cost per task would be a better measure, but no source has tracked it consistently over the year.[^s2-aa-versions] The closest, from Epoch AI, is the cost of answering a test question at a fixed accuracy, which falls about 13 times a year.[^s2-epoch]
 
 <!-- CHART: s2-cost-per-question | Optional: cost per question at a fixed GPQA Diamond accuracy over time, cheapest model at each date, log scale (Epoch "plunging price of thought" data) | external: github.com/droodman/inference-cost output/slides/Figure 2.csv (not yet in research/data; download and verify before plotting) -->
 
 **What these numbers leave out:**
-- Token use varies a lot. Artificial Analysis found that one model, Claude Opus 5.5, costs about 10 times more per task at its highest effort setting than at its lowest.[^s2-effort]
-- Tokens are not all the same size. Anthropic says its newer models split the same text into about 30% more tokens, so Haiku 5.5 costs a little more than its $0.20 suggests.[^s2-tokenizer]
-- Prices change. Each snapshot uses the list prices in force on that date, not today's.[^s2-hist]
+- Token use varies: Artificial Analysis found that Claude Opus 5.5 costs about 10 times more per task at its highest effort setting than at its lowest.[^s2-effort]
+- Token sizes differ: Anthropic says its newer models split the same text into about 30% more tokens, so Haiku 5.5 costs a little more than its $0.20 suggests.[^s2-tokenizer]
+- Prices change: each snapshot uses the prices in force on that date.[^s2-hist]
 
-Over the full year, the most capable model did not get steadily more expensive. From November 2025 to May 2026 it did get pricier, through OpenAI's "Pro" tiers: from $41 to $68 per million tokens. Today the top-scoring model, GPT-6 Astra, costs $20, and the top four models are a statistical tie. One of the four, GPT-6.1 Terra, costs $2.[^s2-top]
+The most capable model did not get steadily more expensive. OpenAI's "Pro" tiers pushed the top price from $41 to $68 per million tokens between November 2025 and May 2026, but today's top scorer, GPT-6 Astra, costs $20, and GPT-6.1 Terra, one of four models in a statistical tie at the top, costs $2.[^s2-top]
 
-Some prices are going up. Google is doubling the price of Gemini 4 Argon on 1 December 2026, from $2 to $4 per million input tokens and from $10 to $20 per million output tokens. That ends a launch price Google had announced as introductory. Two cheaper Gemini Flash models double on 1 January 2027.[^s2-argon]
+Some prices are rising. On 1 December 2026 Google doubles Gemini 4 Argon's introductory price, to $4 per million input tokens and $20 per million output tokens, and two cheaper Gemini Flash models double on 1 January 2027.[^s2-argon]
 
-What is clearly rising is the total bill. Amazon, Microsoft, Alphabet and Meta expect to spend about $720-740 billion on capital investment in 2026.[^s2-capex] Google alone now processes nearly 32 billion tokens a minute through its model APIs, more than four times a year earlier.[^s2-volume] Each unit of capability keeps getting cheaper, and the world is buying far more units.
+The total bill is clearly rising. Amazon, Microsoft, Alphabet and Meta expect to spend about $720-740 billion on capital investment in 2026,[^s2-capex] and Google alone now processes nearly 32 billion tokens a minute, more than four times a year earlier.[^s2-volume] Each unit of capability gets cheaper, and the world buys far more of them.
 
 > **Expert note: Why not cost per task.** Artificial Analysis, the main source of per-task costs, changed its test several times in 2026, its tasks now use far more tokens than before, and its current version does not score most late-2025 models, such as GPT-5.[^s2-aa-versions] Epoch's measure covers five benchmarks and counts the hidden working-out text a model writes before it answers. Its cost falls fastest just after a score is first reached and slows over the next two years.[^s2-epoch]
 
