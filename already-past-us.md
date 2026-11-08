@@ -35,7 +35,7 @@ So AI already beats the best humans at some narrow tasks that have a clear right
 
 ## 1. Progress most people have not seen {#s1}
 
-Most people only use the free versions of AI apps. In a nine-country survey published by the Reuters Institute in October 2026, about 18% of people had any paid access to an AI tool.[^s1-paid] OpenAI's own figures from February 2026 point the same way: more than 50 million consumer subscribers out of more than 900 million weekly ChatGPT users,[^s1-openai] or about 6%.[^s1-share] The Reuters Institute says most people, relying on free versions, have likely not used the latest, most capable models. Free users also do less: 11% of free-only users had used an AI agent in the past week, against 39% of those with paid access.[^s1-paid]
+Most people only use the free versions of AI apps. A Reuters Institute survey across nine countries, published in October 2026, found that only about 18% of people use a paid AI tool, either paying themselves or through work or school.[^s1-paid] OpenAI's own figures from February 2026 point the same way: more than 50 million consumer subscribers out of more than 900 million weekly ChatGPT users,[^s1-openai] or about 6%.[^s1-share] The Reuters Institute says most people, relying on free versions, have likely not used the latest, most capable models. Free users also do less: 11% of free-only users had used an AI agent in the past week, against 39% of those with paid access.[^s1-paid]
 
 Public opinion has been slow to shift. In a Bentley-Gallup poll from May 2026, Americans rated AI worse than people at every task they were asked about, as they had in 2023. The gap is closing slowly: the share saying "worse" fell by 5 to 7 points for driving, financial advice and medical advice.[^s1-gallup]
 

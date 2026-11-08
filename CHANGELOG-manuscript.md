@@ -223,3 +223,7 @@ Removed "Every number carries a tag saying who measured it." from the end of the
 ## Review comment: s1 opening sentence (8 November 2026)
 
 "Most people meet AI through a free app." is now "Most people only use the free versions of AI apps."
+
+## Review comment: s1 Reuters sentence reworded (8 November 2026)
+
+"In a nine-country survey published by the Reuters Institute in October 2026, about 18% of people had any paid access to an AI tool" is now "A Reuters Institute survey across nine countries, published in October 2026, found that only about 18% of people use a paid AI tool, either paying themselves or through work or school" (the report: 10% pay themselves, 9% through work or school, 18% together).
