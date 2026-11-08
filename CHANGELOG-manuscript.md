@@ -437,3 +437,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s9 intro sentence explained (review comment)
 - "Eight checks would show whether AI's lead is spreading beyond tests or stalling." now explains what the checks are and what the "Spreading" and "Stalling" labels in each item mean.
+
+## 2026-11-08 — s9: ARC Prize competition check moved out of the Brief list (review comment)
+- The 4 December 2026 ARC Prize competition item (one benchmark, compute-limited entries) moved unchanged into the "Signpost details" expert note; the Brief list now has seven checks, renumbered, and the intro says "seven".
