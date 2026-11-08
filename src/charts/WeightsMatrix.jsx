@@ -32,11 +32,12 @@ function Entry({ e }) {
   )
 }
 
-function Cell({ cell, showAxes }) {
+function Cell({ cell }) {
   const col = colById[cell.col]
   const row = rowById[cell.row]
+  // Shown on the stacked cards; visually hidden (still read out) where the grid has headers.
   const axes = (
-    <span className={showAxes ? 'wm-axes' : 'sr-only'}>
+    <span className="wm-axes">
       <span className="wm-axes__item"><span className="wm-axes__k">Whose:</span> {col.label}</span>
       <span className="wm-axes__item"><span className="wm-axes__k">How:</span> {row.label.replace(/^Through /, '').replace(/^./, s => s.toUpperCase())}</span>
     </span>
@@ -71,8 +72,7 @@ function Strip() {
   )
 }
 
-function Matrix({ width }) {
-  const layout = width >= 880 ? 'wide' : width >= 640 ? 'mid' : 'stack'
+function Matrix() {
   const [own, other] = data.columns
   const summary =
     'A two-by-two grid. A model changing its own weights through training: SEAL and MASS. ' +
@@ -81,18 +81,11 @@ function Matrix({ width }) {
     "Another model's weights directly edited: ROME and MEMIT, weight generators such as Text-to-LoRA, and the November 2026 MIT CSAIL result in which GPT-6 Astra edited Qwen3.5-0.8B. " +
     'Separately, agents that rewrite their own code but not their weights: Darwin Gödel Machine and AlphaEvolve.'
 
-  if (layout === 'stack') {
-    return (
-      <div className="wm wm--stack">
-        <p className="sr-only">{summary}</p>
-        {data.rows.flatMap(r => data.columns.map(c => <Cell key={`${r.id}-${c.id}`} cell={cellAt(r.id, c.id)} showAxes />))}
-        <Strip />
-      </div>
-    )
-  }
-
+  // One markup at every width; WeightsMatrix.css switches between the stacked cards (< 640px),
+  // the 2x2 grid (640-879px) and the grid with the strip beside it (>= 880px) with container
+  // queries, so the pre-rendered HTML is right on any screen before hydration.
   return (
-    <div className={`wm wm--${layout}`}>
+    <div className="wm">
       <p className="sr-only">{summary}</p>
       <div className="wm-grid">
         <div className="wm-corner" aria-hidden="true">
@@ -106,7 +99,7 @@ function Matrix({ width }) {
             <span className="wm-rowhead__label">{r.label}</span>
             <span className="wm-rowhead__sub">{r.sub}</span>
           </div>,
-          ...data.columns.map(c => <Cell key={`${r.id}-${c.id}`} cell={cellAt(r.id, c.id)} showAxes={false} />),
+          ...data.columns.map(c => <Cell key={`${r.id}-${c.id}`} cell={cellAt(r.id, c.id)} />),
         ])}
       </div>
       <Strip />
@@ -159,12 +152,8 @@ export default function WeightsMatrix() {
       source="Section 7 sources; grouping from our research notes"
       caveat="The MIT CSAIL result is a blog post, not peer-reviewed, and most of its gain came from repairing a fault that made the small model repeat itself."
     >
-      {width => (
-        <>
-          <Matrix width={width} />
-          <DataTable />
-        </>
-      )}
+      <Matrix />
+      <DataTable />
     </Figure>
   )
 }

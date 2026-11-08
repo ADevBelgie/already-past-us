@@ -11,7 +11,11 @@
 .rsi-tier__title { margin: 0; font: 600 0.95rem/1.3 var(--font-sans); color: var(--ink); }
 .rsi-tier__desc { margin: 0.1rem 0 0; font-size: 0.8rem; line-height: 1.45; color: var(--ink-3); }
 
-.rsi-grid { display: grid; row-gap: 1.6rem; }
+.rsi-grid { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 1.6rem; column-gap: 24px; }
+/* Same breakpoint as `cols` in Dashboard (RsiDashboard.jsx); the gap matches GAP. */
+@container figure (width >= 640px) {
+  .rsi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 
 .rsi-panel { min-width: 0; border-top: 1px solid var(--rule); padding-top: 0.6rem; }
 .rsi-panel__head { margin-bottom: 0.4rem; }
@@ -23,19 +27,29 @@
 .rsi-panel__note { margin: 0.35rem 0 0; font-size: 0.76rem; line-height: 1.45; color: var(--ink-3); }
 
 .rsi-chart { position: relative; }
-.rsi-chart__aside { margin: 0.2rem 0 0; font-size: 0.74rem; color: var(--ink-3); }
+/* AccelChart's narrow-layout interval line: in the HTML at every width, shown only under 480px (the
+   `narrow` breakpoint in AccelChart). Two classes so `.section p` (styles.css) cannot override the margin. */
+.rsi-chart .rsi-chart__aside { display: none; margin: 0.2rem 0 0; font-size: 0.74rem; color: var(--ink-3); }
+@container figure (width < 480px) {
+  .rsi-chart .rsi-chart__aside { display: block; }
+}
 
 /* Paper-coloured outline behind labels that sit near a line (not a shadow; keeps text legible). */
 .rsi-halo { paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
 
-.rsi-pt { cursor: default; outline: none; }
-.rsi-pt:hover .rsi-pt__dot,
+.rsi-pt { cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent; }
+/* is-active: the point whose tooltip is shown (hovered, focused or pinned; usePinnableTip). */
+.rsi-pt.is-active .rsi-pt__dot,
 .rsi-pt:focus-visible .rsi-pt__dot { stroke: var(--accent); stroke-width: 2.5px; }
 
 /* Threshold strip */
 .rsi-strip { border-top: 2px solid var(--ink); padding-top: 0.7rem; }
 .rsi-strip__head { margin: 0 0 0.8rem; font: 600 0.95rem/1.3 var(--font-sans); color: var(--ink); }
-.rsi-strip__grid { display: grid; row-gap: 1.2rem; }
+.rsi-strip__grid { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 1.2rem; column-gap: 24px; }
+/* Same breakpoint as `cols` in Thresholds (RsiDashboard.jsx). */
+@container figure (width >= 680px) {
+  .rsi-strip__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 .rsi-cell { min-width: 0; border-top: 1px solid var(--rule); padding-top: 0.55rem; }
 .rsi-cell p { margin: 0; }
 .rsi-cell__lab { font: 600 0.86rem/1.3 var(--font-sans); color: var(--ink); }
@@ -45,3 +59,9 @@
 .rsi-cell__text--filing { margin-top: 0.5rem !important; }
 .rsi-cell__who { display: flex; align-items: center; gap: 0.3rem; margin-top: 0.3rem !important; }
 .rsi-cell svg { margin-top: 0.2rem; }
+
+/* AccelChart: reserve the hydrated height before JavaScript runs (vars set in RsiDashboard.jsx). */
+.figure__body svg.rsi-accel__svg { height: var(--rsi-accel-h); }
+@container figure (width < 480px) {
+  .figure__body svg.rsi-accel__svg { height: var(--rsi-accel-h-narrow); }
+}

@@ -3,7 +3,7 @@
 // and METR's raw data file. Horizons are in MINUTES of skilled-human working time.
 import { useState } from 'react'
 import { scaleLog, scaleUtc } from 'd3-scale'
-import { Figure, C, LegendItem, Tooltip, Segmented, utc } from './kit.jsx'
+import { Figure, C, LegendItem, Tooltip, Segmented, utc, svgSize, usePinnableTip } from './kit.jsx'
 import data from '../data/metrCurve.json'
 import './MetrCurve.css'
 
@@ -53,8 +53,12 @@ const LABELS = {
   },
 }
 
+// Invisible hit circle radius: a 24px touch target around every point.
+const HIT_R = 12
+
 function Chart({ width, metric }) {
-  const [hover, setHover] = useState(null)
+  // Hover, focus and tap-to-pin (kit.jsx). `width` starts at SSR_WIDE (Figure) on the server.
+  const pt = usePinnableTip()
   const w = Math.max(280, width)
   const narrow = w < 560
   const tiny = w < 420
@@ -76,8 +80,8 @@ function Chart({ width, metric }) {
   for (let yr = 2019; yr <= 2026; yr++) if (!tiny || yr % 2 === 1) years.push(yr)
   const fs = narrow ? 11 : 12
 
-  const show = (d, kind) => setHover({ d, kind })
-  const hide = () => setHover(null)
+  // The Sol annotation is drawn in the 50% view only, so its tooltip is too.
+  const hover = pt.datum && !(pt.datum.kind === 'sol' && !isP50) ? pt.datum : null
 
   // label geometry
   function labelProps(d, cfg) {
@@ -132,8 +136,14 @@ function Chart({ width, metric }) {
     <div className="metr-legend">
       <LegendItem color={C.ink} label={isP50 ? 'State of the art, with 95% interval' : 'State of the art at 50% (METR flag), with 95% interval'} />
       <LegendItem color={C.ink3} hollow label="Other models" />
-      {isP50 && narrow && <LegendItem color={C.ink2} shape="line" dashed label="Trend before 2024: doubles every ~260 days" />}
-      {isP50 && narrow && <LegendItem color={C.accent} shape="line" label="Trend from 2024: doubles every ~105 days" />}
+      {/* Trend-line keys: always in the markup (so the server HTML has the same legend at every width);
+          MetrCurve.css shows them only below 560px, where the plot drops its in-SVG trend labels. */}
+      {isP50 && (
+        <span className="metr-legend-trends">
+          <LegendItem color={C.ink2} shape="line" dashed label="Trend before 2024: doubles every ~260 days" />
+          <LegendItem color={C.accent} shape="line" label="Trend from 2024: doubles every ~105 days" />
+        </span>
+      )}
       {!isP50 && <span>Trend lines are fitted to 50% horizons only, so they are not shown here. Before Mythos Preview, Gemini 3.1 Pro (about 90 min) had the longest 80% horizon of the public models.</span>}
     </div>
   )
@@ -142,7 +152,7 @@ function Chart({ width, metric }) {
     <>
       {legend}
       <div className="metr-plot">
-      <svg width={w} height={h} role="group" aria-label={ariaLabel} onMouseLeave={hide}>
+      <svg {...svgSize(w, h)} role="group" aria-label={ariaLabel}>
         {/* unreliable band above 16 h */}
         <rect x={m.left} y={y(Y_DOMAIN[1])} width={w - m.left - m.right} height={y(LIMIT) - y(Y_DOMAIN[1])} fill={C.grid} fillOpacity="0.7" />
         <line x1={m.left} x2={w - m.right} y1={y(LIMIT)} y2={y(LIMIT)} stroke={C.ink3} strokeWidth="1" strokeDasharray="3 3" />
@@ -199,12 +209,11 @@ function Chart({ width, metric }) {
 
         {/* other (non-state-of-the-art) models: faint, no whiskers */}
         {others.map(d => (
-          <g key={d.key} className="metr-pt" role="graphics-symbol" tabIndex={0}
-            aria-label={`${d.name} (not state of the art), ${dayFmt(d.date)}: ${isP50 ? '50%' : '80%'} horizon ${dur(val(d))}, 95% interval ${dur(lo(d))} to ${dur(hi(d))}`}
-            onMouseEnter={() => show(d, 'pt')} onFocus={() => show(d, 'pt')} onBlur={hide}>
+          <g key={d.key} {...pt.bind(d.key, { d, kind: 'pt' }, { label: d.name })} className="metr-pt"
+            aria-label={`${d.name} (not state of the art), ${dayFmt(d.date)}: ${isP50 ? '50%' : '80%'} horizon ${dur(val(d))}, 95% interval ${dur(lo(d))} to ${dur(hi(d))}`}>
             <circle cx={x(toDate(d.date))} cy={y(val(d))} r={narrow ? 2.5 : 3} fill="none" stroke={C.ink3} strokeWidth="1" opacity="0.8" />
             <circle className="metr-ring" cx={x(toDate(d.date))} cy={y(val(d))} r="6" />
-            <circle cx={x(toDate(d.date))} cy={y(val(d))} r="7" fill="transparent" />
+            <circle cx={x(toDate(d.date))} cy={y(val(d))} r={HIT_R} fill="transparent" />
           </g>
         ))}
 
@@ -212,13 +221,12 @@ function Chart({ width, metric }) {
         {sota.map(d => {
           const px = x(toDate(d.date))
           return (
-            <g key={d.key} className="metr-pt" role="graphics-symbol" tabIndex={0}
-              aria-label={`${d.name}, ${dayFmt(d.date)}: ${isP50 ? '50%' : '80%'} horizon ${dur(val(d))}, 95% interval ${dur(lo(d))} to ${dur(hi(d))}`}
-              onMouseEnter={() => show(d, 'pt')} onFocus={() => show(d, 'pt')} onBlur={hide}>
+            <g key={d.key} {...pt.bind(d.key, { d, kind: 'pt' }, { label: d.name })} className="metr-pt"
+              aria-label={`${d.name}, ${dayFmt(d.date)}: ${isP50 ? '50%' : '80%'} horizon ${dur(val(d))}, 95% interval ${dur(lo(d))} to ${dur(hi(d))}`}>
               <line x1={px} x2={px} y1={y(lo(d))} y2={y(hi(d))} stroke={C.ink2} strokeWidth="1" />
               <circle cx={px} cy={y(val(d))} r={narrow ? 3 : 3.5} fill={C.ink} />
               <circle className="metr-ring" cx={px} cy={y(val(d))} r="7" />
-              <circle cx={px} cy={y(val(d))} r="9" fill="transparent" />
+              <circle cx={px} cy={y(val(d))} r={HIT_R} fill="transparent" />
             </g>
           )
         })}
@@ -229,11 +237,11 @@ function Chart({ width, metric }) {
           const top = narrow ? y(0.6) : y(30)
           const lines = tiny ? ['GPT-5.6 Sol: ~11 h', 'if cheating fails;', 'not robust'] : ['GPT-5.6 Sol: ~11 h if', 'cheating counts as', 'failure (not robust)']
           return (
-            <g className="metr-pt" role="graphics-symbol" tabIndex={0} aria-label="GPT-5.6 Sol, evaluated June 2026: about 11.3 hours (95% interval 5 to 40 hours) if cheating counts as failure, over 270 hours if it counts as success; METR says neither is robust."
-              onMouseEnter={() => show(null, 'sol')} onFocus={() => show(null, 'sol')} onBlur={hide}>
+            <g {...pt.bind('sol', { d: null, kind: 'sol' }, { label: sol.name })} className="metr-pt" aria-label="GPT-5.6 Sol, evaluated June 2026: about 11.3 hours (95% interval 5 to 40 hours) if cheating counts as failure, over 270 hours if it counts as success; METR says neither is robust.">
               <line x1={sx} x2={sx} y1={y(sol.p50Lo)} y2={y(sol.p50Hi)} stroke={C.ink3} strokeWidth="1" strokeDasharray="2 2" />
               <circle cx={sx} cy={y(sol.p50)} r="3.5" fill={C.paper} stroke={C.ink2} strokeWidth="1.4" />
               <circle className="metr-ring" cx={sx} cy={y(sol.p50)} r="7" />
+              <circle cx={sx} cy={y(sol.p50)} r={HIT_R} fill="transparent" />
               <line x1={sx} x2={sx} y1={y(sol.p50Lo) + 3} y2={top - 12} stroke={C.ink3} strokeWidth="0.75" />
               <text x={sx + 4} y={top} textAnchor="end" fontSize="11" fill={C.ink2} className="metr-halo">
                 {lines.map((l, i) => <tspan key={i} x={sx + 4} dy={i === 0 ? 0 : 13}>{l}</tspan>)}
@@ -259,7 +267,7 @@ function Chart({ width, metric }) {
           )
         })}
       </svg>
-      {tip && <Tooltip x={tip.x} y={tip.y} width={w}>{tip.body}</Tooltip>}
+      {tip && <Tooltip x={tip.x} y={tip.y} width={w} {...pt.tipProps}>{tip.body}</Tooltip>}
       </div>
     </>
   )

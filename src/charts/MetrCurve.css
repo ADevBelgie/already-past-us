@@ -1,12 +1,23 @@
 /* MetrCurve (s3-metr-curve). Every class is prefixed "metr-". */
 .metr-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; margin: 0 0 0.6rem; }
 .metr-legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; align-items: center; font-size: 0.8rem; color: var(--ink-2); }
+/* Trend-line keys (50% view): part of the legend below 560px (the same cut-off as `narrow` in
+   MetrCurve.jsx); at 560px and up the plot labels the trend lines directly, so they are hidden. */
+.metr-legend-trends { display: contents; }
+@container figure (width >= 560px) { .metr-legend-trends { display: none; } }
 .metr-halo { paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
-.metr-pt { cursor: default; outline: none; }
+.metr-pt { cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent; }
 .metr-pt:focus-visible .metr-ring { stroke: var(--accent); stroke-width: 2px; }
+/* Pinned point (tap, click or Enter): keep a visible ring while its tooltip stays open. */
+.metr-pt[aria-expanded="true"] .metr-ring { stroke: var(--ink-2); stroke-width: 1.5px; }
+.metr-pt[aria-expanded="true"]:focus-visible .metr-ring { stroke: var(--accent); stroke-width: 2px; }
 .metr-ring { fill: none; stroke: transparent; }
 .metr-tip-row { display: block; }
 .metr-tip-muted { color: var(--ink-3); }
 .metr-note { margin: 0.4rem 0 0; font-size: 0.78rem; color: var(--ink-3); }
 .metr-table td.metr-num { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .metr-plot { position: relative; }
+/* Reserve the plot's hydrated height before JavaScript runs: the same clamp as `h` in MetrCurve.jsx
+   (58% of the width, 380 to 540px), measured on the figure body, so the server-rendered 960px SVG
+   (scaled to fit) does not change height when hydration redraws it at the real width. */
+.metr-plot > svg { height: clamp(380px, 58cqw, 540px); }

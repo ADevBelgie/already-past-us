@@ -1,5 +1,5 @@
 /* ForecastDumbbell (s1-forecast-dumbbell). Every class is prefixed fdb-. */
-.fdb-row { cursor: default; }
+.fdb-row { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .fdb-row:focus { outline: none; }
 .fdb-row:focus-visible .fdb-hit { stroke: var(--accent); stroke-width: 1.5; }
 .fdb-tip-line { display: block; }
@@ -8,3 +8,10 @@
 .fdb-table td:last-child { font-weight: 400; color: var(--ink-2); }
 .fdb-table td.fdb-wrap { white-space: normal; }
 .fdb-src { white-space: nowrap; }
+/* Reserve the hydrated height before JavaScript runs (vars set in ForecastDumbbell.jsx): the server
+   draws the wide layout, which scales down on a phone, so the stacked height comes from the figure
+   body width (stacked under 640px, as `stacked` in the JSX). */
+.figure__body svg.fdb-svg { height: var(--fdb-h); }
+@container figure (width < 640px) {
+  .figure__body svg.fdb-svg { height: var(--fdb-h-stacked); }
+}

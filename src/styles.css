@@ -314,8 +314,13 @@ a:hover { text-decoration-thickness: 2px; }
 .figure__title { font-family: var(--font-serif); font-size: 1.3rem; line-height: 1.25; font-weight: 600; margin: 0 0 0.25rem; letter-spacing: -0.005em; }
 .figure__subtitle { font-size: 0.86rem; color: var(--ink-3); margin: 0; line-height: 1.45; }
 .figure__legend { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; align-items: center; font-size: 0.8rem; color: var(--ink-2); margin: 0 0 0.6rem; }
-.figure__body { position: relative; }
+.figure__body { position: relative; container: figure / inline-size; }
 .figure__body svg { display: block; overflow: visible; }
+/* Until hydration measures the real width, a chart SVG is drawn at SSR_WIDE/SSR_NARROW (kit.jsx).
+   Any chart SVG with a viewBox scales down to fit instead of overflowing; after hydration the
+   pixel width equals the container, so this is a no-op. :where() keeps the specificity at one
+   class so chart CSS (e.g. .figure__body svg.sc-grid) can still size its own SVGs. */
+.figure__body :where(svg[viewBox]) { max-width: 100%; height: auto; }
 .figure__body svg text { font-family: var(--font-sans); }
 .figure__caption { margin-top: 0.7rem; font-size: 0.78rem; color: var(--ink-3); line-height: 1.5; }
 .figure__caveat { margin: 0 0 0.35rem; color: var(--ink-2); }
@@ -330,6 +335,16 @@ a:hover { text-decoration-thickness: 2px; }
   padding: 0.55rem 0.7rem; font: 400 0.78rem/1.45 var(--font-sans);
 }
 .chart-tooltip strong { color: var(--ink); font-weight: 600; }
+/* Pinned tooltip (usePinnableTip in kit.jsx): takes pointer events so links and source chips work. */
+.chart-tooltip--pinned { pointer-events: auto; }
+.chart-tooltip--closable { padding-right: 2rem; }
+.chart-tooltip__close {
+  position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; padding: 0;
+  border: 0; border-radius: 999px; background: transparent; color: var(--ink-3);
+  font: 400 1.05rem/1 var(--font-sans); cursor: pointer;
+}
+.chart-tooltip__close:hover { color: var(--ink); background: var(--grid); }
+.chart-tooltip__close:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 /* "Show the data" table under each chart (screen-reader and checker friendly) */
 .chart-data { margin-top: 0.6rem; font-size: 0.78rem; color: var(--ink-3); }
 .chart-data summary { cursor: pointer; display: inline-block; padding: 0.2rem 0; }

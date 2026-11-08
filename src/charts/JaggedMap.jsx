@@ -5,7 +5,7 @@
 // Data: src/data/jagged_map.json, built and checked against the manuscript by
 // scripts/data/build_jagged_map.mjs.
 import { useContext, useEffect, useRef, useState } from 'react'
-import { Figure, C, PROVENANCE, LegendItem, TagChip } from './kit.jsx'
+import { Figure, C, PROVENANCE, LegendItem, TagChip, svgSize } from './kit.jsx'
 import { FootnoteContext, FootnoteRef } from '../components/Footnotes.jsx'
 import data from '../data/jagged_map.json'
 import './JaggedMap.css'
@@ -41,27 +41,8 @@ const groupNote = r => {
 
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v))
 
+/** Wide SVG layout (rendered at every width; CSS hides it below 600px, see JaggedMap.css). */
 function layout(width) {
-  const narrow = width < 600
-  if (narrow) {
-    const textW = Math.max(150, Math.round(width * 0.52))
-    const x0 = textW + 10
-    const x1 = width - 6
-    const colW = (x1 - x0) / TIERS.length
-    const cx = i => x0 + colW * (i + 0.5)
-    const headH = LINE * 2 + 12
-    let y = headH
-    const rows = ROWS.map(r => {
-      const domain = wrap(r.domain, Math.floor(textW / 7.1))
-      const tier = wrap(r.tier_label, Math.floor(textW / 6.3))
-      const vs = wrap(`vs ${r.compared_with}`, Math.floor(textW / 6))
-      const h = 12 + (domain.length + tier.length + vs.length) * LINE
-      const row = { r, top: y, h, mid: y + h / 2, dotX: cx(r.tier), domain, tier, vs }
-      y += h
-      return row
-    })
-    return { narrow, width, x0, x1, colW, cx, headH, rows, height: y + 6 }
-  }
   const labelW = Math.round(clamp(width * 0.25, 150, 220))
   const cmpW = Math.round(clamp(width * 0.17, 110, 150))
   const x0 = labelW + 12
@@ -79,7 +60,19 @@ function layout(width) {
     y += h
     return row
   })
-  return { narrow, width, x0, x1, colW, cx, headH, tierLines, cmpX: x1 + 12, rows, height: y + 6 }
+  return { width, x0, x1, colW, cx, headH, tierLines, cmpX: x1 + 12, rows, height: y + 6 }
+}
+
+// Narrow layout (container width < 600px) is HTML rows laid out by CSS, so its height comes from
+// native text wrapping and is the same in the server HTML and after hydration. Its columns mirror
+// .jm-n__row in JaggedMap.css: text column max(150px, 52%), 10px gap, track, 6px right margin.
+// Tier positions on the track are percentages; JS only needs the dot's x to anchor the card.
+const NARROW = 600
+const tierPct = i => `${((i + 0.5) / TIERS.length) * 100}%`
+function narrowDotX(width, tier) {
+  const x0 = Math.max(150, width * 0.52) + 10
+  const x1 = width - 6
+  return x0 + ((x1 - x0) / TIERS.length) * (tier + 0.5)
 }
 
 function Dot({ r, x, y, size = 6.5 }) {
@@ -110,12 +103,20 @@ function summary() {
   return `Dot plot placing ${ROWS.length} tests of AI on five steps, from far below humans to beyond the best humans; ${parts.join('; ')}.`
 }
 
+function rowLabel(r) {
+  return `${r.domain}: ${r.tier_label}. Compared with ${r.compared_with}. ${PROVENANCE[r.provenance]?.label ?? ''}${r.confirmed ? '' : ', not officially confirmed'}${r.baseline_provenance && r.baseline_provenance !== r.provenance ? `; human baseline ${PROVENANCE[r.baseline_provenance]?.label ?? ''}` : ''}. ${r.date_label}.`
+}
+
 function Chart({ width }) {
   const L = layout(width)
+  // Which layout is on screen. CSS decides that (container query on .figure__body); JS mirrors it
+  // only to anchor the details card and return focus, which happen after hydration, when width is
+  // the measured container width. The first render never shows a card, so SSR output is unaffected.
+  const narrow = width < NARROW
   const [active, setActive] = useState(null)
   const [pinned, setPinned] = useState(false)
   const [focusCard, setFocusCard] = useState(false)
-  const rowRefs = useRef({})
+  const rowRefs = useRef({}) // `w:${id}` wide SVG row, `n:${id}` narrow HTML row
   const cardRef = useRef(null)
   const closeRef = useRef(null)
 
@@ -123,7 +124,7 @@ function Chart({ width }) {
     const id = active
     setPinned(false)
     setActive(null)
-    if (returnFocus && id) rowRefs.current[id]?.focus()
+    if (returnFocus && id) rowRefs.current[`${narrow ? 'n' : 'w'}:${id}`]?.focus()
   }
 
   useEffect(() => {
@@ -172,46 +173,102 @@ function Chart({ width }) {
     if (byKey) setFocusCard(true)
   }
 
-  const cur = L.rows.find(row => row.r.id === active)
+  /** The same handlers on both layouts' rows; `prefix` is 'w' (wide SVG) or 'n' (narrow HTML). */
+  const rowProps = (r, prefix) => ({
+    className: prefix === 'n' ? `jm-row jm-nrow${active === r.id ? ' is-active' : ''}` : 'jm-row',
+    role: 'button',
+    tabIndex: 0,
+    'aria-label': rowLabel(r),
+    'aria-expanded': pinned && active === r.id,
+    ref: el => { rowRefs.current[`${prefix}:${r.id}`] = el },
+    onMouseEnter: () => { if (!pinned) setActive(r.id) },
+    onFocus: () => { if (!pinned) setActive(r.id) },
+    onBlur: e => { if (!pinned && !e.currentTarget.contains(e.relatedTarget)) setActive(null) },
+    onClick: () => toggle(r.id, false),
+    onKeyDown: e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault()
+        toggle(r.id, true)
+      }
+    },
+  })
+
+  const cur = active == null ? null : L.rows.find(row => row.r.id === active)
+  // Wide: positioned in the SVG's pixel coordinates (relative to .jm). Narrow: positioned relative
+  // to the active row's wrapper (.jm-n__item), so it follows the natively wrapped row height.
   let cardStyle = null
-  if (cur) {
-    if (width < 520) cardStyle = { left: 0, right: 0, width: 'auto', maxWidth: 'none', top: cur.top + cur.h + 2 }
-    else if (cur.dotX > width / 2) cardStyle = { right: width - cur.dotX + 16, top: Math.max(0, cur.top - 4) }
+  if (cur && !narrow) {
+    if (cur.dotX > width / 2) cardStyle = { right: width - cur.dotX + 16, top: Math.max(0, cur.top - 4) }
     else cardStyle = { left: cur.dotX + 16, top: Math.max(0, cur.top - 4) }
+  } else if (cur) {
+    const dotX = narrowDotX(width, cur.r.tier)
+    if (width < 520) cardStyle = { left: 0, right: 0, width: 'auto', maxWidth: 'none', top: 'calc(100% + 2px)' }
+    else if (dotX > width / 2) cardStyle = { right: width - dotX + 16, top: -4 }
+    else cardStyle = { left: dotX + 16, top: -4 }
   }
+
+  const card = cur && (
+    <div
+      ref={cardRef}
+      className={`chart-tooltip jm-tip${pinned ? ' jm-tip--pinned' : ''}`}
+      style={cardStyle}
+      role={pinned ? 'dialog' : undefined}
+      aria-label={pinned ? `Details: ${cur.r.domain}` : undefined}
+      aria-live={pinned ? undefined : 'polite'}
+    >
+      <div className="jm-tip__head">
+        <strong>{cur.r.domain}</strong>
+        {pinned && (
+          <button ref={closeRef} type="button" className="jm-tip__close" aria-label="Close details" onClick={() => close(true)}>
+            ×
+          </button>
+        )}
+      </div>
+      <p className="jm-tip__tier">
+        <span className={cur.r.tier === LEVEL ? 'jm-tip__level' : undefined}>{cur.r.tier_label}</span>
+        {' · vs '}{cur.r.compared_with}
+        <span className="jm-tip__group">{groupNote(cur.r)}</span>
+      </p>
+      <p className="jm-tip__text">{cur.r.comparison_text}</p>
+      <p className="jm-tip__meta">
+        <TagChip tag={cur.r.provenance} />
+        {!cur.r.confirmed && <span className="jm-tip__unconfirmed">not officially confirmed</span>}
+        {cur.r.baseline_provenance && cur.r.baseline_provenance !== cur.r.provenance && (
+          <span className="jm-tip__baseline">human baseline <TagChip tag={cur.r.baseline_provenance} /></span>
+        )}
+        <span>{cur.r.date_label}</span>
+        <span className="jm-tip__sources">
+          {cur.r.footnote_ids.map(id => <FootnoteRef key={id} id={id} />)}
+        </span>
+      </p>
+      {!pinned && <p className="jm-tip__hint">Click or press Enter to keep this open and read the sources.</p>}
+    </div>
+  )
 
   return (
     <div className="jm" onMouseLeave={() => { if (!pinned) setActive(null) }}>
-      <svg width={width} height={L.height} role="group" aria-label={summary()}>
+      {/* Wide layout: hidden by CSS when the figure is narrower than 600px (JaggedMap.css). */}
+      <svg className="jm-wide" {...svgSize(width, L.height)} role="group" aria-label={summary()}>
         {/* Header */}
-        {L.narrow ? (
-          <g aria-hidden="true">
-            {/* Right-aligned on the first step so it uses the empty space above the text column
-                and cannot run into the right-hand label on a narrow track. */}
-            <TextLines lines={['Far below', 'humans']} x={L.cx(0) + 6} y={12} size={11} fill={C.ink3} anchor="end" />
-            <TextLines lines={['Beyond the', 'best humans']} x={L.x1} y={12} size={11} fill={C.ink3} anchor="end" />
-          </g>
-        ) : (
-          <g aria-hidden="true">
-            {TIERS.map((t, i) => {
-              const lines = L.tierLines[i]
-              const y = L.headH - 10 - (lines.length - 1) * LINE
-              return (
-                <TextLines
-                  key={t.key}
-                  lines={lines}
-                  x={L.cx(i)}
-                  y={y}
-                  size={11}
-                  fill={i === LEVEL ? C.accent : C.ink2}
-                  weight={i === LEVEL ? 600 : 400}
-                  anchor="middle"
-                />
-              )
-            })}
-            <text x={L.cmpX} y={L.headH - 10} fontSize={11} fill={C.ink3}>Compared with</text>
-          </g>
-        )}
+        <g aria-hidden="true">
+          {TIERS.map((t, i) => {
+            const lines = L.tierLines[i]
+            const y = L.headH - 10 - (lines.length - 1) * LINE
+            return (
+              <TextLines
+                key={t.key}
+                lines={lines}
+                x={L.cx(i)}
+                y={y}
+                size={11}
+                fill={i === LEVEL ? C.accent : C.ink2}
+                weight={i === LEVEL ? 600 : 400}
+                anchor="middle"
+              />
+            )
+          })}
+          <text x={L.cmpX} y={L.headH - 10} fontSize={11} fill={C.ink3}>Compared with</text>
+        </g>
         <line x1={0} x2={width} y1={L.headH - 0.5} y2={L.headH - 0.5} stroke={C.rule} aria-hidden="true" />
 
         {/* "Level with the best" reference: header stub here, one segment per row below */}
@@ -224,60 +281,23 @@ function Chart({ width }) {
         {L.rows.map(row => {
           const { r } = row
           const isActive = active === r.id
-          const label = `${r.domain}: ${r.tier_label}. Compared with ${r.compared_with}. ${PROVENANCE[r.provenance]?.label ?? ''}${r.confirmed ? '' : ', not officially confirmed'}${r.baseline_provenance && r.baseline_provenance !== r.provenance ? `; human baseline ${PROVENANCE[r.baseline_provenance]?.label ?? ''}` : ''}. ${r.date_label}.`
           return (
-            <g
-              key={r.id}
-              className="jm-row"
-              role="button"
-              tabIndex={0}
-              aria-label={label}
-              aria-expanded={pinned && isActive}
-              ref={el => { rowRefs.current[r.id] = el }}
-              onMouseEnter={() => { if (!pinned) setActive(r.id) }}
-              onFocus={() => { if (!pinned) setActive(r.id) }}
-              onBlur={e => { if (!pinned && !e.currentTarget.contains(e.relatedTarget)) setActive(null) }}
-              onClick={() => toggle(r.id, false)}
-              onKeyDown={e => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault()
-                  toggle(r.id, true)
-                }
-              }}
-            >
+            <g key={r.id} {...rowProps(r, 'w')}>
               <rect
                 className="jm-row__band"
                 x={0} y={row.top + 1} width={width} height={row.h - 2} rx={4}
                 fill={isActive ? C.grid : 'transparent'}
               />
-              {L.narrow ? (
-                <>
-                  <TextLines lines={row.domain} x={2} y={row.top + 18} size={12.5} fill={C.ink} weight={600} />
-                  <TextLines
-                    lines={row.tier}
-                    x={2} y={row.top + 18 + row.domain.length * LINE}
-                    size={11.5} fill={r.tier === LEVEL ? C.accent : C.ink2}
-                  />
-                  <TextLines
-                    lines={row.vs}
-                    x={2} y={row.top + 18 + (row.domain.length + row.tier.length) * LINE}
-                    size={11} fill={C.ink3}
-                  />
-                </>
-              ) : (
-                <>
-                  <TextLines
-                    lines={row.domain}
-                    x={2} y={row.mid + 4 - ((row.domain.length - 1) * LINE) / 2}
-                    size={12} fill={C.ink}
-                  />
-                  <TextLines
-                    lines={row.vs}
-                    x={L.cmpX} y={row.mid + 4 - ((row.vs.length - 1) * LINE) / 2}
-                    size={11.5} fill={C.ink2}
-                  />
-                </>
-              )}
+              <TextLines
+                lines={row.domain}
+                x={2} y={row.mid + 4 - ((row.domain.length - 1) * LINE) / 2}
+                size={12} fill={C.ink}
+              />
+              <TextLines
+                lines={row.vs}
+                x={L.cmpX} y={row.mid + 4 - ((row.vs.length - 1) * LINE) / 2}
+                size={11.5} fill={C.ink2}
+              />
               <line
                 x1={L.cx(LEVEL)} x2={L.cx(LEVEL)} y1={row.top} y2={row.top + row.h}
                 stroke={C.accent} strokeWidth={1}
@@ -293,43 +313,44 @@ function Chart({ width }) {
         })}
       </svg>
 
-      {cur && (
-        <div
-          ref={cardRef}
-          className={`chart-tooltip jm-tip${pinned ? ' jm-tip--pinned' : ''}`}
-          style={cardStyle}
-          role={pinned ? 'dialog' : undefined}
-          aria-label={pinned ? `Details: ${cur.r.domain}` : undefined}
-          aria-live={pinned ? undefined : 'polite'}
-        >
-          <div className="jm-tip__head">
-            <strong>{cur.r.domain}</strong>
-            {pinned && (
-              <button ref={closeRef} type="button" className="jm-tip__close" aria-label="Close details" onClick={() => close(true)}>
-                ×
-              </button>
-            )}
+      {/* Narrow layout: HTML rows whose text wraps natively, so CSS alone sets the height and the
+          server HTML matches the hydrated page. Shown instead of the SVG below 600px. */}
+      <div className="jm-n" role="group" aria-label={summary()} style={{ '--jm-level': tierPct(LEVEL) }}>
+        <div className="jm-n__head" aria-hidden="true">
+          <div className="jm-n__track">
+            {/* Right-aligned on the first step so it uses the empty space above the text column
+                and cannot run into the right-hand label on a narrow track. */}
+            <span className="jm-n__end jm-n__end--low">Far below<br />humans</span>
+            <span className="jm-n__end jm-n__end--high">Beyond the<br />best humans</span>
           </div>
-          <p className="jm-tip__tier">
-            <span className={cur.r.tier === LEVEL ? 'jm-tip__level' : undefined}>{cur.r.tier_label}</span>
-            {' · vs '}{cur.r.compared_with}
-            <span className="jm-tip__group">{groupNote(cur.r)}</span>
-          </p>
-          <p className="jm-tip__text">{cur.r.comparison_text}</p>
-          <p className="jm-tip__meta">
-            <TagChip tag={cur.r.provenance} />
-            {!cur.r.confirmed && <span className="jm-tip__unconfirmed">not officially confirmed</span>}
-            {cur.r.baseline_provenance && cur.r.baseline_provenance !== cur.r.provenance && (
-              <span className="jm-tip__baseline">human baseline <TagChip tag={cur.r.baseline_provenance} /></span>
-            )}
-            <span>{cur.r.date_label}</span>
-            <span className="jm-tip__sources">
-              {cur.r.footnote_ids.map(id => <FootnoteRef key={id} id={id} />)}
-            </span>
-          </p>
-          {!pinned && <p className="jm-tip__hint">Click or press Enter to keep this open and read the sources.</p>}
         </div>
-      )}
+        {ROWS.map(r => {
+          const isActive = active === r.id
+          return (
+            <div key={r.id} className="jm-n__item">
+              <div {...rowProps(r, 'n')}>
+                <div className="jm-n__text">
+                  <span className="jm-n__domain">{r.domain}</span>
+                  <span className={`jm-n__tier${r.tier === LEVEL ? ' jm-n__tier--level' : ''}`}>{r.tier_label}</span>
+                  <span className="jm-n__vs">{`vs ${r.compared_with}`}</span>
+                </div>
+                <div className="jm-n__track">
+                  <svg className="jm-n__svg" width="100%" height="20" aria-hidden="true">
+                    <line x1={tierPct(0)} x2={tierPct(TIERS.length - 1)} y1={10} y2={10} stroke={C.rule} strokeWidth={1} />
+                    {TIERS.map(t => (
+                      <circle key={t.key} cx={tierPct(t.key)} cy={10} r={1.8} fill={C.ink3} opacity={0.5} />
+                    ))}
+                    <Dot r={r} x={tierPct(r.tier)} y={10} size={isActive ? 7.5 : 6.5} />
+                  </svg>
+                </div>
+              </div>
+              {narrow && isActive && card}
+            </div>
+          )
+        })}
+      </div>
+
+      {!narrow && card}
     </div>
   )
 }

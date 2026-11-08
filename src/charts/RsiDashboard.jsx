@@ -1,11 +1,10 @@
 // s6 "AI building AI": small multiples of AI-improving-AI indicators, grouped by who measured them.
 // Data: src/data/rsi_series.json, built by scripts/data/build_rsi_series.py from research/.
 // Company self-reports each get their own panel and axis; they are never joined or overlaid.
-import { useState } from 'react'
 import { scaleLinear, scaleLog, scaleUtc } from 'd3-scale'
 import { line } from 'd3-shape'
 import { extent } from 'd3-array'
-import { Figure, C, TagChip, Tooltip, utc } from './kit.jsx'
+import { Figure, C, TagChip, Tooltip, svgSize, usePinnableTip, utc } from './kit.jsx'
 import { FootnoteRef } from '../components/Footnotes.jsx'
 import data from '../data/rsi_series.json'
 import './RsiDashboard.css'
@@ -17,6 +16,14 @@ const reference = id => panelRows(id).find(r => r.kind === 'reference')
 const find = (id, pred) => panelRows(id).find(pred)
 
 const GAP = 24
+// Invisible hit circle around each point: 12px radius gives a 24x24px touch target.
+const HIT_R = 12
+// These charts have a height that does not depend on width: keep it while the server-rendered SVG
+// (drawn at the 960px first-render width) is scaled down to a phone, so hydration does not move
+// the page. The inline style beats the kit's `height: auto` for svg[viewBox] (styles.css).
+const FIXED_H = h => ({ height: h })
+// AccelChart row height, wide and narrow (under 480px) layouts.
+const ACCEL_ROW_H = { wide: 40, narrow: 56 }
 
 // 'YYYY-MM-DD', or 'YYYY-MM' (month only in the source: placed mid-month).
 const toDate = s => new Date((s.length === 7 ? `${s}-15` : s) + 'T00:00:00Z')
@@ -69,8 +76,10 @@ function Panel({ title, measure, who, tag, footnote, note, children, wide }) {
 
 /* ── Time-series small multiple (one company or one independent group) ── */
 
-function TimeChart({ w, rows, makeY, yTicks, refLine, label, aria, xTicks = 'years', connect = true }) {
-  const [active, setActive] = useState(null)
+// `tip` is one usePinnableTip() shared by every panel of the dashboard, so at most one tooltip is
+// pinned per figure; keys are `${panel}:${index}` and each panel shows only its own.
+function TimeChart({ w, rows, tip, makeY, yTicks, refLine, label, aria, xTicks = 'years', connect = true }) {
+  const pid = rows[0].panel
   const h = 140
   const m = { t: 22, r: 10, b: 22, l: 42 }
   const dates = rows.map(r => toDate(r.date))
@@ -100,10 +109,10 @@ function TimeChart({ w, rows, makeY, yTicks, refLine, label, aria, xTicks = 'yea
     }
   }
 
-  const a = active != null ? rows[active] : null
+  const a = tip.active?.startsWith(`${pid}:`) ? tip.datum : null
   return (
     <div className="rsi-chart">
-      <svg width={w} height={h} role="group" aria-label={aria}>
+      <svg {...svgSize(w, h)} style={FIXED_H(h)} role="group" aria-label={aria}>
         {yTicks.map(t => (
           <g key={t.v}>
             <line x1={m.l} x2={w - m.r} y1={y(t.v)} y2={y(t.v)} stroke={C.grid} />
@@ -137,7 +146,8 @@ function TimeChart({ w, rows, makeY, yTicks, refLine, label, aria, xTicks = 'yea
           const cx = x(toDate(r.date))
           const cy = y(r.value)
           const lab = label?.(r, i, rows.length, narrow)
-          const tip = `${r.label}, ${when(r)}: ${valueText(r)}`
+          const key = `${pid}:${i}`
+          const desc = `${r.label}, ${when(r)}: ${valueText(r)}`
           return (
             <g key={r.date + r.label}>
               {r.bound === 'gt' && (
@@ -156,16 +166,11 @@ function TimeChart({ w, rows, makeY, yTicks, refLine, label, aria, xTicks = 'yea
                 </text>
               )}
               <g
-                className="rsi-pt"
-                tabIndex={0}
-                role="img"
-                aria-label={tip}
-                onMouseEnter={() => setActive(i)}
-                onMouseLeave={() => setActive(null)}
-                onFocus={() => setActive(i)}
-                onBlur={() => setActive(null)}
+                {...tip.bind(key, r, { label: `Details: ${r.label}, ${when(r)}` })}
+                className={`rsi-pt${tip.active === key ? ' is-active' : ''}`}
+                aria-label={desc}
               >
-                <circle cx={cx} cy={cy} r="9" fill="transparent" />
+                <circle cx={cx} cy={cy} r={HIT_R} fill="transparent" />
                 <circle className="rsi-pt__dot" cx={cx} cy={cy} r="3.2" fill={C.ink} stroke={C.paper} strokeWidth="1" />
               </g>
             </g>
@@ -173,7 +178,7 @@ function TimeChart({ w, rows, makeY, yTicks, refLine, label, aria, xTicks = 'yea
         })}
       </svg>
       {a && (
-        <Tooltip x={x(toDate(a.date))} y={y(a.value)} width={w}>
+        <Tooltip x={x(toDate(a.date))} y={y(a.value)} width={w} {...tip.tipProps}>
           <strong>{a.label}</strong>
           <br />
           {when(a)}: {valueText(a)}
@@ -194,7 +199,7 @@ function BarChart({ w, rows, max, ticks, tickText, refLine, aria }) {
   const narrow = w < 330
   return (
     <div className="rsi-chart">
-      <svg width={w} height={h} role="img" aria-label={aria}>
+      <svg {...svgSize(w, h)} style={FIXED_H(h)} role="img" aria-label={aria}>
         {ticks.map(t => (
           <g key={t}>
             <line x1={x(t)} x2={x(t)} y1={m.t} y2={h - m.b} stroke={C.grid} />
@@ -242,8 +247,10 @@ function AccelChart({ w }) {
   const ref = reference('accel')
   const narrow = w < 480
   const m = { t: 26, r: 14, b: 22, l: narrow ? 0 : 150 }
-  const rowH = narrow ? 56 : 40
+  const rowH = narrow ? ACCEL_ROW_H.narrow : ACCEL_ROW_H.wide
   const h = m.t + 2 * rowH + m.b
+  // Both layouts' heights, for the container query in RsiDashboard.css (narrow under 480px).
+  const sizeVars = { '--rsi-accel-h': `${m.t + 2 * ACCEL_ROW_H.wide + m.b}px`, '--rsi-accel-h-narrow': `${m.t + 2 * ACCEL_ROW_H.narrow + m.b}px` }
   const x = scaleLinear().domain([0.8, 3]).range([m.l + 6, w - m.r])
   const rows = [
     { r: anth, color: C.accent, label: 'Anthropic’s models' },
@@ -252,8 +259,9 @@ function AccelChart({ w }) {
   return (
     <div className="rsi-chart">
       <svg
-        width={w}
-        height={h}
+        {...svgSize(w, h)}
+        className="rsi-accel__svg"
+        style={sizeVars}
         role="img"
         aria-label={`Interval chart: METR estimates Anthropic's models gained capability ${anth.value} times as fast after October 2025 as before (95% interval ${anth.ci_low} to ${anth.ci_high}), and ${all.value} times as fast across all developers' models.`}
       >
@@ -313,7 +321,10 @@ function AccelChart({ w }) {
           )
         })}
       </svg>
-      {narrow && <p className="rsi-chart__aside">Bar: 95% interval, {anth.ci_low}x to {anth.ci_high}x.</p>}
+      {/* Stands in for the interval end labels, which the narrow layout drops. Always rendered and
+          shown by a container query (RsiDashboard.css, under 480px like `narrow`), so the
+          pre-rendered HTML already has this line on phones and hydration does not add it. */}
+      <p className="rsi-chart__aside">Bar: 95% interval, {anth.ci_low}x to {anth.ci_high}x.</p>
     </div>
   )
 }
@@ -327,8 +338,8 @@ function CoBenchMeter({ w }) {
   const x = scaleLinear().domain([0, 100]).range([0, w - 2])
   return (
     <svg
-      width={w}
-      height={h}
+      {...svgSize(w, h)}
+      style={FIXED_H(h)}
       role="img"
       aria-label={`Bar: ${score.label} scored ${score.value}% on CoBench 2.1; Anthropic puts a model able to replace its research staff at ${line85.value}% or more, a line set on the earlier version of the test.`}
     >
@@ -353,7 +364,9 @@ function Thresholds({ width }) {
   return (
     <div className="rsi-strip">
       <h4 className="rsi-strip__head">Each lab&rsquo;s own threshold for AI-driven research acceleration: none says it has been crossed</h4>
-      <div className="rsi-strip__grid" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`, columnGap: GAP }}>
+      {/* Columns come from @container figure queries in RsiDashboard.css (3 from 680px), so the
+          pre-rendered HTML is laid out right at every width; `cols` here only sizes the meter. */}
+      <div className="rsi-strip__grid">
         <div className="rsi-cell">
           <p className="rsi-cell__lab">OpenAI</p>
           <p className="rsi-cell__model">{oa.label}, {oa.date_label}</p>
@@ -449,9 +462,11 @@ function Tier({ letter, title, desc, children }) {
   )
 }
 
-function Grid({ cols, children }) {
+// Columns come from @container figure queries in RsiDashboard.css (2 from 640px, matching `cols`
+// in Dashboard), so the pre-rendered HTML stacks on phones before hydration.
+function Grid({ children }) {
   return (
-    <div className="rsi-grid" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`, columnGap: GAP }}>
+    <div className="rsi-grid">
       {children}
     </div>
   )
@@ -461,6 +476,7 @@ function Dashboard({ width }) {
   const w = Math.max(240, width)
   const cols = w >= 640 ? 2 : 1
   const pw = Math.floor(cols === 2 ? (w - GAP) / 2 : w)
+  const tip = usePinnableTip()
 
   const metr = points('metr')
   const metrRef = reference('metr')
@@ -478,7 +494,7 @@ function Dashboard({ width }) {
   return (
     <div className="rsi">
       <Tier letter="A" title="Independent measurements" desc="Groups that do not sell models, publishing their own measurements.">
-        <Grid cols={cols}>
+        <Grid>
           <Panel
             title="METR time horizon, best model"
             measure={<>Length of task, in skilled-human working time, that the best model completes half the time. Log scale. Details in <a href="#s3">section 3</a>.</>}
@@ -490,6 +506,7 @@ function Dashboard({ width }) {
             <TimeChart
               w={pw}
               rows={metr}
+              tip={tip}
               makeY={() => scaleLog().domain([2.5, 2400])}
               yTicks={[{ v: 10, text: '10 min' }, { v: 60, text: '1 h' }, { v: 480, text: '8 h' }]}
               refLine={{ v: metrRef.value, text: 'Above 16 h: unreliable', short: '16 h limit', below: true }}
@@ -511,6 +528,7 @@ function Dashboard({ width }) {
             <TimeChart
               w={pw}
               rows={eci}
+              tip={tip}
               makeY={() => scaleLinear().domain([115, 175])}
               yTicks={[{ v: 120, text: '120' }, { v: 140, text: '140' }, { v: 160, text: '160' }]}
               aria={`Line chart: the best Epoch Capabilities Index score rose from GPT-4 (${monthYear(first(eci).date)}) to ${Math.round(last(eci).value)} (${last(eci).label}, ${monthYear(last(eci).date)}).`}
@@ -546,7 +564,7 @@ function Dashboard({ width }) {
         title="Lab self-reports"
         desc="Unchecked by outsiders. Each company counts something different, so no two share an axis or a line."
       >
-        <Grid cols={cols}>
+        <Grid>
           <Panel
             title="Google: AI share of new code"
             measure="Share of new code at Google that is AI-generated and approved by engineers."
@@ -558,6 +576,7 @@ function Dashboard({ width }) {
             <TimeChart
               w={pw}
               rows={google}
+              tip={tip}
               xTicks="points"
               makeY={() => scaleLinear().domain([0, 100])}
               yTicks={[{ v: 0, text: '0%' }, { v: 50, text: '50%' }, { v: 100, text: '100%' }]}
@@ -600,6 +619,7 @@ function Dashboard({ width }) {
             <TimeChart
               w={pw}
               rows={speed}
+              tip={tip}
               xTicks="ends"
               makeY={() => scaleLinear().domain([0, 60])}
               yTicks={[{ v: 0, text: '0x' }, { v: 20, text: '20x' }, { v: 40, text: '40x' }, { v: 60, text: '60x' }]}

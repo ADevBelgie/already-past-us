@@ -158,87 +158,82 @@ export default function StatCards() {
       source="OpenAI researchers (ICPC, IOI); arXiv:2605.20695; Scale AI and Center for AI Safety, Remote Labor Index"
       notes={NOTE_IDS}
     >
-      {width => {
-        const layout = width >= 760 ? 'cols' : width >= 520 ? 'rows' : 'stack'
-        return (
-          <>
-            <div className={`sc sc--${layout}`}>
-              <section className="sc-group sc-group--past" aria-label="Past the best humans">
-                <h3 className="sc-group__head">Past the best humans</h3>
-                <div className="sc-group__cards">
-                  <Card
-                    variant="past"
-                    event="ICPC 2025 world finals, the top university programming contest"
-                    big={`${aiSolved.value} of ${aiSolved.of}`}
-                    visual={
-                      <div className="sc-rows">
-                        <SolvedRow label="OpenAI system" value={aiSolved.value} of={aiSolved.of} color={C.accent} sourceTag={aiSolved.tag} />
-                        <SolvedRow label="Best human team" value={humanSolved.value} of={humanSolved.of} color={C.ink3} sourceTag={humanSolved.tag} />
-                      </div>
-                    }
-                    butLabel="But"
-                    but={<>At the 2025 International Olympiad in Informatics, {word(ioi.value)} of {ioi.of} human contestants beat OpenAI's entry.<FootnoteRef id={ioi.source} /></>}
-                  >
-                    problems solved by an OpenAI system. The best human team solved {humanSolved.value}.{' '}
-                    <span className="sc-prov"><TagChip tag={TAG_KEY[aiSolved.tag]} /><FootnoteRef id={aiSolved.source} /></span>
-                  </Card>
-                  <Card
-                    variant="past"
-                    event={`Paul Erdős's ${year.value} unit-distance conjecture in geometry`}
-                    big="Disproved"
-                    visual={
-                      <div className="sc-checkers">
-                        <p className="sc-checkers__head">{cap(word(checkers.value))} mathematicians checked it</p>
-                        <ul className="sc-checkers__list" aria-label={`The ${checkers.value} mathematicians: ${checkers.names.join(', ')}`}>
-                          {checkers.names.map(n => (
-                            <li key={n}>
-                              <svg width="8" height="8" aria-hidden="true"><circle cx="4" cy="4" r="3.5" fill={C.ink2} /></svg>
-                              {n}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    }
-                    butLabel="But"
-                    but={<>Humans improved on the AI's construction within weeks. And in October 2025 OpenAI had wrongly claimed that GPT-5 solved {word(falseClaims.value)} Erdős problems it had only found in existing papers.<FootnoteRef id={falseClaims.source} /></>}
-                  >
-                    by an OpenAI model in May 2026. {cap(word(checkers.value))} mathematicians checked it and published a simplified version.{' '}
-                    <span className="sc-prov"><TagChip tag={TAG_KEY[checkers.tag]} /><FootnoteRef id={checkers.source} /></span>
-                  </Card>
+      {/* Layout (stacked, rows, columns) is chosen by container queries in StatCards.css, so the
+          pre-rendered HTML is the same as the hydrated HTML at every width. */}
+      <div className="sc">
+        <section className="sc-group sc-group--past" aria-label="Past the best humans">
+          <h3 className="sc-group__head">Past the best humans</h3>
+          <div className="sc-group__cards">
+            <Card
+              variant="past"
+              event="ICPC 2025 world finals, the top university programming contest"
+              big={`${aiSolved.value} of ${aiSolved.of}`}
+              visual={
+                <div className="sc-rows">
+                  <SolvedRow label="OpenAI system" value={aiSolved.value} of={aiSolved.of} color={C.accent} sourceTag={aiSolved.tag} />
+                  <SolvedRow label="Best human team" value={humanSolved.value} of={humanSolved.of} color={C.ink3} sourceTag={humanSolved.tag} />
                 </div>
-              </section>
-              <section className="sc-group sc-group--not" aria-label="Not past us">
-                <h3 className="sc-group__head">Not past us</h3>
-                <div className="sc-group__cards">
-                  <Card
-                    variant="not"
-                    event={`Remote Labor Index: ${rliProjects.value} real paid freelance projects`}
-                    big={`About ${Math.round(rliBest.value)}%`}
-                    visual={
-                      <div className="sc-rli">
-                        <ProjectGrid />
-                        <p className="sc-rli__key">
-                          <span className="sc-key sc-key--on" aria-hidden="true" />
-                          {rliMatched.value} projects matched a human
-                          <span className="sc-key sc-key--off" aria-hidden="true" />
-                          {rliNot.value} did not
-                          <span className="sc-rli__calc"> ({rliBest.value.toFixed(2)}% of {rliProjects.value}, our arithmetic)</span>
-                        </p>
-                      </div>
-                    }
-                    butLabel="Since launch"
-                    but={<>Up from {rliLaunch.value.toFixed(1)}% in October 2025, about {rliRatio.value} times higher in a year.<FootnoteRef id={rliRatio.source} /></>}
-                  >
-                    of projects where the best AI agent's work was judged as good as a human freelancer's, as of {data.rli_accessed}.{' '}
-                    <span className="sc-prov"><TagChip tag={TAG_KEY[rliBest.tag]} /><FootnoteRef id={rliBest.source} /></span>
-                  </Card>
+              }
+              butLabel="But"
+              but={<>At the 2025 International Olympiad in Informatics, {word(ioi.value)} of {ioi.of} human contestants beat OpenAI's entry.<FootnoteRef id={ioi.source} /></>}
+            >
+              problems solved by an OpenAI system. The best human team solved {humanSolved.value}.{' '}
+              <span className="sc-prov"><TagChip tag={TAG_KEY[aiSolved.tag]} /><FootnoteRef id={aiSolved.source} /></span>
+            </Card>
+            <Card
+              variant="past"
+              event={`Paul Erdős's ${year.value} unit-distance conjecture in geometry`}
+              big="Disproved"
+              visual={
+                <div className="sc-checkers">
+                  <p className="sc-checkers__head">{cap(word(checkers.value))} mathematicians checked it</p>
+                  <ul className="sc-checkers__list" aria-label={`The ${checkers.value} mathematicians: ${checkers.names.join(', ')}`}>
+                    {checkers.names.map(n => (
+                      <li key={n}>
+                        <svg width="8" height="8" aria-hidden="true"><circle cx="4" cy="4" r="3.5" fill={C.ink2} /></svg>
+                        {n}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </section>
-            </div>
-            <DataTable />
-          </>
-        )
-      }}
+              }
+              butLabel="But"
+              but={<>Humans improved on the AI's construction within weeks. And in October 2025 OpenAI had wrongly claimed that GPT-5 solved {word(falseClaims.value)} Erdős problems it had only found in existing papers.<FootnoteRef id={falseClaims.source} /></>}
+            >
+              by an OpenAI model in May 2026. {cap(word(checkers.value))} mathematicians checked it and published a simplified version.{' '}
+              <span className="sc-prov"><TagChip tag={TAG_KEY[checkers.tag]} /><FootnoteRef id={checkers.source} /></span>
+            </Card>
+          </div>
+        </section>
+        <section className="sc-group sc-group--not" aria-label="Not past us">
+          <h3 className="sc-group__head">Not past us</h3>
+          <div className="sc-group__cards">
+            <Card
+              variant="not"
+              event={`Remote Labor Index: ${rliProjects.value} real paid freelance projects`}
+              big={`About ${Math.round(rliBest.value)}%`}
+              visual={
+                <div className="sc-rli">
+                  <ProjectGrid />
+                  <p className="sc-rli__key">
+                    <span className="sc-key sc-key--on" aria-hidden="true" />
+                    {rliMatched.value} projects matched a human
+                    <span className="sc-key sc-key--off" aria-hidden="true" />
+                    {rliNot.value} did not
+                    <span className="sc-rli__calc"> ({rliBest.value.toFixed(2)}% of {rliProjects.value}, our arithmetic)</span>
+                  </p>
+                </div>
+              }
+              butLabel="Since launch"
+              but={<>Up from {rliLaunch.value.toFixed(1)}% in October 2025, about {rliRatio.value} times higher in a year.<FootnoteRef id={rliRatio.source} /></>}
+            >
+              of projects where the best AI agent's work was judged as good as a human freelancer's, as of {data.rli_accessed}.{' '}
+              <span className="sc-prov"><TagChip tag={TAG_KEY[rliBest.tag]} /><FootnoteRef id={rliBest.source} /></span>
+            </Card>
+          </div>
+        </section>
+      </div>
+      <DataTable />
     </Figure>
   )
 }

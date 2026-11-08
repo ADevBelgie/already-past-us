@@ -4,7 +4,7 @@
 import { useMemo, useState } from 'react'
 import { scaleLinear, scaleLog } from 'd3-scale'
 import data from '../data/frontier_snapshots.json'
-import { C, Figure, LegendItem, Segmented, Tooltip, fmt, utc } from './kit.jsx'
+import { C, Figure, LegendItem, Segmented, Tooltip, fmt, svgSize, utc } from './kit.jsx'
 import './FrontierSnapshots.css'
 
 const SNAPS = data.snapshots // [{date, key, label, long}], oldest first
@@ -216,7 +216,7 @@ function Chart({ width, view }) {
 
   return (
     <div className="fs-chart" onPointerLeave={() => setActive(null)}>
-      <svg width={width} height={height} role="group" aria-label={summary}>
+      <svg {...svgSize(width, height)} role="group" aria-label={summary}>
         <defs>
           <marker id="fs-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0,1 L9,5 L0,9" fill="none" stroke={C.ink} strokeWidth="1.6" />
@@ -362,15 +362,16 @@ function Chart({ width, view }) {
   )
 }
 
-function Readout({ width }) {
+function Readout() {
   const [c1, c2, c3] = H.cheaper
   const [b1, b2, b3] = H.better
   const may = BY_SNAP[b2.snapshot]
   const tie = may.find(m => m.model === c2.models[0]) // Gemini 3 Flash, 152.25 (s2-better: a statistical tie)
   const sw = s => <span className="fs-sw" style={{ background: C[SNAP_BY_DATE[s].key] }} aria-hidden="true" />
   return (
-    // Layout follows the figure's own width (not the viewport), so it matches the chart above it.
-    <div className={`fs-readout${width < 680 ? ' fs-readout--stack' : ''}${width < 400 ? ' fs-readout--tight' : ''}`}>
+    // Layout follows the figure's own width (not the viewport) through @container figure queries in
+    // FrontierSnapshots.css, so the pre-rendered HTML is right at every width before hydration.
+    <div className="fs-readout">
       <div className="fs-readout__item">
         <p className="fs-readout__head">Same capability, less money</p>
         <p className="fs-readout__q">Cheapest model at ECI {ECI_TEST} or above</p>
@@ -480,7 +481,7 @@ export default function FrontierSnapshots() {
       {width => (
         <>
           <Chart width={width} view={view} />
-          <Readout width={width} />
+          <Readout />
           <DataTable />
         </>
       )}

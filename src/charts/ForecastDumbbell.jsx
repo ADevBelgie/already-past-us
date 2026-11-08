@@ -1,9 +1,8 @@
 // s1-forecast-dumbbell: forecasts against outcomes for a set of AI questions.
 // Data: src/data/forecast_vs_actual.json, built by scripts/data/build_forecast_vs_actual.py
 // from research/topics/r1-perception.md and the s1 footnotes.
-import { useState } from 'react'
 import { scaleLinear } from 'd3-scale'
-import { Figure, C, LegendItem, Tooltip } from './kit.jsx'
+import { Figure, C, LegendItem, Tooltip, svgSize, usePinnableTip } from './kit.jsx'
 import { FootnoteRef } from '../components/Footnotes.jsx'
 import data from '../data/forecast_vs_actual.json'
 import './ForecastDumbbell.css'
@@ -74,12 +73,16 @@ export default function ForecastDumbbell() {
   )
 }
 
+// Row height in the side-by-side (wide) and stacked layouts.
+const ROW_H = { wide: 46, stacked: 66 }
+
 function Chart({ width }) {
-  const [active, setActive] = useState(null)
+  // Hover or focus shows a row's details; click, tap, Enter or Space pins them (see kit.jsx).
+  const tip = usePinnableTip()
   const w = Math.max(240, width) // never wider than the column (a 300px screen leaves 268px)
   const stacked = w < 640
   const labelW = stacked ? 0 : 248
-  const rowH = stacked ? 66 : 46
+  const rowH = stacked ? ROW_H.stacked : ROW_H.wide
   const markDy = stacked ? 47 : 23 // dumbbell y within a row
   const headH = 30
   const axisH = 30
@@ -118,7 +121,11 @@ function Chart({ width }) {
   const height = y
 
   const all = blocks.flatMap(b => b.items)
-  const act = all.find(it => it.r.id === active)
+  const act = tip.datum
+  // Height of both layouts (only the row height differs), so ForecastDumbbell.css can reserve the
+  // hydrated height before JavaScript runs: the server draws the wide layout, phones get stacked.
+  const baseH = height - all.length * rowH
+  const sizeVars = { '--fdb-h': `${baseH + all.length * ROW_H.wide}px`, '--fdb-h-stacked': `${baseH + all.length * ROW_H.stacked}px` }
 
   const nAbove = above.length, nBelow = below.length
   const ties = all.filter(it => it.r.nearTie).map(it => it.r)
@@ -127,7 +134,8 @@ function Chart({ width }) {
 
   return (
     <>
-      <svg role="img" aria-label={aria} width={w} height={height} viewBox={`0 0 ${w} ${height}`}>
+      {/* role="group", not "img": the rows inside are buttons, which an img would hide. */}
+      <svg {...svgSize(w, height)} className="fdb-svg" style={sizeVars} role="group" aria-label={aria}>
         <Axis scale={xPct} ticks={[0, 25, 50, 75, 100]} unit="%" axisY={pctAxisY}
           spans={stacked ? spansFor(blocks.slice(0, 2), rowH, pctBottom) : [[pctTop + headH - 6, pctBottom]]} />
         <Axis scale={xHrs} ticks={[0, 1, 2, 3, 4]} unit="h" axisY={hrsAxisY}
@@ -141,13 +149,14 @@ function Chart({ width }) {
             </text>
             {b.items.map(it => (
               <Row key={it.r.id} it={it} w={w} rowH={rowH} stacked={stacked} x0={x0}
-                active={active === it.r.id} setActive={setActive} />
+                active={tip.active === it.r.id}
+                bindProps={tip.bind(it.r.id, it, { label: `Details: ${rowName(it.r)}` })} />
             ))}
           </g>
         ))}
       </svg>
       {act && (
-        <Tooltip x={act.scale(act.r.actual)} y={act.cy} width={w}>
+        <Tooltip x={act.scale(act.r.actual)} y={act.cy} width={w} {...tip.tipProps}>
           <TipBody r={act.r} />
         </Tooltip>
       )}
@@ -182,7 +191,7 @@ function Axis({ scale, ticks, unit, spans, axisY }) {
   )
 }
 
-function Row({ it, w, rowH, stacked, x0, active, setActive }) {
+function Row({ it, w, rowH, stacked, x0, active, bindProps }) {
   const { r, top, cy, dir, scale } = it
   const color = DIR[dir].color
   const vals = values(r)
@@ -215,15 +224,8 @@ function Row({ it, w, rowH, stacked, x0, active, setActive }) {
   const summary = `${r.label}, ${r.panel}, ${r.deadline}: forecast ${forecastList(r)}; ${dir === 'unresolved' ? 'measured so far' : 'outcome'} ${v(r.actual, r.unit)}${r.asOf ? `, ${r.asOf}` : ''} (${lowerFirst(r.actualNote)})${r.nearTie ? `, ${r.note}` : ''}. ${r.status}.`
 
   return (
-    <g
-      className="fdb-row"
-      tabIndex={0}
-      aria-label={summary}
-      onMouseEnter={() => setActive(r.id)}
-      onMouseLeave={() => setActive(null)}
-      onFocus={() => setActive(r.id)}
-      onBlur={() => setActive(null)}
-    >
+    <g {...bindProps} className="fdb-row" aria-label={summary}>
+      {/* Full-row hit area (at least 42px tall), so a tap anywhere on the row pins its details. */}
       <rect className="fdb-hit" x={-4} y={top + 2} width={w + 4} height={rowH - 4} rx={4}
         fill={active ? C.grid : 'transparent'} fillOpacity={active ? 0.7 : 0} />
       <text x={labelX} y={nameY} fontSize={12} fontWeight={600} fill={C.ink}>

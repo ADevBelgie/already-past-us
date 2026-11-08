@@ -4,6 +4,52 @@
 .jm-row { cursor: pointer; outline: none; }
 .jm-row:focus-visible .jm-row__band { fill: var(--grid); stroke: var(--accent); stroke-width: 1.5; }
 
+/* Two layouts are always in the markup; the container query picks one, so the server HTML already
+   has the right layout and height at every width. display: none also takes the hidden layout out
+   of the tab order and the accessibility tree. (.jm .jm-wide beats .figure__body svg { display }.) */
+.jm .jm-n { display: none; }
+@container figure (width < 600px) {
+  .jm .jm-wide { display: none; }
+  .jm .jm-n { display: block; }
+}
+
+/* Narrow layout: HTML rows that mirror the old narrow SVG (text column max(150px, 52%), 10px gap,
+   track, 6px right margin; 14px lines; 12px of row padding; 6px under the last row). */
+.jm-n { padding-bottom: 6px; font-family: var(--font-sans); }
+.jm-n__head,
+.jm-nrow { display: grid; grid-template-columns: max(150px, 52%) minmax(0, 1fr); column-gap: 10px; }
+.jm-n__track { grid-column: 2; position: relative; margin-right: 6px; }
+/* "Level with the best" line: --jm-level is the step's position on the track (set inline). */
+.jm-n__track::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: calc(var(--jm-level) - 0.5px); width: 1px;
+  background: var(--accent);
+}
+.jm-n__head { height: 40px; box-sizing: border-box; border-bottom: 1px solid var(--rule); }
+.jm-n__head .jm-n__track::before { top: auto; bottom: -1px; height: 4px; }
+.jm-n__end {
+  position: absolute; top: 1px; white-space: nowrap; text-align: right;
+  font-size: 11px; line-height: 14px; color: var(--ink-3);
+}
+/* Right edge 6px past the first step (10% of the track), so it extends over the text column. */
+.jm-n__end--low { right: calc(90% - 6px); }
+.jm-n__end--high { right: 0; }
+
+.jm-n__item { position: relative; }
+.jm-nrow { position: relative; isolation: isolate; }
+.jm-nrow::before {
+  content: ''; position: absolute; inset: 1px 0; z-index: -1; border-radius: 4px; background: transparent;
+}
+.jm-nrow.is-active::before { background: var(--grid); }
+.jm-nrow:focus-visible::before { background: var(--grid); outline: 1.5px solid var(--accent); outline-offset: -0.75px; }
+.jm-n__text { grid-column: 1; min-width: 0; padding: 7px 0 5px 2px; line-height: 14px; overflow-wrap: break-word; }
+.jm-n__text > span { display: block; }
+.jm-n__domain { font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.jm-n__tier { font-size: 11.5px; color: var(--ink-2); }
+.jm-n__tier--level { color: var(--accent); }
+.jm-n__vs { font-size: 11px; color: var(--ink-3); }
+.jm-nrow .jm-n__track { display: flex; align-items: center; }
+.jm-n__svg { position: relative; flex: 1 1 auto; min-width: 0; }
+
 /* The details card reuses .chart-tooltip; when pinned it takes pointer events so the source chips work. */
 .figure__body .jm-tip { width: 17rem; max-width: calc(100% - 8px); }
 .figure__body .jm-tip--pinned { pointer-events: auto; }

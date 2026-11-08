@@ -1,7 +1,10 @@
 /* StatCards (s0-cards). Every class is prefixed sc-. */
+/* Layout follows the width of the figure body (a size container named `figure`, see styles.css),
+   not JavaScript, so the pre-rendered HTML is laid out right before hydration:
+   - under 520px: one column, each card stacked (text, visual, footer)
+   - 520px to 759px: one column, each card with text on the left and the visual on the right
+   - 760px and up: "Past the best humans" (two cards side by side) beside "Not past us" */
 .sc { display: grid; gap: 1.4rem; }
-.sc--cols { grid-template-columns: 2fr 1fr; gap: 1.25rem; }
-.sc--cols .sc-group--not { padding-left: 1.25rem; border-left: 1px solid var(--rule); }
 
 .sc-group { min-width: 0; display: flex; flex-direction: column; }
 .sc .sc-group__head {
@@ -11,8 +14,6 @@
 .sc-group--not .sc-group__head { color: var(--ink-2); border-bottom-color: var(--ink-3); }
 
 .sc-group__cards { display: grid; gap: 0.9rem; }
-.sc--cols .sc-group--past .sc-group__cards { grid-template-columns: 1fr 1fr; }
-.sc--cols .sc-group__cards { flex: 1; }
 
 .sc-card {
   min-width: 0; display: flex; flex-direction: column; gap: 0.7rem;
@@ -22,9 +23,19 @@
 .sc-card--not { background: transparent; border: 1px dashed var(--ink-3); }
 
 /* Medium widths: stacked cards, text on the left and the visual on the right. */
-.sc--rows .sc-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 1.1rem; row-gap: 0.7rem; }
-.sc--rows .sc-card__visual { align-self: center; }
-.sc--rows .sc-card__but { grid-column: 1 / -1; }
+@container figure (width >= 520px) and (width < 760px) {
+  .sc .sc-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 1.1rem; row-gap: 0.7rem; }
+  .sc .sc-card__visual { align-self: center; }
+  .sc .sc-card__but { grid-column: 1 / -1; }
+}
+
+/* Wide: the two groups side by side, the two past-the-best cards in a row. */
+@container figure (width >= 760px) {
+  .sc { grid-template-columns: 2fr 1fr; gap: 1.25rem; }
+  .sc .sc-group--not { padding-left: 1.25rem; border-left: 1px solid var(--rule); }
+  .sc .sc-group--past .sc-group__cards { grid-template-columns: 1fr 1fr; }
+  .sc .sc-group__cards { flex: 1; }
+}
 
 .sc .sc-card__event { margin: 0 0 0.3rem; font-size: 0.78rem; line-height: 1.35; color: var(--ink-3); }
 .sc .sc-card__big { margin: 0; font: 600 2.1rem/1.05 var(--font-serif); letter-spacing: -0.01em; color: var(--ink); }
