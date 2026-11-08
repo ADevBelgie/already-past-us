@@ -247,3 +247,7 @@ Removed "Every number carries a tag saying who measured it." from the end of the
 ## Review comment: s1 Gallup change sentence, second pass (8 November 2026)
 
 "…5 to 7 points fewer people now say AI does worse" mixed points and people; now "Views are shifting only a little: on driving, financial advice and medical advice, the share of people saying AI does worse fell by just 5 to 7 points."
+
+## Review comment: Gallup shifts as "went from X to Y" (8 November 2026)
+
+The s1 sentence now gives levels instead of point changes: "the share saying AI does worse went from 68% to 61% for driving, from 62% to 57% for medical advice and from 49% to 43% for financial advice." The article text gives only the changes; the levels come from the data file behind the article's own chart (Datawrapper fcHj9, dataset.csv, read 8 November 2026), now cited in footnote s1-gallup. They agree with the article's 7/6/5-point drops.
