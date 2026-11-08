@@ -516,7 +516,7 @@ function Dashboard({ width }) {
         <Grid>
           <Panel
             title="METR time horizon, best model"
-            measure={<>Length of task, in skilled-human working time, that the best model completes half the time. Log scale. Details in <a href="#s3">section 3</a>.</>}
+            measure={<>Length of task, in skilled-human working time, that the best model completes half the time. Each step up the scale multiplies the length, so a straight line means it keeps doubling at a steady pace. Details in <a href="#s3">section 3</a>.</>}
             who="METR"
             tag="verified"
             footnote="s6-metr"

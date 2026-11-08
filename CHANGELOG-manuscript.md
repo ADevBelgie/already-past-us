@@ -396,3 +396,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 - Correction: our footnote said only Xiaohongshu claimed IMO grading. Huawei also claims it, and its announcement quotes a congratulation from IMO President Gregor Dolinar that the IMO has not published. NVIDIA also says official IMO graders gave its Nemotron 3 Ultra system 30/42. Anthropic's Claude Opus 5 system card reports 42/42 on its own grading.
 - Brief: "Huawei, Xiaohongshu and others reported perfect scores of 42 out of 42 for their AI. The IMO has confirmed none of them. Even if true, it is a tie: 7 of the 666 students also got full marks."
 - Expert note "Caveats on the test-score comparisons" and footnote s4-imo updated with the above; jagged-map row text updated to match.
+
+## 2026-11-08 — s6 dashboard: explain the log scale (review comment)
+- METR panel of the s6 dashboard: "Log scale." became "Each step up the scale multiplies the length, so a straight line means it keeps doubling at a steady pace."
