@@ -283,3 +283,7 @@ Shortened to "What forecasters predicted for seven AI questions, and what happen
 ## Review comment: forecast chart, one forecast dot and an explicit gap (8 November 2026)
 
 Rows with several forecaster groups (FRI's experts and superforecasters; the three biosecurity groups) drew one dot per group plus a range bar, so the size of the miss was hard to read. Each row now has one forecast dot (where groups differed, the forecast closest to the outcome, i.e. the smallest miss) and the outcome label states the gap: "53.8% · +40 points", "5.2% · −11 points", "3.1 h · −0.3 h". The legend explains both. Every group's forecast is still listed in the row tooltip and the data table.
+
+## Review comment: forecast chart caveat (8 November 2026)
+
+Shortened to "These are selected questions. Forecasts that were too low show up sooner than ones that were too high, and the AI Digest forecasters leaned optimistic." The full explanation is in the s1 expert note "Forecasts that came in too high" and footnote s1-xpt.

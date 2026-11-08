@@ -68,7 +68,7 @@ export default function ForecastDumbbell() {
       </>}
       notes={data.notes}
       source="Forecasting Research Institute (22 September 2026); AI Digest with Epoch AI (16 January 2026)"
-      caveat="FRI warns that its review leans toward finding underestimates: a forecast that was too low is confirmed the moment AI passes it, while one that was too high is confirmed only after its deadline. The questions shown are a selection, and the AI Digest forecasters were self-selected and leaned optimistic."
+      caveat="These are selected questions. Forecasts that were too low show up sooner than ones that were too high, and the AI Digest forecasters leaned optimistic."
     >
       {width => <Chart width={width} />}
     </Figure>
