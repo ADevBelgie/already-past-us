@@ -279,3 +279,7 @@ The s1 forecast-vs-actual chart title is now "Most of these forecasts underestim
 ## Review comment: forecast chart subtitle (8 November 2026)
 
 Shortened to "What forecasters predicted for seven AI questions, and what happened. Most rows are test scores; the biosecurity row is the share of students who finished the tasks with AI help." The still-open question no longer needs a mention here: the chart labels it "Not yet resolved (measured in hours)".
+
+## Review comment: forecast chart, one forecast dot and an explicit gap (8 November 2026)
+
+Rows with several forecaster groups (FRI's experts and superforecasters; the three biosecurity groups) drew one dot per group plus a range bar, so the size of the miss was hard to read. Each row now has one forecast dot (where groups differed, the forecast closest to the outcome, i.e. the smallest miss) and the outcome label states the gap: "53.8% · +40 points", "5.2% · −11 points", "3.1 h · −0.3 h". The legend explains both. Every group's forecast is still listed in the row tooltip and the data table.

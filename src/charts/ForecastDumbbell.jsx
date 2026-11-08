@@ -33,10 +33,12 @@ const v = (x, unit) => `${x}${unit === 'h' ? ' h' : '%'}`
 const values = r => r.forecasts.map(f => f.value)
 const nearest = r => values(r).reduce((a, b) => (Math.abs(b - r.actual) < Math.abs(a - r.actual) ? b : a))
 const gap = r => Math.abs(r.actual - nearest(r))
-const forecastText = r => {
-  const vals = values(r)
-  const lo = Math.min(...vals), hi = Math.max(...vals)
-  return lo === hi ? v(lo, r.unit) : `${lo}–${v(hi, r.unit)}`
+// The row's change label: outcome minus the closest forecast, '+40 points' or '−0.3 h'.
+const gapText = r => {
+  const d = r.actual - nearest(r)
+  const a = Math.abs(d)
+  const n = a >= 10 ? Math.round(a) : Math.round(a * 10) / 10
+  return `${d >= 0 ? '+' : '−'}${n}${r.unit === 'h' ? ' h' : ' points'}`
 }
 const textW = (s, px) => s.length * px * 0.56
 // Lower-case only the first letter, so month names such as 'May' keep their capital.
@@ -59,10 +61,10 @@ export default function ForecastDumbbell() {
       title="Most of these forecasts underestimated AI progress, but not all of them"
       subtitle={`What forecasters predicted for ${WORDS[data.rows.length] ?? data.rows.length} AI questions, and what happened. Most rows are test scores; the biosecurity row is the share of students who finished the tasks with AI help.`}
       legend={<>
-        <LegendItem color={C.ink2} hollow label="Forecast" />
-        <LegendItem color={C.rule} shape="line" label="Range across forecaster groups" />
+        <LegendItem color={C.ink2} hollow label="Forecast (where groups differed, the closest one)" />
         <LegendItem color={C.accent} label="Outcome above forecast" />
         <LegendItem color={C.ink} label="Outcome below forecast" />
+        <span className="legend-item">+/− points: how far the outcome landed from the forecast</span>
       </>}
       notes={data.notes}
       source="Forecasting Research Institute (22 September 2026); AI Digest with Epoch AI (16 January 2026)"
@@ -194,22 +196,22 @@ function Axis({ scale, ticks, unit, spans, axisY }) {
 function Row({ it, w, rowH, stacked, x0, active, bindProps }) {
   const { r, top, cy, dir, scale } = it
   const color = DIR[dir].color
-  const vals = values(r)
-  const lo = Math.min(...vals), hi = Math.max(...vals)
+  // One forecast mark per row: where forecaster groups differed, the one closest to the outcome
+  // (the smallest miss). Every group's forecast is in the tooltip and the data table.
   const near = nearest(r)
   const xa = scale(r.actual)
   const xn = scale(near)
   const actualRight = r.actual >= near
-  const fText = forecastText(r)
-  const aText = v(r.actual, r.unit) + (r.asOf ? `, ${r.asOf}` : '') + (r.nearTie ? ' (near tie)' : '')
+  const fText = v(near, r.unit)
+  const aText = `${v(r.actual, r.unit)} · ${gapText(r)}`
 
   // Forecast label on the outer side of the forecast marks, outcome label on the outer side of its dot.
-  let fx = actualRight ? scale(lo) - 8 : scale(hi) + 8
+  let fx = actualRight ? xn - 8 : xn + 8
   let fAnchor = actualRight ? 'end' : 'start'
   let fy = cy + 4
   // Not enough room beside the marks: put the forecast label under them instead.
   if ((!actualRight && fx + textW(fText, 11) > w) || (actualRight && fx - textW(fText, 11) < x0 - 26)) {
-    fx = (scale(lo) + scale(hi)) / 2; fAnchor = 'middle'; fy = cy + 19
+    fx = xn; fAnchor = 'middle'; fy = cy + 19
   }
   let ax = actualRight ? xa + 10 : xa - 10
   let aAnchor = actualRight ? 'start' : 'end'
@@ -234,16 +236,10 @@ function Row({ it, w, rowH, stacked, x0, active, bindProps }) {
       </text>
       <text x={labelX} y={subY} fontSize={11} fill={C.ink3}>{sub}</text>
 
-      {/* range across forecaster groups */}
-      {vals.length > 1 && (
-        <line x1={scale(lo)} x2={scale(hi)} y1={cy} y2={cy} stroke={C.rule} strokeWidth={7} strokeLinecap="round" />
-      )}
       {/* connector from the nearest forecast to the outcome */}
       <line x1={xn} x2={xa} y1={cy} y2={cy} stroke={color} strokeWidth={2}
         strokeDasharray={dir === 'unresolved' ? '3 3' : undefined} />
-      {vals.map((fv, i) => (
-        <circle key={i} cx={scale(fv)} cy={cy} r={4.5} fill={C.paper} stroke={C.ink2} strokeWidth={1.5} />
-      ))}
+      <circle cx={xn} cy={cy} r={4.5} fill={C.paper} stroke={C.ink2} strokeWidth={1.5} />
       <circle cx={xa} cy={cy} r={6} fill={color} />
 
       <text x={fx} y={fy} fontSize={11} fill={C.ink2} textAnchor={fAnchor}>{fText}</text>
@@ -261,7 +257,7 @@ function TipBody({ r }) {
       <span className="fdb-tip-line">
         Forecast: {forecastList(r)}
       </span>
-      <span className="fdb-tip-line">{r.direction === 'unresolved' ? 'Measured so far' : 'Outcome'}: <strong>{v(r.actual, r.unit)}</strong> ({lowerFirst(r.actualNote)})</span>
+      <span className="fdb-tip-line">{r.direction === 'unresolved' ? 'Measured so far' : 'Outcome'}: <strong>{v(r.actual, r.unit)}</strong> ({lowerFirst(r.actualNote)}), {gapText(r)} from the {r.forecasts.length > 1 ? 'closest forecast' : 'forecast'}</span>
       {r.nearTie && <span className="fdb-tip-line fdb-tip-muted">Near tie: {r.note}.</span>}
       {r.status !== 'Resolved' && <span className="fdb-tip-line fdb-tip-muted">{r.status}.</span>}
     </>
