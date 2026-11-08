@@ -351,3 +351,7 @@ Now one sentence: "Some prices are rising: Google will double the price of Gemin
 ## Review comment: the total bill, and what capital spending pays for (8 November 2026)
 
 The s2 closing paragraph now says what the $720-740 billion buys and that it is not all AI inference or training: "…expect to spend about $720-740 billion in 2026 on data centres, chips and other equipment. That pays for training new AI models, for running them for users (what the prices above cover), and for the rest of their businesses." The Google token figure is shortened to "more than four times as many tokens as a year ago" (the 32 billion a minute stays in the footnote). Footnote s2-capex adds that capex covers non-AI cloud and, for Amazon, logistics, and that none of the four reports the AI share or the training/inference split.
+
+## Review comment: Jevons paradox expert note (8 November 2026)
+
+New s2 expert note, "Cheaper units, bigger bill: the Jevons paradox": names the pattern (Jevons, 1865, on coal and steam engines), quotes Satya Nadella invoking it in January 2025 (new footnote s2-jevons, Vendor-reported), and says the briefing's figures fit the pattern but do not prove it: token volume up more than four times while the price of fixed capability fell about 17 times, so spending on those tokens could have fallen; no public figure gives total spending on AI use; buyers move to newer models; capex is a bet on future demand.
