@@ -479,3 +479,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s0 ICPC vs IOI made explicit (review comment)
 - The opening paragraph and the ICPC card's "But" line now say the IOI is a different contest (for secondary-school students), so "5 of 330 beat OpenAI" no longer reads as contradicting "12 of 12 at ICPC".
+
+## 2026-11-08 — s0 RLI card: "8.5 times" instead of "750%" (review comment)
+- Card line now reads "Just 2.5% when the index launched. In 12 months the best score grew about 8.5 times, to 21%." (same figures as footnote s0-rli-growth; a 750% increase is 8.5 times the starting value).
