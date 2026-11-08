@@ -243,3 +243,7 @@ Removed "Every number carries a tag saying who measured it." from the end of the
 ## Review comment: s1 Gallup change sentence reworded (8 November 2026)
 
 'The gap is closing slowly: the share saying "worse" fell by 5 to 7 points for driving, financial advice and medical advice' is now "Views are shifting only a little: for driving, financial advice and medical advice, 5 to 7 points fewer people now say AI does worse."
+
+## Review comment: s1 Gallup change sentence, second pass (8 November 2026)
+
+"…5 to 7 points fewer people now say AI does worse" mixed points and people; now "Views are shifting only a little: on driving, financial advice and medical advice, the share of people saying AI does worse fell by just 5 to 7 points."
