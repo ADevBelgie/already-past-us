@@ -231,3 +231,7 @@ Removed "Every number carries a tag saying who measured it." from the end of the
 ## Review comment: s1 OpenAI subscriber sentence reworded (8 November 2026)
 
 "OpenAI's own figures from February 2026 point the same way: more than 50 million consumer subscribers out of more than 900 million weekly ChatGPT users, or about 6%" is now "OpenAI's own figures from February 2026 tell the same story: of more than 900 million people using ChatGPT each week, only about 6% (over 50 million) pay for a subscription."
+
+## Review comment: s1 agent-use sentence shortened (8 November 2026)
+
+"Free users also do less: 11% of free-only users had used an AI agent in the past week, against 39% of those with paid access" is now "Paying users also do more: 39% had used an AI agent in the past week, against 11% of free users."
