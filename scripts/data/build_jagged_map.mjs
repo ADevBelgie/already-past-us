@@ -314,6 +314,54 @@ const rows = ROWS.map(r => {
   }
 })
 
+// ── Past views: each row as it stood on 7 Nov 2025 and 7 May 2026 ──────────────
+// research/data/jagged_history.json holds, per row and date, either {same_as_today: true}, null (no
+// comparable result yet) or an entry with the evidence published by that date (expert note "The map 6
+// and 12 months ago" and its s4-h-* footnotes). The same checks apply: every number must appear in the
+// entry's footnotes, and each footnote must carry a provenance tag.
+const HISTORY_DATES = ['2025-11-07', '2026-05-07']
+const history = JSON.parse(readFileSync(resolve(root, 'research', 'data', 'jagged_history.json'), 'utf8'))
+const s4Text = bodyText('s4')
+for (const row of rows) {
+  const h = history[row.id]
+  if (!h) { problems.push(`${row.id}: no history entry`); continue }
+  row.history = {}
+  for (const d of HISTORY_DATES) {
+    const e = h[d]
+    if (e === undefined) { problems.push(`${row.id}: history missing ${d}`); continue }
+    if (e === null || e.same_as_today) { row.history[d] = e === null ? null : { same_as_today: true }; continue }
+    const fns = e.footnote_ids.map(id => doc.footnotes[id])
+    fns.forEach((fn, i) => { if (!fn) problems.push(`${row.id}@${d}: footnote ${e.footnote_ids[i]} not found`) })
+    for (const id of e.footnote_ids) if (!s4Text.includes(`[^${id}]`)) problems.push(`${row.id}@${d}: footnote ${id} not cited in section 4`)
+    const provenance = fns[0] ? TAGS[fns[0].tag]?.key : null
+    if (!provenance) problems.push(`${row.id}@${d}: main footnote has no provenance tag`)
+    const evidence = fns.filter(Boolean).map(f => f.text).join(' ')
+    for (const field of ['comparison_text', 'ai_value', 'human_value', 'evidence_date_label']) {
+      for (const n of numbersIn(e[field])) {
+        if (!evidence.includes(n)) problems.push(`${row.id}@${d}.${field}: number "${n}" not found in its footnotes`)
+      }
+    }
+    if (!(e.tier >= 0 && e.tier < TIERS.length)) problems.push(`${row.id}@${d}: bad tier`)
+    if (e.evidence_date > d) problems.push(`${row.id}@${d}: evidence dated after the view date`)
+    const confirmed = e.confirmed !== false
+    row.history[d] = {
+      tier: e.tier,
+      tier_label: row.vs_machine ? row.tier_label : TIERS[e.tier].label + (confirmed ? '' : ', if confirmed'),
+      confirmed,
+      compared_with: e.compared_with ?? row.compared_with,
+      comparison_text: e.comparison_text,
+      ai_value: e.ai_value,
+      human_value: e.human_value,
+      date: e.evidence_date,
+      date_label: e.evidence_date_label,
+      provenance,
+      baseline_provenance: null,
+      footnote_id: e.footnote_ids[0],
+      footnote_ids: e.footnote_ids,
+    }
+  }
+}
+
 if (problems.length) {
   console.error('build_jagged_map: FAILED\n  ' + problems.join('\n  '))
   process.exit(1)
@@ -327,6 +375,7 @@ const out = {
     as_of: doc.meta.data_as_of ?? null,
     tiers: TIERS.map(({ key, label }) => ({ key, label })),
     groups: GROUPS,
+    history_dates: HISTORY_DATES,
   },
   rows,
 }

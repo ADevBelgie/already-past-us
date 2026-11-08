@@ -75,3 +75,7 @@
 .jm-data__domain { color: var(--ink) !important; font-weight: 600; }
 .jm-data__src { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.25rem; }
 .jm-tip__baseline { display: inline-flex; align-items: center; gap: 0.3rem; }
+
+/* Date buttons (past views) take their own line above the legend keys. */
+.jm-views { flex-basis: 100%; }
+.jm-tip__then { margin: 0.2rem 0 0; color: var(--ink-3); font-size: 0.78rem; }

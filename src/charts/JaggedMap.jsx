@@ -6,7 +6,7 @@
 // Data: src/data/jagged_map.json, built and checked against the manuscript by
 // scripts/data/build_jagged_map.mjs.
 import { useContext, useEffect, useRef, useState } from 'react'
-import { Figure, C, PROVENANCE, LegendItem, TagChip, svgSize } from './kit.jsx'
+import { Figure, C, PROVENANCE, LegendItem, Segmented, TagChip, svgSize } from './kit.jsx'
 import { FootnoteContext, FootnoteRef } from '../components/Footnotes.jsx'
 import data from '../data/jagged_map.json'
 import './JaggedMap.css'
@@ -17,6 +17,23 @@ const TIERS = data.meta.tiers
 const vsMachine = r => r.vs_machine === true
 const LEVEL = 2 // "Level with the best"
 const NOTE_IDS = [...new Set(ROWS.flatMap(r => r.footnote_ids))]
+// Past views (expert note "The map 6 and 12 months ago"): each row as it stood on that date, using
+// only evidence published by then. A row whose history entry is null had no comparable result yet.
+const VIEWS = [
+  { value: '2025-11-07', label: 'A year ago', long: '7 November 2025' },
+  { value: '2026-05-07', label: '6 months ago', long: '7 May 2026' },
+  { value: 'today', label: 'Today', long: 'today' },
+]
+const HISTORY_NOTE_IDS = [...new Set(ROWS.flatMap(r => Object.values(r.history ?? {}).flatMap(h => h?.footnote_ids ?? [])))]
+function viewRows(view) {
+  if (view === 'today') return ROWS
+  return ROWS.map(r => {
+    const h = r.history?.[view]
+    if (h === null) return { ...r, none: true, today: r }
+    if (!h || h.same_as_today) return { ...r, today: r }
+    return { ...r, ...h, today: r }
+  })
+}
 const LINE = 14 // px between text lines
 
 /** Greedy word wrap by an approximate character budget. */
@@ -45,7 +62,7 @@ const groupNote = r => {
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v))
 
 /** Wide SVG layout (rendered at every width; CSS hides it below 600px, see JaggedMap.css). */
-function layout(width) {
+function layout(width, ROWS) {
   const labelW = Math.round(clamp(width * 0.25, 150, 220))
   const cmpW = Math.round(clamp(width * 0.17, 110, 150))
   const x0 = labelW + 12
@@ -59,7 +76,8 @@ function layout(width) {
     const domain = wrap(r.domain, Math.floor(labelW / 6.6))
     const vs = wrap(r.compared_with, Math.floor(cmpW / 6.1))
     const h = Math.max(34, Math.max(domain.length, vs.length) * LINE + 14)
-    const row = { r, top: y, h, mid: y + h / 2, dotX: cx(r.tier), domain, vs }
+    const ghost = r.today && (r.none || r.today.tier !== r.tier) ? cx(r.today.tier) : null
+    const row = { r, top: y, h, mid: y + h / 2, dotX: r.none ? null : cx(r.tier), ghostX: ghost, domain, vs }
     y += h
     return row
   })
@@ -97,6 +115,11 @@ function Dot({ r, x, y, size = 6.5 }) {
   return <g transform={`translate(${x},${y})`}>{shape}</g>
 }
 
+/** Where the row stands today, shown faintly in the past views. */
+function Ghost({ x, y }) {
+  return <circle cx={x} cy={y} r={5} fill="none" stroke={C.ink3} strokeWidth={1.2} strokeDasharray="2 2" opacity={0.8} />
+}
+
 function TextLines({ lines, x, y, size, fill, weight, anchor = 'start' }) {
   return (
     <text x={x} y={y} fontSize={size} fill={fill} fontWeight={weight} textAnchor={anchor}>
@@ -107,7 +130,7 @@ function TextLines({ lines, x, y, size, fill, weight, anchor = 'start' }) {
   )
 }
 
-function summary() {
+function summary(ROWS) {
   const byTier = TIERS.map(t => ROWS.filter(r => r.tier === t.key))
   const parts = byTier.map((rows, i) => {
     if (!rows.length) return null
@@ -121,11 +144,12 @@ function summary() {
 }
 
 function rowLabel(r) {
+  if (r.none) return `${r.domain}: no comparable result yet.`
   return `${r.domain}: ${r.tier_label}. Compared with ${r.compared_with}. ${PROVENANCE[r.provenance]?.label ?? ''}${r.confirmed ? '' : ', not officially confirmed'}${r.baseline_provenance && r.baseline_provenance !== r.provenance ? `; human baseline ${PROVENANCE[r.baseline_provenance]?.label ?? ''}` : ''}. ${r.date_label}.`
 }
 
-function Chart({ width }) {
-  const L = layout(width)
+function Chart({ width, rows: ROWS }) {
+  const L = layout(width, ROWS)
   // Which layout is on screen. CSS decides that (container query on .figure__body); JS mirrors it
   // only to anchor the details card and return focus, which happen after hydration, when width is
   // the measured container width. The first render never shows a card, so SSR output is unaffected.
@@ -220,10 +244,11 @@ function Chart({ width }) {
   // to the active row's wrapper (.jm-n__item), so it follows the natively wrapped row height.
   let cardStyle = null
   if (cur && !narrow) {
-    if (cur.dotX > width / 2) cardStyle = { right: width - cur.dotX + 16, top: Math.max(0, cur.top - 4) }
-    else cardStyle = { left: cur.dotX + 16, top: Math.max(0, cur.top - 4) }
+    const dx = cur.dotX ?? L.cx(2)
+    if (dx > width / 2) cardStyle = { right: width - dx + 16, top: Math.max(0, cur.top - 4) }
+    else cardStyle = { left: dx + 16, top: Math.max(0, cur.top - 4) }
   } else if (cur) {
-    const dotX = narrowDotX(width, cur.r.tier)
+    const dotX = narrowDotX(width, cur.r.none ? 2 : cur.r.tier)
     if (width < 520) cardStyle = { left: 0, right: 0, width: 'auto', maxWidth: 'none', top: 'calc(100% + 2px)' }
     else if (dotX > width / 2) cardStyle = { right: width - dotX + 16, top: -4 }
     else cardStyle = { left: dotX + 16, top: -4 }
@@ -247,11 +272,14 @@ function Chart({ width }) {
         )}
       </div>
       <p className="jm-tip__tier">
-        <span className={cur.r.tier === LEVEL ? 'jm-tip__level' : undefined}>{cur.r.tier_label}</span>
+        <span className={cur.r.tier === LEVEL ? 'jm-tip__level' : undefined}>{cur.r.none ? 'No comparable result yet' : cur.r.tier_label}</span>
         {' · vs '}{cur.r.compared_with}
         <span className="jm-tip__group">{groupNote(cur.r)}</span>
       </p>
-      <p className="jm-tip__text">{cur.r.comparison_text}</p>
+      <p className="jm-tip__text">{cur.r.none ? 'No comparable test result had been published by then.' : cur.r.comparison_text}</p>
+      {cur.r.today && !cur.r.none && cur.r.today.tier !== cur.r.tier && (
+        <p className="jm-tip__then">Today: {cur.r.today.tier_label}.</p>
+      )}
       <p className="jm-tip__meta">
         <TagChip tag={cur.r.provenance} />
         {!cur.r.confirmed && <span className="jm-tip__unconfirmed">not officially confirmed</span>}
@@ -270,7 +298,7 @@ function Chart({ width }) {
   return (
     <div className="jm" onMouseLeave={() => { if (!pinned) setActive(null) }}>
       {/* Wide layout: hidden by CSS when the figure is narrower than 600px (JaggedMap.css). */}
-      <svg className="jm-wide" {...svgSize(width, L.height)} role="group" aria-label={summary()}>
+      <svg className="jm-wide" {...svgSize(width, L.height)} role="group" aria-label={summary(ROWS)}>
         {/* Header */}
         <g aria-hidden="true">
           {TIERS.map((t, i) => {
@@ -329,7 +357,10 @@ function Chart({ width }) {
               {TIERS.map(t => (
                 <circle key={t.key} cx={L.cx(t.key)} cy={row.mid} r={1.8} fill={C.ink3} opacity={0.5} />
               ))}
-              <Dot r={r} x={row.dotX} y={row.mid} size={isActive ? 7.5 : 6.5} />
+              {row.ghostX != null && <Ghost x={row.ghostX} y={row.mid} />}
+              {r.none
+                ? <text x={L.cx(2)} y={row.mid + 4} fontSize={11} fill={C.ink3} textAnchor="middle" fontStyle="italic">No comparable result yet</text>
+                : <Dot r={r} x={row.dotX} y={row.mid} size={isActive ? 7.5 : 6.5} />}
             </g>
           )
         })}
@@ -337,7 +368,7 @@ function Chart({ width }) {
 
       {/* Narrow layout: HTML rows whose text wraps natively, so CSS alone sets the height and the
           server HTML matches the hydrated page. Shown instead of the SVG below 600px. */}
-      <div className="jm-n" role="group" aria-label={summary()} style={{ '--jm-level': tierPct(LEVEL) }}>
+      <div className="jm-n" role="group" aria-label={summary(ROWS)} style={{ '--jm-level': tierPct(LEVEL) }}>
         <div className="jm-n__head" aria-hidden="true">
           <div className="jm-n__track">
             {/* Right-aligned on the first step so it uses the empty space above the text column
@@ -348,12 +379,13 @@ function Chart({ width }) {
         </div>
         {ROWS.map(r => {
           const isActive = active === r.id
+          const ghost = r.today && (r.none || r.today.tier !== r.tier)
           return (
             <div key={r.id} className="jm-n__item">
               <div {...rowProps(r, 'n')}>
                 <div className="jm-n__text">
                   <span className="jm-n__domain">{r.domain}</span>
-                  <span className={`jm-n__tier${r.tier === LEVEL ? ' jm-n__tier--level' : ''}`}>{r.tier_label}</span>
+                  <span className={`jm-n__tier${r.tier === LEVEL && !r.none ? ' jm-n__tier--level' : ''}`}>{r.none ? 'No comparable result yet' : r.tier_label}</span>
                   <span className="jm-n__vs">{`vs ${r.compared_with}`}</span>
                 </div>
                 <div className="jm-n__track">
@@ -362,7 +394,8 @@ function Chart({ width }) {
                     {TIERS.map(t => (
                       <circle key={t.key} cx={tierPct(t.key)} cy={10} r={1.8} fill={C.ink3} opacity={0.5} />
                     ))}
-                    <Dot r={r} x={tierPct(r.tier)} y={10} size={isActive ? 7.5 : 6.5} />
+                    {ghost && <Ghost x={tierPct(r.today.tier)} y={10} />}
+                    {!r.none && <Dot r={r} x={tierPct(r.tier)} y={10} size={isActive ? 7.5 : 6.5} />}
                   </svg>
                 </div>
               </div>
@@ -377,7 +410,7 @@ function Chart({ width }) {
   )
 }
 
-function DataTable() {
+function DataTable({ rows: ROWS }) {
   return (
     <details className="chart-data">
       <summary>Show the data</summary>
@@ -398,7 +431,7 @@ function DataTable() {
             {ROWS.map(r => (
               <tr key={r.id}>
                 <td className="jm-data__domain">{r.domain}</td>
-                <td>{r.tier_label}</td>
+                <td>{r.none ? 'No comparable result yet' : r.tier_label}</td>
                 <td>{r.compared_with}{groupNote(r)}</td>
                 <td>{r.ai_value}</td>
                 <td>
@@ -445,10 +478,26 @@ function HollowDashedItem({ label }) {
   )
 }
 
+function GhostItem({ label }) {
+  return (
+    <span className="legend-item">
+      <svg width="18" height="12" aria-hidden="true">
+        <circle cx="9" cy="6" r="4.5" fill="none" stroke={C.ink3} strokeWidth="1.2" strokeDasharray="2 2" />
+      </svg>
+      {label}
+    </span>
+  )
+}
+
 export default function JaggedMap() {
+  const [view, setView] = useState('today')
+  const rows = viewRows(view)
+  const past = view !== 'today'
+  const v = VIEWS.find(x => x.value === view)
   // Source chips in reading order (footnote number), not row order.
   const { footnotes } = useContext(FootnoteContext)
-  const notes = [...NOTE_IDS].sort((a, b) => (footnotes[a]?.n ?? 1e9) - (footnotes[b]?.n ?? 1e9))
+  const ids = past ? [...new Set([...NOTE_IDS, ...HISTORY_NOTE_IDS])] : NOTE_IDS
+  const notes = [...ids].sort((a, b) => (footnotes[a]?.n ?? 1e9) - (footnotes[b]?.n ?? 1e9))
   return (
     <Figure
       id="s4-jagged-map"
@@ -456,21 +505,28 @@ export default function JaggedMap() {
       subtitle="Twelve tests of AI, placed on five steps from far below humans to beyond the best humans. Dot colour shows who checked each result. Each row also says who or what AI was compared with."
       legend={
         <>
+          <span className="jm-views">
+            <Segmented label="Choose a date" options={VIEWS.map(o => ({ value: o.value, label: o.label }))} value={view} onChange={setView} />
+          </span>
           <LegendItem color={C.verified} label="Verified" />
           <LegendItem color={C.vendor} label="Vendor-reported" />
-          <HollowDashedItem label="Company claim, not officially confirmed" />
+          {past && <LegendItem color={C.estimate} label="Estimate" />}
+          <HollowDashedItem label={past ? 'Claim or early result, not yet confirmed' : 'Company claim, not officially confirmed'} />
           <DiamondItem label="Compared with a computer model, not people" />
           <LegendItem color={C.accent} shape="line" label="Level with the best humans" />
+          {past && <GhostItem label="Where it stands today" />}
         </>
       }
-      caveat="Several right-hand dots compare AI with trained experts, average drivers or another computer model, not with the best humans. The IMO 2026 perfect scores are company reports the IMO has not confirmed. The hurricane result is known through press coverage of the National Hurricane Center's report."
+      caveat={past
+        ? `As of ${v.long}: each row shows the best evidence published by then. Where today's test did not exist yet, an earlier test of the same skill stands in (the details say which). Dashed circles show where each row stands today.`
+        : "Several right-hand dots compare AI with trained experts, average drivers or another computer model, not with the best humans. The IMO 2026 perfect scores are company reports the IMO has not confirmed. The hurricane result is known through press coverage of the National Hurricane Center's report."}
       source="section 4 footnotes; the ICPC and Erdős rows come from the opening section"
       notes={notes}
     >
       {width => (
         <>
-          <Chart width={width} />
-          <DataTable />
+          <Chart key={view} width={width} rows={rows} />
+          <DataTable rows={rows} />
         </>
       )}
     </Figure>

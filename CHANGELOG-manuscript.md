@@ -471,3 +471,8 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 ## 2026-11-08 — s4 cost of AI vs experts (owner request)
 - New short Brief paragraph "What about cost?": in GDPval, AI's raw output cost about 470 times less than an expert's, but only about 1.2 times less once an expert checked it and redid what fell short (footnote s5-gdpval, Table 2).
 - New expert note "The cost comparison in detail": speed and cost under raw, try-once and try-n workflows; OpenAI models only; one-shot tasks; September 2025 figures.
+
+## 2026-11-08 — s4 map: "A year ago / 6 months ago / Today" buttons (owner request)
+- Research workflow (12 rows x 2 dates, each placement and source checked by a second agent; 10 entries corrected by the checker) placed every row as it stood on 7 Nov 2025 and 7 May 2026, using only evidence published by then; predecessor tests stand in where today's test did not exist (Humanoid Olympics for robots, ARC-AGI-3 preview, IMO 2025, a 2024 US diagnosis trial, AlphaEvolve for research maths).
+- New expert note "The map 6 and 12 months ago" and 15 new footnotes (s4-h-*), each tagged and dated. Data in research/data/jagged_history.json; build_jagged_map.mjs checks every number against the footnotes and that no evidence postdates its view.
+- JaggedMap.jsx: date buttons; past views show that date's dot, a dashed circle where the row stands today, the dated details in the card, and their own caveat; legend adds Estimate and "Where it stands today" in past views. Checked at desktop and 375px, no console errors.

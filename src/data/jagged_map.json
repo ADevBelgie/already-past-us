@@ -31,7 +31,11 @@
       "trained": "Trained experts",
       "people": "People in general",
       "machine": "Another computer model"
-    }
+    },
+    "history_dates": [
+      "2025-11-07",
+      "2026-05-07"
+    ]
   },
   "rows": [
     {
@@ -55,7 +59,29 @@
       "footnote_ids": [
         "s4-robots"
       ],
-      "manuscript_section": "s4"
+      "manuscript_section": "s4",
+      "history": {
+        "2025-11-07": {
+          "tier": 0,
+          "tier_label": "Far below humans",
+          "confirmed": true,
+          "compared_with": "people",
+          "comparison_text": "Predecessor test: roboticist Benjie Holson's 'Humanoid Olympics' set 15 everyday tasks. A robot passed if it did a task on its own within 10 times as long as he took. By 16 October 2025 only one entry had passed: walking through a door with a round knob. A 2024 US government review of company videos also found robots slower than average people at simple tasks.",
+          "ai_value": "1 of 15 everyday tasks passed so far (predecessor test)",
+          "human_value": "the organiser's own time on each task (robots allowed up to 10 times as long)",
+          "date": "2025-10-16",
+          "date_label": "16 October 2025",
+          "provenance": "verified",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-robots",
+          "footnote_ids": [
+            "s4-h-robots"
+          ]
+        },
+        "2026-05-07": {
+          "same_as_today": true
+        }
+      }
     },
     {
       "id": "arc-agi-3",
@@ -79,7 +105,43 @@
         "s4-arc-astra",
         "s4-arc-launch"
       ],
-      "manuscript_section": "s4"
+      "manuscript_section": "s4",
+      "history": {
+        "2025-11-07": {
+          "tier": 0,
+          "tier_label": "Far below humans",
+          "confirmed": true,
+          "compared_with": "people",
+          "comparison_text": "The full ARC-AGI-3 test did not exist yet; only an early preview with a few games did. When ARC Prize tried two leading models, OpenAI's o3 and xAI's Grok 4, on the preview in July 2025, neither finished a single level. People could solve the games.",
+          "ai_value": "0% (o3 and Grok 4 finished no levels; preview games)",
+          "human_value": "people beat the preview games (ARC Prize: \"Humans: 100%\")",
+          "date": "2025-07-18",
+          "date_label": "18 July 2025 (preview)",
+          "provenance": "verified",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-arc-preview",
+          "footnote_ids": [
+            "s4-h-arc-preview"
+          ]
+        },
+        "2026-05-07": {
+          "tier": 0,
+          "tier_label": "Far below humans",
+          "confirmed": true,
+          "compared_with": "people",
+          "comparison_text": "People have solved every game. By early May 2026 every leading AI model tested was still under 1%. GPT-5.5, the newest model ARC Prize had tested, scored 0.43% on its standard setup.",
+          "ai_value": "0.43% (GPT-5.5, standard setup)",
+          "human_value": "100% of games solved by people",
+          "date": "2026-05-01",
+          "date_label": "1 May 2026",
+          "provenance": "verified",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-arc-may",
+          "footnote_ids": [
+            "s4-h-arc-may"
+          ]
+        }
+      }
     },
     {
       "id": "freelance",
@@ -102,7 +164,43 @@
       "footnote_ids": [
         "s4-rli"
       ],
-      "manuscript_section": "s4"
+      "manuscript_section": "s4",
+      "history": {
+        "2025-11-07": {
+          "tier": 1,
+          "tier_label": "Below humans",
+          "confirmed": true,
+          "compared_with": "human freelancers",
+          "comparison_text": "The Remote Labor Index had just launched (30 October 2025). The best agent, Manus, was judged as good as a human freelancer's work on 2.5% of 240 real paid projects.",
+          "ai_value": "2.5% of projects",
+          "human_value": "the human freelancer's deliverable",
+          "date": "2025-10-30",
+          "date_label": "30 October 2025",
+          "provenance": "verified",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-rli-launch",
+          "footnote_ids": [
+            "s4-h-rli-launch"
+          ]
+        },
+        "2026-05-07": {
+          "tier": 1,
+          "tier_label": "Below humans",
+          "confirmed": true,
+          "compared_with": "human freelancers",
+          "comparison_text": "On the Remote Labor Index, the best agent was Claude Opus 4.6 running in Anthropic's Cowork app. Its work was judged as good as a human freelancer's on about 4% of 240 real paid projects.",
+          "ai_value": "4.17% of projects",
+          "human_value": "the human freelancer's deliverable",
+          "date": "2026-04-26",
+          "date_label": "5 March 2026",
+          "provenance": "verified",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-rli-may",
+          "footnote_ids": [
+            "s4-h-rli-may"
+          ]
+        }
+      }
     },
     {
       "id": "forecasting",
@@ -125,7 +223,43 @@
       "footnote_ids": [
         "s4-forecast"
       ],
-      "manuscript_section": "s4"
+      "manuscript_section": "s4",
+      "history": {
+        "2025-11-07": {
+          "tier": 1,
+          "tier_label": "Below humans",
+          "confirmed": true,
+          "compared_with": "superforecasters",
+          "comparison_text": "On the Forecasting Research Institute's ForecastBench, superforecasters still beat the best AI (GPT-4.5), though FRI called the gap modest. AI already beat ordinary members of the public. The superforecaster baseline was collected in 2024 and is extrapolated.",
+          "ai_value": "Brier 0.101 (GPT-4.5; lower is better)",
+          "human_value": "Brier 0.081 (superforecasters)",
+          "date": "2025-10-08",
+          "date_label": "8 October 2025",
+          "provenance": "verified",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-fcst-oct",
+          "footnote_ids": [
+            "s4-h-fcst-oct"
+          ]
+        },
+        "2026-05-07": {
+          "tier": 1,
+          "tier_label": "Below humans",
+          "confirmed": true,
+          "compared_with": "superforecasters",
+          "comparison_text": "Superforecasters still led ForecastBench. The best AI systems, from Cassi and xAI, were about one year of AI progress behind, a gap FRI called substantial.",
+          "ai_value": "Brier 0.103 (Cassi ensemble and xAI Grok 4.20 Preview, tied; lower is better)",
+          "human_value": "Brier 0.086 (superforecasters)",
+          "date": "2026-03-04",
+          "date_label": "4 March 2026",
+          "provenance": "verified",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-fcst-mar",
+          "footnote_ids": [
+            "s4-h-fcst-mar"
+          ]
+        }
+      }
     },
     {
       "id": "imo-2026",
@@ -148,7 +282,43 @@
       "footnote_ids": [
         "s4-imo"
       ],
-      "manuscript_section": "s4"
+      "manuscript_section": "s4",
+      "history": {
+        "2025-11-07": {
+          "tier": 3,
+          "tier_label": "Ahead of trained or typical people",
+          "confirmed": true,
+          "compared_with": "top contestants",
+          "comparison_text": "At the 2025 olympiad, the one before IMO 2026, Google DeepMind's AI scored 35 out of 42. IMO graders marked it, and it was the lowest gold-medal score. That beat most of the 630 students, but 26 scored higher and 5 got full marks.",
+          "ai_value": "35/42 at IMO 2025 (gold-medal score, IMO-graded)",
+          "human_value": "35/42 was the gold cutoff; 26 of 630 contestants scored higher, 5 got 42/42",
+          "date": "2025-07-21",
+          "date_label": "21 July 2025",
+          "provenance": "vendor",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-imo2025",
+          "footnote_ids": [
+            "s4-h-imo2025"
+          ]
+        },
+        "2026-05-07": {
+          "tier": 3,
+          "tier_label": "Ahead of trained or typical people",
+          "confirmed": true,
+          "compared_with": "top contestants",
+          "comparison_text": "IMO 2026 had not been held yet. The latest IMO result was still from 2025: Google DeepMind's AI scored 35 out of 42, marked by IMO graders. That was the lowest gold-medal score: 26 of the 630 students scored higher and 5 got full marks.",
+          "ai_value": "35/42 at IMO 2025 (gold-medal score, IMO-graded)",
+          "human_value": "35/42 was the gold cutoff; 26 of 630 contestants scored higher, 5 got 42/42",
+          "date": "2025-07-21",
+          "date_label": "21 July 2025",
+          "provenance": "vendor",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-imo2025",
+          "footnote_ids": [
+            "s4-h-imo2025"
+          ]
+        }
+      }
     },
     {
       "id": "waymo",
@@ -172,7 +342,43 @@
         "s4-waymo",
         "s4-waymo-recall"
       ],
-      "manuscript_section": "s4"
+      "manuscript_section": "s4",
+      "history": {
+        "2025-11-07": {
+          "tier": 3,
+          "tier_label": "Ahead of trained or typical people",
+          "confirmed": true,
+          "compared_with": "average drivers",
+          "comparison_text": "Waymo said its driverless cars had 91% fewer serious-injury crashes than human drivers over 96 million miles through June 2025. That is Waymo's own analysis, against average drivers in the same places.",
+          "ai_value": "91% fewer serious-injury crashes",
+          "human_value": "average human drivers, same places",
+          "date": "2025-09-16",
+          "date_label": "September 2025",
+          "provenance": "vendor",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-waymo-96m",
+          "footnote_ids": [
+            "s4-h-waymo-96m"
+          ]
+        },
+        "2026-05-07": {
+          "tier": 3,
+          "tier_label": "Ahead of trained or typical people",
+          "confirmed": true,
+          "compared_with": "average drivers",
+          "comparison_text": "Waymo said its driverless cars had 92% fewer serious-injury crashes than human drivers over 170.7 million miles through December 2025. That is Waymo's own analysis, against average drivers in the same places.",
+          "ai_value": "92% fewer serious-injury crashes",
+          "human_value": "average human drivers, same places",
+          "date": "2026-03-19",
+          "date_label": "19 March 2026",
+          "provenance": "vendor",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-waymo-170m",
+          "footnote_ids": [
+            "s4-h-waymo-170m"
+          ]
+        }
+      }
     },
     {
       "id": "diagnosis",
@@ -195,7 +401,29 @@
       "footnote_ids": [
         "s4-pakistan"
       ],
-      "manuscript_section": "s4"
+      "manuscript_section": "s4",
+      "history": {
+        "2025-11-07": {
+          "tier": 3,
+          "tier_label": "Ahead of trained or typical people",
+          "confirmed": true,
+          "compared_with": "doctors",
+          "comparison_text": "In an earlier randomised trial in the US using six written clinical cases, not real patients, GPT-4 alone scored 92%, doctors using GPT-4 76% and doctors using ordinary references 74%. AI alone versus doctors is an exploratory finding, and this is a predecessor of today's Pakistan trial.",
+          "ai_value": "92% (GPT-4 alone)",
+          "human_value": "76% doctors with GPT-4; 74% with ordinary references",
+          "date": "2024-10-28",
+          "date_label": "28 October 2024",
+          "provenance": "verified",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-diag-us",
+          "footnote_ids": [
+            "s4-h-diag-us"
+          ]
+        },
+        "2026-05-07": {
+          "same_as_today": true
+        }
+      }
     },
     {
       "id": "gpqa",
@@ -219,7 +447,29 @@
         "s4-gpqa-ai",
         "s4-gpqa-human"
       ],
-      "manuscript_section": "s4"
+      "manuscript_section": "s4",
+      "history": {
+        "2025-11-07": {
+          "same_as_today": true
+        },
+        "2026-05-07": {
+          "tier": 3,
+          "tier_label": "Ahead of trained or typical people",
+          "confirmed": true,
+          "compared_with": "PhD experts",
+          "comparison_text": "In Epoch AI's testing, GPT-5.4 Pro scored 95% (March 2026). PhD experts scored about 70%, a baseline OpenAI measured. The questions are multiple-choice.",
+          "ai_value": "95% (GPT-5.4 Pro)",
+          "human_value": "about 70% (PhD experts)",
+          "date": "2026-03-20",
+          "date_label": "March 2026",
+          "provenance": "verified",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-gpqa-may",
+          "footnote_ids": [
+            "s4-h-gpqa-may"
+          ]
+        }
+      }
     },
     {
       "id": "hurricanes",
@@ -242,7 +492,29 @@
       "footnote_ids": [
         "s4-nhc"
       ],
-      "manuscript_section": "s4"
+      "manuscript_section": "s4",
+      "history": {
+        "2025-11-07": {
+          "tier": 4,
+          "tier_label": "Beyond the best humans, if confirmed",
+          "confirmed": false,
+          "compared_with": "official forecasts",
+          "comparison_text": "The 2025 hurricane season was still running. Early, unofficial checks by two independent hurricane experts found Google DeepMind's model had beaten the US National Hurricane Center's official track forecasts. No figures for that comparison were published, and the Center's own review was still months away.",
+          "ai_value": "beat the official track forecasts (preliminary, unofficial check)",
+          "human_value": "official NHC track forecasts",
+          "date": "2025-11-03",
+          "date_label": "3 November 2025 (preliminary)",
+          "provenance": "estimate",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-hurr-prelim",
+          "footnote_ids": [
+            "s4-h-hurr-prelim"
+          ]
+        },
+        "2026-05-07": {
+          "same_as_today": true
+        }
+      }
     },
     {
       "id": "weather",
@@ -265,7 +537,15 @@
       "footnote_ids": [
         "s4-gencast"
       ],
-      "manuscript_section": "s4"
+      "manuscript_section": "s4",
+      "history": {
+        "2025-11-07": {
+          "same_as_today": true
+        },
+        "2026-05-07": {
+          "same_as_today": true
+        }
+      }
     },
     {
       "id": "research-math",
@@ -289,7 +569,43 @@
         "s0-erdos",
         "s0-erdos-context"
       ],
-      "manuscript_section": "s0"
+      "manuscript_section": "s0",
+      "history": {
+        "2025-11-07": {
+          "tier": 4,
+          "tier_label": "Beyond the best humans",
+          "confirmed": true,
+          "compared_with": "best known results",
+          "comparison_text": "This is an earlier, narrower kind of result. Google DeepMind says its AlphaEvolve system beat the best known answers on about 20% of more than 50 open math problems. For example, it multiplied 4x4 complex matrices with 48 multiplications, where the best known method of this kind, from 1969, used 49. It had slightly improved bounds on a few Erdős problems, but no AI had yet solved an open one.",
+          "ai_value": "beat the best known answer on about 1 in 5 of 50+ open problems",
+          "human_value": "best known results, e.g. 49 multiplications (Strassen, 1969)",
+          "date": "2025-05-14",
+          "date_label": "May 2025",
+          "provenance": "vendor",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-alphaevolve",
+          "footnote_ids": [
+            "s4-h-alphaevolve"
+          ]
+        },
+        "2026-05-07": {
+          "tier": 4,
+          "tier_label": "Beyond the best humans",
+          "confirmed": true,
+          "compared_with": "an open problem",
+          "comparison_text": "OpenAI's GPT-5.4 Pro produced a proof of a 1966 conjecture by Erdős and two colleagues, listed as Erdős problem #1196. Mathematicians including Terence Tao checked it, made it shorter, and published it. Tao warned that failed AI attempts usually go unreported.",
+          "ai_value": "proof of a 1966 Erdős conjecture (problem #1196)",
+          "human_value": "open since 1966",
+          "date": "2026-05-01",
+          "date_label": "May 2026",
+          "provenance": "verified",
+          "baseline_provenance": null,
+          "footnote_id": "s4-h-erdos1196",
+          "footnote_ids": [
+            "s4-h-erdos1196"
+          ]
+        }
+      }
     },
     {
       "id": "icpc",
@@ -312,7 +628,15 @@
       "footnote_ids": [
         "s0-icpc"
       ],
-      "manuscript_section": "s0"
+      "manuscript_section": "s0",
+      "history": {
+        "2025-11-07": {
+          "same_as_today": true
+        },
+        "2026-05-07": {
+          "same_as_today": true
+        }
+      }
     }
   ]
 }
