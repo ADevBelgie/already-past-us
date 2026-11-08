@@ -239,3 +239,7 @@ Removed "Every number carries a tag saying who measured it." from the end of the
 ## Review comment: s1 Gallup sentence reworded (8 November 2026)
 
 "…Americans rated AI worse than people at every task they were asked about, as they had in 2023" is now "…Americans still rated AI worse than people at every task on the list, just as in 2023."
+
+## Review comment: s1 Gallup change sentence reworded (8 November 2026)
+
+'The gap is closing slowly: the share saying "worse" fell by 5 to 7 points for driving, financial advice and medical advice' is now "Views are shifting only a little: for driving, financial advice and medical advice, 5 to 7 points fewer people now say AI does worse."
