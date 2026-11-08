@@ -195,3 +195,7 @@ Wording preference: the Erdős card's "But" line and the s0 sentence now say "wi
 ## Review comment: freelance card's growth line (8 November 2026)
 
 "Since launch: Up from 2.5% in October 2025, about 8.5 times higher in a year" is now "October 2025: Just 2.5%, when the index launched. The best score has grown about 8.5 times since."
+
+## Review comment: freelance growth as a percentage (8 November 2026)
+
+The card's growth line now reads "The best score has grown by 750% in 12 months" (computed from s0-cards.json as (8.5 − 1) × 100). Footnote s0-rli-growth adds "an increase of 750% in about 12 months (30 October 2025 to 7 November 2026)".
