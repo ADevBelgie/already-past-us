@@ -513,7 +513,7 @@ What held, and what did not:
 
 ## 9. What to watch {#s9}
 
-Eight checks would show whether AI's lead is spreading beyond tests or stalling.
+Below are eight dated checks for the coming months. Each says what result would mean AI's gains are spreading from tests into real work and research ("Spreading"), and what would mean progress is slowing down ("Stalling").
 
 <!-- CHART: s9-signposts | Signpost list: date, indicator, value as of 7 Nov 2026, "spreading" and "stalling" thresholds, link to source, and a status chip (not yet due / moved / no change); a decay banner above it shows "data as of 7 Nov 2026" and the days elapsed | none (values inline, from footnotes s9-*) -->
 

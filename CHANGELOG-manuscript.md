@@ -434,3 +434,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 ## 2026-11-08 — s8 report card: takeaways in Brief, full table in an expert note (review comment)
 - Brief now lists six short takeaways (tests wear out faster; ARC-AGI-3 beyond our range; task-length doubling held but is uncheckable; AI research speed-up, different measure; spending did not slow; three of our figures misdescribed).
 - The full eight-row table moved unchanged into a new expert note, "The full report card" (tables render inside notes; checked at desktop and 375px).
+
+## 2026-11-08 — s9 intro sentence explained (review comment)
+- "Eight checks would show whether AI's lead is spreading beyond tests or stalling." now explains what the checks are and what the "Spreading" and "Stalling" labels in each item mean.
