@@ -384,3 +384,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s4 closing paragraph wording (review comment)
 - "Most dots on the right / on the left" became "Most tasks where AI is superior / where it is behind".
+
+## 2026-11-08 — s5 GDPval sentence (review comment)
+- Brief keeps the two GDPval figures (47.6% in September 2025; 84.9% for GPT-5.5 in April 2026). "220 public tasks" and the caveat that OpenAI did not say whether the April score used the same tasks moved to the expert note "Each better yardstick has limits".
