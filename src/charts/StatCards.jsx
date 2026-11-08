@@ -199,7 +199,7 @@ export default function StatCards() {
                 </div>
               }
               butLabel="But"
-              but={<>Within weeks, humans found a better construction than the AI's.<FootnoteRef id={falseClaims.source} /></>}
+              but={<>Within weeks, humans improved on the AI's construction.<FootnoteRef id={falseClaims.source} /></>}
             >
               by an OpenAI model in May 2026. Mathematicians have since built on it.{' '}
               <span className="sc-prov"><TagChip tag={TAG_KEY[checkers.tag]} /><FootnoteRef id={checkers.source} /></span>

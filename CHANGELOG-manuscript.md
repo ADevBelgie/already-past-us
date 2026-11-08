@@ -187,3 +187,7 @@ Reader comment: that the disproof was checked is implied by including it; say th
 ## Review comment: Erdős "But" line about capability, not OpenAI (8 November 2026)
 
 Reader comment: OpenAI's false October 2025 claim says more about OpenAI than about what AI can do. The Erdős card's "But" line is now "Within weeks, humans found a better construction than the AI's", and the card body ends "Mathematicians have since built on it". The s0 sentence drops the October 2025 claim and ends "…and within weeks humans found a better construction than the AI's." The October 2025 episode stays documented in footnote s0-erdos-context and in the card data table.
+
+## Review comment: "improved on the AI's construction" (8 November 2026)
+
+Wording preference: the Erdős card's "But" line and the s0 sentence now say "within weeks, humans improved on the AI's construction" (was "found a better construction than the AI's").
