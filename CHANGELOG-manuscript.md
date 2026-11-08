@@ -183,3 +183,7 @@ The ICPC card's "But" line and the matching s0 sentence now say "the top 1.5% of
 ## Review comment: Erdős card, "built on" rather than "checked" (8 November 2026)
 
 Reader comment: that the disproof was checked is implied by including it; say that mathematicians have built on it. Card body: "Mathematicians have since built on it, and improved on the AI's construction within weeks" (sources s0-erdos, s0-erdos-context); its list header now reads "Nine mathematicians published a simpler version"; its "But" line keeps only OpenAI's false October 2025 claim. The s0 sentence now reads "Mathematicians have since built on it: nine, including Noga Alon and Tim Gowers, published a simpler version, and humans improved on the AI's construction within weeks. In October 2025, though, OpenAI had wrongly claimed…".
+
+## Review comment: Erdős "But" line about capability, not OpenAI (8 November 2026)
+
+Reader comment: OpenAI's false October 2025 claim says more about OpenAI than about what AI can do. The Erdős card's "But" line is now "Within weeks, humans found a better construction than the AI's", and the card body ends "Mathematicians have since built on it". The s0 sentence drops the October 2025 claim and ends "…and within weeks humans found a better construction than the AI's." The October 2025 episode stays documented in footnote s0-erdos-context and in the card data table.

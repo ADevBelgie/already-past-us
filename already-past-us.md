@@ -11,7 +11,7 @@ byline: "Arthur Devresse, with Claude"
 
 At the 2025 world finals of the top university programming contest (ICPC), OpenAI says its system solved all 12 problems, one more than the best human team; we found no ICPC statement on it.[^s0-icpc] Google DeepMind says its entry solved 10 and would have placed second, and that ICPC confirmed its answers as accepted.[^s0-gemini] At the 2025 International Olympiad in Informatics, for secondary-school students, the top 1.5% of contestants (5 of 330) still beat OpenAI's entry.[^s0-ioi]
 
-In May 2026 an OpenAI model disproved Paul Erdős's 1946 "unit distance" conjecture, on how many pairs of points in a plane can be exactly one unit apart. Mathematicians have since built on it: nine, including Noga Alon and Tim Gowers, published a simpler version,[^s0-erdos] and humans improved on the AI's construction within weeks. In October 2025, though, OpenAI had wrongly claimed GPT-5 solved ten Erdős problems it had only found in published papers.[^s0-erdos-context]
+In May 2026 an OpenAI model disproved Paul Erdős's 1946 "unit distance" conjecture, on how many pairs of points in a plane can be exactly one unit apart. Mathematicians have since built on it: nine, including Noga Alon and Tim Gowers, published a simpler version,[^s0-erdos] and within weeks humans found a better construction than the AI's.[^s0-erdos-context]
 
 On the Remote Labor Index, 240 real paid freelance projects, the best AI agent (a system that does multi-step computer work by itself) was judged as good as the human freelancer on about 21% of them as of 7 November 2026,[^s0-rli] about eight and a half times its 2.5% at launch in October 2025.[^s0-rli-growth]
 

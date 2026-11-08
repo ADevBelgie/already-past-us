@@ -23,6 +23,7 @@ const humanSolved = rec('best_human_solved')
 const ioi = rec('ioi_humans_ahead')
 const year = rec('conjecture_year')
 const checkers = rec('checkers')
+// Its footnote (s0-erdos-context) also sources the human improvement on the AI's construction.
 const falseClaims = rec('false_claim_oct_2025')
 const rliBest = rec('best_rate_pct')
 const rliProjects = rec('projects')
@@ -198,10 +199,10 @@ export default function StatCards() {
                 </div>
               }
               butLabel="But"
-              but={<>In October 2025 OpenAI had wrongly claimed that GPT-5 solved {word(falseClaims.value)} Erdős problems it had only found in existing papers.<FootnoteRef id={falseClaims.source} /></>}
+              but={<>Within weeks, humans found a better construction than the AI's.<FootnoteRef id={falseClaims.source} /></>}
             >
-              by an OpenAI model in May 2026. Mathematicians have since built on it, and improved on the AI's construction within weeks.{' '}
-              <span className="sc-prov"><TagChip tag={TAG_KEY[checkers.tag]} /><FootnoteRef id={checkers.source} /><FootnoteRef id={falseClaims.source} /></span>
+              by an OpenAI model in May 2026. Mathematicians have since built on it.{' '}
+              <span className="sc-prov"><TagChip tag={TAG_KEY[checkers.tag]} /><FootnoteRef id={checkers.source} /></span>
             </Card>
           </div>
         </section>
