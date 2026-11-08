@@ -440,3 +440,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s9: ARC Prize competition check moved out of the Brief list (review comment)
 - The 4 December 2026 ARC Prize competition item (one benchmark, compute-limited entries) moved unchanged into the "Signpost details" expert note; the Brief list now has seven checks, renumbered, and the intro says "seven".
+
+## 2026-11-08 — s9 forecast item reframed (review comment)
+- The 31 December 2026 METR-forecast check no longer frames a shortfall as the outcome to watch: if the 2024-on trend held, newer models would be far past 3.4 hours, so the questions are by how much and whether METR measures them at all. Footnote s9-leap adds our calculation (about 5x in eight months, roughly 15 hours, assuming the 80% horizon doubles as fast as the 50% one).
