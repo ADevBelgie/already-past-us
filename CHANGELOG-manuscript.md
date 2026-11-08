@@ -331,3 +331,7 @@ Whole-section pass on s2's Brief text (526 to 458 words) and the frontier chart'
 ## Review comment: s3 time-horizon definition reworked (8 November 2026)
 
 The s3 opening now reads: "The most-quoted measure of AI progress is METR's 'time horizon': how long a software task can be, measured in a skilled person's working time, before an AI agent fails at it more often than it succeeds. A 2-hour horizon means the AI completes about half of the tasks that take a person two hours. It measures how hard the tasks are, not how long the AI works." The procedural description ("take a set of tasks, time them, find the length…") gave way to a definition plus a worked example.
+
+## Review comment: what "falls 13 times a year" means (8 November 2026)
+
+"…the cost of answering a test question at a fixed accuracy, which falls about 13 times a year" is now "…which tracks what it costs to answer a test question at a fixed level of accuracy: each year, that cost drops to about a thirteenth of what it was."

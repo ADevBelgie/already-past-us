@@ -103,7 +103,7 @@ We score models with the Epoch Capabilities Index from Epoch AI, an independent 
 
 <!-- CHART: s2-frontier-snapshots | Price-capability frontier at three dates (7 Nov 2025, 7 May 2026, 7 Nov 2026): log blended list price (the price in effect on each date) vs ECI, step line of best ECI at or below each price, with the ECI 150 line and the $4 line marked | research/data/frontier_snapshots.csv -->
 
-**Cost per task.** Price per token ignores how many tokens a model uses to reach an answer, so cost per task would be a better measure, but no source has tracked it consistently over the year.[^s2-aa-versions] The closest, from Epoch AI, is the cost of answering a test question at a fixed accuracy, which falls about 13 times a year.[^s2-epoch]
+**Cost per task.** Price per token ignores how many tokens a model uses to reach an answer, so cost per task would be a better measure, but no source has tracked it consistently over the year.[^s2-aa-versions] The closest is from Epoch AI, which tracks what it costs to answer a test question at a fixed level of accuracy: each year, that cost drops to about a thirteenth of what it was.[^s2-epoch]
 
 <!-- CHART: s2-cost-per-question | Optional: cost per question at a fixed GPQA Diamond accuracy over time, cheapest model at each date, log scale (Epoch "plunging price of thought" data) | external: github.com/droodman/inference-cost output/slides/Figure 2.csv (not yet in research/data; download and verify before plotting) -->
 
