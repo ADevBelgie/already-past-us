@@ -402,3 +402,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s6 dashboard: what METR's 1.9x measures (review comment)
 - METR panel description now says the figure is the speed-up in Anthropic's progress after October 2025, not a direct measure of AI's help, and adds METR's guess that perhaps 80% of the speed-up comes from AI, with high uncertainty (footnotes s6-accel, s3-attrib).
+
+## 2026-11-08 — s6 training-code speedup: say what is sped up (review comment)
+- Dashboard panel and the s6 Brief sentence now explain the test: the model is given slow AI-training code and asked to make it run faster; the score is how many times faster it runs afterwards (skilled person: about 4 times in four to eight hours; footnote s6-speedup).

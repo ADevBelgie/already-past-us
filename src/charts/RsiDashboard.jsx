@@ -633,7 +633,7 @@ function Dashboard({ width }) {
           </Panel>
           <Panel
             title="Anthropic: training-code speedup test"
-            measure="How many times faster Claude made model-training code run, on an internal test, by model release date."
+            measure="Anthropic gives Claude a slow piece of code used to train AI models and asks it to make the code run faster. The score is how many times faster the code runs afterwards. A skilled person manages about 4 times in four to eight hours. By model release date."
             who="Anthropic"
             tag="vendor"
             footnote="s6-speedup"
