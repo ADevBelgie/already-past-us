@@ -504,7 +504,7 @@ What held, and what did not:
 
 ## 9. What to watch {#s9}
 
-Below are seven dated checks for the coming months. Each says what result would mean AI's gains are spreading from tests into real work and research ("Spreading"), and what would mean progress is slowing down ("Stalling").
+Below are seven dated checks for the coming months. Each says what to expect if the trend continues, and what result would mean AI's progress is speeding up or slowing down.
 
 <!-- CHART: s9-signposts | Signpost list: date, indicator, value as of 7 Nov 2026, "spreading" and "stalling" thresholds, link to source, and a status chip (not yet due / moved / no change); a decay banner above it shows "data as of 7 Nov 2026" and the days elapsed | none (values inline, from footnotes s9-*) -->
 
@@ -514,7 +514,7 @@ Below are seven dated checks for the coming months. Each says what result would 
 4. **Monthly: the Remote Labor Index.** On about 21% of real freelance projects, the best AI agent's work is now judged as good as the human freelancer's, up from 2.5% a year earlier.[^s9-rli] At that pace, about 19 points a year, it would reach about 30% by May 2027. Well above 30% would mean a speed-up in real work; still near 21% would mean a slowdown.
 5. **By 7 May 2027: a new METR task set.** No model newer than April 2026 has a reliable public time horizon, METR's measure of how long a software task AI can handle.[^s9-metr] A new task set, or a second AI company opening its data, would let outsiders check what METR found in Anthropic's private data ([section 3](#s3)).[^s9-accel]
 6. **Any day: a threshold declared.** In a November 2026 filing, Anthropic told investors it "may imminently meet" its threshold for AI-accelerated research. It has revised that threshold three times this year ([section 6](#s6)).[^s9-s1] OpenAI rates GPT-6 Astra below its line, and Google rates Gemini 4 Argon below its own.[^s9-thresholds] Watch for a declaration or another rewording.
-7. **Monthly: jobs for young workers.** A Stanford study, revised in August 2026 with data to June 2026, puts employment of 22-to-25-year-olds in AI-exposed jobs about 19% below where it would be, relative to less-exposed peers. Experienced workers show no such gap.[^s9-canaries] Spreading: a wider gap, or one reaching older workers. Stalling: a narrowing gap.
+7. **Monthly: jobs for young workers.** A Stanford study, revised in August 2026 with data to June 2026, puts employment of 22-to-25-year-olds in AI-exposed jobs about 19% below where it would be, relative to less-exposed peers. Experienced workers show no such gap.[^s9-canaries] A wider gap, or one reaching older workers, would mean AI's effect on jobs is growing; a narrowing gap would mean it is fading.
 
 For now, "already past us" is true for tasks with a clear right answer, and not yet for most real freelance work. If measures of real work start moving with test scores, AI's lead is spreading. If only the scores move, the title stays true where it is true now, and no further.
 
