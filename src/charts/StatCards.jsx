@@ -186,7 +186,7 @@ export default function StatCards() {
               big="Disproved"
               visual={
                 <div className="sc-checkers">
-                  <p className="sc-checkers__head">{cap(word(checkers.value))} mathematicians checked it</p>
+                  <p className="sc-checkers__head">{cap(word(checkers.value))} mathematicians published a simpler version</p>
                   <ul className="sc-checkers__list" aria-label={`The ${checkers.value} mathematicians: ${checkers.names.join(', ')}`}>
                     {checkers.names.map(n => (
                       <li key={n}>
@@ -198,10 +198,10 @@ export default function StatCards() {
                 </div>
               }
               butLabel="But"
-              but={<>Humans improved on the AI's construction within weeks. And in October 2025 OpenAI had wrongly claimed that GPT-5 solved {word(falseClaims.value)} Erdős problems it had only found in existing papers.<FootnoteRef id={falseClaims.source} /></>}
+              but={<>In October 2025 OpenAI had wrongly claimed that GPT-5 solved {word(falseClaims.value)} Erdős problems it had only found in existing papers.<FootnoteRef id={falseClaims.source} /></>}
             >
-              by an OpenAI model in May 2026. {cap(word(checkers.value))} mathematicians checked it and published a simplified version.{' '}
-              <span className="sc-prov"><TagChip tag={TAG_KEY[checkers.tag]} /><FootnoteRef id={checkers.source} /></span>
+              by an OpenAI model in May 2026. Mathematicians have since built on it, and improved on the AI's construction within weeks.{' '}
+              <span className="sc-prov"><TagChip tag={TAG_KEY[checkers.tag]} /><FootnoteRef id={checkers.source} /><FootnoteRef id={falseClaims.source} /></span>
             </Card>
           </div>
         </section>

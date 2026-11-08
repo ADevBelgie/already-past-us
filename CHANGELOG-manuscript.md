@@ -179,3 +179,7 @@ Not every reader knows the acronym, so the first stat card's label now leads wit
 ## Review comment: IOI counter-fact as a share (8 November 2026)
 
 The ICPC card's "But" line and the matching s0 sentence now say "the top 1.5% of human contestants (5 of 330) still beat OpenAI's entry" at IOI 2025 (was "five of 330 human contestants beat OpenAI's entry"). 5 ÷ 330 = 1.52%; the card computes it from s0-cards.json.
+
+## Review comment: Erdős card, "built on" rather than "checked" (8 November 2026)
+
+Reader comment: that the disproof was checked is implied by including it; say that mathematicians have built on it. Card body: "Mathematicians have since built on it, and improved on the AI's construction within weeks" (sources s0-erdos, s0-erdos-context); its list header now reads "Nine mathematicians published a simpler version"; its "But" line keeps only OpenAI's false October 2025 claim. The s0 sentence now reads "Mathematicians have since built on it: nine, including Noga Alon and Tim Gowers, published a simpler version, and humans improved on the AI's construction within weeks. In October 2025, though, OpenAI had wrongly claimed…".
