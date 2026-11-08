@@ -175,3 +175,7 @@ Reader comment: the subtitle of the opening cards read badly. "Two results where
 ## Review comment: ICPC card label (8 November 2026)
 
 Not every reader knows the acronym, so the first stat card's label now leads with what the contest is: "World finals of the top university programming contest (ICPC), 2025" (was "ICPC 2025 world finals, the top university programming contest").
+
+## Review comment: IOI counter-fact as a share (8 November 2026)
+
+The ICPC card's "But" line and the matching s0 sentence now say "the top 1.5% of human contestants (5 of 330) still beat OpenAI's entry" at IOI 2025 (was "five of 330 human contestants beat OpenAI's entry"). 5 ÷ 330 = 1.52%; the card computes it from s0-cards.json.
