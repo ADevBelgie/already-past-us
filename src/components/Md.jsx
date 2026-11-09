@@ -43,6 +43,43 @@ function table(n, key, inl) {
   )
 }
 
+// Signposts ("What to watch"): each numbered item carries a status chip, and dated updates sit
+// under the original wording. Statuses and the manuscript markup are in src/lib/manuscript.js.
+const STATUS = { open: 'Open', claimed: 'Claimed, not confirmed', resolved: 'Resolved' }
+const STATUS_SHORT = { claimed: 'Claimed', resolved: 'Resolved' }
+
+function signposts(n, key, inl) {
+  return (
+    <ol key={key} className="signposts" start={n.s}>
+      {n.c.map((li, i) => {
+        const st = li.st ?? 'open'
+        return (
+          <li key={i} className={`signpost signpost--${st}`}>
+            <span className={`tag-chip status-chip status-chip--${st}`}>{STATUS[st]}</span>{' '}
+            {nodes(li.c, inl)}
+          </li>
+        )
+      })}
+    </ol>
+  )
+}
+
+function updates(n, key, inl) {
+  return (
+    <div key={key} className="sp-updates">
+      {n.c.map((u, i) => (
+        <div key={i} className={`sp-update${u.st ? ` sp-update--${u.st}` : ''}`}>
+          <p className="sp-update__head">
+            Update · {u.d}
+            {u.st && <> · <span className="sp-update__status">{STATUS_SHORT[u.st]}</span></>}
+          </p>
+          <p className="sp-update__body">{nodes(u.c, inl)}</p>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 // `inl` (inline mode, used for footnote bodies) unwraps paragraphs, as before.
 function node(n, key, inl) {
   if (typeof n === 'string') return n
@@ -54,7 +91,8 @@ function node(n, key, inl) {
     case 'br': return <br key={key} />
     case 'hr': return <hr key={key} />
     case 'h': return createElement(`h${n.d}`, { key }, nodes(n.c, inl))
-    case 'ol': return <ol key={key} start={n.s}>{nodes(n.c, inl)}</ol>
+    case 'ol': return n.sp ? signposts(n, key, inl) : <ol key={key} start={n.s}>{nodes(n.c, inl)}</ol>
+    case 'ups': return updates(n, key, inl)
     case 'pre': return <pre key={key}><code className={n.lang ? `language-${n.lang}` : undefined}>{n.v}</code></pre>
     case 'img': return <img key={key} src={n.src} alt={n.alt ?? ''} title={n.ti} />
     case 'table': return table(n, key, inl)

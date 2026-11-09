@@ -14,6 +14,8 @@
 //   { t: 'a', h: href, ti?: title, c? } link (no c: the text is the href itself)
 //   { t: 'f', i: id }                  footnote reference (a '#fn-id' link)
 //   { t: 'ul', c } | { t: 'ol', s?: start, c }   (tight lists: paragraphs already unwrapped)
+//   { t: 'ol', sp: 1, c: [{ t: 'li', st?: status, c }] }   the signpost list (see src/lib/manuscript.js)
+//   { t: 'ups', c: [{ t: 'up', d: date, st?: status, c }] } dated updates under a signpost
 //   { t: 'code', v }                   inline code
 //   { t: 'pre', v, lang? }             fenced code
 //   { t: 'img', src, alt?, ti? }
@@ -25,7 +27,7 @@ import { dirname, join, resolve } from 'node:path'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkGfm from 'remark-gfm'
-import { parseManuscript, linkFootnoteRefs, wordCount } from '../src/lib/manuscript.js'
+import { parseManuscript, linkFootnoteRefs, wordCount, SIGNPOST_SECTION, UPDATE_LABEL, UPDATE_STATUSES, longDateToIso } from '../src/lib/manuscript.js'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 export const MANUSCRIPT_PATH = join(ROOT, 'already-past-us.md')
@@ -74,6 +76,30 @@ function kids(node, ctx) {
   return merged
 }
 
+// A bullet that opens with "**Update, 9 November 2026 (claimed).**": its date and status, else null.
+function updateHead(li) {
+  const p = li.children[0]
+  const s = p?.type === 'paragraph' ? p.children[0] : null
+  if (s?.type !== 'strong' || s.children.length !== 1 || s.children[0].type !== 'text') return null
+  const m = s.children[0].value.match(UPDATE_LABEL)
+  if (!m) return null
+  return { date: m[1], status: UPDATE_STATUSES.includes(m[2]) ? m[2] : undefined }
+}
+
+// The update's own text: the bullet without its bold label.
+function updateBody(li) {
+  const [p, ...rest] = li.children
+  const children = p.children.slice(1)
+  if (children[0]?.type === 'text') children[0] = { ...children[0], value: children[0].value.replace(/^\s+/, '') }
+  return kids({ children: [{ ...p, children }, ...rest] }, { tight: true })
+}
+
+// A signpost's status is the status of its latest update that carries one.
+function statusFromUpdates(children) {
+  const ups = children.find(c => c?.t === 'ups')
+  return ups ? ups.c.reduce((st, u) => u.st ?? st, undefined) : undefined
+}
+
 function compact(node, ctx = {}) {
   switch (node.type) {
     case 'root': return kids(node, ctx)
@@ -108,10 +134,22 @@ function compact(node, ctx = {}) {
       return n
     }
     case 'list': {
+      // A bullet list made only of dated updates becomes an 'ups' node.
+      const heads = node.ordered ? [] : node.children.map(updateHead)
+      if (heads.length && heads.every(Boolean)) {
+        return { t: 'ups', c: node.children.map((li, i) => {
+          const up = { t: 'up', d: heads[i].date, c: updateBody(li) }
+          if (heads[i].status) up.st = heads[i].status
+          return up
+        }) }
+      }
       const tight = !isLoose(node)
       const n = { t: node.ordered ? 'ol' : 'ul', c: node.children.map(li => {
         if (typeof li.checked === 'boolean') throw new Error('task list items are not supported by the manuscript renderer')
-        return { t: 'li', c: kids(li, { tight }) }
+        const item = { t: 'li', c: kids(li, { tight }) }
+        const st = statusFromUpdates(item.c)
+        if (st) item.st = st
+        return item
       }) }
       if (node.ordered && typeof node.start === 'number' && node.start !== 1) n.s = node.start
       return n
@@ -181,6 +219,27 @@ function claimFor(text, id) {
   return s
 }
 
+/**
+ * Marks the signpost list (the first numbered list in the signpost section) and counts where its
+ * signposts stand: { total, counts: { open, claimed, resolved }, lastUpdate: '9 November 2026' | null }.
+ */
+function summariseSignposts(sections) {
+  const section = sections.find(s => s.id === SIGNPOST_SECTION)
+  const list = section?.blocks.flatMap(b => (b.type === 'md' ? b.tree : [])).find(n => n?.t === 'ol')
+  if (!list) return null
+  list.sp = 1
+  const counts = { open: 0, claimed: 0, resolved: 0 }
+  let last = null
+  for (const li of list.c) {
+    counts[li.st ?? 'open']++
+    for (const up of li.c.find(c => c?.t === 'ups')?.c ?? []) {
+      const iso = longDateToIso(up.d)
+      if (iso && (!last || iso > last.iso)) last = { iso, label: up.d }
+    }
+  }
+  return { total: list.c.length, counts, lastUpdate: last?.label ?? null }
+}
+
 /** The whole manuscript, parsed and compiled, ready to serialise. */
 export function compileManuscript(source) {
   const { meta, sections, footnotes, problems } = parseManuscript(source)
@@ -215,7 +274,8 @@ export function compileManuscript(source) {
   }
   // Hero reading time for the Brief text: 230 words a minute is a usual prose rate, but this text is
   // dense with numbers and has charts to read, so each word counts 1.5 times (about 153 words a minute).
-  return { meta, sections: outSections, footnotes: outNotes, minutes: Math.round((words * 1.5) / 230), problems }
+  const signposts = summariseSignposts(outSections)
+  return { meta, sections: outSections, footnotes: outNotes, signposts, minutes: Math.round((words * 1.5) / 230), problems }
 }
 
 export default function manuscriptPlugin() {

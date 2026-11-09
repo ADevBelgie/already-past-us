@@ -540,7 +540,7 @@ What held, and what did not:
 
 ## 9. What to watch {#s9}
 
-Check back on these six over the coming months to see whether the trends hold.
+Check back on these six over the coming months to see whether the trends hold. Each stays as written on 7 November 2026. When one is claimed or settled, a dated update goes under it.
 
 <!-- CHART: s9-signposts | Signpost list: date, indicator, value as of 7 Nov 2026, "spreading" and "stalling" thresholds, link to source, and a status chip (not yet due / moved / no change); a decay banner above it shows "data as of 7 Nov 2026" and the days elapsed | none (values inline, from footnotes s9-*) -->
 
@@ -548,6 +548,7 @@ Check back on these six over the coming months to see whether the trends hold.
 2. **1 January 2027: Epoch's public index of test scores.** In September 2026, Epoch projected the top score on that date at about 170 (166 to 176). The top score now is 169.[^s9-eci] Above 176 would be public evidence of a second speed-up. Still at 169 would show none.
 3. **7 May 2027: the price of GPT-5-level AI.** Now $0.20 per million tokens.[^s9-price] On our estimate it would be about 5 cents by then ([section 2](#s2)).[^s2-projection] Staying near 20 cents would mean the fall has slowed.
 4. **Monthly: the Remote Labor Index.** On about 21% of real freelance projects, the best AI agent's work is now judged as good as the human freelancer's, up from 2.5% a year earlier.[^s9-rli] The score cannot keep multiplying: another 8.5 times would pass 100%. So we count the gain in points, about 19 a year. At that pace it would reach about 30% by May 2027.[^s9-rli-proj] Well above 30% would mean a speed-up in real work; still near 21% would mean a slowdown.
+   - **Update, 9 November 2026 (claimed).** Anthropic reports 41.3% for its new model, Claude Fable 5.2, about double the best score on the public leaderboard.[^s9-u-rli-fable52] That is the company's own figure: the leaderboard, graded by people, does not list the model yet. If it is confirmed there, real freelance work has sped up well ahead of our 30% line for May 2027.
 5. **Any day: a threshold declared, and whether others follow.** In a November 2026 filing, Anthropic told investors it "may imminently meet" its threshold for AI-accelerated research.[^s9-s1] A lab's own declaration is hard to check. More telling would be similar speed-ups at other labs, including the Chinese labs that make the best open models.
 6. **Monthly: jobs for young workers.** In a Stanford study, employment of 22-to-25-year-olds in AI-exposed jobs was about 19% lower than for less-exposed peers by June 2026, up from 15% a year earlier, with no gap for older workers.[^s9-canaries] At that pace it would reach about 21% by December 2026.[^s9-canaries-proj] A faster rise, or a gap for older workers, would mean AI is reaching paid work faster.
 
@@ -568,6 +569,8 @@ For now, "already past us" is true for tasks with a clear right answer, and not 
 [^s9-rli]: **Verified.** Scale AI and Center for AI Safety, Remote Labor Index leaderboard, accessed 7 November 2026: top automation rate 21.25%, tied with 20.83% ([section 0](#s0)), https://labs.scale.com/leaderboard/rli . Launch score 2.50% (Manus 1.0), Mazeika et al., arXiv 2510.26787, 30 October 2025, https://arxiv.org/abs/2510.26787 .
 
 [^s9-rli-proj]: **Our calculation.** An estimate for early May 2027, not data. From the Remote Labor Index top automation rate of 21.25% (leaderboard, accessed 7 November 2026, https://labs.scale.com/leaderboard/rli ) and the launch score of 2.50% (Mazeika et al., arXiv 2510.26787, 30 October 2025, https://arxiv.org/abs/2510.26787 ): 21.25 − 2.50 = 18.75 points in about 12 months, about 19 points a year; six more months at that pace adds about 9.4 points, about 30.6% by early May 2027. We assume a steady gain in points, not a steady multiple, because the rate cannot pass 100%.
+
+[^s9-u-rli-fable52]: **Vendor-reported.** Anthropic, "Introducing Claude Fable 5.2 and Claude Mythos 5.2", 9 November 2026: Remote Labor Index 41.3% for Claude Fable 5.2 (high effort), in a table that gives Opus 5.5 21.3%, GPT-6 Astra 20.8% and Fable 5.1 17.9%, which are the public leaderboard's figures for those three, rounded. The announcement does not say who ran or graded the Fable 5.2 result; it points to the models' system card for the method, which we have not yet checked. https://www.anthropic.com/claude-fable-and-mythos-5-2 . The Scale AI and Center for AI Safety leaderboard did not list Fable 5.2 when checked on 9 November 2026, and its top score was still 21.25%, https://labs.scale.com/leaderboard/rli . "About double": 41.3 / 21.25 = 1.94 (our arithmetic).
 
 [^s9-metr]: **Verified.** METR, Task-Completion Time Horizons of Frontier AI Models, changelog: measurements above 16 hours unreliable (8 May 2026); "no longer actively updated" (8 September 2026). Last model added: Claude Mythos Preview (early), dated 7 April 2026. No successor suite as of 7 November 2026. https://metr.org/time-horizons/
 

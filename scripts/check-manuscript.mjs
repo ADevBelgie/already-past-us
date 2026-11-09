@@ -3,7 +3,7 @@
 import { readFileSync, readdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
-import { parseManuscript } from '../src/lib/manuscript.js'
+import { parseManuscript, SIGNPOST_SECTION, UPDATE_LABEL, UPDATE_LINE, UPDATE_STATUSES, longDateToIso } from '../src/lib/manuscript.js'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const md = readFileSync(join(root, 'already-past-us.md'), 'utf8')
@@ -53,6 +53,24 @@ for (const s of sections) {
     seen.add(b.label)
   }
 }
+
+// Signpost updates: "- **Update, 9 November 2026 (claimed).** text[^source]". A malformed label
+// would silently render as an ordinary bullet with no date or status.
+const dataDate = longDateToIso((meta.data_as_of || '').replace(/^Data as of /, ''))
+for (const line of md.split(/\r?\n/)) {
+  const open = line.match(UPDATE_LINE)
+  if (!open) continue
+  const short = line.trim().slice(0, 60)
+  const label = `Update${open[1]}`.match(UPDATE_LABEL)
+  if (!label) { problems.push(`update label must read "**Update, 9 November 2026.**" or "**Update, 9 November 2026 (claimed).**": "${short}"`); continue }
+  const iso = longDateToIso(label[1])
+  if (!iso) problems.push(`update has an invalid date "${label[1]}": "${short}"`)
+  else if (dataDate && iso < dataDate) problems.push(`update is dated before the data date: "${short}"`)
+  if (label[2] != null && !UPDATE_STATUSES.includes(label[2])) problems.push(`update status must be one of ${UPDATE_STATUSES.join(', ')} (got "${label[2]}"): "${short}"`)
+  if (!/\[\^[^\]]+\]/.test(line)) problems.push(`update has no source footnote: "${short}"`)
+}
+const signpostSection = sections.find(s => s.id === SIGNPOST_SECTION)
+if (/^\s*[-*]\s+\*\*Update\b/m.test(md) && !signpostSection) problems.push(`updates found but there is no signpost section #${SIGNPOST_SECTION}`)
 
 if (!meta.title) problems.push('front matter has no title')
 if (sections.length === 0) problems.push('no sections found (headings must look like "## 1. Title {#s1}")')

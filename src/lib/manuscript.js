@@ -8,6 +8,32 @@ export const TAGS = {
   'Our calculation': { key: 'calc', label: 'Our calculation', blurb: 'Computed by us from the cited data.' },
 }
 
+// Signposts (the numbered list in "What to watch"). Each signpost keeps the wording it had on the
+// data date. Later news goes in a nested bullet under it that starts with a dated label:
+//     4. **Monthly: the Remote Labor Index.** ...original text...
+//        - **Update, 9 November 2026 (claimed).** What happened.[^s9-u-...]
+// The status in brackets is optional. "claimed": a company says a line was crossed and no
+// independent source has confirmed it. "resolved": settled, either way, by an independent source.
+// No status: a note that leaves the signpost's status as it was. A signpost with no status is open.
+export const SIGNPOST_SECTION = 's9'
+export const UPDATE_STATUSES = ['claimed', 'resolved']
+/** Matches the bold label's text; [1] is the date, [2] the status word (validated separately). */
+export const UPDATE_LABEL = /^Update, (\d{1,2} [A-Z][a-z]+ \d{4})(?: \(([^)]*)\))?\.$/
+/** A manuscript line that opens an update bullet (well-formed or not), for the build check. */
+export const UPDATE_LINE = /^\s*[-*]\s+\*\*Update\b([^*]*)\*\*/
+
+const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+/** "9 November 2026" to "2026-11-09", or null if it is not a real date written that way. */
+export function longDateToIso(s) {
+  const m = String(s).match(/^(\d{1,2}) ([A-Z][a-z]+) (\d{4})$/)
+  const month = m ? MONTH_NAMES.indexOf(m[2]) : -1
+  if (month < 0) return null
+  const day = Number(m[1])
+  const d = new Date(Date.UTC(Number(m[3]), month, day))
+  if (d.getUTCMonth() !== month || d.getUTCDate() !== day) return null
+  return d.toISOString().slice(0, 10)
+}
+
 const FN_DEF = /^\[\^([^\]]+)\]:\s*(.*)$/
 const HEADING = /^##\s+(.*?)\s*\{#([\w-]+)\}\s*$/
 const CHART = /^<!--\s*CHART:\s*([\w-]+)\s*\|\s*(.*?)\s*\|\s*(.*?)\s*-->\s*$/

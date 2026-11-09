@@ -363,7 +363,7 @@ export default function App() {
   }, [])
 
   const { meta, minutes } = doc
-  const ctx = useMemo(() => ({ footnotes: doc.footnotes }), [])
+  const ctx = useMemo(() => ({ footnotes: doc.footnotes, signposts: doc.signposts }), [])
 
   return (
     <FootnoteContext.Provider value={ctx}>

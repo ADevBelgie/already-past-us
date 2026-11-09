@@ -12,6 +12,7 @@ A data briefing on where AI has overtaken the best humans, where it hasn't, and 
 - `<!-- CHART: id | description | data -->` lines mark where charts go. `src/charts/registry.js` maps each id to a component (or `null` when the text or table carries it).
 - Expert notes (`> **Expert note: Short label.** ...`) are folded in Brief mode and open in Expert mode (`?mode=expert`). The label is required: plain text in sentence case (no `*`, markdown or footnote refs, since it is shown as-is), at most 60 characters and unique within its section. `npm run check` enforces this.
 - The decay banner and the section 9 stamp age visibly from the data date in `src/lib/dates.js`.
+- Signposts (the numbered list in section 9) keep the wording they had on the data date. Later news goes in a nested bullet under the signpost: `   - **Update, 9 November 2026 (claimed).** What happened.[^s9-u-...]`. The status is optional: `claimed` (a company says a line was crossed, not independently confirmed) or `resolved` (settled either way by an independent source); without one the update is a note. The site adds a status chip to each signpost, sets the update apart under it, and the stamp shows the last update date and the open / claimed / resolved counts. Each update needs its own tagged footnote; `npm run check` enforces the label, date, status and footnote.
 
 ## Folders
 
