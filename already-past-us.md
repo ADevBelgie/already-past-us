@@ -7,7 +7,7 @@ byline: "Arthur Devresse, with Claude"
 
 ## Already past us, in places {#s0}
 
-<!-- CHART: s0-cards | Three stat cards side by side: ICPC 2025 (AI 12/12 vs best human team 11, OpenAI-reported), Erdős 1946 conjecture disproved (checked by nine mathematicians), best AI agent ~21% of real freelance projects (up from 2.5% in Oct 2025); each card shows its counter-fact and a provenance tag linking to the footnote | none (values inline, from footnotes s0-icpc, s0-ioi, s0-erdos, s0-erdos-context, s0-rli, s0-rli-growth) -->
+<!-- CHART: s0-cards | Three stat cards side by side: ICPC 2025 (AI 12/12 vs best human team 11, OpenAI-reported), Erdős 1946 conjecture disproved (checked by nine mathematicians), best AI agent ~21% of real freelance projects (up from 2.5% in Oct 2025); the ICPC and freelance cards show a counter-fact, the Erdős one does not because the sentence above already says humans improved on the AI's construction; each card has a provenance tag linking to the footnote | none (values inline, from footnotes s0-icpc, s0-ioi, s0-erdos, s0-erdos-context, s0-rli, s0-rli-growth) -->
 
 At the 2025 world finals of the top university programming contest (ICPC), OpenAI says its system solved all 12 problems, one more than the best human team.[^s0-icpc] Google DeepMind says its entry solved 10.[^s0-gemini] But at a different contest, the 2025 International Olympiad in Informatics (IOI) for secondary-school students, the top 1.5% of contestants (5 of 330) still beat OpenAI's entry.[^s0-ioi]
 

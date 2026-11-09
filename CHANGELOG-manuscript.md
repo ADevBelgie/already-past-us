@@ -517,3 +517,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 - s5: one sentence on GDPval cost (GPT-5 only 1.2 to 1.6 times cheaper once an expert checks the work); the Remote Labor Index reference keeps its result ("where the best agent still fails most").
 - s6: 836 → about 500 words. Threshold detail (Anthropic's definition, METR's 1.9x comparison, OpenAI and Google ratings, the 56% vs 85% test) moves to "The labs' AI R&D thresholds and self-reports"; the Brief keeps one sentence, citing s6-rsp, s6-openai-th and s6-google-th. Open-model safety frameworks get their own note. The 3x → 52x speedup test moves to "Speedup test and bottleneck caveats". Alibaba "over a month" now matches its footnote.
 - s9: items 1 and 5 (both METR) merged, so six items; item 5 drops the repeated four-month gap; item 6 shortened. Intro now "Check back on these six over the coming months to see whether the trends hold.", which no longer promises a faster/slower signal for every item.
+
+## 2026-11-09 — s0 Erdős card: duplicate "But" line removed (review comment)
+- The card repeated "Within weeks, humans improved on the AI's construction", which the sentence just above the cards already says (same footnote, s0-erdos-context). The card now has no "But" line; the ICPC and freelance cards keep theirs. Chart comment updated to match.

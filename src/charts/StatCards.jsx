@@ -23,8 +23,6 @@ const humanSolved = rec('best_human_solved')
 const ioi = rec('ioi_humans_ahead')
 const year = rec('conjecture_year')
 const checkers = rec('checkers')
-// Its footnote (s0-erdos-context) also sources the human improvement on the AI's construction.
-const falseClaims = rec('false_claim_oct_2025')
 const rliBest = rec('best_rate_pct')
 const rliProjects = rec('projects')
 const rliMatched = rec('projects_matched')
@@ -113,9 +111,11 @@ function Card({ variant, event, big, children, visual, butLabel, but }) {
         <p className="sc-card__line">{children}</p>
       </div>
       <div className="sc-card__visual">{visual}</div>
-      <p className="sc-card__but">
-        <span className="sc-card__butlab">{butLabel}</span> {but}
-      </p>
+      {but && (
+        <p className="sc-card__but">
+          <span className="sc-card__butlab">{butLabel}</span> {but}
+        </p>
+      )}
     </article>
   )
 }
@@ -198,8 +198,6 @@ export default function StatCards() {
                   </ul>
                 </div>
               }
-              butLabel="But"
-              but={<>Within weeks, humans improved on the AI's construction.<FootnoteRef id={falseClaims.source} /></>}
             >
               by an OpenAI model in May 2026. Mathematicians have since built on it.{' '}
               <span className="sc-prov"><TagChip tag={TAG_KEY[checkers.tag]} /><FootnoteRef id={checkers.source} /></span>
