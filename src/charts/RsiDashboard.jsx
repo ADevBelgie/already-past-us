@@ -380,7 +380,7 @@ function Thresholds({ width }) {
   const s1 = find('thresholds', r => r.footnote === 's6-s1')
   return (
     <div className="rsi-strip">
-      <h4 className="rsi-strip__head">Each lab&rsquo;s threshold for a much bigger AI speed-up of its research: none says it has been crossed</h4>
+      <h4 className="rsi-strip__head">Each lab&rsquo;s written threshold for AI greatly speeding up AI research: none says it has been crossed</h4>
       {/* Columns come from @container figure queries in RsiDashboard.css (3 from 680px; below that
           OpenAI and Google side by side with Anthropic across both columns), so the pre-rendered
           HTML is laid out right at every width; `cols` here only sizes the meter. */}
@@ -389,25 +389,25 @@ function Thresholds({ width }) {
           <p className="rsi-cell__lab">OpenAI</p>
           <p className="rsi-cell__model">{oa.label}, {oa.date_label}</p>
           <p className="rsi-cell__status">Below &ldquo;High&rdquo;</p>
-          <p className="rsi-cell__text">For AI self-improvement. The system card gives no numeric threshold.</p>
+          <p className="rsi-cell__text">OpenAI rates the model below its &ldquo;High&rdquo; level for AI that can improve itself. OpenAI&rsquo;s report on the model does not say what score would count as &ldquo;High&rdquo;.</p>
           <p className="rsi-cell__who"><TagChip tag="vendor" /><FootnoteRef id="s6-openai-th" /></p>
         </div>
         <div className="rsi-cell">
           <p className="rsi-cell__lab">Google DeepMind</p>
           <p className="rsi-cell__model">{gg.label}, {gg.date_label}</p>
           <p className="rsi-cell__status">Not reached</p>
-          <p className="rsi-cell__text">Machine-learning research acceleration and automation, level 1 of each.</p>
+          <p className="rsi-cell__text">Google&rsquo;s first level for AI speeding up AI research, and its first for AI doing that research on its own.</p>
           <p className="rsi-cell__who"><TagChip tag="vendor" /><FootnoteRef id="s6-google-th" /></p>
         </div>
         <div className="rsi-cell rsi-cell--anthropic">
           <p className="rsi-cell__lab">Anthropic</p>
           <p className="rsi-cell__model">{co.label}, {co.date_label}</p>
-          <p className="rsi-cell__text">Score on an internal research-engineering test (CoBench 2.1) against the level Anthropic says a model able to replace its research staff would reach. Anthropic set that line on the earlier version of the test.</p>
+          <p className="rsi-cell__text">Score on Anthropic&rsquo;s in-house test of the hands-on technical work in AI research (CoBench 2.1). Anthropic says a model able to replace its research staff would reach the marked line. It set that line on the earlier version of the test.</p>
           <CoBenchMeter w={Math.floor(Math.min(cellW, 420))} compact={width < COMPACT_BELOW} />
           <p className="rsi-cell__who"><TagChip tag="vendor" /><FootnoteRef id="s6-cobench" /></p>
           <p className="rsi-cell__text rsi-cell__text--filing">
-            Yet its amended IPO filing ({s1.date_label}) says that, judging by its internal estimates and expectations for future models, it &ldquo;may
-            imminently meet&rdquo; its threshold. No current model has been designated as exceeding it.
+            Yet its updated IPO filing ({s1.date_label}), the papers it filed to sell shares to the public, says it &ldquo;may
+            imminently meet&rdquo; its threshold. It bases this on internal estimates and expectations for future models, and has not declared any current model past it.
             <FootnoteRef id="s6-s1" />
           </p>
         </div>
@@ -512,15 +512,15 @@ function Dashboard({ width }) {
 
   return (
     <div className="rsi">
-      <Tier letter="A" title="Independent measurements" desc="Groups that do not sell models, publishing their own measurements.">
+      <Tier letter="A" title="Measured by outside groups" desc="Groups that do not sell AI models.">
         <Grid>
           <Panel
-            title="METR time horizon, best model"
-            measure={<>Length of task, in skilled-human working time, that the best model completes half the time. Each step up the scale multiplies the length, so a straight line means it keeps doubling at a steady pace. Details in <a href="#s3">section 3</a>.</>}
+            title="METR: how long a task the best AI can finish half the time"
+            measure={<>The task length, in a skilled person&rsquo;s working time, at which the best model succeeds half the time. Each step up the side axis multiplies the length, so a straight line means steady doubling. Details in <a href="#s3">section 3</a>.</>}
             who="METR"
             tag="verified"
             footnote="s6-metr"
-            note="Scores above 16 hours are unreliable, and no model newer than April 2026 has a reliable public time horizon."
+            note="Results above 16 hours are unreliable, and no model newer than April 2026 has a reliable public score."
           >
             <TimeChart
               w={pw}
@@ -538,12 +538,12 @@ function Dashboard({ width }) {
             />
           </Panel>
           <Panel
-            title="Epoch Capabilities Index, best model"
-            measure="Best score on Epoch AI's index that combines many benchmarks, by model release date. Points on Epoch's own scale."
+            title="Epoch AI: overall score of the best model"
+            measure="Best score on Epoch AI's index, which combines many AI tests into one score. By model release date, on Epoch's own scale."
             who="Epoch AI"
             tag="verified"
             footnote="s6-eci"
-            note={`About 14 points a year since September 2024, in a straight line (Epoch's fit). No public model has beaten ${last(eci).label}'s ${Math.round(last(eci).value)}.`}
+            note={`Up about 14 points a year since September 2024, in a straight line (Epoch's trend line). No public model has beaten ${last(eci).label}'s ${Math.round(last(eci).value)}.`}
           >
             <TimeChart
               w={pw}
@@ -564,17 +564,17 @@ function Dashboard({ width }) {
 
       <Tier
         letter="B"
-        title="Independent analysis of private lab data"
-        desc="An outside group's estimate from data the lab supplied. The lab redacted most of the evidence the outside group found most informative."
+        title="Outside analysis of a lab's private data"
+        desc="An outside group's estimate, using data the lab supplied. The lab blacked out most of the evidence the group found most informative."
       >
         <Panel
           wide
-          title="METR's assessment of Anthropic"
-          measure="How much faster Anthropic's models improved after October 2025 than before (2x would mean twice as fast), measured on Anthropic's own version of Epoch's index. This is the speed-up in progress, not a direct measure of AI's help: METR guesses that perhaps 80% of the speed-up comes from AI speeding up the work, and calls that very uncertain. Dot: central estimate. Bar: 95% interval."
-          who="METR, using Anthropic's partly redacted data"
+          title="METR: is Anthropic's progress speeding up?"
+          measure="How much faster Anthropic's models improved after October 2025 than before (2x would mean twice as fast). It counts every cause, not just help from AI. METR guesses perhaps 80% of the speed-up comes from AI, but calls that very uncertain. Dot: best estimate. Bar: the range METR thinks likely (95% interval)."
+          who="METR, using Anthropic's data, partly blacked out"
           tag="estimate"
           footnote="s6-accel"
-          note={<>Anthropic redacted a majority of the evidence METR found most informative. Other reasonable methods give as little as 1.1x (<a href="#s3">section 3</a>).</>}
+          note={<>Other reasonable ways of calculating it give as little as 1.1x (<a href="#s3">section 3</a>).</>}
         >
           <AccelChart w={w} />
         </Panel>
@@ -582,8 +582,8 @@ function Dashboard({ width }) {
 
       <Tier
         letter="C"
-        title="Lab self-reports"
-        desc="Unchecked by outsiders. Each company counts something different, so no two share an axis or a line."
+        title="What the labs say about themselves"
+        desc="Not checked by outsiders. Each company counts something different, so each gets its own chart."
       >
         <Grid>
           <Panel
@@ -592,7 +592,7 @@ function Dashboard({ width }) {
             who="Google"
             tag="vendor"
             footnote="s6-google"
-            note="New code is not the whole codebase."
+            note="New code is only part of all the code at Google."
           >
             <TimeChart
               w={pw}
@@ -616,7 +616,7 @@ function Dashboard({ width }) {
             who="Anthropic"
             tag="vendor"
             footnote="s6-anthro-code"
-            note="&ldquo;Merged code&rdquo; and &ldquo;contributions&rdquo; are different measures that Anthropic does not define, so they are not joined. Before February 2025 the share was in the &ldquo;low single digits&rdquo;."
+            note="&ldquo;Merged code&rdquo; and &ldquo;contributions&rdquo; are two different counts of code-writing that Anthropic does not define, so the bars are not joined. Before February 2025 the share was in the &ldquo;low single digits&rdquo;."
           >
             <BarChart
               w={pw}
@@ -632,12 +632,12 @@ function Dashboard({ width }) {
             />
           </Panel>
           <Panel
-            title="Anthropic: training-code speedup test"
+            title="Anthropic: making AI training code run faster"
             measure="Anthropic gives Claude a slow piece of code used to train AI models and asks it to make the code run faster. The score is how many times faster the code runs afterwards. A skilled person manages about 4 times in four to eight hours. By model release date."
             who="Anthropic"
             tag="vendor"
             footnote="s6-speedup"
-            note="Anthropic calls the test saturated. A model found a way to game the timer; Anthropic says such runs were excluded from the scores. Not a real-world training speedup."
+            note="Anthropic calls the test saturated, a term for a test too easy to show further gains. A model found a way to game the timer; Anthropic says such runs were excluded from the scores. Not a real-world training speedup."
           >
             <TimeChart
               w={pw}
@@ -657,7 +657,7 @@ function Dashboard({ width }) {
             />
           </Panel>
           <Panel
-            title="OpenAI: agent time per human workday"
+            title="OpenAI: AI agent time per human workday"
             measure="For every 8-hour day a human researcher at OpenAI works, how many 8-hour days its AI agents run in total, adding up agents running at the same time. 3.1 means about 25 hours of agent running time per human workday. It measures time, not the share of the work AI does."
             who="OpenAI"
             tag="vendor"
@@ -691,10 +691,10 @@ export default function RsiDashboard() {
     <Figure
       id="s6-rsi-dashboard"
       title="The steepest curves come from the labs' own, unchecked numbers"
-      subtitle="Signs that AI is speeding up the building of AI, grouped by who measured them. Each panel has its own scale and dates."
+      subtitle="Signs that AI is speeding up the building of AI, grouped by who measured them. Each small chart has its own scale and dates."
       notes={['s6-metr', 's6-eci', 's6-accel', 's6-google', 's6-anthro-code', 's6-speedup', 's6-openai', 's6-openai-th', 's6-google-th', 's6-cobench', 's6-s1']}
       source={<>METR; Epoch AI; Google; Anthropic; OpenAI. <a href="/data/rsi_series.csv">Download the data (CSV)</a>.</>}
-      caveat="Code share and agent hours count activity, not research value. Each lab uses its own measure, some undefined. The labs' figures cannot be compared with one another."
+      caveat="Shares of code and hours of AI agent time show how busy the AI is, not how much it adds to research. Each lab measures something different, so their numbers cannot be compared."
     >
       {width => (
         <>

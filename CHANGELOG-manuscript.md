@@ -538,3 +538,9 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-09 — s7 Brief: MIT weight-edit paragraph removed (review comment)
 - The paragraph on the November 2026 MIT post (GPT-6 Astra editing a smaller model, 8% to 48%, mostly a repair) repeated the weights chart directly above it, whose cell gives the same result and caveat. It is removed from the Brief; the details stay in the expert notes "The November post, and what is still hard" and "How solid the weight-editing results are" (s7-post, s7-qwen, s7-loops still cited there; weights-matrix passages re-verified).
+
+## 2026-11-09 — s6 in plain language, fewer caveats in the Brief (two review comments)
+- Comments: the section "assumes a lot of knowledge" (thresholds strip) and "too many caveats", especially the second paragraph. The Brief now explains recursive self-improvement, threshold, IPO filing, AI agents and downloadable models in plain words, and keeps two caveats: the labs' numbers are unchecked, and no lab says its threshold has been crossed (METR thinks Anthropic's may have been).
+- Moved, in their original wording and with their footnotes, to expert notes: METR time-horizon and Epoch index details, the redaction, Anthropic's 80% merged-code figure, OpenAI's runtime-not-quality and human-intervention points, the filing's "only after they happened" (note now "AI R&D thresholds, self-reports and outside data"); the open-closed gap (open-model note); Anthropic's 1.15-1.3x labour estimate, the Epoch compute argument and the Princeton study (bottleneck note). No figure, date, quote or attribution changed.
+- s6 chart: tier titles, panel titles and notes, the thresholds strip and caption in plain words (e.g. "redacted" -> "blacked out", "system card" -> "OpenAI's report on the model", "saturated" glossed).
+- Drafted, fact-checked, reader-tested and style-checked by a workflow (3 independent checkers, 30 issues fixed before applying).
