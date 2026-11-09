@@ -1,0 +1,40 @@
+<!doctype html><html><head><meta charset="utf-8"><title>og</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#222}canvas{display:block}</style></head><body><canvas id="c" width="1200" height="630"></canvas>
+<script>
+async function draw() {
+  const { lines, asOf } = await (await fetch('/data')).json()
+  await document.fonts.load('500 120px Newsreader'); await document.fonts.load('italic 400 34px Newsreader'); await document.fonts.load('600 20px "IBM Plex Sans"'); await document.fonts.load('500 18px "IBM Plex Sans"')
+  const c = document.getElementById('c'), x = c.getContext('2d')
+  x.fillStyle = '#f6f1e7'; x.fillRect(0, 0, 1200, 630)
+  // Chart, right side: price on a log scale, capability (ECI) on a linear one.
+  const all = lines.flatMap(l => l.points), eMin = Math.min(...all.map(p => p[1])), eMax = Math.max(...all.map(p => p[1]))
+  const Y_LO = Math.floor(eMin - 3), Y_HI = Math.ceil(eMax + 3)
+  const X0 = 640, X1 = 1140, Y0 = 560, Y1 = 120
+  const lx = v => X0 + (Math.log10(v) - Math.log10(0.05)) / (Math.log10(100) - Math.log10(0.05)) * (X1 - X0)
+  const ly = v => Y0 - (v - Y_LO) / (Y_HI - Y_LO) * (Y0 - Y1)
+  x.strokeStyle = '#dcd2bf'; x.lineWidth = 1.5; x.beginPath(); x.moveTo(X0, Y0); x.lineTo(X1, Y0); x.stroke()
+  const cols = ['#bdb3a1', '#7d878a', '#b5420e'], labelCols = ['#9a9080', '#7d878a', '#b5420e']
+  lines.forEach((l, k) => {
+    const today = k === lines.length - 1, pts = l.points
+    x.strokeStyle = cols[k]; x.lineWidth = today ? 6 : 4; x.lineJoin = 'round'; x.beginPath()
+    pts.forEach(([p, e], i) => { if (i === 0) x.moveTo(lx(p), ly(e)); else { x.lineTo(lx(p), ly(pts[i - 1][1])); x.lineTo(lx(p), ly(e)) } })
+    x.lineTo(X1, ly(pts.at(-1)[1])); x.stroke()
+    x.fillStyle = cols[k]; pts.forEach(([p, e]) => { x.beginPath(); x.arc(lx(p), ly(e), today ? 7 : 5, 0, 7); x.fill() })
+    x.font = '600 17px "IBM Plex Sans"'; x.textAlign = 'right'; x.fillStyle = labelCols[k]
+    x.fillText(l.label, X1, ly(pts.at(-1)[1]) - (today ? 18 : 16))
+  })
+  x.textAlign = 'left'; x.fillStyle = '#7b7366'; x.font = '500 15px "IBM Plex Sans"'
+  x.fillText('Best AI capability at each price', X0, Y0 + 30)
+  // Text, left side (kicker, title and tagline match the site's hero and og:description).
+  x.fillStyle = '#9a3709'; x.font = '600 20px "IBM Plex Sans"'; x.fillText('A DATA BRIEFING · NOVEMBER 2026'.split('').join(String.fromCharCode(8202)), 64, 110)
+  x.fillStyle = '#1e1a15'; x.font = '500 112px Newsreader'; x.fillText('Already', 60, 250); x.fillText('Past Us', 60, 360)
+  x.fillStyle = '#4b443a'; x.font = 'italic 400 31px Newsreader'
+  ;['Where AI has overtaken the best humans,', 'where it hasn\'t, and why “human-level”', 'is the wrong question.'].forEach((t, i) => x.fillText(t, 64, 440 + i * 42))
+  x.fillStyle = '#7b7366'; x.font = '500 18px "IBM Plex Sans"'; x.fillText(`Every number sourced and tagged · ${asOf}`, 64, 585)
+  x.fillStyle = '#b5420e'; x.fillRect(0, 0, 1200, 8)
+  const r = await fetch('/save', { method: 'POST', body: c.toDataURL('image/png') })
+  document.title = 'saved:' + r.status
+}
+draw()
+</script></body></html>

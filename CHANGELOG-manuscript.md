@@ -532,3 +532,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-09 — s9 closing line rephrased (review comment)
 - "If only the scores move, the title stays true where it is true now, and no further." became "If only the scores move, AI stays ahead only on the kinds of tasks where it already is."
+
+## 2026-11-09 — Link-preview image redrawn from current data (owner request)
+- public/og.png was hand-drawn on 8 November and had gone stale: its Today line lacked the DeepSeek-V4-Flash step ($0.11, ECI 146.86). scripts/og/render-og.mjs + og.html now draw it from src/data/frontier_snapshots.json; the build stamps og.png's hash into the og:image URL so Discord and others refetch it. Footer line and meta descriptions now say "sourced and tagged", matching the hero.
