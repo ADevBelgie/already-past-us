@@ -523,3 +523,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-09 — s2 cost per task: "a thirteenth" reworded (review comment)
 - A reader took "drops to about a thirteenth each year" as "1/13 cheaper". Now: "falls about 13-fold each year: what cost $13 costs about $1 a year later." Same figure and source (s2-epoch, about 47% a quarter).
+
+## 2026-11-09 — s3 1.9x: "as before" now names the baseline (review comment)
+- A reader asked "compared to what before?". s3 now says Anthropic's models improved about 1.9 times as fast as they had from early 2024 to then, "roughly two years of the earlier progress in one year"; the s8 table row says the same. s3-accel adds the baseline (snapshots from Claude 3 Opus, early 2024) and METR's "two years of historical progress" quote, checked on METR's page.
