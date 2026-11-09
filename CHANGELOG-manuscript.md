@@ -482,3 +482,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-08 — s0 RLI card: "8.5 times" instead of "750%" (review comment)
 - Card line now reads "Just 2.5% when the index launched. In 12 months the best score grew about 8.5 times, to 21%." (same figures as footnote s0-rli-growth; a 750% increase is 8.5 times the starting value).
+
+## 2026-11-09 — s9 forecast item names the 80% success rate (review comment)
+- "Forecasters expected AI to reach 3.4 hours on METR's task-length measure (at an 80% success rate) by the end of 2026." The 3.4 and 3.1 hours are both 80% horizons (footnote s9-leap).
