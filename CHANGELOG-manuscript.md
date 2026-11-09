@@ -535,3 +535,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-09 — Link-preview image redrawn from current data (owner request)
 - public/og.png was hand-drawn on 8 November and had gone stale: its Today line lacked the DeepSeek-V4-Flash step ($0.11, ECI 146.86). scripts/og/render-og.mjs + og.html now draw it from src/data/frontier_snapshots.json; the build stamps og.png's hash into the og:image URL so Discord and others refetch it. Footer line and meta descriptions now say "sourced and tagged", matching the hero.
+
+## 2026-11-09 — s7 Brief: MIT weight-edit paragraph removed (review comment)
+- The paragraph on the November 2026 MIT post (GPT-6 Astra editing a smaller model, 8% to 48%, mostly a repair) repeated the weights chart directly above it, whose cell gives the same result and caveat. It is removed from the Brief; the details stay in the expert notes "The November post, and what is still hard" and "How solid the weight-editing results are" (s7-post, s7-qwen, s7-loops still cited there; weights-matrix passages re-verified).
