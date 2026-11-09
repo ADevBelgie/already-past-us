@@ -2,7 +2,7 @@
 // section 4 headings. Dot colour = provenance tag of the row's main footnote; a hollow dashed dot
 // marks a company claim that has not been officially confirmed (IMO 2026), and a diamond marks a
 // row where AI was compared with another computer model rather than with people. Each row also says
-// who AI was compared with, because several right-hand dots are not comparisons with the best humans.
+// who AI was compared with, because several dots are not comparisons with the best humans.
 // Data: src/data/jagged_map.json, built and checked against the manuscript by
 // scripts/data/build_jagged_map.mjs.
 import { useContext, useEffect, useRef, useState } from 'react'
@@ -15,7 +15,7 @@ const ROWS = data.rows
 const TIERS = data.meta.tiers
 /** Compared with another computer model, not people. */
 const vsMachine = r => r.vs_machine === true
-const LEVEL = 2 // "Level with the best"
+const LEVEL = 3 // "Level with the best"
 const NOTE_IDS = [...new Set(ROWS.flatMap(r => r.footnote_ids))]
 // Past views (expert note "The map 6 and 12 months ago"): each row as it stood on that date, using
 // only evidence published by then. A row whose history entry is null had no comparable result yet.
@@ -519,7 +519,7 @@ export default function JaggedMap() {
       }
       caveat={past
         ? `As of ${v.long}: each row shows the best evidence published by then. Where today's test did not exist yet, an earlier test of the same skill stands in (the details say which). Dashed circles show where each row stands today.`
-        : "Several right-hand dots compare AI with trained experts, average drivers or another computer model, not with the best humans. The IMO 2026 perfect scores are company reports the IMO has not confirmed. The hurricane result is known through press coverage of the National Hurricane Center's report."}
+        : "Several dots compare AI with trained experts, average drivers or another computer model, not with the best humans; each row says who. The IMO 2026 perfect scores are company reports the IMO has not confirmed. The hurricane result is known through press coverage of the National Hurricane Center's report."}
       source="section 4 footnotes; the ICPC and Erdős rows come from the opening section"
       notes={notes}
     >

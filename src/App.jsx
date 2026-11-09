@@ -385,7 +385,7 @@ export default function App() {
               <span>{minutes} min read</span>
             </p>
             <div className="hero__legend" role="group" aria-labelledby="legend-label">
-              <span className="hero__legend-label" id="legend-label">Every number is tagged by who measured it:</span>
+              <span className="hero__legend-label" id="legend-label">Every number has a source, tagged by who measured it:</span>
               {Object.keys(TAGS).map(tag => <LegendChip key={tag} tag={tag} />)}
             </div>
             <p className="hero__mode-hint">
@@ -398,7 +398,7 @@ export default function App() {
         </main>
         <footer className="footer">
             <p>
-              <strong>Already Past Us</strong> · {meta.byline} · {meta.data_as_of}. Built from a single source manuscript; every figure links to its source.
+              <strong>Already Past Us</strong> · {meta.byline} · {meta.data_as_of}. Built from a single source manuscript; every figure has a tagged source.
               Previous briefing: <a href="https://measuring-the-end-of-measurement.vercel.app" target="_blank" rel="noopener noreferrer">Measuring the End of Measurement</a> (July 2026).
             </p>
             <p className="footer__links">

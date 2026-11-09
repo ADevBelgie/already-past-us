@@ -97,7 +97,7 @@
  },
  "imo-2026": {
   "2025-11-07": {
-   "tier": 3,
+   "tier": 2,
    "confirmed": true,
    "ai_value": "35/42 at IMO 2025 (gold-medal score, IMO-graded)",
    "human_value": "35/42 was the gold cutoff; 26 of 630 contestants scored higher, 5 got 42/42",
@@ -106,10 +106,12 @@
    "evidence_date_label": "21 July 2025",
    "footnote_ids": [
     "s4-h-imo2025"
-   ]
+   ],
+   "compared_with": "most IMO contestants",
+   "compared_group": "trained"
   },
   "2026-05-07": {
-   "tier": 3,
+   "tier": 2,
    "confirmed": true,
    "ai_value": "35/42 at IMO 2025 (gold-medal score, IMO-graded)",
    "human_value": "35/42 was the gold cutoff; 26 of 630 contestants scored higher, 5 got 42/42",
@@ -118,12 +120,14 @@
    "evidence_date_label": "21 July 2025",
    "footnote_ids": [
     "s4-h-imo2025"
-   ]
+   ],
+   "compared_with": "most IMO contestants",
+   "compared_group": "trained"
   }
  },
  "waymo": {
   "2025-11-07": {
-   "tier": 3,
+   "tier": 2,
    "confirmed": true,
    "ai_value": "91% fewer serious-injury crashes",
    "human_value": "average human drivers, same places",
@@ -135,7 +139,7 @@
    ]
   },
   "2026-05-07": {
-   "tier": 3,
+   "tier": 2,
    "confirmed": true,
    "ai_value": "92% fewer serious-injury crashes",
    "human_value": "average human drivers, same places",
@@ -149,7 +153,7 @@
  },
  "diagnosis": {
   "2025-11-07": {
-   "tier": 3,
+   "tier": 2,
    "confirmed": true,
    "ai_value": "92% (GPT-4 alone)",
    "human_value": "76% doctors with GPT-4; 74% with ordinary references",
@@ -166,7 +170,7 @@
  },
  "gpqa": {
   "2025-11-07": {
-   "tier": 3,
+   "tier": 2,
    "confirmed": true,
    "ai_value": "87% (Grok 4)",
    "human_value": "about 70% (PhD experts)",
@@ -178,7 +182,7 @@
    ]
   },
   "2026-05-07": {
-   "tier": 3,
+   "tier": 2,
    "confirmed": true,
    "ai_value": "95% (GPT-5.4 Pro)",
    "human_value": "about 70% (PhD experts)",

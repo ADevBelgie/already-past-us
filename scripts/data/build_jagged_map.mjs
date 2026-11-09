@@ -22,10 +22,12 @@ const outPath = resolve(root, 'src', 'data', 'jagged_map.json')
 const TIERS = [
   { key: 0, label: 'Far below humans', heading: 'Far below humans' },
   { key: 1, label: 'Below humans', heading: 'Below humans' },
-  { key: 2, label: 'Level with the best', heading: 'Level with the best' },
   // "Typical" because Waymo (compared with average drivers) sits on this step. The label is the
-  // chart's column name; the heading keeps the manuscript's "with caveats".
-  { key: 3, label: 'Ahead of trained or typical people', heading: 'Ahead of trained or typical people, with caveats' },
+  // chart's column name; the heading keeps the manuscript's "with caveats". It sits left of "Level
+  // with the best": beating trained or typical people is a weaker result than matching the best,
+  // so a row that moves from here to "Level with the best" (IMO, 2025 to 2026) moves right.
+  { key: 2, label: 'Ahead of trained or typical people', heading: 'Ahead of trained or typical people, with caveats' },
+  { key: 3, label: 'Level with the best', heading: 'Level with the best' },
   { key: 4, label: 'Beyond the best humans', heading: 'Beyond the best humans' },
 ]
 const UNCONFIRMED_HEADING = 'Level with the best, if confirmed'
@@ -34,11 +36,11 @@ const UNCONFIRMED_HEADING = 'Level with the best, if confirmed'
 // the heading its footnote must sit under; `vs_machine` marks a comparison with a machine.
 const MACHINE_HEADING = 'Improving on the best known algorithms'
 
-// Who AI was compared with. The manuscript and its expert notes stress that several right-hand
-// dots are not comparisons with the best humans.
+// Who AI was compared with. The manuscript and its expert notes stress that several dots are not
+// comparisons with the best humans.
 const GROUPS = {
   best: 'Best humans',
-  trained: 'Trained experts',
+  trained: 'Trained people',
   people: 'People in general',
   machine: 'Another computer model',
 }
@@ -92,40 +94,9 @@ const ROWS = [
     section: 's4',
   },
   {
-    id: 'forecasting',
-    domain: 'Forecasting',
-    tier: 2,
-    compared_with: 'superforecasters',
-    compared_group: 'best',
-    comparison_text:
-      "The Forecasting Research Institute found the best AI forecasters statistically indistinguishable from superforecasters on its questions. The superforecaster baseline was collected in 2024 and is extrapolated.",
-    ai_value: 'not distinguishable (p = 0.41)',
-    human_value: 'superforecasters',
-    date: '2026-07-16',
-    date_label: '16 July 2026',
-    footnote_ids: ['s4-forecast'],
-    section: 's4',
-  },
-  {
-    id: 'imo-2026',
-    domain: 'Math olympiad (IMO 2026)',
-    tier: 2,
-    confirmed: false,
-    compared_with: 'top contestants',
-    compared_group: 'best',
-    comparison_text:
-      'Huawei, Xiaohongshu and others reported perfect scores of 42 out of 42. The IMO has confirmed none of them. 7 of the 666 human contestants also got full marks, so even if true it is a tie with the best.',
-    ai_value: '42/42 (company-reported)',
-    human_value: '42/42 for 7 of 666 contestants',
-    date: '2026-07-23',
-    date_label: 'July 2026',
-    footnote_ids: ['s4-imo'],
-    section: 's4',
-  },
-  {
     id: 'waymo',
     domain: 'Driving (Waymo)',
-    tier: 3,
+    tier: 2,
     compared_with: 'average drivers',
     compared_group: 'people',
     comparison_text:
@@ -140,7 +111,7 @@ const ROWS = [
   {
     id: 'diagnosis',
     domain: 'Diagnosis on written cases',
-    tier: 3,
+    tier: 2,
     compared_with: 'doctors',
     compared_group: 'trained',
     comparison_text:
@@ -155,7 +126,7 @@ const ROWS = [
   {
     id: 'gpqa',
     domain: 'GPQA Diamond science questions',
-    tier: 3,
+    tier: 2,
     compared_with: 'PhD experts',
     compared_group: 'trained',
     comparison_text:
@@ -167,6 +138,37 @@ const ROWS = [
     footnote_ids: ['s4-gpqa-ai', 's4-gpqa-human'],
     // The ~70% PhD baseline rests on a different footnote with its own (weaker) tag.
     baseline_footnote_id: 's4-gpqa-human',
+    section: 's4',
+  },
+  {
+    id: 'forecasting',
+    domain: 'Forecasting',
+    tier: 3,
+    compared_with: 'superforecasters',
+    compared_group: 'best',
+    comparison_text:
+      "The Forecasting Research Institute found the best AI forecasters statistically indistinguishable from superforecasters on its questions. The superforecaster baseline was collected in 2024 and is extrapolated.",
+    ai_value: 'not distinguishable (p = 0.41)',
+    human_value: 'superforecasters',
+    date: '2026-07-16',
+    date_label: '16 July 2026',
+    footnote_ids: ['s4-forecast'],
+    section: 's4',
+  },
+  {
+    id: 'imo-2026',
+    domain: 'Math olympiad (IMO)',
+    tier: 3,
+    confirmed: false,
+    compared_with: 'top contestants',
+    compared_group: 'best',
+    comparison_text:
+      'At IMO 2026, Huawei, Xiaohongshu and others reported perfect scores of 42 out of 42. The IMO has confirmed none of them. 7 of the 666 human contestants also got full marks, so even if true it is a tie with the best.',
+    ai_value: '42/42 at IMO 2026 (company-reported)',
+    human_value: '42/42 for 7 of 666 contestants',
+    date: '2026-07-23',
+    date_label: 'July 2026',
+    footnote_ids: ['s4-imo'],
     section: 's4',
   },
   {
@@ -346,6 +348,7 @@ for (const row of rows) {
       }
     }
     if (!(e.tier >= 0 && e.tier < TIERS.length)) problems.push(`${row.id}@${d}: bad tier`)
+    if (e.compared_group && !GROUPS[e.compared_group]) problems.push(`${row.id}@${d}: unknown compared_group`)
     if (e.evidence_date > d) problems.push(`${row.id}@${d}: evidence dated after the view date`)
     const confirmed = e.confirmed !== false
     row.history[d] = {
@@ -353,6 +356,9 @@ for (const row of rows) {
       tier_label: row.vs_machine ? row.tier_label : TIERS[e.tier].label + (confirmed ? '' : ', if confirmed'),
       confirmed,
       compared_with: e.compared_with ?? row.compared_with,
+      // A past view can compare with a different group (IMO 2025: most contestants, not the best).
+      compared_group: e.compared_group ?? row.compared_group,
+      compared_group_label: GROUPS[e.compared_group ?? row.compared_group],
       comparison_text: e.comparison_text,
       ai_value: e.ai_value,
       human_value: e.human_value,
@@ -363,6 +369,17 @@ for (const row of rows) {
       footnote_id: e.footnote_ids[0],
       footnote_ids: e.footnote_ids,
     }
+  }
+}
+
+// Over the three views a row may stay or move right, never left: the evidence only accumulates, so a
+// leftward move means a tier or the axis order is wrong (it once caught IMO 2025 gold vs IMO 2026).
+for (const row of rows) {
+  const seq = [...HISTORY_DATES.map(d => row.history?.[d]), { same_as_today: true }]
+    .map(e => (e === null || e === undefined ? null : e.same_as_today ? row.tier : e.tier))
+    .filter(t => t !== null)
+  for (let i = 1; i < seq.length; i++) {
+    if (seq[i] < seq[i - 1]) problems.push(`${row.id}: moves left over time (${seq.join(' -> ')})`)
   }
 }
 
