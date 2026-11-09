@@ -17,10 +17,15 @@ function Chips({ ids }) {
   return <span className="wm-chips">{ids.map(id => <FootnoteRef key={id} id={id} />)}</span>
 }
 
+// Brief mode lists each cell's examples by name (see "Brief mode" in WeightsMatrix.css). An entry
+// whose name says nothing without its text is left out there; Expert mode and the table keep it.
+const BRIEF_HIDDEN = new Set(['earlier-self'])
+
 function Entry({ e }) {
   const meta = [e.who, e.when].filter(Boolean).join(', ')
+  const cls = ['wm-entry', e.highlight && 'wm-entry--hl', BRIEF_HIDDEN.has(e.id) && 'wm-entry--expert'].filter(Boolean).join(' ')
   return (
-    <li className={`wm-entry${e.highlight ? ' wm-entry--hl' : ''}`}>
+    <li className={cls}>
       {e.highlight && <span className="wm-entry__flag">{e.highlight}</span>}
       <span className="wm-entry__head">
         <strong className="wm-entry__name">{e.name}</strong>
@@ -153,6 +158,7 @@ export default function WeightsMatrix() {
       caveat="The MIT result is a blog post, not peer-reviewed. Most of its gain came from repairing a fault that made the small model repeat itself."
     >
       <Matrix />
+      <p className="wm-hint">Names only in the Brief. Switch to Expert at the top of the page, or open “Show the data”, for what each one did.</p>
       <DataTable />
     </Figure>
   )

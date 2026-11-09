@@ -86,6 +86,28 @@
 .wm-axes { display: flex; flex-wrap: wrap; gap: 0.2rem 0.9rem; margin-bottom: 0.55rem; font-size: 0.72rem; color: var(--ink); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 .wm-axes__k { color: var(--ink-3); font-weight: 500; }
 
+/* Brief mode: the same grid cut down to names, so a general reader sees the shape of the answer
+   (one empty cell, one November story) and not a wall of text. Each cell keeps its one-line lead
+   and lists its examples as name pills; only the highlighted November story keeps its text.
+   Expert mode and "Show the data" carry what each example did. Done in CSS on .layout[data-mode],
+   so the pre-rendered (Brief) HTML is already right before hydration. */
+.wm-hint { display: none; margin: 0.6rem 0 0; font-family: var(--font-sans); font-size: 0.74rem; line-height: 1.4; color: var(--ink-3); }
+.layout[data-mode='brief'] .wm-hint { display: block; }
+.layout[data-mode='brief'] .wm .wm-entries { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 0.35rem 0.4rem; }
+.layout[data-mode='brief'] .wm .wm-entry { flex: 0 0 auto; }
+.layout[data-mode='brief'] .wm .wm-entry--expert { display: none; }
+.layout[data-mode='brief'] .wm .wm-entry:not(.wm-entry--hl) {
+  padding: 0.14rem 0.55rem;
+  border: 1px solid var(--rule); border-radius: 999px;
+  background: var(--paper-2);
+}
+.layout[data-mode='brief'] .wm .wm-entry:not(.wm-entry--hl) :is(.wm-entry__meta, .wm-entry__text) { display: none; }
+.layout[data-mode='brief'] .wm .wm-entry:not(.wm-entry--hl) .wm-entry__name { font-size: 0.76rem; font-weight: 500; }
+.layout[data-mode='brief'] .wm .wm-entry--hl { flex: 1 1 100%; margin-top: 0.25rem; }
+.layout[data-mode='brief'] .wm .wm-cell { padding-top: 0.65rem; padding-bottom: 0.75rem; }
+.layout[data-mode='brief'] .wm .wm-cell__lead { margin-bottom: 0.5rem !important; }
+.layout[data-mode='brief'] .wm .wm-rowhead { padding-top: 0.65rem; padding-bottom: 0.65rem; }
+
 /* Data table */
 .wm-src { display: inline-flex; align-items: center; gap: 0.3rem; margin: 0 0.5rem 0.2rem 0; white-space: nowrap; }
 
