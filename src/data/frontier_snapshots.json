@@ -84,16 +84,75 @@
    "date": "2027-05-07",
    "label": "May 2027 (estimate)",
    "footnote": "s2-projection",
+   "method": "scripts/data/frontier_projection.py",
+   "steps": [
+    {
+     "from": 0.0482,
+     "to": 0.16,
+     "eci": 160.22,
+     "low": 154.62,
+     "high": 165.72
+    },
+    {
+     "from": 0.16,
+     "to": 0.9645,
+     "eci": 168.66,
+     "low": 163.06,
+     "high": 174.16
+    },
+    {
+     "from": 0.9645,
+     "to": 1.6,
+     "eci": 168.94,
+     "low": 163.34,
+     "high": 174.44
+    },
+    {
+     "from": 1.6,
+     "to": 3.2,
+     "eci": 176.26,
+     "low": 170.66,
+     "high": 181.76
+    },
+    {
+     "from": 3.2,
+     "to": 16.0,
+     "eci": 177.38,
+     "low": 171.78,
+     "high": 182.88
+    },
+    {
+     "from": 16.0,
+     "to": 100.0,
+     "eci": 177.51,
+     "low": 171.91,
+     "high": 183.01
+    }
+   ],
+   "top_trend": {
+    "today": 170.11,
+    "points_per_year": 16.88,
+    "may_2027": 178.54
+   },
+   "band": {
+    "lower_offset": -5.6,
+    "upper_offset": 5.5,
+    "coverage": 0.71
+   },
+   "test": {
+    "comparisons": 63,
+    "mean_abs_miss": 3.69,
+    "bias_actual_minus_estimate": -1.28
+   },
    "price_at_eci_test": {
-    "high": 0.2,
-    "low": 0.0482,
-    "epoch_avg": 0.0555,
-    "epoch_aged": 0.0923
+    "estimate": 0.0482,
+    "today": 0.2
    },
    "eci_at_price_test": {
-    "low": 168.94,
-    "high": 178.41,
-    "epoch_frontier": 175.94
+    "estimate": 177.38,
+    "low": 171.78,
+    "high": 182.88,
+    "today": 168.94
    }
   }
  },

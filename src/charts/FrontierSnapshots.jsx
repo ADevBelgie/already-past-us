@@ -15,11 +15,27 @@ const PRICE_TEST = H.price_test // 4
 
 const X_DOMAIN = [0.05, 100]
 const Y_DOMAIN = [130, 172]
-// The May 2027 estimate view needs room below 5 cents and above 172 (footnote s2-projection).
+// The May 2027 estimate (footnote s2-projection; method in scripts/data/frontier_projection.py): a step
+// line and a hatched range across every price. Its price axis starts where the estimate starts, at about
+// 5 cents (today's ECI-150 price after six more months of price falls), and its score axis goes to 186.
 const PROJ = H.projection
-const X_DOMAIN_PROJ = [0.03, 100]
-const Y_DOMAIN_PROJ = [130, 182]
+const PROJ_STEPS = PROJ.steps
+const X_DOMAIN_PROJ = [PROJ_STEPS[0].from, 100]
+const Y_DOMAIN_PROJ = [130, 186]
 const cents = v => `${Math.round(v * 100)}¢`
+
+function projLinePath(steps, x, y) {
+  let d = `M${x(steps[0].from)},${y(steps[0].eci)}`
+  steps.forEach((s, i) => { d += `${i ? `V${y(s.eci)}` : ''}H${x(s.to)}` })
+  return d
+}
+function projBandPath(steps, x, y) {
+  let d = `M${x(steps[0].from)},${y(steps[0].high)}`
+  steps.forEach((s, i) => { d += `${i ? `V${y(s.high)}` : ''}H${x(s.to)}` })
+  d += `V${y(steps[steps.length - 1].low)}`
+  for (let i = steps.length - 1; i >= 0; i--) d += `H${x(steps[i].from)}${i ? `V${y(steps[i - 1].low)}` : ''}`
+  return d + 'Z'
+}
 
 const VIEW_OPTIONS = [
   { value: '2025-11-07', label: 'A year ago', short: 'Year ago' },
@@ -154,8 +170,8 @@ function Chart({ width, view }) {
     return out.sort((a, b) => (a.frontier - b.frontier) || a.snapshot.localeCompare(b.snapshot))
   }, [view]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const yTicks = (narrow ? [130, 140, 150, 160, 170, ...(proj ? [180] : [])] : [130, 135, 140, 145, 150, 155, 160, 165, 170, ...(proj ? [175, 180] : [])]).filter(t => t !== ECI_TEST)
-  const xTicks = tiny ? [0.1, 1, 10, 100] : [...(proj ? [0.03] : []), 0.1, 0.3, 1, 3, 10, 30, 100]
+  const yTicks = (narrow ? [130, 140, 150, 160, 170, ...(proj ? [180] : [])] : [130, 135, 140, 145, 150, 155, 160, 165, 170, ...(proj ? [175, 180, 185] : [])]).filter(t => t !== ECI_TEST)
+  const xTicks = tiny ? [0.1, 1, 10, 100] : [0.1, 0.3, 1, 3, 10, 30, 100]
   const xTickLabel = t => (t < 1 ? `$${t.toFixed(2)}` : `$${t}`)
 
   const x150 = [CROSS_150[SNAPS[0].date].price, CROSS_150[SNAPS[2].date].price]
@@ -175,16 +191,16 @@ function Chart({ width, view }) {
   ]
   if (all) obstacles.push(textBox(x(x150[1]) + 8, y(ECI_TEST) + 15, 'start', arrowLabel, 12.5))
   const pp = PROJ.price_at_eci_test, pe = PROJ.eci_at_price_test
-  const projPriceText = `May 2027: ${cents(pp.low)}-${cents(pp.high)}`
-  const projEciText = `May 2027: ${Math.round(pe.low)}-${Math.round(pe.high)}`
+  const projPriceText = `May 2027: about ${cents(pp.estimate)}`
+  const projEciText = `May 2027: about ${Math.round(pe.estimate)} (${Math.round(pe.low)}-${Math.round(pe.high)})`
   // The ECI 150 label sits above the line on wide charts and below it on compact ones: take the other side.
   const projPriceY = y(ECI_TEST) + (compact ? -10 : 20)
+  const projEciY = y(pe.high) - 7
   if (proj) {
     obstacles.push(
-      textBox(x(pp.low), projPriceY, 'start', projPriceText, 12),
-      textBox(x(PRICE_TEST) - 9, y(pe.high) + 4, 'end', projEciText, 12),
-      { x0: x(pp.low), x1: x(pp.high), y0: y(ECI_TEST) - 6, y1: y(ECI_TEST) + 6 },
-      { x0: x(PRICE_TEST) - 6, x1: x(PRICE_TEST) + 6, y0: y(pe.high), y1: y(pe.low) },
+      ...(narrow ? [] : [textBox(x(pp.estimate) + 8, projPriceY, 'start', projPriceText, 12)]),
+      textBox(x(PRICE_TEST) - 8, projEciY, 'end', projEciText, 12),
+      ...PROJ_STEPS.map(st => ({ x0: x(st.from), x1: x(st.to), y0: y(st.eci) - 2, y1: y(st.eci) + 2 })),
     )
   }
   if (all && !compact) {
@@ -241,7 +257,7 @@ function Chart({ width, view }) {
   const halo = { stroke: C.paper, strokeWidth: 3, paintOrder: 'stroke', strokeLinejoin: 'round' }
 
   const summary = proj
-    ? `Estimate for May 2027, if nothing changes or if the past year's pace continues: the cheapest model scoring ${ECI_TEST} or more would cost between ${cents(pp.low)} and ${cents(pp.high)} per million tokens (today ${cents(pp.high)}), and the best score at $${PRICE_TEST} or less would be between ${Math.round(pe.low)} and ${Math.round(pe.high)} (today ${Math.round(pe.low)}). Rough estimates, not data.`
+    ? `Our estimate for May 2027, not data: a dashed step line above today's frontier at every price, with a hatched likely range. The cheapest model scoring ${ECI_TEST} or more would cost about ${cents(pp.estimate)} per million tokens (today ${cents(pp.today)}), and the best score at $${PRICE_TEST} or less would be about ${Math.round(pe.estimate)}, likely ${Math.round(pe.low)} to ${Math.round(pe.high)} (today ${Math.round(pe.today)}).`
     : `Step lines show the highest Epoch Capabilities Index score available at or below each blended list price on ${SNAPS.map(s => s.long).join(', ')}; ` +
     `the cheapest model scoring ${ECI_TEST} or more fell from ${fmt.usd(x150[0])} to ${fmt.usd(x150[1])}, ` +
     `and the best score at $${PRICE_TEST} or less rose from ${Math.round(y4[0])} to ${Math.round(y4[1])}.`
@@ -250,9 +266,8 @@ function Chart({ width, view }) {
     <div className="fs-chart">
       <svg {...svgSize(width, height)} role="group" aria-label={summary}>
         <defs>
-          <pattern id="fs-hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-            <rect width="5" height="5" fill={C.paper} />
-            <line x1="0" y1="0" x2="0" y2="5" stroke={C.ink3} strokeWidth="2" />
+          <pattern id="fs-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="6" stroke={C.snap3} strokeWidth="1.5" opacity="0.45" />
           </pattern>
           <marker id="fs-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0,1 L9,5 L0,9" fill="none" stroke={C.ink} strokeWidth="1.6" />
@@ -289,6 +304,9 @@ function Chart({ width, view }) {
           </text>
           <line x1={x(PRICE_TEST)} x2={x(PRICE_TEST)} y1={0} y2={ih} stroke={C.ink3} strokeDasharray="3 3" />
           <text x={x(PRICE_TEST)} y={-6} textAnchor="middle" fontSize={11} fill={C.ink2}>$4</text>
+
+          {/* May 2027 likely range, under every line (footnote s2-projection) */}
+          {proj && <path d={projBandPath(PROJ_STEPS, x, y)} fill="url(#fs-hatch)" stroke="none" aria-hidden="true" />}
 
           {/* ghost frontiers for context in single-snapshot views */}
           {ghostSnaps.map(s => (
@@ -345,19 +363,18 @@ function Chart({ width, view }) {
             </g>
           ))}
 
-          {/* May 2027 estimate: two hatched ranges, never a fourth step line (footnote s2-projection) */}
+          {/* May 2027 estimate: dashed step line and its two test readings (footnote s2-projection) */}
           {proj && (
             <g aria-hidden="true">
-              <rect
-                x={x(pp.low)} y={y(ECI_TEST) - 5} width={x(pp.high) - x(pp.low)} height={10}
-                fill="url(#fs-hatch)" stroke={C.ink3} strokeDasharray="3 2" opacity={0.9}
-              />
-              <text x={x(pp.low)} y={projPriceY} fontSize={12} fill={C.ink} fontWeight={600} {...halo}>{projPriceText}</text>
-              <rect
-                x={x(PRICE_TEST) - 5} y={y(pe.high)} width={10} height={y(pe.low) - y(pe.high)}
-                fill="url(#fs-hatch)" stroke={C.ink3} strokeDasharray="3 2" opacity={0.9}
-              />
-              <text x={x(PRICE_TEST) - 9} y={y(pe.high) + 4} textAnchor="end" fontSize={12} fill={C.ink} fontWeight={600} {...halo}>{projEciText}</text>
+              <path d={projLinePath(PROJ_STEPS, x, y)} fill="none" stroke={C.snap3} strokeWidth={2} strokeDasharray="6 4" />
+              {!narrow && (
+                <text x={iw + 6} y={y(PROJ_STEPS[PROJ_STEPS.length - 1].eci) + 4} fontSize={12} fill={C.ink2} fontWeight={600}>May 2027?</text>
+              )}
+              <circle cx={x(pp.estimate)} cy={y(ECI_TEST)} r={3.5} fill={C.paper} stroke={C.snap3} strokeWidth={1.75} />
+              {/* on phones the cheap end is crowded; the readout below the chart gives this figure */}
+              {!narrow && <text x={x(pp.estimate) + 8} y={projPriceY} fontSize={12} fill={C.ink} fontWeight={600} {...halo}>{projPriceText}</text>}
+              <circle cx={x(PRICE_TEST)} cy={y(pe.estimate)} r={3.5} fill={C.paper} stroke={C.snap3} strokeWidth={1.75} />
+              <text x={x(PRICE_TEST) - 8} y={projEciY} textAnchor="end" fontSize={12} fill={C.ink} fontWeight={600} {...halo}>{projEciText}</text>
             </g>
           )}
 
@@ -434,7 +451,7 @@ function Readout({ view }) {
             <li className="fs-readout__proj">
               <span className="fs-sw fs-sw--hatch" aria-hidden="true" />
               <span className="fs-readout__when">May 2027?</span>
-              <strong>{cents(PROJ.price_at_eci_test.low)}-{cents(PROJ.price_at_eci_test.high)}</strong>
+              <strong>about {cents(PROJ.price_at_eci_test.estimate)}</strong>
               <span className="fs-readout__who">estimate</span>
             </li>
           )}
@@ -460,8 +477,8 @@ function Readout({ view }) {
             <li className="fs-readout__proj">
               <span className="fs-sw fs-sw--hatch" aria-hidden="true" />
               <span className="fs-readout__when">May 2027?</span>
-              <strong>{Math.round(PROJ.eci_at_price_test.low)}-{Math.round(PROJ.eci_at_price_test.high)}</strong>
-              <span className="fs-readout__who">estimate</span>
+              <strong>about {Math.round(PROJ.eci_at_price_test.estimate)}</strong>
+              <span className="fs-readout__who">estimate, likely {Math.round(PROJ.eci_at_price_test.low)}-{Math.round(PROJ.eci_at_price_test.high)}</span>
             </li>
           )}
         </ol>
@@ -527,8 +544,9 @@ export default function FrontierSnapshots() {
         ))}
         {view !== 'all' && <LegendItem color={C.ink3} hollow label="Other models that date" />}
         {view !== 'all' && <LegendItem color={C.rule} shape="line" dashed label="Other dates" />}
+        {view === 'proj' && <LegendItem color={C.snap3} shape="line" dashed label="May 2027 (our estimate)" />}
         {view === 'proj' && (
-          <span className="fs-key-proj"><span className="fs-sw fs-sw--hatch" aria-hidden="true" />May 2027 range: from &ldquo;nothing new&rdquo; to &ldquo;the past year&rsquo;s pace continues&rdquo; (estimate)</span>
+          <span className="fs-key-proj"><span className="fs-sw fs-sw--hatch" aria-hidden="true" />Likely range: about 7 in 10 past six-month outcomes fell inside</span>
         )}
       </div>
     </div>
@@ -542,7 +560,7 @@ export default function FrontierSnapshots() {
       notes={['s2-cheaper', 's2-better', 's2-top', 's2-hist', 's2-tokenizer', 's2-eci', 's2-blend', ...(view === 'proj' ? ['s2-projection'] : [])]}
       source="Epoch AI, Epoch Capabilities Index (scores as of 7 Nov 2026); company list prices (some open-weight prices appear to be third-party host prices); our calculation"
       caveat={view === 'proj'
-        ? "The May 2027 ranges are our rough estimate, not data. Each runs from today's value (if no cheaper or better model arrives) to where the past year's pace would lead in six months. Three dates are too few to measure a steady trend, and list prices can also rise."
+        ? "The May 2027 line is our estimate, not data. It assumes the top score keeps its straight two-year trend (about 17 points a year, no pause), each price stays as far behind the top as it is today, and the same capability keeps getting about 17 times cheaper a year. Tested on 2025-26 data, the method missed by about 4 points on average, a little on the high side. No model has yet been listed below about 7 cents."
         : "All three dates use Epoch's 7 November 2026 scores, so older models are scored on today's scale. Scores carry uncertainty of about ±2-3 points, so smaller gaps are noise. Price per token ignores how many tokens a model uses to reach an answer."}
     >
       {width => (

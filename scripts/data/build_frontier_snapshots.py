@@ -102,6 +102,17 @@ def pareto(rows):
     return out
 
 
+def load_projection_module():
+    """scripts/data/frontier_projection.py, loaded by path (python -I leaves the script folder off sys.path)."""
+    import importlib.util
+    import sys
+    sys.dont_write_bytecode = True   # no __pycache__ folder in scripts/data
+    spec = importlib.util.spec_from_file_location("frontier_projection", Path(__file__).with_name("frontier_projection.py"))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
 def main():
     ci = load_ci()
     history = load_price_history()
@@ -196,32 +207,59 @@ def main():
         "price_test": PRICE_TEST,
     }
 
-    # Six-month projection to about 7 May 2027 (footnote s2-projection, "Our calculation", an estimate).
-    # Each range runs from "nothing new arrives" (today's value) to "the past year's pace continues"
-    # for half a year. Epoch's published rates (s2-epoch: ~13x a year at fixed accuracy, slowing to
-    # ~4.7x for older levels; s6-eci: ~14 ECI points a year at the frontier) land inside both ranges.
-    half = lambda year_factor: year_factor ** 0.5
-    p_now, e_now = cheaper[d3][0], better[d3][0]
-    e_year_gain = better[d3][0] - better[d1][0]                      # 18.94 points at <= $4 over the year
+    # Six-month estimate of the whole frontier for about 7 May 2027 (footnote s2-projection, "Our
+    # calculation", an estimate, not data). Method and test: scripts/data/frontier_projection.py.
+    proj_mod = load_projection_module()
+    test_rows = proj_mod.backtest()
+    test = proj_mod.summary(test_rows)
+    band = proj_mod.band(test_rows)
+    lo_off, hi_off = band["lower_offset"], band["upper_offset"]
+    assert (test["mean_abs_miss"], test["bias_actual_minus_estimate"]) == (3.69, -1.28), test
+    assert (lo_off, hi_off, band["coverage"]) == (-5.6, 5.5, 0.71), band
+    v0, rate = proj_mod.trend(proj_mod.D(d3))
+    p_now = cheaper[d3][0]
+    fall6 = proj_mod.YEAR_PRICE_FALL ** 0.5                          # six months at 17.2x a year
+    x_start = p_now / fall6                                          # today's ECI-150 price, six months on
+    assert round(x_start, 4) == 0.0482, x_start                      # "about 5 cents"
+    assert proj_mod.estimate(d3, x_start * 1.001) >= ECI_TEST
+
+    # The estimate is a step function of price: it can only change where today's frontier does, at
+    # that price divided by the shift, or divided by the six-month price fall.
+    today_prices = sorted({p for p, _ in proj_mod.available(d3)})
+    cuts = {x_start, 100.0}
+    for p in today_prices:
+        for c in (p, p / proj_mod.SHIFT, p / fall6):
+            if x_start * 1.0001 < c < 100.0:
+                cuts.add(c)
+    cuts = sorted(cuts)
+    steps = []
+    for a, b in zip(cuts, cuts[1:]):
+        mid = (a * b) ** 0.5
+        e = proj_mod.estimate(d3, mid)
+        now = proj_mod.frontier(d3, mid)
+        low = max(now if now is not None else e + lo_off, e + lo_off)
+        step = {"from": round(a, 4), "to": round(b, 4), "eci": round(e, 2), "low": round(low, 2), "high": round(max(low, e + hi_off), 2)}
+        if steps and all(steps[-1][k] == step[k] for k in ("eci", "low", "high")):
+            steps[-1]["to"] = step["to"]
+        else:
+            steps.append(step)
+    at = lambda price: next(st for st in steps if st["from"] <= price < st["to"])
+    s4 = at(PRICE_TEST)
     projection = {
         "date": "2027-05-07",
         "label": "May 2027 (estimate)",
         "footnote": "s2-projection",
-        "price_at_eci_test": {
-            "high": p_now,                                           # no cheaper model arrives
-            "low": round(p_now / half(ratio), 4),                    # past year's 17.2x pace continues
-            "epoch_avg": round(p_now / half(13), 4),                 # Epoch ~13x a year
-            "epoch_aged": round(p_now / half(4.7), 4),               # Epoch, levels eight quarters old
-        },
-        "eci_at_price_test": {
-            "low": e_now,                                            # no better model at <= $4
-            "high": round(e_now + e_year_gain / 2, 2),               # past year's pace at <= $4 continues
-            "epoch_frontier": round(e_now + 14 / 2, 2),              # Epoch ~14 points a year
-        },
+        "method": "scripts/data/frontier_projection.py",
+        "steps": steps,
+        "top_trend": {"today": round(v0, 2), "points_per_year": round(rate * 12, 2), "may_2027": round(v0 + rate * 6, 2)},
+        "band": {"lower_offset": lo_off, "upper_offset": hi_off, "coverage": band["coverage"]},
+        "test": {k: test[k] for k in ("comparisons", "mean_abs_miss", "bias_actual_minus_estimate")},
+        "price_at_eci_test": {"estimate": round(x_start, 4), "today": p_now},
+        "eci_at_price_test": {"estimate": s4["eci"], "low": s4["low"], "high": s4["high"], "today": better[d3][0]},
     }
-    pp, pe = projection["price_at_eci_test"], projection["eci_at_price_test"]
-    assert (pp["low"], pp["epoch_avg"], pp["epoch_aged"]) == (0.0482, 0.0555, 0.0923), pp   # "about 5 cents"; 5.5 and 9 cents
-    assert (pe["high"], pe["epoch_frontier"]) == (178.41, 175.94), pe
+    assert (s4["eci"], s4["low"], s4["high"]) == (177.38, 171.78, 182.88), s4   # "about 177 (172-183)"
+    assert round(v0 + rate * 6, 1) == 178.5
+    assert all(a["to"] == b["from"] and a["eci"] <= b["eci"] for a, b in zip(steps, steps[1:]))
     headlines["projection"] = projection
 
     missing_ci = sorted({m["model"] for m in models if m["eci_lo"] is None})

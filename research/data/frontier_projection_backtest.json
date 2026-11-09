@@ -1,0 +1,599 @@
+{
+ "generated_by": "scripts/data/frontier_projection.py",
+ "method": "see the docstring of scripts/data/frontier_projection.py",
+ "today": "2026-11-07",
+ "target": "2027-05-07",
+ "horizon_months": 6,
+ "top_trend": {
+  "span_months": 24,
+  "value_today": 170.11,
+  "points_per_year": 16.88,
+  "value_at_target": 178.54,
+  "last_record": 169.07
+ },
+ "year_price_fall": 17.2,
+ "shift": 1.25,
+ "test": {
+  "comparisons": 63,
+  "mean_abs_miss": 3.69,
+  "bias_actual_minus_estimate": -1.28,
+  "bias_under_2_dollars": -1.84,
+  "percentiles": {
+   "10": -6.31,
+   "25": -5.6,
+   "50": -1.38,
+   "75": 1.96,
+   "90": 4.51,
+   "95": 5.03
+  }
+ },
+ "band": {
+  "lower_offset": -5.6,
+  "upper_offset": 5.5,
+  "coverage": 0.71
+ },
+ "shift_comparison": {
+  "1.0": {
+   "comparisons": 63,
+   "mean_abs_miss": 3.53,
+   "bias_actual_minus_estimate": -0.44,
+   "bias_under_2_dollars": -0.68,
+   "percentiles": {
+    "10": -6.09,
+    "25": -3.43,
+    "50": -0.67,
+    "75": 2.46,
+    "90": 4.51,
+    "95": 7.1
+   }
+  },
+  "1.25": {
+   "comparisons": 63,
+   "mean_abs_miss": 3.69,
+   "bias_actual_minus_estimate": -1.28,
+   "bias_under_2_dollars": -1.84,
+   "percentiles": {
+    "10": -6.31,
+    "25": -5.6,
+    "50": -1.38,
+    "75": 1.96,
+    "90": 4.51,
+    "95": 5.03
+   }
+  },
+  "1.5": {
+   "comparisons": 63,
+   "mean_abs_miss": 3.93,
+   "bias_actual_minus_estimate": -1.8,
+   "bias_under_2_dollars": -2.78,
+   "percentiles": {
+    "10": -7.58,
+    "25": -6.07,
+    "50": -1.38,
+    "75": 1.96,
+    "90": 4.51,
+    "95": 5.03
+   }
+  },
+  "2.0": {
+   "comparisons": 63,
+   "mean_abs_miss": 4.09,
+   "bias_actual_minus_estimate": -2.17,
+   "bias_under_2_dollars": -3.24,
+   "percentiles": {
+    "10": -7.79,
+    "25": -6.09,
+    "50": -1.38,
+    "75": 1.96,
+    "90": 3.56,
+    "95": 4.51
+   }
+  }
+ },
+ "comparisons": [
+  {
+   "from": "2025-11-07",
+   "to": "2026-05-07",
+   "price": 0.2,
+   "today": 139.17,
+   "estimate": 148.58,
+   "actual": 146.86
+  },
+  {
+   "from": "2025-11-07",
+   "to": "2026-05-07",
+   "price": 0.3,
+   "today": 144.33,
+   "estimate": 152.69,
+   "actual": 146.86
+  },
+  {
+   "from": "2025-11-07",
+   "to": "2026-05-07",
+   "price": 0.5,
+   "today": 144.33,
+   "estimate": 152.69,
+   "actual": 146.86
+  },
+  {
+   "from": "2025-11-07",
+   "to": "2026-05-07",
+   "price": 1,
+   "today": 146.08,
+   "estimate": 154.44,
+   "actual": 146.86
+  },
+  {
+   "from": "2025-11-07",
+   "to": "2026-05-07",
+   "price": 2,
+   "today": 146.08,
+   "estimate": 154.44,
+   "actual": 152.25
+  },
+  {
+   "from": "2025-11-07",
+   "to": "2026-05-07",
+   "price": 4,
+   "today": 150.0,
+   "estimate": 158.36,
+   "actual": 152.27
+  },
+  {
+   "from": "2025-11-07",
+   "to": "2026-05-07",
+   "price": 10,
+   "today": 150.0,
+   "estimate": 158.36,
+   "actual": 157.82
+  },
+  {
+   "from": "2025-11-07",
+   "to": "2026-05-07",
+   "price": 30,
+   "today": 150.0,
+   "estimate": 158.36,
+   "actual": 160.04
+  },
+  {
+   "from": "2025-11-07",
+   "to": "2026-05-07",
+   "price": 100,
+   "today": 151.15,
+   "estimate": 159.51,
+   "actual": 162.67
+  },
+  {
+   "from": "2025-12-07",
+   "to": "2026-06-07",
+   "price": 0.2,
+   "today": 139.17,
+   "estimate": 148.65,
+   "actual": 146.86
+  },
+  {
+   "from": "2025-12-07",
+   "to": "2026-06-07",
+   "price": 0.3,
+   "today": 144.33,
+   "estimate": 152.76,
+   "actual": 146.86
+  },
+  {
+   "from": "2025-12-07",
+   "to": "2026-06-07",
+   "price": 0.5,
+   "today": 146.22,
+   "estimate": 154.65,
+   "actual": 146.86
+  },
+  {
+   "from": "2025-12-07",
+   "to": "2026-06-07",
+   "price": 1,
+   "today": 146.22,
+   "estimate": 154.65,
+   "actual": 147.6
+  },
+  {
+   "from": "2025-12-07",
+   "to": "2026-06-07",
+   "price": 2,
+   "today": 146.22,
+   "estimate": 154.65,
+   "actual": 152.25
+  },
+  {
+   "from": "2025-12-07",
+   "to": "2026-06-07",
+   "price": 4,
+   "today": 150.87,
+   "estimate": 161.31,
+   "actual": 155.24
+  },
+  {
+   "from": "2025-12-07",
+   "to": "2026-06-07",
+   "price": 10,
+   "today": 152.88,
+   "estimate": 161.31,
+   "actual": 159.89
+  },
+  {
+   "from": "2025-12-07",
+   "to": "2026-06-07",
+   "price": 30,
+   "today": 152.88,
+   "estimate": 161.31,
+   "actual": 160.04
+  },
+  {
+   "from": "2025-12-07",
+   "to": "2026-06-07",
+   "price": 100,
+   "today": 152.88,
+   "estimate": 161.31,
+   "actual": 162.67
+  },
+  {
+   "from": "2026-01-07",
+   "to": "2026-07-07",
+   "price": 0.2,
+   "today": 139.17,
+   "estimate": 148.82,
+   "actual": 146.86
+  },
+  {
+   "from": "2026-01-07",
+   "to": "2026-07-07",
+   "price": 0.3,
+   "today": 144.33,
+   "estimate": 152.93,
+   "actual": 146.86
+  },
+  {
+   "from": "2026-01-07",
+   "to": "2026-07-07",
+   "price": 0.5,
+   "today": 146.22,
+   "estimate": 154.82,
+   "actual": 146.86
+  },
+  {
+   "from": "2026-01-07",
+   "to": "2026-07-07",
+   "price": 1,
+   "today": 146.22,
+   "estimate": 160.85,
+   "actual": 147.6
+  },
+  {
+   "from": "2026-01-07",
+   "to": "2026-07-07",
+   "price": 2,
+   "today": 152.25,
+   "estimate": 160.85,
+   "actual": 152.25
+  },
+  {
+   "from": "2026-01-07",
+   "to": "2026-07-07",
+   "price": 4,
+   "today": 152.25,
+   "estimate": 163.02,
+   "actual": 156.71
+  },
+  {
+   "from": "2026-01-07",
+   "to": "2026-07-07",
+   "price": 10,
+   "today": 154.42,
+   "estimate": 163.02,
+   "actual": 159.89
+  },
+  {
+   "from": "2026-01-07",
+   "to": "2026-07-07",
+   "price": 30,
+   "today": 154.42,
+   "estimate": 163.02,
+   "actual": 164.19
+  },
+  {
+   "from": "2026-01-07",
+   "to": "2026-07-07",
+   "price": 100,
+   "today": 157.22,
+   "estimate": 164.57,
+   "actual": 164.19
+  },
+  {
+   "from": "2026-02-07",
+   "to": "2026-08-07",
+   "price": 0.2,
+   "today": 139.17,
+   "estimate": 148.83,
+   "actual": 146.86
+  },
+  {
+   "from": "2026-02-07",
+   "to": "2026-08-07",
+   "price": 0.3,
+   "today": 144.33,
+   "estimate": 152.94,
+   "actual": 146.86
+  },
+  {
+   "from": "2026-02-07",
+   "to": "2026-08-07",
+   "price": 0.5,
+   "today": 146.22,
+   "estimate": 154.83,
+   "actual": 156.79
+  },
+  {
+   "from": "2026-02-07",
+   "to": "2026-08-07",
+   "price": 1,
+   "today": 146.22,
+   "estimate": 160.86,
+   "actual": 156.79
+  },
+  {
+   "from": "2026-02-07",
+   "to": "2026-08-07",
+   "price": 2,
+   "today": 152.25,
+   "estimate": 160.86,
+   "actual": 156.79
+  },
+  {
+   "from": "2026-02-07",
+   "to": "2026-08-07",
+   "price": 4,
+   "today": 152.25,
+   "estimate": 163.03,
+   "actual": 157.43
+  },
+  {
+   "from": "2026-02-07",
+   "to": "2026-08-07",
+   "price": 10,
+   "today": 156.3,
+   "estimate": 164.91,
+   "actual": 164.45
+  },
+  {
+   "from": "2026-02-07",
+   "to": "2026-08-07",
+   "price": 30,
+   "today": 156.3,
+   "estimate": 164.91,
+   "actual": 164.45
+  },
+  {
+   "from": "2026-02-07",
+   "to": "2026-08-07",
+   "price": 100,
+   "today": 157.22,
+   "estimate": 165.83,
+   "actual": 164.45
+  },
+  {
+   "from": "2026-03-07",
+   "to": "2026-09-07",
+   "price": 0.2,
+   "today": 139.17,
+   "estimate": 148.92,
+   "actual": 146.86
+  },
+  {
+   "from": "2026-03-07",
+   "to": "2026-09-07",
+   "price": 0.3,
+   "today": 144.33,
+   "estimate": 153.03,
+   "actual": 153.64
+  },
+  {
+   "from": "2026-03-07",
+   "to": "2026-09-07",
+   "price": 0.5,
+   "today": 146.22,
+   "estimate": 154.92,
+   "actual": 156.79
+  },
+  {
+   "from": "2026-03-07",
+   "to": "2026-09-07",
+   "price": 1,
+   "today": 147.87,
+   "estimate": 160.95,
+   "actual": 156.79
+  },
+  {
+   "from": "2026-03-07",
+   "to": "2026-09-07",
+   "price": 2,
+   "today": 152.27,
+   "estimate": 160.97,
+   "actual": 158.63
+  },
+  {
+   "from": "2026-03-07",
+   "to": "2026-09-07",
+   "price": 4,
+   "today": 152.27,
+   "estimate": 164.94,
+   "actual": 158.63
+  },
+  {
+   "from": "2026-03-07",
+   "to": "2026-09-07",
+   "price": 10,
+   "today": 157.82,
+   "estimate": 166.52,
+   "actual": 164.45
+  },
+  {
+   "from": "2026-03-07",
+   "to": "2026-09-07",
+   "price": 30,
+   "today": 157.82,
+   "estimate": 166.52,
+   "actual": 169.07
+  },
+  {
+   "from": "2026-03-07",
+   "to": "2026-09-07",
+   "price": 100,
+   "today": 157.82,
+   "estimate": 166.52,
+   "actual": 169.07
+  },
+  {
+   "from": "2026-04-07",
+   "to": "2026-10-07",
+   "price": 0.2,
+   "today": 139.17,
+   "estimate": 149.01,
+   "actual": 160.22
+  },
+  {
+   "from": "2026-04-07",
+   "to": "2026-10-07",
+   "price": 0.3,
+   "today": 144.33,
+   "estimate": 153.12,
+   "actual": 160.22
+  },
+  {
+   "from": "2026-04-07",
+   "to": "2026-10-07",
+   "price": 0.5,
+   "today": 146.4,
+   "estimate": 155.19,
+   "actual": 160.22
+  },
+  {
+   "from": "2026-04-07",
+   "to": "2026-10-07",
+   "price": 1,
+   "today": 147.87,
+   "estimate": 161.04,
+   "actual": 160.22
+  },
+  {
+   "from": "2026-04-07",
+   "to": "2026-10-07",
+   "price": 2,
+   "today": 152.27,
+   "estimate": 161.06,
+   "actual": 160.22
+  },
+  {
+   "from": "2026-04-07",
+   "to": "2026-10-07",
+   "price": 4,
+   "today": 152.27,
+   "estimate": 165.03,
+   "actual": 168.94
+  },
+  {
+   "from": "2026-04-07",
+   "to": "2026-10-07",
+   "price": 10,
+   "today": 157.82,
+   "estimate": 166.61,
+   "actual": 168.94
+  },
+  {
+   "from": "2026-04-07",
+   "to": "2026-10-07",
+   "price": 30,
+   "today": 157.82,
+   "estimate": 166.61,
+   "actual": 169.07
+  },
+  {
+   "from": "2026-04-07",
+   "to": "2026-10-07",
+   "price": 100,
+   "today": 157.82,
+   "estimate": 166.61,
+   "actual": 169.07
+  },
+  {
+   "from": "2026-05-07",
+   "to": "2026-11-07",
+   "price": 0.2,
+   "today": 146.86,
+   "estimate": 155.71,
+   "actual": 160.22
+  },
+  {
+   "from": "2026-05-07",
+   "to": "2026-11-07",
+   "price": 0.3,
+   "today": 146.86,
+   "estimate": 155.71,
+   "actual": 160.22
+  },
+  {
+   "from": "2026-05-07",
+   "to": "2026-11-07",
+   "price": 0.5,
+   "today": 146.86,
+   "estimate": 155.71,
+   "actual": 160.22
+  },
+  {
+   "from": "2026-05-07",
+   "to": "2026-11-07",
+   "price": 1,
+   "today": 146.86,
+   "estimate": 161.1,
+   "actual": 160.22
+  },
+  {
+   "from": "2026-05-07",
+   "to": "2026-11-07",
+   "price": 2,
+   "today": 152.25,
+   "estimate": 161.1,
+   "actual": 167.82
+  },
+  {
+   "from": "2026-05-07",
+   "to": "2026-11-07",
+   "price": 4,
+   "today": 152.27,
+   "estimate": 165.09,
+   "actual": 168.94
+  },
+  {
+   "from": "2026-05-07",
+   "to": "2026-11-07",
+   "price": 10,
+   "today": 157.82,
+   "estimate": 168.89,
+   "actual": 168.94
+  },
+  {
+   "from": "2026-05-07",
+   "to": "2026-11-07",
+   "price": 30,
+   "today": 160.04,
+   "estimate": 168.89,
+   "actual": 169.07
+  },
+  {
+   "from": "2026-05-07",
+   "to": "2026-11-07",
+   "price": 100,
+   "today": 162.67,
+   "estimate": 170.88,
+   "actual": 169.07
+  }
+ ]
+}
