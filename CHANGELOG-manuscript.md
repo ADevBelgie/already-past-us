@@ -529,3 +529,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-09 — s4 "Beyond the best humans" opener shortened (review comment)
 - "The opening's two results sit at the far right: the 2025 programming world finals, on OpenAI's own report, and the Erdős disproof." became "The programming finals, on OpenAI's own report, and the Erdős disproof ([see the opening](#s0))." The OpenAI-reported qualifier stays.
+
+## 2026-11-09 — s9 closing line rephrased (review comment)
+- "If only the scores move, the title stays true where it is true now, and no further." became "If only the scores move, AI stays ahead only on the kinds of tasks where it already is."
