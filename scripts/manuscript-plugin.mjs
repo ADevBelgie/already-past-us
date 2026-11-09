@@ -213,7 +213,9 @@ export function compileManuscript(source) {
     outNotes[id] = { tag: fn.tag, n: fn.n, tree: compileMarkdown(fn.text) }
     if (claims[id]) outNotes[id].claim = claims[id]
   }
-  return { meta, sections: outSections, footnotes: outNotes, minutes: Math.round(words / 230), problems }
+  // Hero reading time for the Brief text: 230 words a minute is a usual prose rate, but this text is
+  // dense with numbers and has charts to read, so each word counts 1.5 times (about 153 words a minute).
+  return { meta, sections: outSections, footnotes: outNotes, minutes: Math.round((words * 1.5) / 230), problems }
 }
 
 export default function manuscriptPlugin() {
