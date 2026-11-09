@@ -520,3 +520,6 @@ At the editor's request, the review rules from sections 0-2 were applied to the 
 
 ## 2026-11-09 — s0 Erdős card: duplicate "But" line removed (review comment)
 - The card repeated "Within weeks, humans improved on the AI's construction", which the sentence just above the cards already says (same footnote, s0-erdos-context). The card now has no "But" line; the ICPC and freelance cards keep theirs. Chart comment updated to match.
+
+## 2026-11-09 — s2 cost per task: "a thirteenth" reworded (review comment)
+- A reader took "drops to about a thirteenth each year" as "1/13 cheaper". Now: "falls about 13-fold each year: what cost $13 costs about $1 a year later." Same figure and source (s2-epoch, about 47% a quarter).
