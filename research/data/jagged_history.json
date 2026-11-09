@@ -166,7 +166,16 @@
  },
  "gpqa": {
   "2025-11-07": {
-   "same_as_today": true
+   "tier": 3,
+   "confirmed": true,
+   "ai_value": "87% (Grok 4)",
+   "human_value": "about 70% (PhD experts)",
+   "comparison_text": "In Epoch AI's testing, Grok 4 scored 87% (July 2025). PhD experts scored about 70%, a baseline OpenAI measured. The questions are multiple-choice.",
+   "evidence_date": "2025-07-09",
+   "evidence_date_label": "July 2025",
+   "footnote_ids": [
+    "s4-h-gpqa-2025"
+   ]
   },
   "2026-05-07": {
    "tier": 3,

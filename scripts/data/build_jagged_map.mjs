@@ -159,11 +159,11 @@ const ROWS = [
     compared_with: 'PhD experts',
     compared_group: 'trained',
     comparison_text:
-      "In Epoch AI's testing, Grok 4 scored 87% (July 2025). PhD experts scored about 70%, a baseline OpenAI measured. The questions are multiple-choice.",
-    ai_value: '87% (Grok 4)',
+      "In Epoch AI's testing, Gemini 4 Argon scored 96% (October 2026). PhD experts scored about 70%, a baseline OpenAI measured. The questions are multiple-choice.",
+    ai_value: '96% (Gemini 4 Argon)',
     human_value: 'about 70% (PhD experts)',
-    date: '2025-07-09',
-    date_label: 'July 2025',
+    date: '2026-10-13',
+    date_label: 'October 2026',
     footnote_ids: ['s4-gpqa-ai', 's4-gpqa-human'],
     // The ~70% PhD baseline rests on a different footnote with its own (weaker) tag.
     baseline_footnote_id: 's4-gpqa-human',
@@ -329,7 +329,11 @@ for (const row of rows) {
   for (const d of HISTORY_DATES) {
     const e = h[d]
     if (e === undefined) { problems.push(`${row.id}: history missing ${d}`); continue }
+    // "Same as today" is only true if today's evidence was already published by the view date.
+    if (e?.same_as_today && row.date > d) problems.push(`${row.id}@${d}: same_as_today, but today's evidence (${row.date}) postdates the view`)
     if (e === null || e.same_as_today) { row.history[d] = e === null ? null : { same_as_today: true }; continue }
+    // A past view must never rest on newer evidence than today's row (the row would go backwards).
+    if (e.evidence_date > row.date) problems.push(`${row.id}@${d}: past evidence (${e.evidence_date}) is newer than today's (${row.date})`)
     const fns = e.footnote_ids.map(id => doc.footnotes[id])
     fns.forEach((fn, i) => { if (!fn) problems.push(`${row.id}@${d}: footnote ${e.footnote_ids[i]} not found`) })
     for (const id of e.footnote_ids) if (!s4Text.includes(`[^${id}]`)) problems.push(`${row.id}@${d}: footnote ${id} not cited in section 4`)
